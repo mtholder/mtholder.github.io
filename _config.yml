@@ -1,3 +1,6 @@
 highlighter: pygments
 github: [Repository metadata]
+gems:
+    - jemoji
+
 
