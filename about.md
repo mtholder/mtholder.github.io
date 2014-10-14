@@ -4,12 +4,12 @@ title: About
 permalink: /about/
 ---
 
-Some information about you!
+Just playing around with GitHub pages here.
+
 
 ### More Information
 
-A place to include any other types of information that you'd like to include about yourself. 
+My real site is [http://phylo.bio.ku.edu](http://phylo.bio.ku.edu)
 
-### Contact me
 
-[email@domain.com](mailto:email@domain.com)
+
