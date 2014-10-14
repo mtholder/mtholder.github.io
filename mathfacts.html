@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+.question {
+    font-size: 48;
+    font-family: "Comic Sans MS", cursive, sans-serif ;
+}
+.feedback {
+    font-size: 48;
+    font-family: "Comic Sans MS", cursive, sans-serif ;
+}
+</style>
+</head>
+<body>
+<div>
+    <p class="question"><span id="leftoperand"></span>
+       <span id="operator"></span>
+       <span id="rightoperand"></span> = <input onkeyup="answerKeyUp" type="text" id="ans">
+       </p>
+       <p class="feedback"><div id="response" /></p>
+</div>
+<script>
+var fontColorChoices = ["red",
+                        "green",
+                        "orange",
+                        "purple",
+                        "blue",
+                        "cyan",
+                        "black"];
+var fontFamilyChoices = ["Impact,Charcoal,sans-serif",
+                         "Comic Sans MS,cursive,sans-serif",
+                         "Trebuchet MS, Helvetica, sans-serif",
+                         "Arial Black, Gadget, sans-serif",
+                         "Lucida Console, Monaco, monospace",
+                         ];
+var yayTextChoices = ["Correct",
+                      "Nice job",
+                      "That is right",
+                      "Sehr gut",
+                      "Richtig",
+                      "Genau",
+                      "Ausgezeichnet"];
+var emojiChoices = ["(•ω•)",
+                    "☺", 
+                    "ʕ•ᴥ•ʔ",
+                    "ಠ⌣ಠ",
+                    "โ๏௰๏ใ",
+                    "( ͡° ͜ʖ ͡°)",
+                    "😅",
+                    "😎",
+                    "😹",
+                    "😺",
+                    "😻",
+                    "<br />               (\"\ '' /\").___..--' ' \"`-._  <br />                                   `ಠ_ ಠ  )   `-.  (       ).`-.__.`) <br />                   (_Y_.)'    ._   )  `._ `. ``-..-' <br />                                _..`--'_. .-_/  /--'_.'  .'          <br />                                            (i l).-' '    ((i). '   ((!.-'i<br />",
+                    "☃"];
+var sad_emoticons = ["☹"];
+var leftOpSpan = document.getElementById("leftoperand");
+var operatorSpan = document.getElementById("operator");
+var rightOpSpan = document.getElementById("rightoperand");
+var responseDiv = document.getElementById("response");
+var ansBoxInput = document.getElementById("ans");
+
+var correct;
+var leftOpVal;
+var rightOpVal;
+var operator;
+var askQuestion = function() {
+    leftOpVal = Math.round(Math.random()*10.99 - .495);
+    rightOpVal = Math.round(Math.random()*10.99 - .495);
+    var opU = Math.random();
+    operator = "+";
+    if (opU < .25) {
+        if (opU < .1) {
+            operator = "+";
+        } else {
+            operator = "-";
+        }
+    } else {
+        if (opU < .75) {
+            operator = "×";
+        } else {
+            operator = "/";
+        }
+    }
+    if (operator == "+") {
+        correct = leftOpVal + rightOpVal;
+    } else if (operator == "-") {
+        correct = leftOpVal - rightOpVal;
+    } else if (operator == "×") {
+        correct = leftOpVal * rightOpVal;
+    } else {
+        while (rightOpVal == 0) {
+            rightOpVal = Math.round(Math.random()*10.99 - .495);
+        }
+        correct = leftOpVal;
+        leftOpVal *= rightOpVal;
+    }
+    leftOpSpan.innerHTML = "" + leftOpVal;
+    operatorSpan.innerHTML = operator;
+    rightOpSpan.innerHTML = "" + rightOpVal;
+}
+var randChoice = function (choices) {
+    var cind = Math.round(Math.random()*(choices.length - .01) - .495);
+    return choices[cind];
+}
+var processResponse = function() {
+    var resp = ansBoxInput.value;
+    if (resp == correct) {
+        responseDiv.style.color = randChoice(fontColorChoices);
+        responseDiv.style.fontFamily = randChoice(fontFamilyChoices);
+        responseDiv.innerHTML = randChoice(yayTextChoices) + " ! " + randChoice(emojiChoices);
+    } else {
+        responseDiv.innerHTML = "Nope. " + leftOpVal + " " + operator + " " + rightOpVal + " = " + correct;
+    }
+}
+
+askQuestion();
+function answerKeyUp(event) {
+    var c = event.which || event.keyCode ;
+    if (c == 13) {
+        processResponse();
+        ansBoxInput.value = "";
+        askQuestion();
+    } else {
+        /*responseDiv.innerHTML = "" + c; */
+    }
+}
+ansBoxInput.addEventListener("keyup", answerKeyUp);
+
+</script>
+</body>
+</html>
+
