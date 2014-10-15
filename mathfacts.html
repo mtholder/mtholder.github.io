@@ -11,6 +11,10 @@
     font-size: 48;
     font-family: "Comic Sans MS", cursive, sans-serif ;
 }
+.asc {
+    font-size: 48;
+    font-family: "Lucida Console", Monaco, monospace ;
+}
 </style>
 <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 </head>
@@ -23,7 +27,14 @@
        </p>
        <p class="feedback"><div id="response" /><br /></p> </td></tr>
    <tr><td> <span id="animatepar" /></td></tr>
+   <tr><td><div class="asc" id="ascii" /></td></tr>
 </table>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<p>Ascii Art from <a href="http://www.chris.com/ascii/">http://www.chris.com/ascii/</a></p>
 <script>
 var fontColorChoices = ["red",
                         "green",
@@ -51,13 +62,54 @@ var emojiChoices = ["(•ω•)",
                     "ಠ⌣ಠ",
                     "โ๏௰๏ใ",
                     "( ͡° ͜ʖ ͡°)",
-                    "😅",
-                    "😎",
-                    "😹",
-                    "😺",
-                    "😻",
-                    "<br />               (\"\ '' /\").___..--' ' \"`-._  <br />                                   `ಠ_ ಠ  )   `-.  (       ).`-.__.`) <br />                   (_Y_.)'    ._   )  `._ `. ``-..-' <br />                                _..`--'_. .-_/  /--'_.'  .'          <br />                                            (i l).-' '    ((i). '   ((!.-'i<br />",
+                    "❤",
+                    "❄",
                     "☃"];
+var asciiArt = [["               (\"\\ '' /\").___..--' ' \"`-._  ", 
+                 "                ` O _ O  )   `-.  (       ).`-.__.`) ",
+                 "                  (_Y_.)'    ._   )  `._ `. ``-..-' ",
+                 "                _..`--'_. .-_/  /--'_.'  .'          ", 
+                 "           (i l).-' '    ((i). '   ((!.-'i"],
+                ["         (`.  : \\               __..----..__",
+                 "          `.`.| |:          _,-':::''' '  `:`-._", 
+                 "            `.:\||       _,':::::'         `::::`-.", 
+                 "              \\\\`|    _,':::::::'     `:.     `':::`.",
+                 "               ;` `-''  `::::::.                  `::\\",
+                 "            ,-'      .::'  `:::::.         `::..    `:\\",
+                 "          ,' /_) -.            `::.           `:.     |", 
+                 "        ,'.:     `    `:.        `:.     .::.          \\", 
+                 "   __,-'   ___,..-''-.  `:.        `.   /::::.         |",
+                 "  |):'_,--'           `.    `::..       |::::::.      ::\\",
+                 "   `-'                 |`--.:_::::|_____\\::::::::.__  ::|",
+                 "                       |   _/|::::|      \\::::::|::/\\  :|",
+                 "                       /:./  |:::/        \__:::):/  \\  :\\",
+                 "                     ,'::'  /:::|        ,'::::/_/    `. ``-.__",
+                 "       jrei         ''''   (//|/\      ,';':,-'         `-.__  `'--..__", 
+                 "                                                             `''---::::'"],
+["                             ;\\ ",
+"                            |' \\ ",
+"         _                  ; : ; ",
+"        / `-.              /: : | ",
+"       |  ,-.`-.          ,': : | ",
+"       \\  :  `. `.       ,'-. : | ",
+"        \\ ;    ;  `-.__,'    `-.| ",
+"         \\ ;   ;  :::  ,::'`:.  `. ",
+"          \\ `-. :  `    :.    `.  \\ ",
+"           \\   \\    ,   ;   ,:    (\\ ",
+"            \\   :., :.    ,'o)): ` `-. ",
+"           ,/,' ;' ,::\"'`.`---'   `.  `-._ ",
+"         ,/  :  ; '\"      `;'          ,--`. ",
+"        ;/   :; ;             ,:'     (   ,:) ",
+"          ,.,:.    ; ,:.,  ,-._ `.     \\\"\"'/ ",
+"          '::'     `:'`  ,'(  \\`._____.-'\"' ",
+"             ;,   ;  `.  `. `._`-.  \\\\ ",
+"             ;:.  ;:       `-._`-.\\  \\`. ",
+"              '`:. :        |' `. `\\  ) \\ ",
+"      -hrr-      ` ;:       |    `--\\__,' ",
+"                   '`      ,' ",
+"                        ,-' "
+]
+                ];
 var sad_emoticons = ["☹"];
 var leftOpSpan = document.getElementById("leftoperand");
 var operatorSpan = document.getElementById("operator");
@@ -71,6 +123,10 @@ var margin = {top: 20, right: 25, bottom: 10, left: 15};
 var src_svg = d3.select('#animatepar').append('svg')
     .attr({'width': MAT_WIDTH + margin.left + margin.right,
            'height': FIG_HEIGHT + margin.bottom + margin.top, })
+    .style('background', 'white');
+var asciiArtPar = d3.select("#ascii").append('svg')
+    .attr({'width': 800 + margin.left + margin.right,
+           'height': 600 + margin.bottom + margin.top, })
     .style('background', 'white');
 var correct;
 var leftOpVal;
@@ -141,11 +197,28 @@ var processResponse = function() {
         responseDiv.style.color = randChoice(fontColorChoices);
         responseDiv.style.fontFamily = randChoice(fontFamilyChoices);
         responseDiv.innerHTML = randChoice(yayTextChoices) + " ! " + randChoice(emojiChoices);
+        var aac = randChoice(asciiArt);
+        var asciiArtSel = asciiArtPar.selectAll("text")
+            .data(aac, function (d) {return d});
+        asciiArtSel.enter()
+            .append("text")
+            .attr("y", function(d, i) {return 14*(1+i);})
+            .attr("xml:space", "preserve")
+            .text(function(d) {return d;});
+        asciiArtSel.exit().remove();
+
         animate();
     } else {
         responseDiv.innerHTML = "Nope. " + leftOpVal + " " + operator + " " + rightOpVal + " = " + correct;
     }
 }
+var i;
+var s = "";
+for (i = 0; i < emojiChoices.length; ++i) {
+    s = s + emojiChoices[i] + "\n";
+}
+responseDiv.innerHTML = s;
+        
 
 askQuestion();
 animate();
