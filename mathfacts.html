@@ -12,15 +12,18 @@
     font-family: "Comic Sans MS", cursive, sans-serif ;
 }
 </style>
+<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 </head>
 <body>
-<div>
-    <p class="question"><span id="leftoperand"></span>
+<table>
+    <tr><td>
+       <p class="question"><span id="leftoperand"></span>
        <span id="operator"></span>
        <span id="rightoperand"></span> = <input onkeyup="answerKeyUp" type="text" id="ans">
        </p>
-       <p class="feedback"><div id="response" /></p>
-</div>
+       <p class="feedback"><div id="response" /><br /></p> </td></tr>
+   <tr><td> <span id="animatepar" /></td></tr>
+</table>
 <script>
 var fontColorChoices = ["red",
                         "green",
@@ -61,11 +64,38 @@ var operatorSpan = document.getElementById("operator");
 var rightOpSpan = document.getElementById("rightoperand");
 var responseDiv = document.getElementById("response");
 var ansBoxInput = document.getElementById("ans");
-
+var MAT_WIDTH = 200;
+var FIG_HEIGHT = 80;
+var OFFSET = 10;
+var margin = {top: 20, right: 25, bottom: 10, left: 15};
+var src_svg = d3.select('#animatepar').append('svg')
+    .attr({'width': MAT_WIDTH + margin.left + margin.right,
+           'height': FIG_HEIGHT + margin.bottom + margin.top, })
+    .style('background', 'white');
 var correct;
 var leftOpVal;
 var rightOpVal;
 var operator;
+var animate = function() {
+    var src_data = [{"x": Math.random(),
+                     "y": Math.random()}];
+    var r = src_svg.selectAll("text")
+        .data(src_data, function(d) {return d;});
+    r.enter()
+        .append("text")
+        .attr("x", function(d) {return margin.left + MAT_WIDTH*d.x;})
+     .attr("y", function(d) {return margin.top + FIG_HEIGHT*d.y;})
+     .attr("fill", function(d) {return '#FF0000'})
+     .attr("font-size", "44px")
+     .text("☺");
+    r.transition()
+     .duration(350)
+     .attr('text-anchor', 'middle')
+     .attr("x", function(d) {return margin.left + MAT_WIDTH*(1.0 - d.x);})
+     .attr("y", function(d) {return FIG_HEIGHT*(1.0 - d.y) + margin.top;});
+
+     //.attr("transform", function(d) {return "rotate(1," + margin.left + MAT_WIDTH*(1.0 - d.x) + "," + margin.top + FIG_HEIGHT*(1.0 - d.y) + ")"});
+};
 var askQuestion = function() {
     leftOpVal = Math.round(Math.random()*10.99 - .495);
     rightOpVal = Math.round(Math.random()*10.99 - .495);
@@ -111,12 +141,14 @@ var processResponse = function() {
         responseDiv.style.color = randChoice(fontColorChoices);
         responseDiv.style.fontFamily = randChoice(fontFamilyChoices);
         responseDiv.innerHTML = randChoice(yayTextChoices) + " ! " + randChoice(emojiChoices);
+        animate();
     } else {
         responseDiv.innerHTML = "Nope. " + leftOpVal + " " + operator + " " + rightOpVal + " = " + correct;
     }
 }
 
 askQuestion();
+animate();
 function answerKeyUp(event) {
     var c = event.which || event.keyCode ;
     if (c == 13) {
