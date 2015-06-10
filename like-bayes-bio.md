@@ -12,7 +12,6 @@ in the "likelihood and Bayesian approaches in biology" hosted by
 In the workshop we will cover the basics of using maximum likelihood and
 Bayesian methods for inference. Basing inference on a likelihood function
 is an extremely flexible and powerful framework for statistics.
-
 Many of the "canned" statistical estimators and test statistics that are
 taught in introductory statistics courses can be justified from the
 perspective of maximum likelihood. But likelihood-based approaches can be 
@@ -35,11 +34,21 @@ programs.
 
 To be honest, there won't be much biology here. The examples are all toys
 cases with made up data that are designed to explain the core concepts. 
-However, I am a biologists, and I'm very happy to
+However, I am a biologist, and I would be very happy to
 discuss how to apply the concepts covered (and others that we won't have
 time to cover) to real-world problems in biology.
 
 ### Preparation for the computer demos
+#### Text editor
+When reading or editing computer programs, you need to use a text editor,
+*not* a word processor.
+
+For Windows I recommend: [Notepad++](https://notepad-plus-plus.org/download/v6.4.2.html)
+
+For Mac, I recommend: [TextWrangler](http://www.barebones.com/products/textwrangler/).
+
+[jEdit](http://www.jedit.org/) is another free, cross-platform option.
+[SublimeText](http://www.sublimetext.com/) is nice, but is only free during a trial period. 
 
 #### Python
 We will use version 2.7 of [Python](https://www.python.org/). 
@@ -49,7 +58,7 @@ that you need to install.
 The most challenging of the packages that we will need are numpy and scipy
 (because they both contain C-language code that has to be compiled).
 
-##### The easy way
+##### Python + scipy installation: the easy way
 The easiest way to install the "scipy stack" of tools is to follow the instructions at [www.scipy.org/install.html](http://www.scipy.org/install.html).
 
 From your terminal (`bash` or `csh` on linux/Mac or your `CMD.exe` on Windows),
@@ -60,18 +69,20 @@ you should verify that the command:
 shows the help message for the python installer `pip`. If it does not, 
 you will probably want to download and install `pip` from [here](https://pypi.python.org/pypi/pip).
 
-##### The painful way
-The manual way (which is probably only useful if you will be using python
+##### Python + scipy installation: the possibly painful way
+This manual way (which is probably only useful if you will be using python
 for many other projects and you want to isolate the effects of installing
-scipy to just the code in the workshop) is to execute the following (at 
-a bash terminal):
+scipy to just the code in the workshop). At a bash terminal issue the following
+commands.
 
-    $ virtualenv sci
-    $ source sci/bin/activate
-    $ pip install numpy
-    $ pip install scipy
+    virtualenv sci
+    source sci/bin/activate
+    pip install numpy
+    pip install scipy
 
-
+If you have a modern C and fortran compiler, this should be slow, but straightforward.
+If you don't you'll need to install them (and that is where this route can
+become a bit painful).
 
 #### R
 [The R programming language](http://www.r-project.org/) is an environment
