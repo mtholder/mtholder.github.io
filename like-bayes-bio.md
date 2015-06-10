@@ -48,7 +48,39 @@ For Windows I recommend: [Notepad++](https://notepad-plus-plus.org/download/v6.4
 For Mac, I recommend: [TextWrangler](http://www.barebones.com/products/textwrangler/).
 
 [jEdit](http://www.jedit.org/) is another free, cross-platform option.
-[SublimeText](http://www.sublimetext.com/) is nice, but is only free during a trial period. 
+[SublimeText](http://www.sublimetext.com/) is nice, but is only free during a trial period.
+
+#### Terminals and your shell
+The programs that we write, will be run through a "command-line interface".
+That means that, instead of double clicking on an application to run it, we will
+type the command to be run and supply it with extra information in the form of
+command-line arguments.
+
+When I refer to the "terminal", I mean the clickable application that you run
+to start session in which you can execute commands.
+On Windows this is usually the "Command Prompt" (also called the "cmd.exe") program.
+On Mac it is typically the "/Applications/Utilities/Terminal" application.
+
+Technically speaking
+"[terminal emulator](http://en.wikipedia.org/wiki/Terminal_emulator)" 
+would be the better phrase to use for the application, because 
+"terminal" originally referred to [hardware](http://en.wikipedia.org/wiki/Computer_terminal).
+
+The terminal passes the text that you type to a "shell" to be interpreted.
+Each shell has its own language that describes how text you type will be interpreted.
+On Windows, the shell uses DOS language. On other operating systems, the 
+user has a choice with `bash` and the `C-shell` being the most popular.
+
+For our purposes, the shells are similar enough that the same set of commands
+should work across any of the shells.
+
+The most common stumbling block for new users is the fact that a shell
+will break your commands into a series of words.
+A space (or tab character) is the signal to end a word. 
+So if you are trying to refer to a file on your computer and the file name (or
+the name of one of the directories that it is under) has a space in it, you
+will have to add quotes around the file name so that the shell will read it as
+one word.
 
 #### Python
 We will use version 2.7 of [Python](https://www.python.org/). 
