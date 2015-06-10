@@ -10,14 +10,14 @@ in the "likelihood and Bayesian approaches in biology" hosted by
 
 | Session | Link/Content |
 |:------- |:-------------|
-|Monday, lecture | |
-|Monday, computer | |
-|Tuesday, lecture | |
-|Tuesday, computer | |
-|Wednesday, lecture | |
-|Wednesday, computer | |
-|Thursday, lecture | |
-|Thursday, computer | |
+|Mon., lecture: Intro, Probability, Likelihood| |
+|Mon., computer | |
+|Tues., lecture: Model testing| |
+|Tues., computer | |
+|Wed., lecture: Bayesian, MCMC | |
+|Wed., computer | |
+|Thurs., lecture Model averaging MCMC | |
+|Thurs., computer | |
 
 ## Workshop goals
 In the workshop we will cover the basics of using maximum likelihood and
