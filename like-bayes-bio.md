@@ -8,6 +8,17 @@ This site will have links to notes, slides, code and data sets used
 in the "likelihood and Bayesian approaches in biology" hosted by
 [Hellenic Centre for Marine Research](http://www.hcmr.gr) 15-18 June, 2015.
 
+| Session | Link/Content |
+|:------- |:-------------|
+|Monday, lecture | |
+|Monday, computer | |
+|Tuesday, lecture | |
+|Tuesday, computer | |
+|Wednesday, lecture | |
+|Wednesday, computer | |
+|Thursday, lecture | |
+|Thursday, computer | |
+
 ## Workshop goals
 In the workshop we will cover the basics of using maximum likelihood and
 Bayesian methods for inference. Basing inference on a likelihood function
@@ -40,7 +51,7 @@ time to cover) to real-world problems in biology.
 
 ## Preparation for the computer demos
 
-### Text editor
+### Text editors
 When reading or editing computer programs, you need to use a text editor,
 *not* a word processor.
 
@@ -58,14 +69,14 @@ type the command to be run and supply it with extra information in the form of
 command-line arguments.
 
 When I refer to the "terminal", I mean the clickable application that you run
-to start session in which you can execute commands.
-On Windows this is usually the "Command Prompt" (also called the "cmd.exe") program.
-On Mac it is typically the "/Applications/Utilities/Terminal" application.
-
-Technically speaking
+to start session in which you can execute commands (technically speaking
 "[terminal emulator](http://en.wikipedia.org/wiki/Terminal_emulator)" 
 would be the better phrase to use for the application, because 
-"terminal" originally referred to [hardware](http://en.wikipedia.org/wiki/Computer_terminal).
+"terminal" originally referred to [hardware](http://en.wikipedia.org/wiki/Computer_terminal))
+
+On Windows the terminal application is usually the "Command Prompt"
+(also called the "cmd.exe") program.
+On Mac it is typically the "/Applications/Utilities/Terminal" application.
 
 The terminal passes the text that you type to a "shell" to be interpreted.
 Each shell has its own language that describes how text you type will be interpreted.
