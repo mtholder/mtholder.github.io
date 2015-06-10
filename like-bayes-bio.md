@@ -8,7 +8,7 @@ This site will have links to notes, slides, code and data sets used
 in the "likelihood and Bayesian approaches in biology" hosted by
 [Hellenic Centre for Marine Research](http://www.hcmr.gr) 15-18 June, 2015.
 
-### Workshop goals
+## Workshop goals
 In the workshop we will cover the basics of using maximum likelihood and
 Bayesian methods for inference. Basing inference on a likelihood function
 is an extremely flexible and powerful framework for statistics.
@@ -38,8 +38,9 @@ However, I am a biologist, and I would be very happy to
 discuss how to apply the concepts covered (and others that we won't have
 time to cover) to real-world problems in biology.
 
-### Preparation for the computer demos
-#### Text editor
+## Preparation for the computer demos
+
+### Text editor
 When reading or editing computer programs, you need to use a text editor,
 *not* a word processor.
 
@@ -50,7 +51,7 @@ For Mac, I recommend: [TextWrangler](http://www.barebones.com/products/textwrang
 [jEdit](http://www.jedit.org/) is another free, cross-platform option.
 [SublimeText](http://www.sublimetext.com/) is nice, but is only free during a trial period.
 
-#### Terminals and your shell
+### Terminals and your shell
 The programs that we write, will be run through a "command-line interface".
 That means that, instead of double clicking on an application to run it, we will
 type the command to be run and supply it with extra information in the form of
@@ -82,7 +83,7 @@ the name of one of the directories that it is under) has a space in it, you
 will have to add quotes around the file name so that the shell will read it as
 one word.
 
-#### Python
+### Python
 We will use version 2.7 of [Python](https://www.python.org/). 
 Python is a fantastic, general purpose programming language.
 Much of the code for scientific calcuations are available as add-on "packages"
@@ -90,7 +91,7 @@ that you need to install.
 The most challenging of the packages that we will need are numpy and scipy
 (because they both contain C-language code that has to be compiled).
 
-##### Python + scipy installation: the easy way
+#### Python + scipy installation: the easy way
 The easiest way to install the "scipy stack" of tools is to follow the instructions at [www.scipy.org/install.html](http://www.scipy.org/install.html).
 
 From your terminal (`bash` or `csh` on linux/Mac or your `CMD.exe` on Windows),
@@ -101,7 +102,7 @@ you should verify that the command:
 shows the help message for the python installer `pip`. If it does not, 
 you will probably want to download and install `pip` from [here](https://pypi.python.org/pypi/pip).
 
-##### Python + scipy installation: the possibly painful way
+#### Python + scipy installation: the possibly painful way
 This manual way (which is probably only useful if you will be using python
 for many other projects and you want to isolate the effects of installing
 scipy to just the code in the workshop). At a bash terminal issue the following
@@ -116,14 +117,14 @@ If you have a modern C and fortran compiler, this should be slow, but straightfo
 If you don't you'll need to install them (and that is where this route can
 become a bit painful).
 
-#### R
+### R
 [The R programming language](http://www.r-project.org/) is an environment
 for automating statistical analyses.
 The functions that we need for programming in R are part of its standard library,
 so you will not need to install them separately.
 
 
-### Links
+## Links
   * The longer version of this course is co-taught with Dr. John Kelly
 at the University of Kansas. The course website is: 
 [http://phylo.bio.ku.edu/courses/likelihood](http://phylo.bio.ku.edu/courses/likelihood),
