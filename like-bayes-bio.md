@@ -19,6 +19,8 @@ in the "likelihood and Bayesian approaches in biology" hosted by
 |Thurs., lecture Model averaging MCMC | |
 |Thurs., computer | |
 
+The source code for the slides and examples is at https://github.com/mtholder/like-bayes-bio-4-day-workshop
+
 ## Workshop goals
 In the workshop we will cover the basics of using maximum likelihood and
 Bayesian methods for inference. Basing inference on a likelihood function
