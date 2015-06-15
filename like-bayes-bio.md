@@ -10,14 +10,10 @@ in the "likelihood and Bayesian approaches in biology" hosted by
 
 | Session | Link/Content |
 |:------- |:-------------|
-|Mon., lecture: Intro, Probability, Likelihood| |
-|Mon., computer | |
+|Mon., lecture: Intro, Probability, Likelihood| [posted-day-1.zip](./posted-day-1.zip)|
 |Tues., lecture: Model testing| |
-|Tues., computer | |
 |Wed., lecture: Bayesian, MCMC | |
-|Wed., computer | |
 |Thurs., lecture Model averaging MCMC | |
-|Thurs., computer | |
 
 The source code for the slides and examples is at https://github.com/mtholder/like-bayes-bio-4-day-workshop
 
@@ -32,8 +28,7 @@ tweaked to fit the specifics of complex experimental designs. So learning
 the basic tools in the "likelihood toolbox" can be a very valuable research
 skill.
 
-We will have lectures before lunch and walk through programming examples 
-after lunch. 
+We will have some lectures and walk through programming examples.
 
 Ready-to-use algorithms for many portions of a likelihood or Bayesian program
 are available. So, it can be surprisingly easy to get a simple estimation
