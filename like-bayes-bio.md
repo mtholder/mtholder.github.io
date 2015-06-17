@@ -12,7 +12,7 @@ in the "likelihood and Bayesian approaches in biology" hosted by
 |:------- |:-------------|
 |Mon., lecture: Intro, Probability, Likelihood | [posted-day-1.zip](../posted-day-1.zip)|
 |Tues., lecture: Model testing | [posted-day-2.zip](../posted-day-2.zip) |
-|Wed., lecture: Bayesian, MCMC | |
+|Wed., lecture: Bayesian, MCMC | [posted-day-3.zip](../posted-day-3.zip)|
 |Thurs., lecture Model averaging MCMC | |
 
 More examples can be found at [the site for the KU version of the course](http://phylo.bio.ku.edu/courses/likelihood).
