@@ -64,7 +64,7 @@ If you had asked me this question a couple of years ago, I probably would have
   biology, R. A. Fisher springs to mind).
 However, after listening to many younger scientists (some on SSB council, but also some not
   members of SSB [as far as I know]) discuss the topic of the
-  awards named after scienticists, I've changed my mind.
+  awards named after scientists, I've changed my mind.
 Some of the reasons expressed for preferring descriptive award names were
   things I might have thought of on my own, if I'd given the issue more thought: 
     there can be too much "hero-worship" in general in science, or the fact that a descriptive
@@ -186,3 +186,9 @@ There is still time before a vote, so I'll try to keep listening.
 I know this is too long, but hopefully it will be helpful to some.
 
 Let's all be kind to each other and listen.
+
+
+<h4>Edit history</h4>
+<ol>
+  <li> "scienticists" corrected to "scientists".</li>
+</ol>
