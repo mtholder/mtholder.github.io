@@ -191,5 +191,5 @@ Let's all be kind to each other and listen.
 <h4>Edit history</h4>
 <ol>
   <li> "scienticists" corrected to "scientists".</li>
-  <li> Several other typos fixed at 5:00CST 11 Jan. See <a href="https://github.com/mtholder/mtholder.github.io/commit/1f432fef59de7e705e1569b6f9b8c2d76b07e0e2">the commit diff</a> if you want to be amused by how many typos and grammatical goofs I write.
+  <li> Several other typos fixed at 5:00CST 11 Jan. See <a href="https://github.com/mtholder/mtholder.github.io/commit/1f432fef59de7e705e1569b6f9b8c2d76b07e0e2">the commit diff</a> if you want to be amused by how many typos and grammatical goofs I write.</li>
 </ol>
