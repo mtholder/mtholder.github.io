@@ -12,10 +12,10 @@ This proposal was approved by the SSB council and
 Predictably (but still regrettably), the conversation about this issue
 	has turned very ugly on social media - often the targets have been
 	early career researchers.
-I've been an officer of the society since of 2020.
+I've been an officer of the society since 2020.
 I voted in favor of sending the proposal to the SSB membership
   for a vote, and I expect to vote in favor of the renaming.
-I thought the wording of the announcement at
+I thought the wording of the announcement 
   <a href="https://www.systbio.org/award-naming.html" target="_blank">mentioned above</a> was
   quite good, but it is easier to explain one's own position rather
   than craft a statement that expresses a consensus viewpoint.
@@ -32,8 +32,8 @@ While one would expect the applicants to be familiar with systematics,
   we should not assume much knowlege about the history 
   of SSB or a very detailed knowlege of all of the people who have contributed
   to systematics.
-Systematics is one of the broadest discipline of biology; the winners of the award have had
-  wide backgrounds not only from in biological 
+Systematics is one of the broadest disciplines of biology; the winners of the award have had
+  wide backgrounds not only from biological 
    disciplines (from speciation theory to phylogenetics to biogeography...), but
    also from math and computer science.
 
@@ -76,7 +76,7 @@ But one of the comments that stuck with me was from an early-career scientist wh
   to be associated with" (I'm paraphrasing).
 My instinct in that position would <i>not</i> have been to check or worry about it, because
 	"some people are jerks, you can't let it hold you back" - but I haven't been
-	discriminated against and nor has my family been discriminated against.
+	discriminated against nor has my family been discriminated against.
 This had not sunk in for me: if you are a member of a group who has had to endure a long history
  of being made the target of hatred and discrimination, then a career opportunity named
     after someone (<i>even some one who, upon further research, turns out to be basically
@@ -123,19 +123,19 @@ Past-president Laura Kubatko (who has been an outstanding SSB president during a
  to help rectify this.
 That committee is made up of a stellar group of scientists, and I'm really looking
  forward to their contributions.
-Regardless of how the vote turns out, I think this will be an unambiguous
+Regardless of how the vote turns out, I think this will be an unambiguously
  positive result of this whole issue.
 
 <h3>Some students may prefer an award named after Mayr</h3>
 Obviously we shouldn't expect everyone to feel the same about naming awards
   after people, and Mayr was much loved.
-He had an truly outstanding level of productivity and many key contributions
+He had a truly outstanding level of productivity and many key contributions
   to evolutionary biology and systematics.
 And he spoke out against racism, and was generous with his time and money toward
   the cause of helping young scientists.
 I expect that anyone reading this has seen David Hillis' facebook post of 21 June, 2021 that
   was reposted on Panda's Thumb about Mayr. But if you haven't read it, you should read
-  it is at the top of 
+  it - it is at the top of 
   <a href="https://pandasthumb.org/archives/2022/01/David-Hillis-on-Ernst-Mayr.html" target="_new">this post</a>
 (I specify the top of that post, as I think some of David's other commentary on that page is
  unhelpful, but that is a different topic).
@@ -176,7 +176,7 @@ I think the best course is to just try to explain the motivation clearly.
 This proposal is <i>explictly not</i> criticizing Mayr.
 As stated in the announcement: 
   "This proposal is not intended to cast judgement on the legacy of Ernst Mayr, who was a prolific and profound scholar of evolutionary biology and a dedicated champion of students, nor are we intending to defend the contents of his writings which some find problematic."
-Josef Uyeda had a  <a href="https://twitter.com/pseudacris/status/1479177881360207874">a nice thread</a> on this point.
+Josef Uyeda had <a href="https://twitter.com/pseudacris/status/1479177881360207874">a nice thread</a> on this point.
 	
 <h3>There are probably more downsides I haven't thought of</h3>
 I'll continue to read civil commentary on the issue to get more perspectives.
