@@ -4,11 +4,9 @@ title: About
 permalink: /about/
 ---
 
-This site is just an experiment with GitHub pages.
-My real site is [https://phylo.bio.ku.edu](https://phylo.bio.ku.edu).
+Personal site for an evolutionary biologist named Mark T. Holder.
 
-The "source" for this site is
-[https://github.com/mtholder/mtholder.github.io](https://github.com/mtholder/mtholder.github.io).
-
-
-
+<ol>
+	<li>My ORCID=<a href="https://orcid.org/my-orcid?orcid=0000-0001-5575-0536">0000-0001-5575-0536</a></li>
+	<li>My KU website is <a href="https://phylo.bio.ku.edu">phylo.bio.ku.edu</a></li>
+</ol>
