@@ -15,7 +15,7 @@ in the "likelihood and Bayesian approaches in biology" hosted by
 |Wed., lecture: Bayesian, MCMC | [posted-day-3.zip](../posted-day-3.zip)|
 |Thurs., lecture Model averaging MCMC | [posted-day-4.zip](../posted-day-4.zip)|
 
-More examples can be found at [the site for the KU version of the course](http://phylo.bio.ku.edu/courses/likelihood).
+More examples can be found at [the site for the KU version of the course](https://phylo.bio.ku.edu/courses/likelihood).
 
 The source code for the slides and examples is at [https://github.com/mtholder/like-bayes-bio-4-day-workshop](https://github.com/mtholder/like-bayes-bio-4-day-workshop)
 
@@ -137,7 +137,7 @@ so you will not need to install them separately.
 ## Links
   * The longer version of this course is co-taught with Dr. John Kelly
 at the University of Kansas. The course website is: 
-[http://phylo.bio.ku.edu/courses/likelihood](http://phylo.bio.ku.edu/courses/likelihood),
+[https://phylo.bio.ku.edu/courses/likelihood](https://phylo.bio.ku.edu/courses/likelihood),
 but that site will be down for maintenance for some of portion of the 
 time of the Crete workshop.
 
