@@ -1,0 +1,3806 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html dir="ltr" lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+  <link href="../misc/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+  <title>
+   ecmascript for python programmers | mtholder.github.io/home/   </title>
+  <link href="../modules/book/book.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../modules/node/node.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../modules/system/defaults.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../modules/system/system.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../modules/system/system-menus.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../modules/user/user.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/cck/theme/content-module.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/date/date.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/date/date_popup/themes/datepicker.1.7.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/date/date_popup/themes/jquery.timeentry.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/geshifilter/geshifilter.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/biblio/biblio.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/cck/modules/fieldgroup/fieldgroup.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/views/css/views.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../themes/garland/style.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../themes/garland/print.css?F" media="print" rel="stylesheet" type="text/css"/>
+  <!--[if lt IE 7]>
+      <link type="text/css" rel="stylesheet" media="all" href="/themes/garland/fix-ie.css" />    <![endif]-->
+ </head>
+ <body class="sidebar-left">
+  <!-- Layout -->
+  <div class="clear-block" id="header-region">
+  </div>
+  <div id="wrapper">
+   <div class="clear-block" id="container">
+    <div id="header">
+     <div id="logo-floater">
+      <h1>
+       <a href="../" title="mtholder.github.io/home/">
+        <img alt="mtholder.github.io/home/" id="logo" src="../sites/default/files/garland_logo.png"/>
+        <span>
+         mtholder.github.io/home/         </span>
+       </a>
+      </h1>
+     </div>
+     <ul class="links primary-links">
+      <li class="menu-440 first">
+       <a href="../home" title="Holder Lab Web page">
+        Home
+       </a>
+      </li>
+      <li class="menu-449">
+       <a href="../courses" title="Courses">
+        Courses
+       </a>
+      </li>
+      <li class="menu-628 last">
+       <a href="../content/borice" title="Software">
+        Software
+       </a>
+      </li>
+     </ul>
+    </div>
+    <!-- /header -->
+    <div id="center">
+     <div id="squeeze">
+      <div class="right-corner">
+       <div class="left-corner">
+        <div class="breadcrumb">
+         <a href="../">
+          Home
+         </a>
+         ›
+         <a href="../blog">
+          Blogs
+         </a>
+         ›
+         <a href="../blog/mholder">
+          mholder's blog
+         </a>
+        </div>
+        <h2>
+         ecmascript for python programmers
+        </h2>
+        <div class="clear-block">
+         <div class="node" id="node-686">
+          <span class="submitted">
+           Sun, 01/02/2011 - 17:49 — mholder
+          </span>
+          <div class="content clear-block">
+           <p>
+            Disclaimer: I have written
+            <b>
+             very little
+            </b>
+            ECMAScript, I'm using this post as a place to store my notes. The odds that I have some of the details wrong is high. See
+            <a href="http://developer.yahoo.com/yui/theater/video.php?v=crockonjs-3">
+             http://developer.yahoo.com/yui/theater/video.php?v=crockonjs-3
+            </a>
+            (and related) videos for a nice description of different aspects of ECMAScript, and
+            <a href="https://developer.mozilla.org/en/JavaScript/Reference">
+             https://developer.mozilla.org/en/JavaScript/Reference
+            </a>
+            and
+            <a href="http://javascript-reference.info/">
+             http://javascript-reference.info/
+            </a>
+            for terse language references.
+           </p>
+           <p>
+            Like Python, ECMAScript is an interpreted language, but in the case of ECMAScript the interpreter is typically a browser (leading to a lot of headaches associated with different implementation offering different features).
+ECMAScript version 5 is coming, but not supported by current browsers.  One should ideally target the subset of ECMAScript that plays well with sandboxed systems (such as
+            <a href="http://code.google.com/p/google-caja/">
+             http://code.google.com/p/google-caja
+            </a>
+            ) which promise to make it much easier to write secure code.
+           </p>
+           <h1>
+            Objects and Inheritance
+           </h1>
+           <ul>
+            <li>
+             Both languages are object-oriented and dynamically typed.
+            </li>
+            <li>
+             Both have immutable strings, and numbers
+            </li>
+            <li>
+             Python has primitive types that do not act like other objects (you cannot add attributes to them)
+            </li>
+           </ul>
+           <p>
+            Python has user-defined types (via class definitions).
+ECMAScript uses prototypal inheritance, which means that each object has a "prototype" object.
+There are cases in which these types of inheritance can have very different behaviors, but in many contexts the languages are very similar because they both follow a cascade when looking for an attribute within an object.
+           </p>
+           <p>
+            In both languages you can add key/value pairs to an object (in python you cannot extend the primitive types or any user-defined class that uses the slots declaration). In Python these are referred to as attributes (and are stored in a
+            <span class="geshifilter">
+             <code class="python geshifilter-python">
+              <span style="color: #0000cd;">
+               __dict__
+              </span>
+             </code>
+            </span>
+            dictionary for the instance and class).
+In ECMAScript these key/value pairs are called properties, and you can think of every object as the equivalent of a python dictionary.
+In either language,
+            <span class="geshifilter">
+             <code class="python geshifilter-python">
+              o.
+              <span style="color: black;">
+               x
+              </span>
+             </code>
+            </span>
+            has a syntactic equivalent.  In python it is
+            <span class="geshifilter">
+             <code class="python geshifilter-python">
+              <span style="color: #008000;">
+               getattr
+              </span>
+              <span style="color: black;">
+               (
+              </span>
+              o,
+              <span style="color: #483d8b;">
+               'x'
+              </span>
+              <span style="color: black;">
+               )
+              </span>
+             </code>
+            </span>
+            , in ECMAScript it is
+            <span class="geshifilter">
+             <code class="javascript geshifilter-javascript">
+              o
+              <span style="color: #009900;">
+               [
+              </span>
+              <span style="color: #3366CC;">
+               "x"
+              </span>
+              <span style="color: #009900;">
+               ]
+              </span>
+             </code>
+            </span>
+            .  Python's
+            <span class="geshifilter">
+             <code class="python geshifilter-python">
+              o.
+              <span style="color: #0000cd;">
+               __dict__
+              </span>
+              <span style="color: black;">
+               [
+              </span>
+              <span style="color: #483d8b;">
+               'x'
+              </span>
+              <span style="color: black;">
+               )
+              </span>
+             </code>
+            </span>
+            only checks the instance-specific dictionary of attributes, and there is no (simple) equivalent of this in ECMAScript.
+           </p>
+           <p>
+            If you try to "read" one of these attributes, then the interpreter checks the instance's dictionary.  If the attribute is not found, then the interpreter checks the next object in the cascade.
+In Python, this "next object in the cascade" is the class of the object (and if it is not found there it checks for the attribute in the class' superclass...).
+In ECMAScript the "next object in the cascade" is the prototype (and if the property is not there then the interpreter checks the prototype of the prototype...).
+           </p>
+           <p>
+            Python's attribute retrieval cascade for
+            <span class="geshifilter">
+             <code class="python geshifilter-python">
+              o.
+              <span style="color: black;">
+               x
+              </span>
+             </code>
+            </span>
+            is equivalent to
+            <span class="geshifilter">
+             <code class="python geshifilter-python">
+              <span style="color: #008000;">
+               getattr
+              </span>
+              <span style="color: black;">
+               (
+              </span>
+              o,
+              <span style="color: #483d8b;">
+               'x'
+              </span>
+              <span style="color: black;">
+               )
+              </span>
+             </code>
+            </span>
+            . The full cascade in python is better described as:
+           </p>
+           <ol>
+            <li>
+             If the
+             <span class="geshifilter">
+              <code class="python geshifilter-python">
+               o.__class__.
+               <span style="color: #0000cd;">
+                __getattribute__
+               </span>
+              </code>
+             </span>
+             is defined call
+             <span class="geshifilter">
+              <code class="python geshifilter-python">
+               <span style="color: #ff7700;font-weight:bold;">
+                return
+               </span>
+               o.
+               <span style="color: #0000cd;">
+                __getattribute__
+               </span>
+               <span style="color: black;">
+                (
+               </span>
+               <span style="color: #483d8b;">
+                'x'
+               </span>
+               <span style="color: black;">
+                )
+               </span>
+              </code>
+             </span>
+            </li>
+            <li>
+             If the
+             <span class="geshifilter">
+              <code class="python geshifilter-python">
+               <span style="color: #483d8b;">
+                'x'
+               </span>
+               <span style="color: #ff7700;font-weight:bold;">
+                in
+               </span>
+               o.
+               <span style="color: #0000cd;">
+                __dict__
+               </span>
+              </code>
+             </span>
+             return
+             <span class="geshifilter">
+              <code class="python geshifilter-python">
+               o.
+               <span style="color: #0000cd;">
+                __dict__
+               </span>
+               <span style="color: black;">
+                [
+               </span>
+               <span style="color: #483d8b;">
+                'x'
+               </span>
+               <span style="color: black;">
+                ]
+               </span>
+              </code>
+             </span>
+            </li>
+            <li>
+             Try to return
+             <span class="geshifilter">
+              <code class="python geshifilter-python">
+               <span style="color: #008000;">
+                getattr
+               </span>
+               <span style="color: black;">
+                (
+               </span>
+               o.__class__,
+               <span style="color: #483d8b;">
+                'x'
+               </span>
+               <span style="color: black;">
+                )
+               </span>
+              </code>
+             </span>
+             , but if this raises an AttributeError and
+             <span class="geshifilter">
+              <code class="python geshifilter-python">
+               o.__class__.
+               <span style="color: #0000cd;">
+                __getattr__
+               </span>
+              </code>
+             </span>
+             is defined, then return
+             <span class="geshifilter">
+              <code class="python geshifilter-python">
+               <span style="color: #ff7700;font-weight:bold;">
+                return
+               </span>
+               o.
+               <span style="color: #0000cd;">
+                __getattr__
+               </span>
+               <span style="color: black;">
+                (
+               </span>
+               <span style="color: #483d8b;">
+                'x'
+               </span>
+               <span style="color: black;">
+                )
+               </span>
+              </code>
+             </span>
+            </li>
+           </ol>
+           <p>
+            (It is actually more complicated than this because you can inherit from multiple classes).
+Thus,
+            <span class="geshifilter">
+             <code class="python geshifilter-python">
+              <span style="color: #0000cd;">
+               __getattribute__
+              </span>
+             </code>
+            </span>
+            allows one to deal with every attribute lookup, while
+            <span class="geshifilter">
+             <code class="python geshifilter-python">
+              <span style="color: #0000cd;">
+               __getattr__
+              </span>
+             </code>
+            </span>
+            is a hook that lets you deal with lookup that fail using the "normal" procedures.  Prototypal inheritance can be implemented in python (see
+            <a href="http://solo.gardentheory.com/2010/10/crockfords-javascript-prototypal.html">
+             http://solo.gardentheory.com/2010/10/crockfords-javascript-prototypal.html
+            </a>
+            ).
+           </p>
+           <p>
+            ECMAScript objects can be created using an object literal syntax that looks very much like a python dictionary (the difference being that keys need not be quoted).
+            <div class="geshifilter">
+             <pre class="javascript geshifilter-javascript" style="font-family:monospace;"><span style="color: #003366; font-weight: bold;">var</span> x <span style="color: #339933;">=</span> <span style="color: #009900;">{</span>b <span style="color: #339933;">:</span> <span style="color: #CC0000;">4</span><span style="color: #009900;">}</span><span style="color: #339933;">;</span>
+document.<span style="color: #000066; font-weight: bold;">write</span><span style="color: #009900;">(</span>x.<span style="color: #660066;">b</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span> <span style="color: #006600; font-style: italic;">// writes 4</span>
+document.<span style="color: #000066; font-weight: bold;">write</span><span style="color: #009900;">(</span>x<span style="color: #009900;">[</span><span style="color: #3366CC;">'b'</span><span style="color: #009900;">]</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span> <span style="color: #006600; font-style: italic;">// writes 4</span></pre>
+            </div>
+           </p>
+           <p>
+            In Python, you can (but generally do not) update an object's
+            <span class="geshifilter">
+             <code class="python geshifilter-python">
+              <span style="color: #0000cd;">
+               __dict__
+              </span>
+             </code>
+            </span>
+            using a similar syntax:
+            <div class="geshifilter">
+             <pre class="python geshifilter-python" style="font-family:monospace;"><span style="color: #ff7700;font-weight:bold;">class</span> A:
+    <span style="color: #ff7700;font-weight:bold;">pass</span>
+x = A<span style="color: black;">(</span><span style="color: black;">)</span>
+x.<span style="color: #0000cd;">__dict__</span>.<span style="color: black;">update</span><span style="color: black;">(</span><span style="color: black;">{</span><span style="color: #483d8b;">'b'</span>:<span style="color: #ff4500;">4</span><span style="color: black;">}</span><span style="color: black;">)</span></pre>
+            </div>
+           </p>
+           <h1>
+            Syntax
+           </h1>
+           Both languages are basically, C-like.  Python uses indentation to denote blocks of code.
+           <table border="1">
+            <tr>
+             <th>
+              Concept
+             </th>
+             <th>
+              JavaScript
+             </th>
+             <th>
+              Python
+             </th>
+             <th>
+              Notes
+             </th>
+            </tr>
+            <tr>
+             <td>
+              Variable declaration
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="javascript geshifilter-javascript">
+                <span style="color: #003366; font-weight: bold;">
+                 var
+                </span>
+                x
+                <span style="color: #339933;">
+                 ;
+                </span>
+               </code>
+              </span>
+             </td>
+             <td>
+              not needed.
+             </td>
+            </tr>
+            <tr>
+             <td>
+              constants
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="javascript geshifilter-javascript">
+                <span style="color: #003366; font-weight: bold;">
+                 const
+                </span>
+                x
+                <span style="color: #339933;">
+                 =
+                </span>
+                <span style="color: #CC0000;">
+                 4
+                </span>
+                <span style="color: #339933;">
+                 ;
+                </span>
+               </code>
+              </span>
+             </td>
+             <td>
+              not supported (though some types are immutable)
+             </td>
+             <td>
+              Assigning a new value to a const variable in ECMAScript can be ignored or can generate an exception
+             </td>
+            </tr>
+            <tr>
+             <td>
+              Common Types
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="javascript geshifilter-javascript">
+                String
+               </code>
+              </span>
+              ,
+              <span class="geshifilter">
+               <code class="javascript geshifilter-javascript">
+                Number
+               </code>
+              </span>
+              ,
+              <span class="geshifilter">
+               <code class="javascript geshifilter-javascript">
+                Object
+               </code>
+              </span>
+              <span class="geshifilter">
+               <code class="javascript geshifilter-javascript">
+                Array
+               </code>
+              </span>
+              ,
+              <span class="geshifilter">
+               <code class="javascript geshifilter-javascript">
+                Boolean
+               </code>
+              </span>
+              <span class="geshifilter">
+               <code class="javascript geshifilter-javascript">
+                <span style="color: #003366; font-weight: bold;">
+                 function
+                </span>
+               </code>
+              </span>
+             </td>
+             ,
+             <td>
+              <span class="geshifilter">
+               <code class="python geshifilter-python">
+                <span style="color: #008000;">
+                 str
+                </span>
+               </code>
+              </span>
+              ,
+              <span class="geshifilter">
+               <code class="python geshifilter-python">
+                <span style="color: #008000;">
+                 int
+                </span>
+               </code>
+              </span>
+              ,
+              <span class="geshifilter">
+               <code class="python geshifilter-python">
+                <span style="color: #008000;">
+                 long
+                </span>
+               </code>
+              </span>
+              ,
+              <span class="geshifilter">
+               <code class="python geshifilter-python">
+                <span style="color: #008000;">
+                 float
+                </span>
+               </code>
+              </span>
+              ,
+              <span class="geshifilter">
+               <code class="python geshifilter-python">
+                <span style="color: #008000;">
+                 list
+                </span>
+               </code>
+              </span>
+              ,
+              <span class="geshifilter">
+               <code class="python geshifilter-python">
+                <span style="color: #008000;">
+                 tuple
+                </span>
+               </code>
+              </span>
+              ,
+              <span class="geshifilter">
+               <code class="python geshifilter-python">
+                <span style="color: #008000;">
+                 dict
+                </span>
+               </code>
+              </span>
+              ,
+              <span class="geshifilter">
+               <code class="python geshifilter-python">
+                <span style="color: #008000;">
+                 bool
+                </span>
+               </code>
+              </span>
+              ,
+              <span class="geshifilter">
+               <code class="python geshifilter-python">
+                function
+               </code>
+              </span>
+              , and user-defined classes
+             </td>
+             <td>
+              Python 2 distinguishes between
+              <span class="geshifilter">
+               <code class="python geshifilter-python">
+                function
+               </code>
+              </span>
+              and
+              <span class="geshifilter">
+               <code class="python geshifilter-python">
+                instancemethod
+               </code>
+              </span>
+              , and has the concept of bound and unbound instancemethods, and there are implications for monkey-patching (see below).
+             </td>
+            </tr>
+            <tr>
+             <td>
+              Branch
+             </td>
+             <td>
+              <div class="geshifilter">
+               <pre class="javascript geshifilter-javascript" style="font-family:monospace;"><span style="color: #000066; font-weight: bold;">if</span> <span style="color: #009900;">(</span><span style="color: #003366; font-weight: bold;">var</span> i <span style="color: #339933;">=</span> <span style="color: #339933;">&lt;</span> x<span style="color: #009900;">)</span> <span style="color: #009900;">{</span>
+    ...
+<span style="color: #009900;">}</span>
+<span style="color: #000066; font-weight: bold;">else</span> <span style="color: #000066; font-weight: bold;">if</span> <span style="color: #009900;">{</span>
+    ...
+<span style="color: #009900;">}</span></pre>
+              </div>
+             </td>
+             <td>
+              <div class="geshifilter">
+               <pre class="python geshifilter-python" style="font-family:monospace;"><span style="color: #ff7700;font-weight:bold;">if</span> i <span style="color: #66cc66;">&lt;</span>= x:
+    ...</pre>
+              </div>
+             </td>
+             <td>
+             </td>
+            </tr>
+            <tr>
+             <td>
+              Loops
+             </td>
+             <td>
+              <div class="geshifilter">
+               <pre class="javascript geshifilter-javascript" style="font-family:monospace;"><span style="color: #000066; font-weight: bold;">for</span> <span style="color: #009900;">(</span><span style="color: #003366; font-weight: bold;">var</span> i <span style="color: #339933;">=</span> <span style="color: #CC0000;">0</span><span style="color: #339933;">;</span> i <span style="color: #339933;">&lt;</span> x<span style="color: #339933;">;</span> <span style="color: #339933;">++</span>i<span style="color: #009900;">)</span> <span style="color: #009900;">{</span>
+    ...
+<span style="color: #009900;">}</span></pre>
+              </div>
+             </td>
+             <td>
+              <div class="geshifilter">
+               <pre class="python geshifilter-python" style="font-family:monospace;"><span style="color: #ff7700;font-weight:bold;">for</span> i <span style="color: #ff7700;font-weight:bold;">in</span> <span style="color: #008000;">xrange</span><span style="color: black;">(</span>x<span style="color: black;">)</span>:
+    ...</pre>
+              </div>
+             </td>
+             <td>
+             </td>
+            </tr>
+            <tr>
+             <td>
+             </td>
+             <td>
+              <div class="geshifilter">
+               <pre class="javascript geshifilter-javascript" style="font-family:monospace;"><span style="color: #000066; font-weight: bold;">while</span> <span style="color: #009900;">(</span><span style="color: #003366; font-weight: bold;">var</span> i <span style="color: #339933;">=&lt;</span> x<span style="color: #009900;">)</span> <span style="color: #009900;">{</span>
+    ...
+<span style="color: #009900;">}</span></pre>
+              </div>
+             </td>
+             <td>
+              <div class="geshifilter">
+               <pre class="python geshifilter-python" style="font-family:monospace;"><span style="color: #ff7700;font-weight:bold;">while</span> i <span style="color: #66cc66;">&lt;</span>= x:
+    ...</pre>
+              </div>
+             </td>
+             <td>
+             </td>
+            </tr>
+            <tr>
+             <td>
+              code blocks
+             </td>
+             <td>
+              { }
+             </td>
+             <td>
+              indentation
+             </td>
+             <td>
+             </td>
+            </tr>
+            <tr>
+             <td>
+              statements
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="javascript geshifilter-javascript">
+                <span style="color: #339933;">
+                 ;
+                </span>
+               </code>
+              </span>
+              (can be implied!)
+             </td>
+             <td>
+              newline or
+              <span class="geshifilter">
+               <code class="python geshifilter-python">
+                <span style="color: #66cc66;">
+                 ;
+                </span>
+               </code>
+              </span>
+             </td>
+             <td>
+              Implied ; at newline can cause problems in ECMAScript (see
+              <a href="#ECMAScriptGotchas">
+               ECMAScriptGotchas
+              </a>
+              )
+             </td>
+            </tr>
+            <tr>
+             <td>
+              Assignment
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="javascript geshifilter-javascript">
+                <span style="color: #003366; font-weight: bold;">
+                 var
+                </span>
+                x
+                <span style="color: #339933;">
+                 =
+                </span>
+                y
+                <span style="color: #339933;">
+                 ;
+                </span>
+               </code>
+              </span>
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="javascript geshifilter-javascript">
+                x
+                <span style="color: #339933;">
+                 =
+                </span>
+                y
+               </code>
+              </span>
+             </td>
+             <td>
+              In both languages assignment is binding a name to an object (not stuffing new content into the object, as can be in C/C++).
+             </td>
+            </tr>
+            <tr>
+             <td>
+              Arguments
+             </td>
+             <td>
+             </td>
+             <td>
+             </td>
+             <td>
+              In both languages, a reference to the object is passed. Calling a setter on the object passed in will affect the caller, but rebinding the argument name in a function will not change the object sent by the caller
+             </td>
+            </tr>
+            <tr>
+             <td>
+              Operators
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="javascript geshifilter-javascript">
+                <span style="color: #CC0000;">
+                 1
+                </span>
+                <span style="color: #339933;">
+                 +
+                </span>
+                <span style="color: #3366CC;">
+                 '2'
+                </span>
+               </code>
+              </span>
+              results in
+              <span class="geshifilter">
+               <code class="javascript geshifilter-javascript">
+                <span style="color: #3366CC;">
+                 '12'
+                </span>
+               </code>
+              </span>
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="python geshifilter-python">
+                <span style="color: #ff4500;">
+                 1
+                </span>
+                +
+                <span style="color: #483d8b;">
+                 '2'
+                </span>
+               </code>
+              </span>
+              results in a
+              <span class="geshifilter">
+               <code class="python geshifilter-python">
+                <span style="color: #008000;">
+                 TypeError
+                </span>
+               </code>
+              </span>
+             </td>
+             <td>
+              Both uses
+              <span class="geshifilter">
+               <code class="python geshifilter-python">
+                +
+               </code>
+              </span>
+              for addition and string concatenation, but python will not coerce to a string.
+             </td>
+            </tr>
+            <tr>
+             <td>
+              Ternary operators
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="javascript geshifilter-javascript">
+                x
+                <span style="color: #339933;">
+                 &gt;
+                </span>
+                <span style="color: #CC0000;">
+                 5
+                </span>
+                <span style="color: #339933;">
+                 ?
+                </span>
+                x
+                <span style="color: #339933;">
+                 :
+                </span>
+                <span style="color: #CC0000;">
+                 3
+                </span>
+               </code>
+              </span>
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="python geshifilter-python">
+                x
+                <span style="color: #ff7700;font-weight:bold;">
+                 if
+                </span>
+                x
+                <span style="color: #66cc66;">
+                 &gt;
+                </span>
+                <span style="color: #ff4500;">
+                 5
+                </span>
+                <span style="color: #ff7700;font-weight:bold;">
+                 else
+                </span>
+                <span style="color: #ff4500;">
+                 3
+                </span>
+               </code>
+              </span>
+             </td>
+             <td>
+             </td>
+            </tr>
+            <tr>
+             <td>
+              and logical operator
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="javascript geshifilter-javascript">
+                <span style="color: #000066; font-weight: bold;">
+                 return
+                </span>
+                x
+                <span style="color: #339933;">
+                 &amp;&amp;
+                </span>
+                x.
+                <span style="color: #660066;">
+                 f
+                </span>
+                <span style="color: #009900;">
+                 (
+                </span>
+                <span style="color: #009900;">
+                 )
+                </span>
+               </code>
+              </span>
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="python geshifilter-python">
+                <span style="color: #ff7700;font-weight:bold;">
+                 return
+                </span>
+                x
+                <span style="color: #ff7700;font-weight:bold;">
+                 and
+                </span>
+                x.
+                <span style="color: black;">
+                 f
+                </span>
+                <span style="color: black;">
+                 (
+                </span>
+                <span style="color: black;">
+                 )
+                </span>
+               </code>
+              </span>
+             </td>
+             <td>
+              Same behavior in both languages - shortcircuiting and return of the last value needed to assure correct boolean interpretation
+             </td>
+            </tr>
+            <tr>
+             <td>
+              or logical operator
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="javascript geshifilter-javascript">
+                <span style="color: #000066; font-weight: bold;">
+                 return
+                </span>
+                x
+                <span style="color: #339933;">
+                 ||
+                </span>
+                y
+               </code>
+              </span>
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="python geshifilter-python">
+                <span style="color: #ff7700;font-weight:bold;">
+                 return
+                </span>
+                x
+                <span style="color: #ff7700;font-weight:bold;">
+                 or
+                </span>
+                y
+               </code>
+              </span>
+             </td>
+             <td>
+              Same behavior in both languages - shortcircuiting and return of the last value needed to assure correct boolean interpretation
+             </td>
+            </tr>
+            <tr>
+             <td>
+              Scoping
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="javascript geshifilter-javascript">
+                <span style="color: #003366; font-weight: bold;">
+                 var
+                </span>
+               </code>
+              </span>
+              in function leads to function level scoping, if omitted the variable is global
+             </td>
+             <td>
+              Variables set in a function are local, unless they are introduced using the
+              <span class="geshifilter">
+               <code class="python geshifilter-python">
+                <span style="color: #ff7700;font-weight:bold;">
+                 global
+                </span>
+               </code>
+              </span>
+              keyword
+             </td>
+            </tr>
+            <tr>
+             <td>
+              Namespaces
+             </td>
+             <td>
+              Not supported. Scripts executed are all executed in the same namespace.
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="python geshifilter-python">
+                <span style="color: #ff7700;font-weight:bold;">
+                 import
+                </span>
+               </code>
+              </span>
+              statement executes a package or module in its own namespace. Use
+              <span class="geshifilter">
+               <code class="python geshifilter-python">
+                .
+               </code>
+              </span>
+              to access thes variables:
+              <div class="geshifilter">
+               <pre class="python geshifilter-python" style="font-family:monospace;"><span style="color: #ff7700;font-weight:bold;">import</span> <span style="color: #dc143c;">sys</span>
+<span style="color: #ff7700;font-weight:bold;">print</span> <span style="color: #dc143c;">sys</span>.<span style="color: black;">argv</span></pre>
+              </div>
+             </td>
+            </tr>
+            <tr>
+             <td>
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="javascript geshifilter-javascript">
+                x
+                <span style="color: #339933;">
+                 =
+                </span>
+                <span style="color: #003366; font-weight: bold;">
+                 null
+                </span>
+                <span style="color: #339933;">
+                 ;
+                </span>
+               </code>
+              </span>
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="python geshifilter-python">
+                x =
+                <span style="color: #008000;">
+                 None
+                </span>
+               </code>
+              </span>
+             </td>
+            </tr>
+            <tr>
+             <td>
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="javascript geshifilter-javascript">
+                undefined
+               </code>
+              </span>
+             </td>
+             <td>
+              no equivalent (
+              <span class="geshifilter">
+               <code class="python geshifilter-python">
+                <span style="color: #008000;">
+                 None
+                </span>
+               </code>
+              </span>
+              )
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="javascript geshifilter-javascript">
+                <span style="color: #003366; font-weight: bold;">
+                 var
+                </span>
+                x
+                <span style="color: #339933;">
+                 ;
+                </span>
+               </code>
+              </span>
+              statement anywhere in a function implicitly acts as if the first statement of the function was
+              <span class="geshifilter">
+               <code class="javascript geshifilter-javascript">
+                <span style="color: #003366; font-weight: bold;">
+                 var
+                </span>
+                x
+                <span style="color: #339933;">
+                 =
+                </span>
+                undefined
+                <span style="color: #339933;">
+                 ;
+                </span>
+               </code>
+              </span>
+             </td>
+            </tr>
+            <tr>
+             <td>
+              boolean
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="javascript geshifilter-javascript">
+                Boolean
+               </code>
+              </span>
+              ,
+              <span class="geshifilter">
+               <code class="javascript geshifilter-javascript">
+                <span style="color: #003366; font-weight: bold;">
+                 true
+                </span>
+               </code>
+              </span>
+              ,
+              <span class="geshifilter">
+               <code class="javascript geshifilter-javascript">
+                <span style="color: #003366; font-weight: bold;">
+                 false
+                </span>
+               </code>
+              </span>
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="python geshifilter-python">
+                <span style="color: #008000;">
+                 bool
+                </span>
+               </code>
+              </span>
+              ,
+              <span class="geshifilter">
+               <code class="python geshifilter-python">
+                <span style="color: #008000;">
+                 True
+                </span>
+               </code>
+              </span>
+              ,
+              <span class="geshifilter">
+               <code class="python geshifilter-python">
+                <span style="color: #008000;">
+                 False
+                </span>
+               </code>
+              </span>
+             </td>
+            </tr>
+            <tr>
+             <td>
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="javascript geshifilter-javascript">
+                <span style="color: #339933;">
+                 !!
+                </span>
+                x
+               </code>
+              </span>
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="python geshifilter-python">
+                <span style="color: #008000;">
+                 bool
+                </span>
+                <span style="color: black;">
+                 (
+                </span>
+                x
+                <span style="color: black;">
+                 )
+                </span>
+               </code>
+              </span>
+             </td>
+            </tr>
+            <tr>
+             <td>
+              numeric
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="javascript geshifilter-javascript">
+                Number
+               </code>
+              </span>
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="python geshifilter-python">
+                <span style="color: #008000;">
+                 int
+                </span>
+               </code>
+              </span>
+              ,
+              <span class="geshifilter">
+               <code class="python geshifilter-python">
+                <span style="color: #008000;">
+                 long
+                </span>
+               </code>
+              </span>
+              , or
+              <span class="geshifilter">
+               <code class="python geshifilter-python">
+                <span style="color: #008000;">
+                 float
+                </span>
+               </code>
+              </span>
+             </td>
+             <td>
+              Note that Python 3 does not distinguish between
+              <span class="geshifilter">
+               <code class="python geshifilter-python">
+                <span style="color: #008000;">
+                 int
+                </span>
+               </code>
+              </span>
+              and
+              <span class="geshifilter">
+               <code class="python geshifilter-python">
+                <span style="color: #008000;">
+                 long
+                </span>
+               </code>
+              </span>
+              . Python's integers grow to be as big as needed, but JavaScripts numbers cannot be greater than
+              <span class="geshifilter">
+               <code class="javascript geshifilter-javascript">
+                Number.
+                <span style="color: #660066;">
+                 MAX_VALUE
+                </span>
+               </code>
+              </span>
+              and start to experience rounding error for at under 10E15.
+             </td>
+            </tr>
+            <tr>
+             <td>
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="javascript geshifilter-javascript">
+                NaN
+               </code>
+              </span>
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="python geshifilter-python">
+                <span style="color: #008000;">
+                 float
+                </span>
+                <span style="color: black;">
+                 (
+                </span>
+                <span style="color: #483d8b;">
+                 'NaN'
+                </span>
+                <span style="color: black;">
+                 )
+                </span>
+               </code>
+              </span>
+             </td>
+            </tr>
+            <tr>
+             <td>
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="javascript geshifilter-javascript">
+                Infinity
+               </code>
+              </span>
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="python geshifilter-python">
+                <span style="color: #008000;">
+                 float
+                </span>
+                <span style="color: black;">
+                 (
+                </span>
+                <span style="color: #483d8b;">
+                 'inf'
+                </span>
+                <span style="color: black;">
+                 )
+                </span>
+               </code>
+              </span>
+             </td>
+            </tr>
+            <tr>
+             <td>
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="javascript geshifilter-javascript">
+                Number.
+                <span style="color: #660066;">
+                 NEGATIVE_INFINITY
+                </span>
+               </code>
+              </span>
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="python geshifilter-python">
+                -
+                <span style="color: #008000;">
+                 float
+                </span>
+                <span style="color: black;">
+                 (
+                </span>
+                <span style="color: #483d8b;">
+                 'inf'
+                </span>
+                <span style="color: black;">
+                 )
+                </span>
+               </code>
+              </span>
+             </td>
+            </tr>
+            <tr>
+             <td>
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="javascript geshifilter-javascript">
+                num
+                <span style="color: #339933;">
+                 =
+                </span>
+                Number
+                <span style="color: #009900;">
+                 (
+                </span>
+                s
+                <span style="color: #009900;">
+                 )
+                </span>
+                <span style="color: #339933;">
+                 ;
+                </span>
+               </code>
+              </span>
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="python geshifilter-python">
+                num =
+                <span style="color: #008000;">
+                 float
+                </span>
+                <span style="color: black;">
+                 (
+                </span>
+                s
+                <span style="color: black;">
+                 )
+                </span>
+               </code>
+              </span>
+             </td>
+            </tr>
+            <tr>
+             <td>
+              Mathematical functions
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="javascript geshifilter-javascript">
+                Math.
+                <span style="color: #660066;">
+                 log
+                </span>
+                <span style="color: #009900;">
+                 (
+                </span>
+                x
+                <span style="color: #009900;">
+                 )
+                </span>
+               </code>
+              </span>
+             </td>
+             <td>
+              <div class="geshifilter">
+               <pre class="python geshifilter-python" style="font-family:monospace;"><span style="color: #ff7700;font-weight:bold;">import</span> <span style="color: #dc143c;">math</span>
+<span style="color: #dc143c;">math</span>.<span style="color: black;">log</span><span style="color: black;">(</span>x<span style="color: black;">)</span></pre>
+              </div>
+             </td>
+            </tr>
+            <tr>
+             <td>
+              Coerce to number
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="javascript geshifilter-javascript">
+                num
+                <span style="color: #339933;">
+                 =
+                </span>
+                <span style="color: #339933;">
+                 +
+                </span>
+                s
+                <span style="color: #339933;">
+                 ;
+                </span>
+               </code>
+              </span>
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="python geshifilter-python">
+                num =
+                <span style="color: #008000;">
+                 float
+                </span>
+                <span style="color: black;">
+                 (
+                </span>
+                s
+                <span style="color: black;">
+                 )
+                </span>
+               </code>
+              </span>
+             </td>
+            </tr>
+            <tr>
+             <td>
+              read next number
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="javascript geshifilter-javascript">
+                num
+                <span style="color: #339933;">
+                 =
+                </span>
+                parseInt
+                <span style="color: #009900;">
+                 (
+                </span>
+                s
+                <span style="color: #339933;">
+                 ,
+                </span>
+                <span style="color: #CC0000;">
+                 10
+                </span>
+                <span style="color: #009900;">
+                 )
+                </span>
+                <span style="color: #339933;">
+                 ;
+                </span>
+               </code>
+              </span>
+              or
+              <span class="geshifilter">
+               <code class="javascript geshifilter-javascript">
+                parseFloat
+                <span style="color: #009900;">
+                 (
+                </span>
+                s
+                <span style="color: #009900;">
+                 )
+                </span>
+                <span style="color: #339933;">
+                 ;
+                </span>
+               </code>
+              </span>
+             </td>
+             <td>
+             </td>
+             <td>
+              Inappropriate strings return
+              <span class="geshifilter">
+               <code class="javascript geshifilter-javascript">
+                NaN
+               </code>
+              </span>
+              , in python
+              <span class="geshifilter">
+               <code class="python geshifilter-python">
+                <span style="color: #008000;">
+                 float
+                </span>
+                <span style="color: black;">
+                 (
+                </span>
+                x
+                <span style="color: black;">
+                 )
+                </span>
+               </code>
+              </span>
+              will raise a
+              <span class="geshifilter">
+               <code class="python geshifilter-python">
+                <span style="color: #008000;">
+                 ValueError
+                </span>
+               </code>
+              </span>
+              if
+              <span class="geshifilter">
+               <code class="python geshifilter-python">
+                x.
+                <span style="color: black;">
+                 strip
+                </span>
+                <span style="color: black;">
+                 (
+                </span>
+                <span style="color: black;">
+                 )
+                </span>
+               </code>
+              </span>
+              is not a string that interpretted as a float. Both languages support scientific notation such as '3.2E-5' for float parsing.
+             </td>
+            </tr>
+            <tr>
+             <td>
+              strings
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="javascript geshifilter-javascript">
+                String
+               </code>
+              </span>
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="python geshifilter-python">
+                <span style="color: #008000;">
+                 str
+                </span>
+               </code>
+              </span>
+             </td>
+            </tr>
+            <tr>
+             <td>
+              Coerce to string
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="javascript geshifilter-javascript">
+                String
+                <span style="color: #009900;">
+                 (
+                </span>
+                x
+                <span style="color: #009900;">
+                 )
+                </span>
+               </code>
+              </span>
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="python geshifilter-python">
+                <span style="color: #008000;">
+                 str
+                </span>
+                <span style="color: black;">
+                 (
+                </span>
+                x
+                <span style="color: black;">
+                 )
+                </span>
+               </code>
+              </span>
+             </td>
+            </tr>
+            <tr>
+             <td>
+              Implicit conversion to string
+             </td>
+             <td>
+              Equality testing with
+              <span class="geshifilter">
+               <code class="javascript geshifilter-javascript">
+                x
+                <span style="color: #339933;">
+                 ==
+                </span>
+                y
+               </code>
+              </span>
+              ,
+              <span class="geshifilter">
+               <code class="javascript geshifilter-javascript">
+                <span style="color: #339933;">
+                 +
+                </span>
+               </code>
+              </span>
+              operator, probably elsewhere(?)
+             </td>
+             <td>
+              Only in
+              <span class="geshifilter">
+               <code class="python geshifilter-python">
+                <span style="color: #ff7700;font-weight:bold;">
+                 print
+                </span>
+               </code>
+              </span>
+              statements and
+              <span class="geshifilter">
+               <code class="python geshifilter-python">
+                <span style="color: #66cc66;">
+                 %
+                </span>
+               </code>
+              </span>
+              string formating.
+             </td>
+            </tr>
+            <tr>
+             <td>
+              Equality
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="javascript geshifilter-javascript">
+                <span style="color: #009900;">
+                 (
+                </span>
+                x
+                <span style="color: #339933;">
+                 ==
+                </span>
+                y
+                <span style="color: #009900;">
+                 )
+                </span>
+               </code>
+              </span>
+              can implicitly coerce to string or bool. Use of
+              <span class="geshifilter">
+               <code class="javascript geshifilter-javascript">
+                <span style="color: #339933;">
+                 ===
+                </span>
+               </code>
+              </span>
+              is safer.
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="python geshifilter-python">
+                x == y
+               </code>
+              </span>
+              test for equivalence.  Can be overloaded.
+             </td>
+            </tr>
+            <tr>
+             <td>
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="javascript geshifilter-javascript">
+                <span style="color: #339933;">
+                 ===
+                </span>
+               </code>
+              </span>
+              and
+              <span class="geshifilter">
+               <code class="javascript geshifilter-javascript">
+                <span style="color: #339933;">
+                 !==
+                </span>
+               </code>
+              </span>
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="python geshifilter-python">
+                <span style="color: #ff7700;font-weight:bold;">
+                 is
+                </span>
+               </code>
+              </span>
+              and
+              <span class="geshifilter">
+               <code class="python geshifilter-python">
+                <span style="color: #ff7700;font-weight:bold;">
+                 is
+                </span>
+                <span style="color: #ff7700;font-weight:bold;">
+                 not
+                </span>
+               </code>
+              </span>
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="javascript geshifilter-javascript">
+                <span style="color: #339933;">
+                 ===
+                </span>
+               </code>
+              </span>
+              is preferred because it will not result in coercion
+             </td>
+            </tr>
+            <tr>
+             <td>
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="javascript geshifilter-javascript">
+                <span style="color: #006600; font-style: italic;">
+                 //blah
+                </span>
+               </code>
+              </span>
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="python geshifilter-python">
+                <span style="color: #808080; font-style: italic;">
+                 #blah
+                </span>
+               </code>
+              </span>
+             </td>
+            </tr>
+            <tr>
+             <td>
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="javascript geshifilter-javascript">
+                <span style="color: #006600; font-style: italic;">
+                 /* blah */
+                </span>
+               </code>
+              </span>
+             </td>
+             <td>
+              no multiline comment
+             </td>
+            </tr>
+            <tr>
+             <td>
+              multiline strings
+             </td>
+             <td>
+              Not supported. Use
+             </td>
+             <td>
+              Triple quote
+              <div class="geshifilter">
+               <pre class="python geshifilter-python" style="font-family:monospace;"><span style="color: #483d8b;">''</span><span style="color: #483d8b;">'x
+'</span><span style="color: #483d8b;">''</span></pre>
+              </div>
+              or
+              <div class="geshifilter">
+               <pre class="python geshifilter-python" style="font-family:monospace;"><span style="color: #483d8b;">"""x
+"""</span></pre>
+              </div>
+             </td>
+             <td>
+              Some JavaScript interpreters support the
+              <span class="geshifilter">
+               <code class="javascript geshifilter-javascript">
+                \
+               </code>
+              </span>
+              -newline continuation convention, but the implicit addition of ; means that this is particularly dangerous in ECMAScript
+             </td>
+            </tr>
+            <tr>
+             <td>
+             </td>
+             <td>
+              <div class="geshifilter">
+               <pre class="javascript geshifilter-javascript" style="font-family:monospace;"><span style="color: #003366; font-weight: bold;">function</span> x<span style="color: #009900;">(</span><span style="color: #009900;">)</span> <span style="color: #009900;">{</span>
+    ...
+    <span style="color: #009900;">}</span></pre>
+              </div>
+             </td>
+             <td>
+              <div class="geshifilter">
+               <pre class="python geshifilter-python" style="font-family:monospace;"><span style="color: #ff7700;font-weight:bold;">def</span>  x<span style="color: black;">(</span><span style="color: black;">)</span>:
+	...
+ </pre>
+              </div>
+             </td>
+            </tr>
+            <tr>
+             <td>
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="javascript geshifilter-javascript">
+                <span style="color: #003366; font-weight: bold;">
+                 var
+                </span>
+                x
+                <span style="color: #339933;">
+                 =
+                </span>
+                <span style="color: #003366; font-weight: bold;">
+                 new
+                </span>
+                Array
+                <span style="color: #009900;">
+                 (
+                </span>
+                <span style="color: #009900;">
+                 )
+                </span>
+                <span style="color: #339933;">
+                 ;
+                </span>
+               </code>
+              </span>
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="python geshifilter-python">
+                x =
+                <span style="color: #008000;">
+                 list
+                </span>
+                <span style="color: black;">
+                 (
+                </span>
+                <span style="color: black;">
+                 )
+                </span>
+               </code>
+              </span>
+              or
+              <span class="geshifilter">
+               <code class="python geshifilter-python">
+                x =
+                <span style="color: black;">
+                 [
+                </span>
+                <span style="color: black;">
+                 ]
+                </span>
+               </code>
+              </span>
+             </td>
+            </tr>
+            <tr>
+             <td>
+              Immutable Arrays
+             </td>
+             <td>
+              Not supported
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="python geshifilter-python">
+                x =
+                <span style="color: #008000;">
+                 tuple
+                </span>
+                <span style="color: black;">
+                 (
+                </span>
+                <span style="color: black;">
+                 )
+                </span>
+               </code>
+              </span>
+              or
+              <span class="geshifilter">
+               <code class="python geshifilter-python">
+                x =
+                <span style="color: black;">
+                 (
+                </span>
+                <span style="color: black;">
+                 )
+                </span>
+               </code>
+              </span>
+             </td>
+            </tr>
+            <tr>
+             <td>
+              Array
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="javascript geshifilter-javascript">
+                x.
+                <span style="color: #660066;">
+                 length
+                </span>
+               </code>
+              </span>
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="python geshifilter-python">
+                <span style="color: #008000;">
+                 len
+                </span>
+                <span style="color: black;">
+                 (
+                </span>
+                x
+                <span style="color: black;">
+                 )
+                </span>
+               </code>
+              </span>
+             </td>
+             <td>
+              Accessing to a position beyond the length of a python list or tuple will result in an
+              <span class="geshifilter">
+               <code class="python geshifilter-python">
+                <span style="color: #008000;">
+                 IndexError
+                </span>
+               </code>
+              </span>
+              . In ECMAScript, reading out of bounds returns
+              <span class="geshifilter">
+               <code class="javascript geshifilter-javascript">
+                undefined
+               </code>
+              </span>
+              , while writing automatically expands the array to length index + 1.
+             </td>
+            </tr>
+            <tr>
+             <td>
+              Array-indexing
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="javascript geshifilter-javascript">
+                x
+                <span style="color: #009900;">
+                 [
+                </span>
+                i
+                <span style="color: #009900;">
+                 ]
+                </span>
+               </code>
+              </span>
+             </td>
+             <td>
+              <div class="geshifilter">
+               <pre class="python geshifilter-python" style="font-family:monospace;">x = <span style="color: black;">{</span><span style="color: black;">}</span>
+x<span style="color: black;">[</span><span style="color: #008000;">str</span><span style="color: black;">(</span>i<span style="color: black;">)</span><span style="color: black;">]</span></pre>
+              </div>
+             </td>
+             <td>
+              ECMAScript array indexing is like using a dictionary with implicit conversion of all keys to strings.
+             </td>
+            </tr>
+            <tr>
+             <td>
+              String and Array-slicing
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="javascript geshifilter-javascript">
+                x.
+                <span style="color: #660066;">
+                 slice
+                </span>
+                <span style="color: #009900;">
+                 (
+                </span>
+                <span style="color: #CC0000;">
+                 1
+                </span>
+                <span style="color: #339933;">
+                 ,
+                </span>
+                <span style="color: #CC0000;">
+                 5
+                </span>
+                <span style="color: #009900;">
+                 )
+                </span>
+               </code>
+              </span>
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="python geshifilter-python">
+                x
+                <span style="color: black;">
+                 [
+                </span>
+                <span style="color: #ff4500;">
+                 1
+                </span>
+                :
+                <span style="color: #ff4500;">
+                 5
+                </span>
+                <span style="color: black;">
+                 ]
+                </span>
+               </code>
+              </span>
+              to return a list with elements 1,2,3, and 4 of x
+             </td>
+             <td>
+              Python supports a third "step" argument to specify the stride of a slice.
+             </td>
+            </tr>
+            <tr>
+             <td>
+              String and Array-slicing
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="javascript geshifilter-javascript">
+                x.
+                <span style="color: #660066;">
+                 slice
+                </span>
+                <span style="color: #009900;">
+                 (
+                </span>
+                <span style="color: #CC0000;">
+                 1
+                </span>
+                <span style="color: #009900;">
+                 )
+                </span>
+               </code>
+              </span>
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="python geshifilter-python">
+                x
+                <span style="color: black;">
+                 [
+                </span>
+                <span style="color: #ff4500;">
+                 1
+                </span>
+                :
+                <span style="color: black;">
+                 ]
+                </span>
+               </code>
+              </span>
+              to return a list with elements 1 to the end of x
+             </td>
+            </tr>
+            <tr>
+             <td>
+              String indexing
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="javascript geshifilter-javascript">
+                x.
+                <span style="color: #660066;">
+                 charAt
+                </span>
+                <span style="color: #009900;">
+                 (
+                </span>
+                <span style="color: #CC0000;">
+                 1
+                </span>
+                <span style="color: #009900;">
+                 )
+                </span>
+               </code>
+              </span>
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="python geshifilter-python">
+                x
+                <span style="color: black;">
+                 [
+                </span>
+                <span style="color: #ff4500;">
+                 1
+                </span>
+                <span style="color: black;">
+                 ]
+                </span>
+               </code>
+              </span>
+             </td>
+            </tr>
+            <tr>
+             <td>
+              Hash tables
+             </td>
+             <td>
+              use
+              <span class="geshifilter">
+               <code class="javascript geshifilter-javascript">
+                x
+                <span style="color: #339933;">
+                 =
+                </span>
+                Object
+                <span style="color: #009900;">
+                 (
+                </span>
+                <span style="color: #009900;">
+                 )
+                </span>
+                <span style="color: #339933;">
+                 ;
+                </span>
+               </code>
+              </span>
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="python geshifilter-python">
+                x =
+                <span style="color: black;">
+                 {
+                </span>
+                <span style="color: black;">
+                 }
+                </span>
+               </code>
+              </span>
+             </td>
+             <td>
+             </td>
+            </tr>
+            <tr>
+             <td>
+             </td>
+             <td>
+              keys converted to strings
+             </td>
+             <td>
+              keys are hashed. lists and dicts cannot be keys (although tuples can).
+             </td>
+             <td>
+             </td>
+            </tr>
+            <tr>
+             <td>
+              class definition
+             </td>
+             <td>
+              No classes but, constructors can be defined.
+              <div class="geshifilter">
+               <pre class="javascript geshifilter-javascript" style="font-family:monospace;"><span style="color: #003366; font-weight: bold;">function</span> A<span style="color: #009900;">(</span><span style="color: #009900;">)</span> <span style="color: #009900;">{</span>
+    ...</pre>
+              </div>
+             </td>
+             <td>
+              <div class="geshifilter">
+               <pre class="python geshifilter-python" style="font-family:monospace;"><span style="color: #ff7700;font-weight:bold;">class</span> A:
+	<span style="color: #ff7700;font-weight:bold;">def</span> <span style="color: #0000cd;">__init__</span><span style="color: black;">(</span><span style="color: #008000;">self</span><span style="color: black;">)</span>:</pre>
+              </div>
+             </td>
+             <td>
+             </td>
+            </tr>
+            <tr>
+             <td>
+              Object nheritance introspection
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="javascript geshifilter-javascript">
+                Object.
+                <span style="color: #660066;">
+                 getPrototypeOf
+                </span>
+                <span style="color: #009900;">
+                 (
+                </span>
+                o
+                <span style="color: #009900;">
+                 )
+                </span>
+               </code>
+              </span>
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="python geshifilter-python">
+                o.__class__
+               </code>
+              </span>
+             </td>
+             <td>
+             </td>
+            </tr>
+            <tr>
+             <td>
+              creation
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="javascript geshifilter-javascript">
+                <span style="color: #003366; font-weight: bold;">
+                 var
+                </span>
+                x
+                <span style="color: #339933;">
+                 =
+                </span>
+                <span style="color: #003366; font-weight: bold;">
+                 new
+                </span>
+                A
+                <span style="color: #009900;">
+                 (
+                </span>
+                <span style="color: #009900;">
+                 )
+                </span>
+                <span style="color: #339933;">
+                 ;
+                </span>
+               </code>
+              </span>
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="python geshifilter-python">
+                x = A
+                <span style="color: black;">
+                 (
+                </span>
+                <span style="color: black;">
+                 )
+                </span>
+               </code>
+              </span>
+             </td>
+             <td>
+             </td>
+            </tr>
+            <tr>
+             <td>
+              preferred
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="javascript geshifilter-javascript">
+                <span style="color: #003366; font-weight: bold;">
+                 var
+                </span>
+                x
+                <span style="color: #339933;">
+                 =
+                </span>
+                Object.
+                <span style="color: #660066;">
+                 create
+                </span>
+                <span style="color: #009900;">
+                 (
+                </span>
+                p
+                <span style="color: #009900;">
+                 )
+                </span>
+                <span style="color: #339933;">
+                 ;
+                </span>
+               </code>
+              </span>
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="python geshifilter-python">
+                x =
+                <span style="color: #dc143c;">
+                 copy
+                </span>
+                .
+                <span style="color: #dc143c;">
+                 copy
+                </span>
+                <span style="color: black;">
+                 (
+                </span>
+                p
+                <span style="color: black;">
+                 )
+                </span>
+                <span style="color: #66cc66;">
+                 ;
+                </span>
+               </code>
+              </span>
+             </td>
+             <td>
+             </td>
+            </tr>
+            <tr>
+             <td>
+              Members
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="javascript geshifilter-javascript">
+                x.
+                <span style="color: #660066;">
+                 y
+                </span>
+               </code>
+              </span>
+              or
+              <span class="geshifilter">
+               <code class="javascript geshifilter-javascript">
+                x
+                <span style="color: #009900;">
+                 [
+                </span>
+                <span style="color: #3366CC;">
+                 'y'
+                </span>
+                <span style="color: #009900;">
+                 ]
+                </span>
+               </code>
+              </span>
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="python geshifilter-python">
+                x.
+                <span style="color: black;">
+                 y
+                </span>
+               </code>
+              </span>
+              or
+              <span class="geshifilter">
+               <code class="python geshifilter-python">
+                x.
+                <span style="color: #0000cd;">
+                 __dict__
+                </span>
+                <span style="color: black;">
+                 [
+                </span>
+                <span style="color: #483d8b;">
+                 'y'
+                </span>
+                <span style="color: black;">
+                 ]
+                </span>
+               </code>
+              </span>
+             </td>
+             <td>
+             </td>
+            </tr>
+            <tr>
+             <td>
+              in operator
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="javascript geshifilter-javascript">
+                x
+                <span style="color: #000066; font-weight: bold;">
+                 in
+                </span>
+                y
+               </code>
+              </span>
+              is true if object y has property x
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="python geshifilter-python">
+                x
+                <span style="color: #ff7700;font-weight:bold;">
+                 in
+                </span>
+                y
+               </code>
+              </span>
+              if object y contains x. If y is a dict, then its keys are searched. If y is a list, then its elements are checked. If y is an object then its
+              <span class="geshifilter">
+               <code class="python geshifilter-python">
+                <span style="color: #0000cd;">
+                 __contains__
+                </span>
+               </code>
+              </span>
+              special method is called
+             </td>
+             <td>
+             </td>
+            </tr>
+            <tr>
+             <td>
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="javascript geshifilter-javascript">
+                <span style="color: #000066; font-weight: bold;">
+                 for
+                </span>
+                <span style="color: #009900;">
+                 (
+                </span>
+                <span style="color: #003366; font-weight: bold;">
+                 var
+                </span>
+                i
+                <span style="color: #000066; font-weight: bold;">
+                 in
+                </span>
+                x
+                <span style="color: #009900;">
+                 )
+                </span>
+                <span style="color: #009900;">
+                 {
+                </span>
+               </code>
+              </span>
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="python geshifilter-python">
+                <span style="color: #ff7700;font-weight:bold;">
+                 for
+                </span>
+                i
+                <span style="color: #ff7700;font-weight:bold;">
+                 in
+                </span>
+                <span style="color: #008000;">
+                 dir
+                </span>
+                <span style="color: black;">
+                 (
+                </span>
+                x
+                <span style="color: black;">
+                 )
+                </span>
+                :
+               </code>
+              </span>
+             </td>
+             <td>
+             </td>
+            </tr>
+            <tr>
+             <td>
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="javascript geshifilter-javascript">
+                o.
+                <span style="color: #660066;">
+                 hasOwnProperty
+                </span>
+                <span style="color: #009900;">
+                 (
+                </span>
+                <span style="color: #000066;">
+                 name
+                </span>
+                <span style="color: #009900;">
+                 )
+                </span>
+               </code>
+              </span>
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="python geshifilter-python">
+                name
+                <span style="color: #ff7700;font-weight:bold;">
+                 in
+                </span>
+                o.
+                <span style="color: #0000cd;">
+                 __dict__
+                </span>
+               </code>
+              </span>
+             </td>
+             <td>
+             </td>
+            </tr>
+            <tr>
+             <td>
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="javascript geshifilter-javascript">
+                o.
+                <span style="color: #660066;">
+                 keys
+                </span>
+                <span style="color: #009900;">
+                 (
+                </span>
+                <span style="color: #009900;">
+                 )
+                </span>
+               </code>
+              </span>
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="python geshifilter-python">
+                o.
+                <span style="color: #0000cd;">
+                 __dict__
+                </span>
+                .
+                <span style="color: black;">
+                 keys
+                </span>
+                <span style="color: black;">
+                 (
+                </span>
+                <span style="color: black;">
+                 )
+                </span>
+               </code>
+              </span>
+             </td>
+             <td>
+             </td>
+            </tr>
+            <tr>
+             <td>
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="javascript geshifilter-javascript">
+                <span style="color: #000066; font-weight: bold;">
+                 delete
+                </span>
+                x.
+                <span style="color: #660066;">
+                 y
+                </span>
+                <span style="color: #339933;">
+                 ;
+                </span>
+               </code>
+              </span>
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="python geshifilter-python">
+                <span style="color: #ff7700;font-weight:bold;">
+                 del
+                </span>
+                x.
+                <span style="color: black;">
+                 y
+                </span>
+               </code>
+              </span>
+             </td>
+             <td>
+             </td>
+            </tr>
+            <tr>
+             <td>
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="javascript geshifilter-javascript">
+                Object.
+                <span style="color: #660066;">
+                 getPrototypeOf
+                </span>
+                <span style="color: #009900;">
+                 (
+                </span>
+                x
+                <span style="color: #009900;">
+                 )
+                </span>
+                <span style="color: #339933;">
+                 ;
+                </span>
+               </code>
+              </span>
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="python geshifilter-python">
+                <span style="color: #008000;">
+                 type
+                </span>
+                <span style="color: black;">
+                 (
+                </span>
+                x
+                <span style="color: black;">
+                 )
+                </span>
+               </code>
+              </span>
+             </td>
+             <td>
+             </td>
+            </tr>
+            <tr>
+             <td>
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="javascript geshifilter-javascript">
+                o
+                <span style="color: #000066; font-weight: bold;">
+                 instanceof
+                </span>
+                String
+                <span style="color: #339933;">
+                 ;
+                </span>
+               </code>
+              </span>
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="python geshifilter-python">
+                <span style="color: #008000;">
+                 isinstance
+                </span>
+                <span style="color: black;">
+                 (
+                </span>
+                o,
+                <span style="color: #008000;">
+                 str
+                </span>
+                <span style="color: black;">
+                 )
+                </span>
+               </code>
+              </span>
+             </td>
+             <td>
+             </td>
+            </tr>
+            <tr>
+             <td>
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="javascript geshifilter-javascript">
+                <span style="color: #000066; font-weight: bold;">
+                 typeof
+                </span>
+                x
+                <span style="color: #339933;">
+                 ;
+                </span>
+               </code>
+              </span>
+              (will be primitive or `object')
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="python geshifilter-python">
+                <span style="color: #008000;">
+                 type
+                </span>
+                <span style="color: black;">
+                 (
+                </span>
+                x
+                <span style="color: black;">
+                 )
+                </span>
+               </code>
+              </span>
+             </td>
+            </tr>
+            <tr>
+             <td>
+              Reg.Ex.
+             </td>
+             <td>
+              <div class="geshifilter">
+               <pre class="javascript geshifilter-javascript" style="font-family:monospace;"><span style="color: #003366; font-weight: bold;">var</span> x <span style="color: #339933;">=</span> <span style="color: #003366; font-weight: bold;">new</span> RegExp<span style="color: #009900;">(</span><span style="color: #3366CC;">'<span style="color: #000099; font-weight: bold;">\s</span>+'</span><span style="color: #009900;">)</span>
+<span style="color: #003366; font-weight: bold;">var</span> matchArray <span style="color: #339933;">=</span> x.<span style="color: #660066;">exec</span><span style="color: #009900;">(</span>stringToSearchThrough<span style="color: #009900;">)</span><span style="color: #339933;">;</span></pre>
+              </div>
+              or
+              <div class="geshifilter">
+               <pre class="javascript geshifilter-javascript" style="font-family:monospace;">x <span style="color: #339933;">=</span> <span style="color: #009966; font-style: italic;">/\s+/</span><span style="color: #339933;">;</span>
+<span style="color: #003366; font-weight: bold;">var</span> matchArray <span style="color: #339933;">=</span> x.<span style="color: #660066;">exec</span><span style="color: #009900;">(</span>stringToSearchThrough<span style="color: #009900;">)</span><span style="color: #339933;">;</span></pre>
+              </div>
+             </td>
+             <td>
+              <div class="geshifilter">
+               <pre class="python geshifilter-python" style="font-family:monospace;"><span style="color: #ff7700;font-weight:bold;">import</span> <span style="color: #dc143c;">re</span><span style="color: #66cc66;">;</span> 
+x = <span style="color: #dc143c;">re</span>.<span style="color: #008000;">compile</span><span style="color: black;">(</span>r<span style="color: #483d8b;">'<span style="color: #000099; font-weight: bold;">\s</span>+'</span><span style="color: black;">)</span>
+m = x.<span style="color: black;">search</span><span style="color: black;">(</span>stringToSearchThrough<span style="color: black;">)</span>
+<span style="color: #ff7700;font-weight:bold;">if</span> m:
+    matchList = <span style="color: black;">[</span>m.<span style="color: black;">group</span><span style="color: black;">(</span><span style="color: black;">)</span><span style="color: black;">]</span> + <span style="color: #008000;">list</span><span style="color: black;">(</span> m.<span style="color: black;">groups</span><span style="color: black;">(</span><span style="color: black;">)</span><span style="color: black;">)</span>
+<span style="color: #ff7700;font-weight:bold;">else</span>:
+    matchList = <span style="color: #008000;">None</span></pre>
+              </div>
+             </td>
+             <td>
+              String.search converts arg to Reg.Exp
+             </td>
+            </tr>
+            <tr>
+             <td>
+              Current object
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="javascript geshifilter-javascript">
+                <span style="color: #000066; font-weight: bold;">
+                 this
+                </span>
+               </code>
+              </span>
+              implicitly declared:
+              <div class="geshifilter">
+               <pre class="javascript geshifilter-javascript" style="font-family:monospace;"><span style="color: #003366; font-weight: bold;">function</span> <span style="color: #009900;">(</span>x<span style="color: #009900;">)</span> <span style="color: #009900;">{</span>
+	<span style="color: #000066; font-weight: bold;">this</span>.<span style="color: #660066;">i</span> <span style="color: #339933;">=</span> x<span style="color: #339933;">;</span>
+<span style="color: #009900;">}</span></pre>
+              </div>
+             </td>
+             <td>
+              Called
+              <span class="geshifilter">
+               <code class="python geshifilter-python">
+                <span style="color: #008000;">
+                 self
+                </span>
+               </code>
+              </span>
+              by convention, but is explicitly declared:
+              <div class="geshifilter">
+               <pre class="javascript geshifilter-javascript" style="font-family:monospace;"><span style="color: #003366; font-weight: bold;">class</span> A<span style="color: #009900;">(</span>object<span style="color: #009900;">)</span><span style="color: #339933;">:</span>
+	def f<span style="color: #009900;">(</span>self<span style="color: #339933;">,</span> x<span style="color: #009900;">)</span><span style="color: #339933;">:</span>
+	    self.<span style="color: #660066;">i</span> <span style="color: #339933;">=</span> x</pre>
+              </div>
+             </td>
+            </tr>
+            <tr>
+             <td>
+              Throwing exceptions
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="javascript geshifilter-javascript">
+                <span style="color: #000066; font-weight: bold;">
+                 throw
+                </span>
+                <span style="color: #009900;">
+                 {
+                </span>
+                <span style="color: #000066;">
+                 name
+                </span>
+                <span style="color: #339933;">
+                 :
+                </span>
+                someName
+                <span style="color: #339933;">
+                 ,
+                </span>
+                message
+                <span style="color: #339933;">
+                 :
+                </span>
+                someMessage
+                <span style="color: #009900;">
+                 }
+                </span>
+                <span style="color: #339933;">
+                 ;
+                </span>
+               </code>
+              </span>
+             </td>
+             <td>
+              <span class="geshifilter">
+               <code class="python geshifilter-python">
+                <span style="color: #ff7700;font-weight:bold;">
+                 raise
+                </span>
+                MyException
+                <span style="color: black;">
+                 (
+                </span>
+                <span style="color: #483d8b;">
+                 'constructor arg here'
+                </span>
+                <span style="color: black;">
+                 )
+                </span>
+               </code>
+              </span>
+             </td>
+            </tr>
+            <tr>
+             <td>
+              Catching exceptions
+             </td>
+             <td>
+              <div class="geshifilter">
+               <pre class="javascript geshifilter-javascript" style="font-family:monospace;"><span style="color: #000066; font-weight: bold;">try</span> <span style="color: #009900;">{</span>
+	someOp<span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span>
+<span style="color: #009900;">}</span>
+<span style="color: #000066; font-weight: bold;">catch</span> <span style="color: #009900;">(</span>e<span style="color: #009900;">)</span> <span style="color: #009900;">{</span>
+    <span style="color: #000066; font-weight: bold;">switch</span> <span style="color: #009900;">(</span>e.<span style="color: #000066;">name</span><span style="color: #009900;">)</span> <span style="color: #009900;">{</span>
+        <span style="color: #000066; font-weight: bold;">case</span> <span style="color: #3366CC;">'Error'</span><span style="color: #339933;">:</span>
+        <span style="color: #000066; font-weight: bold;">case</span> <span style="color: #3366CC;">'EvalError'</span><span style="color: #339933;">:</span>
+        <span style="color: #000066; font-weight: bold;">case</span> <span style="color: #3366CC;">'RangeError'</span><span style="color: #339933;">:</span>
+        <span style="color: #000066; font-weight: bold;">case</span> <span style="color: #3366CC;">'SyntaxError'</span><span style="color: #339933;">:</span>
+        <span style="color: #000066; font-weight: bold;">case</span> <span style="color: #3366CC;">'URIError'</span><span style="color: #339933;">:</span>
+        <span style="color: #000066; font-weight: bold;">case</span> <span style="color: #3366CC;">'TypeError'</span><span style="color: #339933;">:</span>
+        <span style="color: #003366; font-weight: bold;">default</span><span style="color: #339933;">:</span>
+            <span style="color: #000066; font-weight: bold;">throw</span> e<span style="color: #339933;">;</span>
+    <span style="color: #009900;">}</span></pre>
+              </div>
+             </td>
+             <td>
+              <div class="geshifilter">
+               <pre class="python geshifilter-python" style="font-family:monospace;"><span style="color: #ff7700;font-weight:bold;">try</span>:
+    someOp<span style="color: black;">(</span><span style="color: black;">)</span>
+<span style="color: #ff7700;font-weight:bold;">except</span> <span style="color: #008000;">ValueError</span> <span style="color: #ff7700;font-weight:bold;">as</span> e:
+    <span style="color: #ff7700;font-weight:bold;">raise</span>
+<span style="color: #ff7700;font-weight:bold;">except</span> <span style="color: #008000;">Exception</span>:
+    <span style="color: #ff7700;font-weight:bold;">print</span> <span style="color: #483d8b;">"Some non ValueError Except"</span>
+<span style="color: #ff7700;font-weight:bold;">finally</span>:
+    <span style="color: #808080; font-style: italic;"># optional code block.</span>
+    <span style="color: #808080; font-style: italic;"># always executed</span></pre>
+              </div>
+             </td>
+             <td>
+              Python also supports try/except/else constructs
+             </td>
+            </tr>
+           </table>
+           The
+           <span class="geshifilter">
+            <code class="javascript geshifilter-javascript">
+             <span style="color: #003366; font-weight: bold;">
+              new
+             </span>
+            </code>
+           </span>
+           keyword means that the next function is called in the
+           <it>
+            constructor
+           </it>
+           context See
+           <a href="http://trephine.org/t/index.php?title=Understanding_the_JavaScript_new_keyword">
+            http://trephine.org/t/index.php?title=Understanding_the_JavaScript_new_keyword
+           </a>
+           and
+           <a href="http://trephine.org/t/index.php?title=JavaScript_classes">
+            http://trephine.org/t/index.php?title=JavaScript_classes
+           </a>
+           for details.
+           <h2>
+            Functions
+           </h2>
+           Both languages treat functions as first class objects. 
+
+In python, invoking an instancemethod using
+           <span class="geshifilter">
+            <code class="python geshifilter-python">
+             o.
+             <span style="color: black;">
+              x
+             </span>
+             <span style="color: black;">
+              (
+             </span>
+             y
+             <span style="color: black;">
+              )
+             </span>
+            </code>
+           </span>
+           will implicitly send in
+           <span class="geshifilter">
+            <code class="python geshifilter-python">
+             o
+            </code>
+           </span>
+           as the current object.
+In ECMAScript this passing of the current object is performed whenever the
+           <span class="geshifilter">
+            <code class="python geshifilter-python">
+             o.
+             <span style="color: black;">
+              x
+             </span>
+             <span style="color: black;">
+              (
+             </span>
+             y
+             <span style="color: black;">
+              )
+             </span>
+            </code>
+           </span>
+           syntax is used.
+
+In ECMAScript, the current object is called
+           <span class="geshifilter">
+            <code class="javascript geshifilter-javascript">
+             <span style="color: #000066; font-weight: bold;">
+              this
+             </span>
+            </code>
+           </span>
+           and it is not listed in the argument list.
+In Python the object is traditionally called
+           <span class="geshifilter">
+            <code class="python geshifilter-python">
+             <span style="color: #008000;">
+              self
+             </span>
+            </code>
+           </span>
+           , but is actually defined to be the name that first appears in the argument list.
+
+In python, when you assign a function to a class's attribute (or define the function within a class), then the function becomes an instance method.  To invoke the method, you must to supply an instance of that class as the first argument.  For example, the following calls work:
+           <div class="geshifilter">
+            <pre class="python geshifilter-python" style="font-family:monospace;"><span style="color: #ff7700;font-weight:bold;">class</span> B:
+    <span style="color: #ff7700;font-weight:bold;">def</span> f<span style="color: black;">(</span><span style="color: #008000;">self</span>, i<span style="color: black;">)</span>:
+        <span style="color: #ff7700;font-weight:bold;">return</span> <span style="color: #ff4500;">4</span> + i
+b = B<span style="color: black;">(</span><span style="color: black;">)</span>
+b.<span style="color: black;">f</span><span style="color: black;">(</span><span style="color: #ff4500;">1</span><span style="color: black;">)</span>
+B.<span style="color: black;">f</span><span style="color: black;">(</span>b, <span style="color: #ff4500;">2</span><span style="color: black;">)</span>
+x = b.<span style="color: black;">f</span>
+x<span style="color: black;">(</span><span style="color: #ff4500;">1</span><span style="color: black;">)</span>
+y = B.<span style="color: black;">f</span>
+y<span style="color: black;">(</span>b, <span style="color: #ff4500;">2</span><span style="color: black;">)</span></pre>
+           </div>
+           while
+           <span class="geshifilter">
+            <code class="python geshifilter-python">
+             B.
+             <span style="color: black;">
+              f
+             </span>
+             <span style="color: black;">
+              (
+             </span>
+             <span style="color: #ff4500;">
+              1
+             </span>
+             <span style="color: black;">
+              )
+             </span>
+            </code>
+           </span>
+           or
+           <span class="geshifilter">
+            <code class="python geshifilter-python">
+             y
+             <span style="color: black;">
+              (
+             </span>
+             <span style="color: #ff4500;">
+              1
+             </span>
+             <span style="color: black;">
+              )
+             </span>
+            </code>
+           </span>
+           will raise a
+           <span class="geshifilter">
+            <code class="python geshifilter-python">
+             <span style="color: #008000;">
+              TypeError
+             </span>
+            </code>
+           </span>
+           because two arguments are required.
+You can use
+           <span class="geshifilter">
+            <code class="python geshifilter-python">
+             B.
+             <span style="color: black;">
+              z
+             </span>
+             =
+             <span style="color: #008000;">
+              staticmethod
+             </span>
+             <span style="color: black;">
+              (
+             </span>
+             y
+             <span style="color: black;">
+              )
+             </span>
+            </code>
+           </span>
+           to assign a function to a class without converting it to an instancemethod.
+
+In ECMAScript, there are no classes, so assigning a function as a property of an object is simply storing the function under a new name. This is the way that python behaves when you assign an attribute of an instance to be a function (when you assign an attribute of a class to be a function, the class wraps it as an instancemethod). In ECMAScript 5 and later you will be able to useuse
+           <span class="geshifilter">
+            <code class="javascript geshifilter-javascript">
+             bind
+            </code>
+           </span>
+           to return a function object with as the first arguments bound.
+           <div class="geshifilter">
+            <pre class="javascript geshifilter-javascript" style="font-family:monospace;"><span style="color: #003366; font-weight: bold;">var</span> z <span style="color: #339933;">=</span> <span style="color: #009900;">{</span>x <span style="color: #339933;">:</span> <span style="color: #CC0000;">1</span><span style="color: #339933;">,</span> 
+        f <span style="color: #339933;">:</span> <span style="color: #003366; font-weight: bold;">function</span><span style="color: #009900;">(</span>y<span style="color: #009900;">)</span> <span style="color: #009900;">{</span>
+            <span style="color: #000066; font-weight: bold;">return</span> <span style="color: #000066; font-weight: bold;">this</span>.<span style="color: #660066;">x</span> <span style="color: #339933;">+</span> y<span style="color: #339933;">;</span>
+        <span style="color: #009900;">}</span>
+<span style="color: #009900;">}</span>
+z.<span style="color: #660066;">f</span><span style="color: #009900;">(</span><span style="color: #CC0000;">2</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span> <span style="color: #006600; font-style: italic;">// returns 3 because this.x is 1</span>
+<span style="color: #003366; font-weight: bold;">var</span> w <span style="color: #339933;">=</span> <span style="color: #009900;">{</span>x <span style="color: #339933;">:</span> <span style="color: #CC0000;">3</span><span style="color: #009900;">}</span><span style="color: #339933;">;</span>
+w.<span style="color: #660066;">y</span> <span style="color: #339933;">=</span> z.<span style="color: #660066;">f</span><span style="color: #339933;">;</span>
+w.<span style="color: #660066;">y</span><span style="color: #009900;">(</span><span style="color: #CC0000;">2</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span> <span style="color: #006600; font-style: italic;">// returns 5 because this.x is 3</span>
+<span style="color: #003366; font-weight: bold;">var</span> a <span style="color: #339933;">=</span> z.<span style="color: #660066;">f</span><span style="color: #339933;">;</span>
+a<span style="color: #009900;">(</span><span style="color: #CC0000;">1</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span> <span style="color: #006600; font-style: italic;">// returns globalobject.x + 1. Probably NaN.</span></pre>
+           </div>
+           <h2>
+            ECMAScript function invocation styles
+           </h2>
+           <h3>
+            Bare functions
+           </h3>
+           When called as bare-functions
+           <span class="geshifilter">
+            <code class="javascript geshifilter-javascript">
+             <span style="color: #000066; font-weight: bold;">
+              this
+             </span>
+            </code>
+           </span>
+           is set to the global object in ES3 and
+           <span class="geshifilter">
+            <code class="javascript geshifilter-javascript">
+             undefined
+            </code>
+           </span>
+           in ES5.
+           <h3>
+            Method form
+           </h3>
+           When called in method for, the
+           <span class="geshifilter">
+            <code class="javascript geshifilter-javascript">
+             <span style="color: #000066; font-weight: bold;">
+              this
+             </span>
+            </code>
+           </span>
+           object is implicitly sent (and does not appear in the argument list).
+           <h3>
+            Constructor invocation
+           </h3>
+           Preceded with the
+           <span class="geshifilter">
+            <code class="javascript geshifilter-javascript">
+             <span style="color: #003366; font-weight: bold;">
+              new
+             </span>
+            </code>
+           </span>
+           keyword. The newly created object is passed in as
+           <span class="geshifilter">
+            <code class="javascript geshifilter-javascript">
+             <span style="color: #000066; font-weight: bold;">
+              this
+             </span>
+            </code>
+           </span>
+           . This object will be returned if no other object is returned.
+           <h3>
+            <span class="geshifilter">
+             <code class="javascript geshifilter-javascript">
+              apply
+             </code>
+            </span>
+            and
+            <span class="geshifilter">
+             <code class="javascript geshifilter-javascript">
+              call
+             </code>
+            </span>
+           </h3>
+           First argument given will be treated as
+           <span class="geshifilter">
+            <code class="javascript geshifilter-javascript">
+             <span style="color: #000066; font-weight: bold;">
+              this
+             </span>
+            </code>
+           </span>
+           .
+           <span class="geshifilter">
+            <code class="javascript geshifilter-javascript">
+             call
+            </code>
+           </span>
+           takes an array of arguments,
+           <span class="geshifilter">
+            <code class="javascript geshifilter-javascript">
+             apply
+            </code>
+           </span>
+           takes as many arguments as you want to send.
+           <h2>
+            Arguments
+           </h2>
+           You can basically think of javascript:
+           <div class="geshifilter">
+            <pre class="javascript geshifilter-javascript" style="font-family:monospace;"><span style="color: #003366; font-weight: bold;">var</span> foo <span style="color: #339933;">=</span> <span style="color: #003366; font-weight: bold;">function</span> <span style="color: #009900;">(</span>a<span style="color: #339933;">,</span> b<span style="color: #009900;">)</span> <span style="color: #009900;">{</span>
+	...
+<span style="color: #009900;">}</span></pre>
+           </div>
+           as the python:
+           <div class="geshifilter">
+            <pre class="javascript geshifilter-javascript" style="font-family:monospace;">def foo<span style="color: #009900;">(</span>a<span style="color: #339933;">=</span>None<span style="color: #339933;">,</span> b<span style="color: #339933;">=</span>None<span style="color: #339933;">,</span> <span style="color: #339933;">**</span>arguments<span style="color: #009900;">)</span> <span style="color: #009900;">{</span>
+	...
+<span style="color: #009900;">}</span></pre>
+           </div>
+           with the exception that instead of
+           <span class="geshifilter">
+            <code class="python geshifilter-python">
+             <span style="color: #008000;">
+              None
+             </span>
+            </code>
+           </span>
+           , ECMAScript uses
+           <span class="geshifilter">
+            <code class="javascript geshifilter-javascript">
+             undefined
+            </code>
+           </span>
+           , and the
+           <span class="geshifilter">
+            <code class="javascript geshifilter-javascript">
+             arguments
+            </code>
+           </span>
+           variable in ECMAScript is an array-like object that includes
+           <it>
+            all
+           </it>
+           of the arguments - named and un-named, and including those bound to variables in the function declaration. Thus
+           <span class="geshifilter">
+            <code class="javascript geshifilter-javascript">
+             a
+            </code>
+           </span>
+           and
+           <span class="geshifilter">
+            <code class="javascript geshifilter-javascript">
+             b
+            </code>
+           </span>
+           would be in
+           <span class="geshifilter">
+            <code class="javascript geshifilter-javascript">
+             arguments
+            </code>
+           </span>
+           <h1>
+            Gotchas
+           </h1>
+           <h2>
+            <a name="ECMAScriptGotchas">
+             ECMAScriptGotchas
+            </a>
+           </h2>
+           <ul>
+            <li>
+             Integers can overflow at 10E15.
+            </li>
+            <li>
+             <span class="geshifilter">
+              <code class="javascript geshifilter-javascript">
+               Array.
+               <span style="color: #660066;">
+                sort
+               </span>
+              </code>
+             </span>
+             uses
+             <span class="geshifilter">
+              <code class="javascript geshifilter-javascript">
+               String
+               <span style="color: #009900;">
+                (
+               </span>
+               x
+               <span style="color: #009900;">
+                )
+               </span>
+               <span style="color: #339933;">
+                &lt;
+               </span>
+               String
+               <span style="color: #009900;">
+                (
+               </span>
+               y
+               <span style="color: #009900;">
+                )
+               </span>
+              </code>
+             </span>
+             as default comparison
+            </li>
+            <li>
+             <span class="geshifilter">
+              <code class="javascript geshifilter-javascript">
+               <span style="color: #000066; font-weight: bold;">
+                delete
+               </span>
+               <span style="color: #009900;">
+                [
+               </span>
+               <span style="color: #CC0000;">
+                0
+               </span>
+               <span style="color: #339933;">
+                ,
+               </span>
+               <span style="color: #CC0000;">
+                1
+               </span>
+               <span style="color: #339933;">
+                ,
+               </span>
+               <span style="color: #CC0000;">
+                2
+               </span>
+               <span style="color: #009900;">
+                ]
+               </span>
+               <span style="color: #009900;">
+                [
+               </span>
+               <span style="color: #CC0000;">
+                1
+               </span>
+               <span style="color: #009900;">
+                ]
+               </span>
+              </code>
+             </span>
+             results in
+             <span class="geshifilter">
+              <code class="javascript geshifilter-javascript">
+               <span style="color: #009900;">
+                [
+               </span>
+               <span style="color: #CC0000;">
+                0
+               </span>
+               <span style="color: #339933;">
+                ,
+               </span>
+               undefined
+               <span style="color: #339933;">
+                ,
+               </span>
+               <span style="color: #CC0000;">
+                2
+               </span>
+               <span style="color: #009900;">
+                ]
+               </span>
+              </code>
+             </span>
+             . Use
+             <span class="geshifilter">
+              <code class="javascript geshifilter-javascript">
+               <span style="color: #009900;">
+                [
+               </span>
+               <span style="color: #CC0000;">
+                0
+               </span>
+               <span style="color: #339933;">
+                ,
+               </span>
+               <span style="color: #CC0000;">
+                1
+               </span>
+               <span style="color: #339933;">
+                ,
+               </span>
+               <span style="color: #CC0000;">
+                2
+               </span>
+               <span style="color: #009900;">
+                ]
+               </span>
+               .
+               <span style="color: #660066;">
+                splice
+               </span>
+               <span style="color: #009900;">
+                (
+               </span>
+               <span style="color: #CC0000;">
+                1
+               </span>
+               <span style="color: #339933;">
+                ,
+               </span>
+               <span style="color: #CC0000;">
+                1
+               </span>
+               <span style="color: #009900;">
+                )
+               </span>
+               <span style="color: #339933;">
+                ;
+               </span>
+              </code>
+             </span>
+            </li>
+            <li>
+             Implicit ; added to the end of lines. So
+             <div class="geshifilter">
+              <pre class="python geshifilter-python" style="font-family:monospace;"><span style="color: #ff7700;font-weight:bold;">return</span>
+	<span style="color: #ff4500;">2</span><span style="color: #66cc66;">;</span></pre>
+             </div>
+             will return
+             <span class="geshifilter">
+              <code class="javascript geshifilter-javascript">
+               undefined
+              </code>
+             </span>
+             rather than 2.
+            </li>
+            <li>
+             In a bare function invocation
+             <span class="geshifilter">
+              <code class="javascript geshifilter-javascript">
+               <span style="color: #000066; font-weight: bold;">
+                this
+               </span>
+              </code>
+             </span>
+             refers to the global object!
+            </li>
+            <li>
+             In ECMAScript,
+             <span class="geshifilter">
+              <code class="javascript geshifilter-javascript">
+               String.
+               <span style="color: #660066;">
+                search
+               </span>
+              </code>
+             </span>
+             ,
+             <span class="geshifilter">
+              <code class="javascript geshifilter-javascript">
+               String.
+               <span style="color: #660066;">
+                split
+               </span>
+              </code>
+             </span>
+             , and
+             <span class="geshifilter">
+              <code class="javascript geshifilter-javascript">
+               String.
+               <span style="color: #660066;">
+                replace
+               </span>
+              </code>
+             </span>
+             all can take a regular expression as their first argument. But only
+             <span class="geshifilter">
+              <code class="javascript geshifilter-javascript">
+               String.
+               <span style="color: #660066;">
+                search
+               </span>
+              </code>
+             </span>
+             automatically converts any string to a regular expression!
+            </li>
+            <li>
+             <span class="geshifilter">
+              <code class="javascript geshifilter-javascript">
+               constructor
+              </code>
+             </span>
+             is a property of all objects.
+            </li>
+            <li>
+             ECMAScript is not what anyone calls it
+            </li>
+           </ul>
+           <h2>
+            <a name="PythonGotchas">
+             PythonGotchas
+            </a>
+           </h2>
+           <ul>
+            <li>
+             The whitespace thing -- never mix tabs and spaces for indentation!
+            </li>
+            <li>
+             Integer division is the defaut in Python 2 if both operands are integers.  So
+             <span class="geshifilter">
+              <code class="python geshifilter-python">
+               <span style="color: #ff4500;">
+                2
+               </span>
+               /
+               <span style="color: #ff4500;">
+                3
+               </span>
+              </code>
+             </span>
+             results in 0 while
+             <span class="geshifilter">
+              <code class="python geshifilter-python">
+               <span style="color: #ff4500;">
+                2
+               </span>
+               /
+               <span style="color: #ff4500;">
+                3.0
+               </span>
+              </code>
+             </span>
+             results in 0.66666666666666667. In Python 3 conversion to
+             <span class="geshifilter">
+              <code class="python geshifilter-python">
+               <span style="color: #008000;">
+                float
+               </span>
+              </code>
+             </span>
+             is becoming the default for all division with the
+             <span class="geshifilter">
+              <code class="python geshifilter-python">
+               /
+              </code>
+             </span>
+             operator.  In both Python 2 and 3 the
+             <span class="geshifilter">
+              <code class="python geshifilter-python">
+               //
+              </code>
+             </span>
+             produces "floor division." If both operands are ints then the result will be an int. The remainder is discarded (in both float and int floor division).
+            </li>
+            <li>
+             Grouping at tuple definition are both done with parentheses.  So
+             <span class="geshifilter">
+              <code class="python geshifilter-python">
+               x =
+               <span style="color: black;">
+                (
+               </span>
+               <span style="color: #ff4500;">
+                3
+               </span>
+               +
+               <span style="color: #ff4500;">
+                1
+               </span>
+               <span style="color: black;">
+                )
+               </span>
+              </code>
+             </span>
+             sets x to 4, but
+             <span class="geshifilter">
+              <code class="python geshifilter-python">
+               x =
+               <span style="color: black;">
+                (
+               </span>
+               <span style="color: #ff4500;">
+                3
+               </span>
+               +
+               <span style="color: #ff4500;">
+                1
+               </span>
+               ,
+               <span style="color: #ff4500;">
+                1
+               </span>
+               <span style="color: black;">
+                )
+               </span>
+              </code>
+             </span>
+             sets x to the tuple
+             <span class="geshifilter">
+              <code class="python geshifilter-python">
+               <span style="color: black;">
+                (
+               </span>
+               <span style="color: #ff4500;">
+                4
+               </span>
+               ,
+               <span style="color: #ff4500;">
+                1
+               </span>
+               <span style="color: black;">
+                )
+               </span>
+              </code>
+             </span>
+            </li>
+           </ul>
+           <h1>
+            Tools
+           </h1>
+           <ul>
+            <li>
+             Interactive interpreter
+             <a href="http://www.mozilla.org/rhino/download.html">
+              http://www.mozilla.org/rhino/download.html
+             </a>
+            </li>
+           </ul>
+           <h2>
+            Obscure notes: Property markup (not what ECMAScript programmers call it).
+           </h2>
+           <p>
+            One rarely needs, this but it is interesting to note that a property of an ECMAScript object can be flagged as constant, or not to be included when looping over all of the properties
+           </p>
+           <p>
+            From a python programmer's perspective, an ECMAScript's object acts as if it defined
+            <span class="geshifilter">
+             <code class="python geshifilter-python">
+              __setattribute__
+             </code>
+            </span>
+            so that every the value is boxed into a richer object that describes it. 
+Thus, ECMAScript-style attribute access in Python would (roughly) be mimicked by:
+            <div class="geshifilter">
+             <pre class="javascript geshifilter-javascript" style="font-family:monospace;"><span style="color: #003366; font-weight: bold;">class</span> JavaScriptProperty<span style="color: #339933;">:</span>
+    def __init__<span style="color: #009900;">(</span>self<span style="color: #339933;">,</span> value<span style="color: #009900;">)</span><span style="color: #339933;">:</span>
+        self.<span style="color: #660066;">value</span> <span style="color: #339933;">=</span> value
+        self.<span style="color: #660066;">writeable</span> <span style="color: #339933;">=</span> <span style="color: #003366; font-weight: bold;">True</span>
+        self.<span style="color: #660066;">enumerable</span> <span style="color: #339933;">=</span> <span style="color: #003366; font-weight: bold;">True</span>
+        self.<span style="color: #660066;">configurable</span> <span style="color: #339933;">=</span> <span style="color: #003366; font-weight: bold;">True</span>
+ 
+<span style="color: #003366; font-weight: bold;">class</span> JavaScriptObject<span style="color: #339933;">:</span>
+    def __init__<span style="color: #009900;">(</span>self<span style="color: #009900;">)</span><span style="color: #339933;">:</span>
+        self.__dict__<span style="color: #009900;">[</span><span style="color: #3366CC;">'prototype'</span><span style="color: #009900;">]</span> <span style="color: #339933;">=</span> None
+    def __getattribute__<span style="color: #009900;">(</span>x<span style="color: #339933;">,</span> <span style="color: #000066;">name</span><span style="color: #009900;">)</span><span style="color: #339933;">:</span>
+        v <span style="color: #339933;">=</span> self.__dict__.<span style="color: #660066;">get</span><span style="color: #009900;">(</span><span style="color: #000066;">name</span><span style="color: #009900;">)</span>
+        <span style="color: #000066; font-weight: bold;">if</span> v <span style="color: #000066; font-weight: bold;">is</span> None<span style="color: #339933;">:</span>
+            <span style="color: #000066; font-weight: bold;">if</span> self.__dict__<span style="color: #009900;">[</span><span style="color: #3366CC;">'prototype'</span><span style="color: #009900;">]</span> <span style="color: #000066; font-weight: bold;">is</span> None<span style="color: #339933;">:</span>
+                raise AttributeError<span style="color: #009900;">(</span><span style="color: #000066;">name</span><span style="color: #009900;">)</span>
+            <span style="color: #000066; font-weight: bold;">return</span> getattr<span style="color: #009900;">(</span>self.__dict__<span style="color: #009900;">[</span><span style="color: #3366CC;">'prototype'</span><span style="color: #009900;">]</span><span style="color: #339933;">,</span> <span style="color: #000066;">name</span><span style="color: #009900;">)</span>
+        <span style="color: #000066; font-weight: bold;">return</span> v.<span style="color: #660066;">value</span>
+    def __setattribute__<span style="color: #009900;">(</span>x<span style="color: #339933;">,</span> <span style="color: #000066;">name</span><span style="color: #339933;">,</span> value<span style="color: #009900;">)</span><span style="color: #339933;">:</span>
+        self.__dict__<span style="color: #009900;">[</span><span style="color: #000066;">name</span><span style="color: #009900;">]</span> <span style="color: #339933;">=</span> JavaScriptProperty<span style="color: #009900;">(</span>value<span style="color: #009900;">)</span></pre>
+            </div>
+            Setting
+            <span class="geshifilter">
+             <code class="javascript geshifilter-javascript">
+              o.
+              <span style="color: #660066;">
+               y
+              </span>
+             </code>
+            </span>
+            with
+            <span class="geshifilter">
+             <code class="javascript geshifilter-javascript">
+              enumerable
+              <span style="color: #339933;">
+               =
+              </span>
+              <span style="color: #003366; font-weight: bold;">
+               false
+              </span>
+              <span style="color: #339933;">
+               ;
+              </span>
+             </code>
+            </span>
+            means that the property
+            <span class="geshifilter">
+             <code class="javascript geshifilter-javascript">
+              y
+             </code>
+            </span>
+            will not show up when you use a
+            <span class="geshifilter">
+             <code class="javascript geshifilter-javascript">
+              <span style="color: #000066; font-weight: bold;">
+               for
+              </span>
+              <span style="color: #009900;">
+               (
+              </span>
+              x
+              <span style="color: #000066; font-weight: bold;">
+               in
+              </span>
+              o
+              <span style="color: #009900;">
+               )
+              </span>
+              <span style="color: #009900;">
+               {
+              </span>
+             </code>
+            </span>
+            loop construct.
+
+Setting
+            <span class="geshifilter">
+             <code class="javascript geshifilter-javascript">
+              o.
+              <span style="color: #660066;">
+               y
+              </span>
+             </code>
+            </span>
+            with
+            <span class="geshifilter">
+             <code class="javascript geshifilter-javascript">
+              writeable
+              <span style="color: #339933;">
+               =
+              </span>
+              <span style="color: #003366; font-weight: bold;">
+               false
+              </span>
+              <span style="color: #339933;">
+               ;
+              </span>
+             </code>
+            </span>
+            means that the value of
+            <span class="geshifilter">
+             <code class="javascript geshifilter-javascript">
+              o.
+              <span style="color: #660066;">
+               y
+              </span>
+             </code>
+            </span>
+            cannot change.
+
+Setting
+            <span class="geshifilter">
+             <code class="javascript geshifilter-javascript">
+              o.
+              <span style="color: #660066;">
+               y
+              </span>
+             </code>
+            </span>
+            with
+            <span class="geshifilter">
+             <code class="javascript geshifilter-javascript">
+              configurable
+              <span style="color: #339933;">
+               =
+              </span>
+              <span style="color: #003366; font-weight: bold;">
+               true
+              </span>
+              <span style="color: #339933;">
+               ;
+              </span>
+             </code>
+            </span>
+            means that the value of
+            <span class="geshifilter">
+             <code class="javascript geshifilter-javascript">
+              o.
+              <span style="color: #660066;">
+               y
+              </span>
+             </code>
+            </span>
+            can change and the property can be deleted.
+
+ 
+In ECMAScript you can create objects with:
+            <span class="geshifilter">
+             <code class="javascript geshifilter-javascript">
+              Object.
+              <span style="color: #660066;">
+               create
+              </span>
+              <span style="color: #009900;">
+               (
+              </span>
+              prototype
+              <span style="color: #339933;">
+               ,
+              </span>
+              properties
+              <span style="color: #339933;">
+               ,
+              </span>
+              ...
+              <span style="color: #009900;">
+               )
+              </span>
+             </code>
+            </span>
+           </p>
+          </div>
+          <div class="clear-block">
+           <div class="meta">
+           </div>
+           <div class="links">
+            <ul class="links inline">
+             <li class="blog_usernames_blog first last">
+              <a href="../blog/mholder" title="Read mholder's latest blog entries.">
+               mholder's blog
+              </a>
+             </li>
+            </ul>
+           </div>
+          </div>
+         </div>
+        </div>
+        <div id="footer">
+         <p>
+          The
+          <a href="https://mtholder.github.io/home/">
+           Holder Lab
+          </a>
+          is part of the
+          <a href="https://eeb.ku.edu/">
+           Department of Ecology and Evolutionary Biology
+          </a>
+          at
+          <a href="https://www.ku.edu">
+           KU
+          </a>
+         </p>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+    <!-- /.left-corner, /.right-corner, /#squeeze, /#center -->
+   </div>
+   <!-- /container -->
+  </div>
+  <!-- /layout -->
+ </body>
+</html>

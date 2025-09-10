@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xml:base=""https://phylo.bio.ku.edu" xmlns:dc="http://purl.org/dc/elements/1.1/">
+ <channel>
+  <title>
+   mholder's blog
+  </title>
+  <link>
+   "https://phylo.bio.ku.edu/blog/mholder
+  </link>
+  <description>
+  </description>
+  <language>
+   en
+  </language>
+  <item>
+   <title>
+    ivy on Mac
+   </title>
+   <link>
+    "https://phylo.bio.ku.edu/content/ivy-mac
+   </link>
+   <description>
+    &lt;p&gt;&lt;a href="http://www.bioinformatics.org/~rick/"&gt;Rick Ree&lt;/a&gt; just gave an &lt;a href="http://ievobio.org/"&gt;iEvoBio&lt;/a&gt; talk on his (very slick) Python-based interactive environment for phylogenetics called &lt;a href="http://www.reelab.net/ivy/index.html"&gt;ivy&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I posted the virtualenv-created directory with my install for Mac (python 2.7, i386+x86_64 fat bundle). This might work for you if you do this:&lt;/p&gt;
+&lt;hr/&gt;
+&lt;pre lang="bash"&gt;
+wget &lt;a href="https://phylo.bio.ku.edu/software/ivy.tar.bz" title=""https://phylo.bio.ku.edu/software/ivy.tar.bz"&gt;"https://phylo.bio.ku.edu/software/ivy.tar.bz&lt;/a&gt;
+tar xfvj ivy.tar.bz
+cd ivy
+source ivydev/bin/activate
+ipython -pylab
+&lt;/pre&gt;&lt;hr/&gt;
+and then you should be able to see his user's guide at &lt;a href="http://www.reelab.net/ivy/using.html" title="http://www.reelab.net/ivy/using.html"&gt;http://www.reelab.net/ivy/using.html&lt;/a&gt; for instructions on usage.
+&lt;p&gt;For reference, I created the bundle by:&lt;/p&gt;
+&lt;hr/&gt;
+&lt;pre lang="bash"&gt;
+
+mkdir ivy
+cd ivy
+virtualenv ivydev
+. ivydev/bin/activate
+pip install ivy-phylo
+for module in matplotlib scipy numpy biopython pyparsing ipython lxml PIL ; do
+    pip install --upgrade "$module" ;
+done
+cd ..
+&lt;/pre&gt;&lt;/hr/&gt;&lt;/hr/&gt;&lt;/hr/&gt;&lt;p&gt;&lt;a href="https://mtholder.github.io/home/content/ivy-mac" target="_blank"&gt;read more&lt;/a&gt;&lt;/p&gt;
+   </description>
+   <pubdate>
+    Tue, 10 Jul 2012 15:28:18 +0000
+   </pubdate>
+   <dc:creator>
+    mholder
+   </dc:creator>
+   <guid ispermalink="false">
+    711 at "https://phylo.bio.ku.edu
+   </guid>
+  </item>
+  <item>
+   <title>
+    Phylotastic TNRS client
+   </title>
+   <link>
+    "https://phylo.bio.ku.edu/content/phylotastic-tnrs-client
+   </link>
+   <description>
+    &lt;p&gt;An example client of the demo implementation of the &lt;a href="http://www.evoio.org/wiki/Phylotastic/TNRS"&gt;TNRS built at phylotastic&lt;/a&gt;  can be run using&lt;br /&gt;
+&lt;code&gt;&lt;br /&gt;
+python phylotastic_tnrs_client.py&lt;br /&gt;
+&lt;/code&gt;&lt;br /&gt;
+then typing some names (one per line) and closing the standard input stream with Ctrl-D.&lt;/p&gt;
+&lt;p&gt;You can also put the names in a file and pass the filepaths as command line arguments to the script.&lt;/p&gt;
+&lt;p&gt;The code is available as a gist.&lt;br /&gt;
+&lt;script src="http://gist.github.com/2967726.js"&gt;&lt;/script&gt;&lt;/p&gt;
+   </description>
+   <pubdate>
+    Thu, 21 Jun 2012 18:33:17 +0000
+   </pubdate>
+   <dc:creator>
+    mholder
+   </dc:creator>
+   <guid ispermalink="false">
+    710 at "https://phylo.bio.ku.edu
+   </guid>
+  </item>
+  <item>
+   <title>
+    Compiling g++ 4.7
+   </title>
+   <link>
+    "https://phylo.bio.ku.edu/content/compiling-g-47
+   </link>
+   <description>
+    &lt;p&gt;I wanted to try out gcc witth c++11, so I had to compile gcc version 4.7, and posted the install directory that I used at: &lt;a href="https://mtholder.github.io/home/public/gcc4.7.tar.gz" title=""https://phylo.bio.ku.edu/public/gcc4.7.tar.gz"&gt;"https://phylo.bio.ku.edu/public/gcc4.7.tar.gz&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;See&lt;br /&gt;
+&lt;script src="http://gist.github.com/2906937.js"&gt;&lt;/script&gt;&lt;/p&gt;
+   </description>
+   <pubdate>
+    Sun, 10 Jun 2012 21:50:55 +0000
+   </pubdate>
+   <dc:creator>
+    mholder
+   </dc:creator>
+   <guid ispermalink="false">
+    709 at "https://phylo.bio.ku.edu
+   </guid>
+  </item>
+  <item>
+   <title>
+    Odd bug in g++ on darwin - implicit conversion of NULL to pointer not working on all architectures
+   </title>
+   <link>
+    "https://phylo.bio.ku.edu/content/odd-bug-g-darwin-implicit-conversion-null-pointer-not-working-all-architectures
+   </link>
+   <description>
+    &lt;p&gt;&lt;a href="http://jeetworks.org/about"&gt;Jeet&lt;/a&gt; and I tracked this down after I was having issues compiling &lt;a href="https://github.com/revbayes/revbayes"&gt;RevBayes&lt;/a&gt;, while it was working for him.  It turns out that &lt;a href="http://www.cmake.org/"&gt;CMake&lt;/a&gt; was including compiler flags for me that it was not including for him (fwiw: I compiled cmake, Jeet used a pre-built version).
+&lt;/p&gt;
+&lt;p&gt;Here is the very odd bit. The code&lt;/p&gt;
+&lt;div class="geshifilter"&gt;&lt;pre class="python geshifilter-python" style="font-family:monospace;"&gt;&lt;span style="color: #808080; font-style: italic;"&gt;#include &amp;lt;list&amp;gt;&lt;/span&gt;
+&lt;span style="color: #008000;"&gt;int&lt;/span&gt; main&lt;span style="color: black;"&gt;&amp;#40;&lt;/span&gt;&lt;span style="color: black;"&gt;&amp;#41;&lt;/span&gt; &lt;span style="color: black;"&gt;&amp;#123;&lt;/span&gt;
+    std::list&lt;span style="color: #66cc66;"&gt;&amp;lt;&lt;/span&gt;int&lt;span style="color: #66cc66;"&gt;*&amp;gt;&lt;/span&gt; x&lt;span style="color: black;"&gt;&amp;#40;&lt;/span&gt;&lt;span style="color: #ff4500;"&gt;1&lt;/span&gt;, NULL&lt;span style="color: black;"&gt;&amp;#41;&lt;/span&gt;&lt;span style="color: #66cc66;"&gt;;&lt;/span&gt;
+&lt;span style="color: black;"&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;will compile with a simple &lt;tt&gt;g++ t.cpp -arch x86_64&lt;/tt&gt; when using &lt;tt&gt;i686-apple-darwin10-g++-4.2.1 (GCC) 4.2.1 (Apple Inc. build 5666) (dot 3)&lt;/tt&gt; on a MacBookPro running 10.6.8.&lt;/p&gt;
+
+&lt;p&gt;The same code will not compile if you use the using tho &lt;tt&gt;-arch i386&lt;/tt&gt; flag.  The compiler (not linker!) error is:&lt;/p&gt;&lt;p&gt;&lt;a href="https://mtholder.github.io/home/content/odd-bug-g-darwin-implicit-conversion-null-pointer-not-working-all-architectures" target="_blank"&gt;read more&lt;/a&gt;&lt;/p&gt;
+   </description>
+   <pubdate>
+    Thu, 22 Sep 2011 02:48:04 +0000
+   </pubdate>
+   <dc:creator>
+    mholder
+   </dc:creator>
+   <guid ispermalink="false">
+    695 at "https://phylo.bio.ku.edu
+   </guid>
+  </item>
+  <item>
+   <title>
+    matplotlib and scipy for i386/x86_64 version of python 2.7
+   </title>
+   <link>
+    "https://phylo.bio.ku.edu/content/matplotlib-and-scipy-i386x8664-version-python-27
+   </link>
+   <description>
+    In a fit of masochism I installed the i386/x86_64 binary of Python 2.7 for Mac, which is available from: 
+http://www.python.org/ftp/python/2.7.1/python-2.7.1-macosx10.6.dmg
+on my laptop.
+
+Note that 
+&lt;tt&gt;$ file $(which python)&lt;/tt&gt;
+reports Mach-O executable i386 and Mach-O 64-bit executable x86_64 for this installation of python.
+
+I wanted to use scipy and matplotlib, which is where the trouble began because there are not binaries of those for python 2.7 for this architecture.&lt;p&gt;&lt;a href="https://mtholder.github.io/home/content/matplotlib-and-scipy-i386x8664-version-python-27" target="_blank"&gt;read more&lt;/a&gt;&lt;/p&gt;
+   </description>
+   <pubdate>
+    Sun, 06 Mar 2011 02:28:29 +0000
+   </pubdate>
+   <dc:creator>
+    mholder
+   </dc:creator>
+   <guid ispermalink="false">
+    690 at "https://phylo.bio.ku.edu
+   </guid>
+  </item>
+  <item>
+   <title>
+    ecmascript for python programmers
+   </title>
+   <link>
+    "https://phylo.bio.ku.edu/content/ecmascript-python-programmers
+   </link>
+   <description>
+    &lt;p&gt;Disclaimer: I have written &lt;b&gt;very little&lt;/b&gt; ECMAScript, I'm using this post as a place to store my notes. The odds that I have some of the details wrong is high. See &lt;a href="http://developer.yahoo.com/yui/theater/video.php?v=crockonjs-3"&gt;http://developer.yahoo.com/yui/theater/video.php?v=crockonjs-3&lt;/a&gt; (and related) videos for a nice description of different aspects of ECMAScript, and &lt;a href="https://developer.mozilla.org/en/JavaScript/Reference"&gt;https://developer.mozilla.org/en/JavaScript/Reference&lt;/a&gt; and &lt;a href="http://javascript-reference.info/"&gt;http://javascript-reference.info/&lt;/a&gt; for terse language references.
+&lt;/p&gt;&lt;p&gt;&lt;a href="https://mtholder.github.io/home/content/ecmascript-python-programmers" target="_blank"&gt;read more&lt;/a&gt;&lt;/p&gt;
+   </description>
+   <pubdate>
+    Sun, 02 Jan 2011 23:49:42 +0000
+   </pubdate>
+   <dc:creator>
+    mholder
+   </dc:creator>
+   <guid ispermalink="false">
+    686 at "https://phylo.bio.ku.edu
+   </guid>
+  </item>
+  <item>
+   <title>
+    likelihood demo script
+   </title>
+   <link>
+    "https://phylo.bio.ku.edu/content/likelihood-demo-script
+   </link>
+   <description>
+    &lt;p&gt;Requires PyQt.&lt;/p&gt;
+&lt;p&gt;Your mileage may vary.&lt;/p&gt;
+&lt;p&gt;Instructions to come soon (hopefully)&lt;/p&gt;
+&lt;p&gt;Download &lt;a href="https://mtholder.github.io/home/sites/default/files/likelihood_demo.py.txt"&gt;"https://phylo.bio.ku.edu/sites/default/files/likelihood_demo.py.txt&lt;/a&gt;&lt;br /&gt;
+and save it as likelihood_demo.py&lt;/p&gt;
+   </description>
+   <pubdate>
+    Sat, 31 Jul 2010 02:14:39 +0000
+   </pubdate>
+   <dc:creator>
+    mholder
+   </dc:creator>
+   <guid ispermalink="false">
+    677 at "https://phylo.bio.ku.edu
+   </guid>
+  </item>
+  <item>
+   <title>
+    building self-contained phycas Debian package
+   </title>
+   <link>
+    "https://phylo.bio.ku.edu/content/building-self-contained-phycas-debian-package
+   </link>
+   <description>
+    &lt;p&gt;OK, so this goes against the grain of a good package management system (which Debian has), by bundling dependencies.  We've had some serious issues in the past with getting our versions of python in sync with boost libraries, ncl, and python.&lt;/p&gt;
+&lt;p&gt;So below are the instructions for creating a debian package that installs NCL, python2.7, ipython, and puts phycas into (lib/python2.6/site-packages )&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Save &lt;a href="https://mtholder.github.io/home/sites/default/files/Phycas_sh.txt"&gt;Phycas_sh.txt&lt;/a&gt; as &lt;tt&gt;Phycas&lt;/tt&gt; with the executable bit set
+&lt;/li&gt;&lt;/ol&gt;
+   </description>
+   <pubdate>
+    Thu, 29 Jul 2010 21:07:54 +0000
+   </pubdate>
+   <dc:creator>
+    mholder
+   </dc:creator>
+   <guid ispermalink="false">
+    676 at "https://phylo.bio.ku.edu
+   </guid>
+  </item>
+  <item>
+   <title>
+    building self-contained phycas bundles
+   </title>
+   <link>
+    "https://phylo.bio.ku.edu/content/building-self-contained-phycas-bundles
+   </link>
+   <description>
+    &lt;p&gt;Below are instructions for creating (refilling is a more accurate term) our iTerm4Phycas .app bundle for Mac.&lt;br /&gt;
+The scripts below puts python 2.6.5 , ipython, ncl in the iTerm-based .app bundle.&lt;br /&gt;
+All phycas dependencies are built for i386.&lt;/p&gt;
+&lt;p&gt;Updated July, 31, 2010&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt; Download &lt;a href="https://mtholder.github.io/home/sites/default/files/build_phycas_standalone_bundle.sh_.txt"&gt;build_phycas_standalone_bundle.sh_.txt&lt;br /&gt;
+&lt;/a&gt; to a fresh directory and rename it as &lt;tt&gt;build_phycas_standalone_bundle.sh&lt;/tt&gt;&lt;/li&gt;
+&lt;li&gt; Download &lt;a href="https://mtholder.github.io/home/sites/default/files/phycas_standalone_build_env.sh_.txt"&gt;phycas_standalone_build_env.sh_.txt&lt;/a&gt; to the same directory and rename it as &lt;tt&gt;phycas_standalone_build_env.sh&lt;/tt&gt;&lt;/li&gt;
+&lt;li&gt;Take a look at the scripts to note how hacky they are&lt;/li&gt;
+&lt;li&gt; Make sure you have wget and svn&lt;/li&gt;
+&lt;li&gt; &lt;tt&gt;sh build_phycas_standalone_bundle.sh&lt;/tt&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;p&gt;&lt;a href="https://mtholder.github.io/home/content/building-self-contained-phycas-bundles" target="_blank"&gt;read more&lt;/a&gt;&lt;/p&gt;
+   </description>
+   <pubdate>
+    Thu, 29 Jul 2010 18:09:03 +0000
+   </pubdate>
+   <dc:creator>
+    mholder
+   </dc:creator>
+   <guid ispermalink="false">
+    675 at "https://phylo.bio.ku.edu
+   </guid>
+  </item>
+  <item>
+   <title>
+    script for building gcc on kwyjibo
+   </title>
+   <link>
+    "https://phylo.bio.ku.edu/content/script-building-gcc-kwyjibo
+   </link>
+   <description>
+    Not the actual steps that we used, but pretty much.
+
+
+&lt;div class="geshifilter"&gt;&lt;pre class="python geshifilter-python" style="font-family:monospace;"&gt;&lt;span style="color: #808080; font-style: italic;"&gt;#!/bin/sh&lt;/span&gt;
+&lt;span style="color: #808080; font-style: italic;"&gt;# script to install gcc &lt;/span&gt;
+&amp;nbsp;
+&lt;span style="color: #008000;"&gt;set&lt;/span&gt; -x
+export NEW_GCC_PREFIX=/share/apps/opt/gcc-&lt;span style="color: #ff4500;"&gt;4.5&lt;/span&gt;
+export LD_LIBRARY_PATH=$NEW_GCC_PREFIX/lib
+&amp;nbsp;
+&lt;span style="color: #ff7700;font-weight:bold;"&gt;if&lt;/span&gt; &lt;span style="color: #66cc66;"&gt;!&lt;/span&gt; &lt;span style="color: #dc143c;"&gt;test&lt;/span&gt; -f gmp-5.0.1.&lt;span style="color: black;"&gt;tar&lt;/span&gt;.&lt;span style="color: #dc143c;"&gt;bz2&lt;/span&gt; 
+then
+    wget ftp://ftp.&lt;span style="color: black;"&gt;gmplib&lt;/span&gt;.&lt;span style="color: black;"&gt;org&lt;/span&gt;/pub/gmp-5.0.1/gmp-5.0.1.&lt;span style="color: black;"&gt;tar&lt;/span&gt;.&lt;span style="color: #dc143c;"&gt;bz2&lt;/span&gt;  || exit
+fi
+tar xfvj gmp-5.0.1.&lt;span style="color: black;"&gt;tar&lt;/span&gt;.&lt;span style="color: #dc143c;"&gt;bz2&lt;/span&gt;  || exit
+&lt;span style="color: #dc143c;"&gt;cd&lt;/span&gt; gmp-5.0.1  || exit
+make || exit
+sudo make install  || exit
+&lt;span style="color: #dc143c;"&gt;cd&lt;/span&gt; ..  || exit
+&amp;nbsp;
+&amp;nbsp;
+&lt;span style="color: #ff7700;font-weight:bold;"&gt;if&lt;/span&gt; &lt;span style="color: #66cc66;"&gt;!&lt;/span&gt; &lt;span style="color: #dc143c;"&gt;test&lt;/span&gt; -f mpfr-3.0.0.&lt;span style="color: black;"&gt;tar&lt;/span&gt;.&lt;span style="color: #dc143c;"&gt;bz2&lt;/span&gt; 
+then
+    wget http://www.&lt;span style="color: black;"&gt;mpfr&lt;/span&gt;.&lt;span style="color: black;"&gt;org&lt;/span&gt;/mpfr-current/mpfr-3.0.0.&lt;span style="color: black;"&gt;tar&lt;/span&gt;.&lt;span style="color: #dc143c;"&gt;bz2&lt;/span&gt;  || exit
+fi
+tar xfvj mpfr-3.0.0.&lt;span style="color: black;"&gt;tar&lt;/span&gt;.&lt;span style="color: #dc143c;"&gt;bz2&lt;/span&gt;  || exit
+&lt;span style="color: #dc143c;"&gt;cd&lt;/span&gt; mpfr-&lt;span style="color: #ff4500;"&gt;3.0&lt;/span&gt;.&lt;span style="color: black;"&gt;X&lt;/span&gt;  || exit
+./configure --with-gmp=$NEW_GCC_PREFIX --prefix=$NEW_GCC_PREFIX  || exit
+make  || exit
+make check  || exit
+sudo make install  || exit
+&lt;span style="color: #dc143c;"&gt;cd&lt;/span&gt; ..  || exit
+&amp;nbsp;
+&amp;nbsp;
+&lt;span style="color: #ff7700;font-weight:bold;"&gt;if&lt;/span&gt; &lt;span style="color: #66cc66;"&gt;!&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;a href="https://mtholder.github.io/home/content/script-building-gcc-kwyjibo" target="_blank"&gt;read more&lt;/a&gt;&lt;/p&gt;
+   </description>
+   <pubdate>
+    Thu, 22 Jul 2010 23:24:24 +0000
+   </pubdate>
+   <dc:creator>
+    mholder
+   </dc:creator>
+   <guid ispermalink="false">
+    674 at "https://phylo.bio.ku.edu
+   </guid>
+  </item>
+ </channel>
+</rss>

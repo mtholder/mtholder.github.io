@@ -1,0 +1,188 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html dir="ltr" lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+  <link href="../misc/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+  <title>
+   script for building gcc on kwyjibo | mtholder.github.io/home/   </title>
+  <link href="../modules/book/book.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../modules/node/node.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../modules/system/defaults.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../modules/system/system.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../modules/system/system-menus.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../modules/user/user.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/cck/theme/content-module.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/date/date.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/date/date_popup/themes/datepicker.1.7.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/date/date_popup/themes/jquery.timeentry.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/geshifilter/geshifilter.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/biblio/biblio.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/cck/modules/fieldgroup/fieldgroup.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/views/css/views.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../themes/garland/style.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../themes/garland/print.css?F" media="print" rel="stylesheet" type="text/css"/>
+  <!--[if lt IE 7]>
+      <link type="text/css" rel="stylesheet" media="all" href="/themes/garland/fix-ie.css" />    <![endif]-->
+ </head>
+ <body class="sidebar-left">
+  <!-- Layout -->
+  <div class="clear-block" id="header-region">
+  </div>
+  <div id="wrapper">
+   <div class="clear-block" id="container">
+    <div id="header">
+     <div id="logo-floater">
+      <h1>
+       <a href="../" title="mtholder.github.io/home/">
+        <img alt="mtholder.github.io/home/" id="logo" src="../sites/default/files/garland_logo.png"/>
+        <span>
+         mtholder.github.io/home/         </span>
+       </a>
+      </h1>
+     </div>
+     <ul class="links primary-links">
+      <li class="menu-440 first">
+       <a href="../home" title="Holder Lab Web page">
+        Home
+       </a>
+      </li>
+      <li class="menu-449">
+       <a href="../courses" title="Courses">
+        Courses
+       </a>
+      </li>
+      <li class="menu-628 last">
+       <a href="../content/borice" title="Software">
+        Software
+       </a>
+      </li>
+     </ul>
+    </div>
+    <!-- /header -->
+    <div id="center">
+     <div id="squeeze">
+      <div class="right-corner">
+       <div class="left-corner">
+        <div class="breadcrumb">
+         <a href="../">
+          Home
+         </a>
+         ›
+         <a href="../blog">
+          Blogs
+         </a>
+         ›
+         <a href="../blog/mholder">
+          mholder's blog
+         </a>
+        </div>
+        <h2>
+         script for building gcc on kwyjibo
+        </h2>
+        <div class="clear-block">
+         <div class="node" id="node-674">
+          <span class="submitted">
+           Thu, 07/22/2010 - 17:24 — mholder
+          </span>
+          <div class="content clear-block">
+           Not the actual steps that we used, but pretty much.
+           <div class="geshifilter">
+            <pre class="python geshifilter-python" style="font-family:monospace;"><span style="color: #808080; font-style: italic;">#!/bin/sh</span>
+<span style="color: #808080; font-style: italic;"># script to install gcc </span>
+ 
+<span style="color: #008000;">set</span> -x
+export NEW_GCC_PREFIX=/share/apps/opt/gcc-<span style="color: #ff4500;">4.5</span>
+export LD_LIBRARY_PATH=$NEW_GCC_PREFIX/lib
+ 
+<span style="color: #ff7700;font-weight:bold;">if</span> <span style="color: #66cc66;">!</span> <span style="color: #dc143c;">test</span> -f gmp-5.0.1.<span style="color: black;">tar</span>.<span style="color: #dc143c;">bz2</span> 
+then
+    wget ftp://ftp.<span style="color: black;">gmplib</span>.<span style="color: black;">org</span>/pub/gmp-5.0.1/gmp-5.0.1.<span style="color: black;">tar</span>.<span style="color: #dc143c;">bz2</span>  || exit
+fi
+tar xfvj gmp-5.0.1.<span style="color: black;">tar</span>.<span style="color: #dc143c;">bz2</span>  || exit
+<span style="color: #dc143c;">cd</span> gmp-5.0.1  || exit
+make || exit
+sudo make install  || exit
+<span style="color: #dc143c;">cd</span> ..  || exit
+ 
+ 
+<span style="color: #ff7700;font-weight:bold;">if</span> <span style="color: #66cc66;">!</span> <span style="color: #dc143c;">test</span> -f mpfr-3.0.0.<span style="color: black;">tar</span>.<span style="color: #dc143c;">bz2</span> 
+then
+    wget http://www.<span style="color: black;">mpfr</span>.<span style="color: black;">org</span>/mpfr-current/mpfr-3.0.0.<span style="color: black;">tar</span>.<span style="color: #dc143c;">bz2</span>  || exit
+fi
+tar xfvj mpfr-3.0.0.<span style="color: black;">tar</span>.<span style="color: #dc143c;">bz2</span>  || exit
+<span style="color: #dc143c;">cd</span> mpfr-<span style="color: #ff4500;">3.0</span>.<span style="color: black;">X</span>  || exit
+./configure --with-gmp=$NEW_GCC_PREFIX --prefix=$NEW_GCC_PREFIX  || exit
+make  || exit
+make check  || exit
+sudo make install  || exit
+<span style="color: #dc143c;">cd</span> ..  || exit
+ 
+ 
+<span style="color: #ff7700;font-weight:bold;">if</span> <span style="color: #66cc66;">!</span> <span style="color: #dc143c;">test</span> -f mpc-0.8.2.<span style="color: black;">tar</span>.<span style="color: black;">gz</span> 
+then
+    wget http://www.<span style="color: black;">multiprecision</span>.<span style="color: black;">org</span>/mpc/download/mpc-0.8.2.<span style="color: black;">tar</span>.<span style="color: black;">gz</span>  || exit
+fi
+tar fxvz mpc-0.8.2.<span style="color: black;">tar</span>.<span style="color: black;">gz</span>  || exit
+<span style="color: #dc143c;">cd</span> mpc-0.8.2  || exit
+./configure --with-gmp=$NEW_GCC_PREFIX --with-mpfr=$NEW_GCC_PREFIX --prefix=$NEW_GCC_PREFIX  || exit
+make  || exit
+make check  || exit
+sudo make install  || exit
+<span style="color: #dc143c;">cd</span> ..  || exit
+ 
+ 
+<span style="color: #ff7700;font-weight:bold;">if</span> <span style="color: #66cc66;">!</span> <span style="color: #dc143c;">test</span> -f gcc-4.5.0.<span style="color: black;">tar</span>.<span style="color: #dc143c;">bz2</span> 
+then
+    wget http://mirror.<span style="color: black;">anl</span>.<span style="color: black;">gov</span>/pub/gnu/gcc/gcc-4.5.0/gcc-4.5.0.<span style="color: black;">tar</span>.<span style="color: #dc143c;">bz2</span>  || exit
+fi
+tar xfvj gcc-4.5.0.<span style="color: black;">tar</span>.<span style="color: #dc143c;">bz2</span> || exit 
+<span style="color: #dc143c;">cd</span> gcc-4.5.0  || exit
+./configure --with-gmp=$NEW_GCC_PREFIX --with-mpfr=$NEW_GCC_PREFIX --with-mpc=$NEW_GCC_PREFIX --prefix=$NEW_GCC_PREFIX || exit
+make -j6 || exit
+sudo make install</pre>
+           </div>
+          </div>
+          <div class="clear-block">
+           <div class="meta">
+           </div>
+           <div class="links">
+            <ul class="links inline">
+             <li class="blog_usernames_blog first last">
+              <a href="../blog/mholder" title="Read mholder's latest blog entries.">
+               mholder's blog
+              </a>
+             </li>
+            </ul>
+           </div>
+          </div>
+         </div>
+        </div>
+        <div id="footer">
+         <p>
+          The
+          <a href="https://mtholder.github.io/home/">
+           Holder Lab
+          </a>
+          is part of the
+          <a href="https://eeb.ku.edu/">
+           Department of Ecology and Evolutionary Biology
+          </a>
+          at
+          <a href="https://www.ku.edu">
+           KU
+          </a>
+         </p>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+    <!-- /.left-corner, /.right-corner, /#squeeze, /#center -->
+   </div>
+   <!-- /container -->
+  </div>
+  <!-- /layout -->
+ </body>
+</html>

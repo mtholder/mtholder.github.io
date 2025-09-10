@@ -1,0 +1,316 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html dir="ltr" lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+  <link href="../misc/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+  <title>
+   Programming practice assignment 1 | mtholder.github.io/home/   </title>
+  <link href="../modules/book/book.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../modules/node/node.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../modules/system/defaults.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../modules/system/system.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../modules/system/system-menus.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../modules/user/user.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/cck/theme/content-module.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/date/date.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/date/date_popup/themes/datepicker.1.7.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/date/date_popup/themes/jquery.timeentry.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/geshifilter/geshifilter.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/biblio/biblio.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/cck/modules/fieldgroup/fieldgroup.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/views/css/views.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../themes/garland/style.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../themes/garland/print.css?F" media="print" rel="stylesheet" type="text/css"/>
+  <!--[if lt IE 7]>
+      <link type="text/css" rel="stylesheet" media="all" href="/themes/garland/fix-ie.css" />    <![endif]-->
+ </head>
+ <body class="sidebar-left">
+  <!-- Layout -->
+  <div class="clear-block" id="header-region">
+  </div>
+  <div id="wrapper">
+   <div class="clear-block" id="container">
+    <div id="header">
+     <div id="logo-floater">
+      <h1>
+       <a href="../" title="mtholder.github.io/home/">
+        <img alt="mtholder.github.io/home/" id="logo" src="../sites/default/files/garland_logo.png"/>
+        <span>
+         mtholder.github.io/home/         </span>
+       </a>
+      </h1>
+     </div>
+     <ul class="links primary-links">
+      <li class="menu-440 first">
+       <a href="../home" title="Holder Lab Web page">
+        Home
+       </a>
+      </li>
+      <li class="menu-449">
+       <a href="../courses" title="Courses">
+        Courses
+       </a>
+      </li>
+      <li class="menu-628 last">
+       <a href="../content/borice" title="Software">
+        Software
+       </a>
+      </li>
+     </ul>
+    </div>
+    <!-- /header -->
+    <div id="center">
+     <div id="squeeze">
+      <div class="right-corner">
+       <div class="left-corner">
+        <div class="breadcrumb">
+         <a href="../">
+          Home
+         </a>
+        </div>
+        <h2>
+         Programming practice assignment 1
+        </h2>
+        <div class="clear-block">
+         <div class="node" id="node-455">
+          <span class="submitted">
+           Mon, 01/25/2010 - 10:19 — mholder
+          </span>
+          <div class="content clear-block">
+           <p>
+            The posted
+            <a href="https://mtholder.github.io/home/sites/default/files/arch_basics.pdf">
+             pdf
+            </a>
+            from the first lecture lists several bash commands that are useful to know if you want to become comfortable from the command line.
+           </p>
+           <p>
+            By far the most important commands that we will use are:
+            <br/>
+            <strong>
+             ls
+            </strong>
+            which gives a directory listing  (in DOS this is the
+            <strong>
+             dir
+            </strong>
+            command).
+            <br/>
+            <strong>
+             cd
+            </strong>
+            which changes into a directory
+            <br/>
+            <strong>
+             cp
+            </strong>
+            to copy a file
+            <br/>
+            <strong>
+             mv
+            </strong>
+            to move a file -- WATCH OUT: you will NOT be warned if the command will over-write an existing file.
+            <br/>
+            <strong>
+             mkdir
+            </strong>
+            which creates a new directory
+            <br/>
+            <strong>
+             pwd
+            </strong>
+            to print your working directory
+           </p>
+           <p>
+            Recall that using
+            <strong>
+             &gt;
+            </strong>
+            after a command in bash sends the output to a file.  So:
+            <br/>
+            <br/>
+            <strong>
+             ls &gt; a
+            </strong>
+           </p>
+           <p>
+            would write the results of the ls command to a file called 'a'
+           </p>
+           <p>
+            I recommend not using the remove command (
+            <strong>
+             rm
+            </strong>
+            on Mac,
+            <strong>
+             del
+            </strong>
+            on windows) unless you are confident of you abilities from the command line.
+           </p>
+           <p>
+            I also posted a simple python script called
+            <a href="https://mtholder.github.io/home/sites/default/files/echo.py.txt">
+             echo.py
+            </a>
+            that prints out command line arguments in a more verbose way than the UNIX's built in echo command (It will show up in your browser as echo.py.txt so you'll have to rename it).
+           </p>
+           <p>
+            Here is the exercise to make sure that you are familiar enough with the Terminal to invoke the python programs that we'll be writing:
+           </p>
+           <p>
+            1. Download the
+            <a href="https://mtholder.github.io/home/sites/default/files/echo.py.txt">
+             <strong>
+              echo.py
+             </strong>
+            </a>
+            script and remember where on your hard drive that you saved it.
+            <br/>
+            <br/>
+            2. Open a Terminal (/Applications/Utilities/Terminal on Mac) or Cmd.exe (Windows) to get a command terminal.
+            <br/>
+            <br/>
+            3.  Invoke
+            <strong>
+             python
+            </strong>
+            and give it the
+            <strong>
+             echo.py
+            </strong>
+            script as its only argument.
+            <br/>
+            <br/>
+            This step will require that:
+            <br/>
+            (a) you can invoke python (it must be in a directory listed in your PATH variable or you must specify the absolute file path to python). Because it is on my PATH, I can invoke python by typing:
+            <br/>
+            <strong>
+             python
+            </strong>
+            <br/>
+            or by the full path:
+            <br/>
+            <strong>
+             /Library/Frameworks/Python.framework/Versions/2.6/bin/python
+            </strong>
+            <br/>
+            <br/>
+            (If you get into python and need to get out then you can type "exit" and return.  The python interpreter will tell you the appropriate way to leave pytho on your Operating System -- it is
+            <strong>
+             Ctrl-D
+            </strong>
+            on Mac).
+            <br/>
+            <br/>
+            (b) you can specify the path to the echo.py.  When you open a new terminal you will be in your home directory, so you have to be able to specify the relative path (from your home to where echo.py is saved) or the absolute path (how to find echo.py from the root of the filesystem).
+            <br/>
+            <br/>
+            If you don't specify the path the correctly, Python will give you an error indicating that it can't find the file.
+            <br/>
+            <br/>
+            <br/>
+            4. change your working to the same directory as echo.py.
+            <br/>
+            <br/>
+            5. invoke python with echo.py as an argument and "hi" as an additional argument.  (you should now be able to just use the name echo.py as the argument to python instead of a path to the script).
+            <br/>
+            <br/>
+            6. Call
+            <strong>
+             echo.py
+            </strong>
+            with the phrase
+            <strong>
+             hi there
+            </strong>
+            in two different ways. First let each word be a different argument.  Next have pass the phrase in as a single argument (this will require quoting).
+            <br/>
+            <br/>
+            7. Copy
+            <strong>
+             echo.py
+            </strong>
+            to the parent directory under the name
+            <strong>
+             echo_copy.py
+            </strong>
+            (The relative path syntax for "parent directory" is
+            <strong>
+             ..
+            </strong>
+            )
+            <br/>
+            <br/>
+            8. Invoke the copy giving it whatever arguments you like.
+            <br/>
+            <br/>
+            9. Invoke the copy of echo.py again, and this time redirect output to a file called
+            <strong>
+             exercise output.txt
+            </strong>
+            Open the file in a text editor and verify that it contains what you expected.
+            <br/>
+            <br/>
+            <br/>
+            10. Send the argument
+            <strong>
+             -v
+            </strong>
+            to echo.py.
+            <br/>
+            <br/>
+            11. Now send
+            <strong>
+             -v
+            </strong>
+            as an argument to
+            <strong>
+             python
+            </strong>
+            . To do this, the token
+            <strong>
+             -v
+            </strong>
+            has to come earlier in the command line than echo.py.  How does the behavior change?
+            <br/>
+            <br/>
+           </p>
+           <p>
+           </p>
+          </div>
+          <div class="clear-block">
+           <div class="meta">
+           </div>
+          </div>
+         </div>
+        </div>
+        <div id="footer">
+         <p>
+          The
+          <a href="https://mtholder.github.io/home/">
+           Holder Lab
+          </a>
+          is part of the
+          <a href="https://eeb.ku.edu/">
+           Department of Ecology and Evolutionary Biology
+          </a>
+          at
+          <a href="https://www.ku.edu">
+           KU
+          </a>
+         </p>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+    <!-- /.left-corner, /.right-corner, /#squeeze, /#center -->
+   </div>
+   <!-- /container -->
+  </div>
+  <!-- /layout -->
+ </body>
+</html>

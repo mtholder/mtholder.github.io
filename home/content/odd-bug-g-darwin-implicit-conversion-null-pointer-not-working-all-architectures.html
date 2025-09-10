@@ -1,0 +1,203 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html dir="ltr" lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+  <link href="../misc/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+  <title>
+   Odd bug in g++ on darwin - implicit conversion of NULL to pointer not working on all architectures | mtholder.github.io/home/   </title>
+  <link href="../modules/book/book.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../modules/node/node.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../modules/system/defaults.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../modules/system/system.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../modules/system/system-menus.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../modules/user/user.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/cck/theme/content-module.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/date/date.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/date/date_popup/themes/datepicker.1.7.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/date/date_popup/themes/jquery.timeentry.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/geshifilter/geshifilter.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/biblio/biblio.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/cck/modules/fieldgroup/fieldgroup.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/views/css/views.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../themes/garland/style.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../themes/garland/print.css?F" media="print" rel="stylesheet" type="text/css"/>
+  <!--[if lt IE 7]>
+      <link type="text/css" rel="stylesheet" media="all" href="/themes/garland/fix-ie.css" />    <![endif]-->
+ </head>
+ <body class="sidebar-left">
+  <!-- Layout -->
+  <div class="clear-block" id="header-region">
+  </div>
+  <div id="wrapper">
+   <div class="clear-block" id="container">
+    <div id="header">
+     <div id="logo-floater">
+      <h1>
+       <a href="../" title="mtholder.github.io/home/">
+        <img alt="mtholder.github.io/home/" id="logo" src="../sites/default/files/garland_logo.png"/>
+        <span>
+         mtholder.github.io/home/         </span>
+       </a>
+      </h1>
+     </div>
+     <ul class="links primary-links">
+      <li class="menu-440 first">
+       <a href="../home" title="Holder Lab Web page">
+        Home
+       </a>
+      </li>
+      <li class="menu-449">
+       <a href="../courses" title="Courses">
+        Courses
+       </a>
+      </li>
+      <li class="menu-628 last">
+       <a href="../content/borice" title="Software">
+        Software
+       </a>
+      </li>
+     </ul>
+    </div>
+    <!-- /header -->
+    <div id="center">
+     <div id="squeeze">
+      <div class="right-corner">
+       <div class="left-corner">
+        <div class="breadcrumb">
+         <a href="../">
+          Home
+         </a>
+         ›
+         <a href="../blog">
+          Blogs
+         </a>
+         ›
+         <a href="../blog/mholder">
+          mholder's blog
+         </a>
+        </div>
+        <h2>
+         Odd bug in g++ on darwin - implicit conversion of NULL to pointer not working on all architectures
+        </h2>
+        <div class="clear-block">
+         <div class="node" id="node-695">
+          <span class="submitted">
+           Wed, 09/21/2011 - 20:48 — mholder
+          </span>
+          <div class="content clear-block">
+           <p>
+            <a href="http://jeetworks.org/about">
+             Jeet
+            </a>
+            and I tracked this down after I was having issues compiling
+            <a href="https://github.com/revbayes/revbayes">
+             RevBayes
+            </a>
+            , while it was working for him.  It turns out that
+            <a href="http://www.cmake.org/">
+             CMake
+            </a>
+            was including compiler flags for me that it was not including for him (fwiw: I compiled cmake, Jeet used a pre-built version).
+           </p>
+           <p>
+            Here is the very odd bit. The code
+           </p>
+           <div class="geshifilter">
+            <pre class="python geshifilter-python" style="font-family:monospace;"><span style="color: #808080; font-style: italic;">#include &lt;list&gt;</span>
+<span style="color: #008000;">int</span> main<span style="color: black;">(</span><span style="color: black;">)</span> <span style="color: black;">{</span>
+    std::list<span style="color: #66cc66;">&lt;</span>int<span style="color: #66cc66;">*&gt;</span> x<span style="color: black;">(</span><span style="color: #ff4500;">1</span>, NULL<span style="color: black;">)</span><span style="color: #66cc66;">;</span>
+<span style="color: black;">}</span></pre>
+           </div>
+           <p>
+            will compile with a simple
+            <tt>
+             g++ t.cpp -arch x86_64
+            </tt>
+            when using
+            <tt>
+             i686-apple-darwin10-g++-4.2.1 (GCC) 4.2.1 (Apple Inc. build 5666) (dot 3)
+            </tt>
+            on a MacBookPro running 10.6.8.
+           </p>
+           <p>
+            The same code will not compile if you use the using tho
+            <tt>
+             -arch i386
+            </tt>
+            flag.  The compiler (not linker!) error is:
+           </p>
+           <div class="geshifilter">
+            <pre class="python geshifilter-python" style="font-family:monospace;">/usr/include/c++/4.2.1/bits/stl_list.<span style="color: black;">h</span>: In member function <span style="color: #483d8b;">'void std::list&lt;_Tp, _Alloc&gt;::_M_initialize_dispatch(_Integer, _Integer, std::__true_type) [with _Integer = int, _Tp = int*, _Alloc = std::allocator&lt;int*&gt;]'</span>:
+/usr/include/c++/4.2.1/bits/stl_list.<span style="color: black;">h</span>:<span style="color: #ff4500;">515</span>:   instantiated <span style="color: #ff7700;font-weight:bold;">from</span> <span style="color: #483d8b;">'std::list&lt;_Tp, _Alloc&gt;::list(_InputIterator, _InputIterator, const _Alloc&amp;) [with _InputIterator = int, _Tp = int*, _Alloc = std::allocator&lt;int*&gt;]'</span>
+t.<span style="color: black;">cpp</span>:<span style="color: #ff4500;">3</span>:   instantiated <span style="color: #ff7700;font-weight:bold;">from</span> here
+/usr/include/c++/4.2.1/bits/stl_list.<span style="color: black;">h</span>:<span style="color: #ff4500;">1105</span>: error: invalid static_cast <span style="color: #ff7700;font-weight:bold;">from</span> <span style="color: #008000;">type</span> <span style="color: #483d8b;">'int'</span> to <span style="color: #008000;">type</span> <span style="color: #483d8b;">'int*'</span></pre>
+           </div>
+           <p>
+            Pre-processing the file (with g++'s
+            <tt>
+             -e
+            </tt>
+            option) reveals that the dreaded
+            <tt>
+             NULL
+            </tt>
+            macro gets expanded to
+            <tt>
+             __null
+            </tt>
+           </p>
+           <p>
+            It appears that
+            <tt>
+             __null
+            </tt>
+            is an int version of 0 when you compile for i386, but a long in the 64-bit version; and the implicit cast from int to a pointer type is causing the problem.  That is ugly.
+           </p>
+           <p>
+            I tried to report this via apple's bug report system, but a bug in that system made it impossible for me to log-in.  Nice.  Everything must be working great - we are getting no bug reports!
+           </p>
+          </div>
+          <div class="clear-block">
+           <div class="meta">
+           </div>
+           <div class="links">
+            <ul class="links inline">
+             <li class="blog_usernames_blog first last">
+              <a href="../blog/mholder" title="Read mholder's latest blog entries.">
+               mholder's blog
+              </a>
+             </li>
+            </ul>
+           </div>
+          </div>
+         </div>
+        </div>
+        <div id="footer">
+         <p>
+          The
+          <a href="https://mtholder.github.io/home/">
+           Holder Lab
+          </a>
+          is part of the
+          <a href="https://eeb.ku.edu/">
+           Department of Ecology and Evolutionary Biology
+          </a>
+          at
+          <a href="https://www.ku.edu">
+           KU
+          </a>
+         </p>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+    <!-- /.left-corner, /.right-corner, /#squeeze, /#center -->
+   </div>
+   <!-- /container -->
+  </div>
+  <!-- /layout -->
+ </body>
+</html>

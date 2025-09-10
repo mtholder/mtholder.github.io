@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+          tex2jax: {
+            inlineMath: [['$','$'], ['\\(','\\)']],
+            processEscapes: true
+          }
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>BayesTraits Lab | Paul O. Lewis Lab Home</title>
+<meta name="generator" content="Jekyll v3.10.0">
+<meta property="og:title" content="Searching through treespace">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="This is based on the the web site of Paul O. Lewis, Department of Ecology and Evolutionary Biology, University of Connecticut, Storrs, CT. USA.">
+<meta property="og:description" content="This is based on the  the web site of Paul O. Lewis, Department of Ecology and Evolutionary Biology, University of Connecticut, Storrs, CT. USA.">
+<link rel="canonical" href="https://plewis.github.io/likelihood/">
+<meta property="og:url" content="/models/">
+<meta property="og:site_name" content="Mark T. Holder Lab">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Searching through treespace">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"This is based on th the web site of Paul O. Lewis, Department of Ecology and Evolutionary Biology, University of Connecticut, Storrs, CT. USA.","headline":"Models and ML","url":"/models/"}</script>
+<!-- End Jekyll SEO tag -->
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="https://plewis.github.io/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Paul O. Lewis Lab Home" /></head>
+<body><header class="site-header" role="banner">
+
+
+  <div class="wrapper">
+<a class="site-title" rel="author" href="/">Paul O. Lewis Lab Home</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger">
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewbox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+            </svg>
+          </span>
+        </label>
+
+      </nav>
+</div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Likelihood Lab</h1>
+  </header>
+
+   <div class="post-content">
+    <p>This lab was written by Paul Lewis - see <a href="https://plewis.github.io/phylogenetics2024/"> his Phylogenetics main page</a>; with some tweaks by MTH</p>
+
+<h2 id="goals">Goals</h2>
+
+<p>In this lab you will learn how to use the program <a href="https://www.evolution.reading.ac.uk/BayesTraitsV4.1.1/BayesTraitsV4.1.1.html">BayesTraits</a>, written by Andrew Meade and Mark Pagel. BayesTraits can perform several analyses related to evaluating evolutionary correlation and ancestral state reconstruction in discrete morphological traits.</p>
+
+<h2 id="lab-answer-worksheet">Lab answer worksheet</h2>
+
+<p>Copy the following text into a text file and use this template to answer the <img class="emoji" title=":thinking:" alt=":thinking:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f914.png" height="20" width="20"> questions along the way.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. Which occurs at a faster rate: pinnate to palmate, or palmate to pinnate?
+answer:
+
+2. Which occurs at a faster rate: entire to dissected, or dissected to entire?
+answer:
+
+3. What type of joint evolutionary transitions seem to often have very low rates (look for an abundance of zeros in a column)?
+answer:
+
+4. What type of joint evolutionary transitions seem to often have very high rates (look for columns with rates in the hundreds)?
+answer:
+
+5. Why am I suggesting this switch? (Hint: what is the domain of a Uniform(0,100) distribution vs. an Exponential(1/29) distribution?)
+answer:
+
+6. Why choose 29? (Hint: the variance of a Uniform(0,100) distribution equals 100^2/12 and the variance of an Exponential(1/29) distribution equals 29^2)
+answer:
+
+7. What is the log marginal likelihood estimated using the stepping-stone method? This value is listed on the last line of the file _mcmc-dependent.Stones.txt_
+answer:
+
+8. What is the estimated log marginal likelihood for this analysis using the stepping-stone method?
+answer:
+
+9. Which is the better model (dependent or independent) according to these estimates of marginal likelihood?
+answer:
+
+10. Which model string is most common? 
+answer:
+
+11. What does this model imply?
+answer:
+
+12. So what is the estimated marginal posterior probability that q21=0?
+answer:
+
+13. Why is the term marginal appropriate here (as in marginal posterior probability)?
+answer:
+
+14. Which state is most common at the xerophyte MRCA node for leaf venation?
+answer:
+
+15. Which state is most common at the xerophyte MRCA node for leaf dissection?
+answer:
+</code></pre></div></div>
+
+<h2 id="getting-started">Getting started</h2>
+
+<p>You can run the lab on your own laptop (download from the BayesTraits page above) or on the cluster</p>
+
+<h3 id="create-a-directory">Create a directory</h3>
+
+<p>If running on the cluster, use the the bash <code class="language-plaintext highlighter-rouge">mkdir</code> command to create a directory to play in today:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mkdir btlab
+cd btlab
+</code></pre></div></div>
+
+<h3 id="download-bayestraits">Download BayesTraits</h3>
+
+<p>There is no module for BayesTraits, so we will have to download the latest version into your home directory:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget https://www.evolution.reading.ac.uk/BayesTraitsV4.1.1/Files/BayesTraitsV4.1.1-Linux.tar.gz
+</code></pre></div></div>
+<p>or use</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl -O https://www.evolution.reading.ac.uk/BayesTraitsV4.1.1/Files/BayesTraitsV4.1.1-Linux.tar.gz
+</code></pre></div></div>
+
+<p>Now unpack the gzipped “tape archive” (tar) file as follows:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tar zxvf BayesTraitsV4.1.1-Linux.tar.gz
+</code></pre></div></div>
+
+<p>This will create a directory named <em>BayesTraitsV4.1.1-Linux</em> in your current directory. Move the BayesTraits executable from inside <em>BayesTraitsV4.1.1-Linux</em> down one level to current directory for easier access:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mv BayesTraitsV4.1.1-Linux/BayesTraitsV4 .
+</code></pre></div></div>
+
+<p>The third line above (<code class="language-plaintext highlighter-rouge">cd ..</code>) should move you back to the <code class="language-plaintext highlighter-rouge">~/bdlab</code> directory. Check this using the <code class="language-plaintext highlighter-rouge">pwd</code> command:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pwd
+</code></pre></div></div>
+
+<p>Go back to Mark Pagel’s web site and <a href="https://www.evolution.reading.ac.uk/BayesTraitsV4.1.1/Files/BayesTraitsV4.1.1-Manual.pdf">download the manual</a> for BayesTraits. This is a PDF file and should open in your browser window.</p>
+
+<h4 id="a-little-aside-on-tar-files">A little aside on tar files</h4>
+
+<p>Data used to be stored on magnetic tape, not hard drives, and the tar (tape archive) program is what was used to move files to and from the tape. This tells you something about how old the tar format is because perhaps none of you have even seen a magnetic tape used for data storage! The tar command takes all the files in a directory and simply concatenates them into one gigantic file. It also preserves file permissions and the directory structure. The four letters after the command name tar are zxvf. These stand for the following:</p>
+<ul>
+  <li>z = uncompress (the gz at the end of the file tells you it is a compressed archive, so the z tells tar to uncompress it before unpacking it)</li>
+  <li>x = extract (unpack the archive into individual files. You would use c here if you were creating a tar file)</li>
+  <li>v = verbose (tell us what’s going on as you unpack)</li>
+  <li>f = file (this tells tar that the file name is coming next, so don’t put f earlier in the list)</li>
+</ul>
+
+<p>This tar file has been compressed using the program gzip, which adds the gz ending to the file name. Most tar files are compressed with gzip or some similar algorithm so that the file requires less time to move across the internet.</p>
+
+<h3 id="download-the-tree-and-data-files">Download the tree and data files</h3>
+
+<p>For this exercise, you will use data and trees used in the SIMMAP analyses presented in this paper:</p>
+
+<blockquote>Jones C.S., Bakker F.T., Schlichting C.D., Nicotra A.B. 2009. Leaf shape evolution in the South African genus _Pelargonium_ L'Her. (Geraniaceae). Evolution. 63:479–497.</blockquote>
+
+<p>The data and trees were not made available in the online supplementary materials for this paper, but I have obtained permission to use them for this laboratory exercise.</p>
+
+<p><a href="/assets/data/pelly.txt">pelly.txt</a> This is the data file. It contains data for two traits (leaf dissection and leaf venation) for 154 taxa in the plant genus <em>Pelargonium</em>.</p>
+
+<p><a href="/assets/data/pelly.tre">pelly.tre</a> This is the tree file. It contains 99 trees sampled from an MCMC analysis of DNA sequences.</p>
+
+<p>Here’s how to <code class="language-plaintext highlighter-rouge">curl</code> these files into your <em>btlab</em> folder</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl -O https://plewis.github.io/assets/data/pelly.txt
+curl -O https://plewis.github.io/assets/data/pelly.tre
+</code></pre></div></div>
+
+<h2 id="assessing-the-strength-of-association-between-two-binary-characters">Assessing the strength of association between two binary characters</h2>
+
+<p>The first thing we will do is see if the two characters (leaf dissection and leaf venation) in <em>pelly.txt</em> are evolutionarily correlated.</p>
+
+<h3 id="trait-1-leaf-dissection">Trait 1: Leaf dissection</h3>
+
+<div class="image-right noborder"><figure>
+
+    <img class="image-right noborder" src="dissection.png" alt="From Fig. 1E and 1F of the paper" width="400px">
+
+<figcaption>From Fig. 1E and 1F of the paper</figcaption>
+</figure></div>
+
+<p>The <strong>leaf dissection</strong> trait comprises two states (I’ve merged some states in the original data matrix to produce just 2 states):</p>
+
+<ul>
+  <li>0 means leaves are <em>entire</em> (<em>unlobed</em> or <em>shallowly lobed</em> in the original study), and</li>
+  <li>1 means leaves are <em>dissected</em> (<em>lobed</em>, <em>deeply lobed</em>, or <em>dissected</em> in the original study).</li>
+</ul>
+
+<h3 id="trait-2-leaf-venation">Trait 2: Leaf venation</h3>
+
+<div class="image-right noborder"><figure>
+
+    <img class="image-right noborder" src="venation.png" alt="From www.ibiblio.org/botnet/test/6-16-3.html" width="300px">
+
+<figcaption>From www.ibiblio.org/botnet/test/6-16-3.html</figcaption>
+</figure></div>
+
+<p>The <strong>leaf venation</strong> trait comprises two states:</p>
+
+<ul>
+  <li>0 means leaves are <em>pinnately veined</em> (one main vein runs down the long axis of the leaf blade), and</li>
+  <li>1 means leaves are <em>palmately veined</em> (several major veins meet at the base of the leaf).</li>
+</ul>
+
+<p>We will first use maximum likelihood to estimate the rates at which these two traits evolve under both an independent model (traits assumed to evolve independently) and a dependent model (the rates of change in one trait may differ depending on the state present in the other trait).</p>
+
+<p>To test whether these two traits are correlated, we will carry out Bayesian MCMC analyses and estimate the <strong>marginal likelihood</strong> under two models. The model (independent or dependent) with the higher marginal likelihood will be the preferred model.</p>
+
+<p>Then we will use reversible-jump MCMC to determine which of several thousand models is best. This method effectively uses marginal likelihoods to choose among models, but has the advantage that you need not specify which models you are interested in comparing beforehand.</p>
+
+<p>Finally, I’ll show you how to estimate the marginal posterior probabilities of different ancestral state combinations using BayesTraits.</p>
+
+<h2 id="maximum-likelihood-independence-model">Maximum Likelihood: Independence model</h2>
+
+<p>Type the following to start the BayesTraits program (assuming you are in the <em>btlab</em> folder):</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./BayesTraitsV4 pelly.tre pelly.txt
+</code></pre></div></div>
+
+<p>You should see this selection appear:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Please select the model of evolution to use.
+1)	    MultiState
+2)	    Discrete: Independent
+3)	    Discrete: Dependant
+4)	    Continuous: Random Walk (Model A)
+5)	    Continuous: Directional (Model B)
+6)	    Continuous: Regression
+7)	    Independent Contrast 
+8)	    Independent Contrast: Correlation 
+9)	    Independent Contrast: Regression
+10)    Discrete: Covarion
+12)    Fat Tail
+13)    Geo
+</code></pre></div></div>
+
+<p>Press the 2 key and hit enter to select the Independent model. Now you should see these choices appear:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Please Select the analysis method to use.
+1)	Maximum Likelihood.
+2)	MCMC
+</code></pre></div></div>
+
+<p>Press the 1 key and hit enter to select maximum likelihood. Now you should see some output showing the choices you explicitly (or implicitly) made:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Options:
+Model:                           Discrete: Independent
+Tree File Name:                  pelly.tre
+Data File Name:                  pelly.txt
+Log File Name:                   pelly.txt.Log.txt
+Save Initial Trees:              False
+Save Trees:                      False
+Summary:                         False
+Seed:                            664656726
+Analsis Type:                    Maximum Likelihood
+ML Attempt Per Tree:             10
+ML Max Evaluations:              20000
+ML Tolerance:                    0.000001
+ML Algorithm:                    BOBYQA
+Rate Range:                      0.000000 - 100.000000
+Precision:                       64 bits
+Cores:                           1
+No of Rates:                     4
+Base frequency (PI's):           None
+Pis used in ancestral state estimation:      Yes
+Character Symbols:               00,01,10,11
+Using a covarion model:          False
+Normalise Q Matrix:              False
+Restrictions:
+    alpha1                       None
+    beta1                        None
+    alpha2                       None
+    beta2                        None
+Tree Information
+     Trees:                      99
+     Taxa:                       154
+     Sites:                      1
+     States:                     4
+</code></pre></div></div>
+
+<p>Now type <code class="language-plaintext highlighter-rouge">run</code> and hit enter to perform the analysis, which will consist of estimating the parameters of the independent model on each of the 99 trees contained in the <em>pelly.tre</em> file. You will notice that BayesTraits created a new file: <em>pelly.txt.Log.txt</em>.</p>
+
+<p><strong>Rename this file</strong> <em>ml-independent.txt</em> so that it will not be overwritten the next time you run BayesTraits:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mv pelly.txt.Log.txt ml-independent.txt
+</code></pre></div></div>
+
+<p>Open the <em>ml-independent.txt</em> file in nano (or bring it back to your laptop and use BBEdit (Mac) or Notepad++ (Windows) to view it). Scrolling past the first 33 lines, you should see the start of the parameter samples:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Tree No	Lh	alpha1	beta1	alpha2	beta2	Root - P(0,0)	Root - P(0,1)	Root - P(1,0)	Root - P(1,1)
+1	-157.362972	53.767527	34.523176	35.319157	20.707416	0.249998	0.250002	0.249998	0.250002
+2	-158.179984	53.313539	34.182683	36.038859	20.997536	0.249999	0.250001	0.249999	0.250001
+.
+.
+.
+98	-156.647307	52.357626	36.749282	27.270771	13.086248	0.250244	0.249756	0.250244	0.249756 
+99	-156.532925	52.321467	36.641688	27.402067	13.200124	0.250234	0.249767	0.250233	0.249766
+</code></pre></div></div>
+
+<p>(Optional: download the <em>ml-independent.txt</em> file to your laptop, use a text editor to strip the first 33 lines, and open the file in Tracer.)</p>
+
+<p>Answer these questions using the output you have generated. Here’s a key to the meaning of each column in the file:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Column</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">Tree No</td>
+      <td style="text-align: left">Tree from <em>pelly.tre</em>
+</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Lh</td>
+      <td style="text-align: left">log-likelihood</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">alpha1</td>
+      <td style="text-align: left">leaf dissection: rate 0 (entire) -&gt; 1 (dissected)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">beta1</td>
+      <td style="text-align: left">leaf dissection: rate 1 (dissected) -&gt; 0 (entire)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">alpha2</td>
+      <td style="text-align: left">leaf venation: rate 0 (pinnate) -&gt; 1 (palmate)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">beta2</td>
+      <td style="text-align: left">leaf venation: rate 1 (palmate) -&gt; 0 (pinnate)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Root - P(0,0)</td>
+      <td style="text-align: left">prob. state 0,0 at root node</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Root - P(0,1)</td>
+      <td style="text-align: left">prob. state 0,1 at root node</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Root - P(1,0)</td>
+      <td style="text-align: left">prob. state 1,0 at root node</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Root - P(1,1)</td>
+      <td style="text-align: left">prob. state 1,1 at root node</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <p><img class="emoji" title=":thinking:" alt=":thinking:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f914.png" height="20" width="20"> Which occurs at a faster rate: pinnate to palmate, or palmate to pinnate?</p>
+</blockquote>
+
+<blockquote>
+  <p><img class="emoji" title=":thinking:" alt=":thinking:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f914.png" height="20" width="20"> Which occurs at a faster rate: entire to dissected, or dissected to entire?</p>
+</blockquote>
+
+<h2 id="maximum-likelihood-dependence-model">Maximum Likelihood: Dependence model</h2>
+
+<p>Run BayesTraits again, this time typing 3 on the first screen to choose the dependence model and again typing 1 on the second screen to select maximum likelihood. You should see this output showing the options selected:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Options:
+Model:                           Discrete: Dependent
+Tree File Name:                  pelly.tre
+Data File Name:                  pelly.txt
+Log File Name:                   pelly.txt.Log.txt
+Save Initial Trees:              False
+Save Trees:                      False
+Summary:                         False
+Seed:                            776907455
+Analsis Type:                    Maximum Likelihood
+ML Attempt Per Tree:             10
+ML Max Evaluations:              20000
+ML Tolerance:                    0.000001
+ML Algorithm:                    BOBYQA
+Rate Range:                      0.000000 - 100.000000
+Precision:                       64 bits
+Cores:                           1
+No of Rates:                     8
+Base frequency (PI's):           None
+Pis used in ancestral state estimation:      Yes
+Character Symbols:               00,01,10,11
+Using a covarion model:          False
+Normalise Q Matrix:              False
+Restrictions:
+    q12                          None
+    q13                          None
+    q21                          None
+    q24                          None
+    q31                          None
+    q34                          None
+    q42                          None
+    q43                          None
+Tree Information
+     Trees:                      99
+     Taxa:                       154
+     Sites:                      1
+     States:                     4    
+</code></pre></div></div>
+
+<p>Run the analysis. Here is an example of the output produced (in the file <em>pelly.txt.Log.txt</em>) after you type <code class="language-plaintext highlighter-rouge">run</code> to start the analysis:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Tree No	Lh	q12	q13	q21	q24	q31	q34	q42	q43	Root - P(0,0)	Root - P(0,1)	Root - P(1,0)	Root - P(1,1)
+1	-151.930254	66.451053	37.783888	0.000000	62.220033	23.997490	23.299393	46.110432	36.632979	0.24999	0.249981	0.250026	0.250000
+2	-152.925691	67.152271	38.611193	0.000000	60.925185	24.514488	23.937433	45.313366	37.199310	0.24999	0.249983	0.250023	0.250001
+.
+.
+.
+98	-150.816306	36.534843	27.359325	0.000000	66.563262	19.823546	24.944519	63.940577	31.074092	0.250048	0.249750	0.250304	0.249898
+99	-150.712705	37.316351	27.260833	0.000000	64.364694	20.107653	25.004246	60.945163	31.658536	0.250030	0.249779	0.250272	0.249919
+</code></pre></div></div>
+
+<p><strong>Before doing anything else,  rename the file</strong> <em>pelly.txt.Log.txt</em> to <em>ml-dependent.txt</em> so that it will not be overwritten the next time you run BayesTraits.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mv pelly.txt.Log.txt ml-dependent.txt
+</code></pre></div></div>
+
+<p>Here’s a key to the rates:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Rate</th>
+      <th style="text-align: left">Context</th>
+      <th style="text-align: left">Transition</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">q12</td>
+      <td style="text-align: left">dissection: 0 (entire)</td>
+      <td style="text-align: left">venation: 0 (pinnate) -&gt; 1 (palmate)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">q13</td>
+      <td style="text-align: left">venation: 0 (pinnate)</td>
+      <td style="text-align: left">dissection:   0 (entire) -&gt; 1 (dissected)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">q21</td>
+      <td style="text-align: left">dissection: 0 (entire)</td>
+      <td style="text-align: left">venation: 1 (palmate) -&gt; 0 (pinnate)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">q24</td>
+      <td style="text-align: left">venation: 1 (palmate)</td>
+      <td style="text-align: left">dissection:   0 (entire) -&gt; 1 (dissected)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">q31</td>
+      <td style="text-align: left">venation: 0 (pinnate)</td>
+      <td style="text-align: left">dissection:   1 (dissected) -&gt; 0 (entire)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">q34</td>
+      <td style="text-align: left">dissection: 1 (dissected)</td>
+      <td style="text-align: left">venation: 0 (pinnate) -&gt; 1 (palmate)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">q42</td>
+      <td style="text-align: left">venation 1 (palmate)</td>
+      <td style="text-align: left">dissection:   1 (dissected) -&gt; 0 (entire)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">q43</td>
+      <td style="text-align: left">dissection: 1 (dissected)</td>
+      <td style="text-align: left">venation: 1 (palmate) -&gt; 0 (pinnate)</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <p><img class="emoji" title=":thinking:" alt=":thinking:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f914.png" height="20" width="20"> What type of joint evolutionary transitions seem to often have very low rates (look for an abundance of zeros in a column)?</p>
+</blockquote>
+
+<blockquote>
+  <p><img class="emoji" title=":thinking:" alt=":thinking:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f914.png" height="20" width="20"> What type of joint evolutionary transitions seem to often have very high rates (look for columns with rates in the hundreds)?</p>
+</blockquote>
+
+<h2 id="bayesian-mcmc-dependence-model">Bayesian MCMC: Dependence model</h2>
+
+<p>Run BayesTraits again, typing 3 on the first screen to choose the dependence model and this time typing 2 on the second screen to select MCMC. You should see this output showing the options selected:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Options:
+Model:                           Discrete: Dependent
+Tree File Name:                  pelly.tre
+Data File Name:                  pelly.txt
+Log File Name:                   pelly.txt.Log.txt
+Save Initial Trees:              False
+Save Trees:                      False
+Summary:                         False
+Seed:                            1326361449
+Precision:                       64 bits
+Cores:                           1
+Analysis Type:                   MCMC
+Sample Period:                   1000
+Iterations:                      1010000
+Burn in:                         10000
+MCMC ML Start:                   False
+Schedule File:                   pelly.txt.Schedule.txt
+Rate Dev:                        AutoTune
+No of Rates:                     8
+Base frequency (PI's):           None
+Pis used in ancestral state estimation:      Yes
+Character Symbols:               00,01,10,11
+Using a covarion model:          False
+Normalise Q Matrix:              False
+Restrictions:
+    q12                          None
+    q13                          None
+    q21                          None
+    q24                          None
+    q31                          None
+    q34                          None
+    q42                          None
+    q43                          None
+Prior Information:
+    Prior Categories:            100
+    Priors
+        q12 - uniform 0.00 100.00
+        q13 - uniform 0.00 100.00
+        q21 - uniform 0.00 100.00
+        q24 - uniform 0.00 100.00
+        q31 - uniform 0.00 100.00
+        q34 - uniform 0.00 100.00
+        q42 - uniform 0.00 100.00
+        q43 - uniform 0.00 100.00
+Tree Information
+     Trees:                      99
+     Taxa:                       154
+     Sites:                      1
+     States:                     4
+</code></pre></div></div>
+
+<p><strong>Before typing run</strong> type the following command, which tells BayesTraits to change all priors from the default Uniform(0,100) to an Exponential distribution with mean 29:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pa exp 29
+</code></pre></div></div>
+
+<blockquote>
+  <p><img class="emoji" title=":thinking:" alt=":thinking:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f914.png" height="20" width="20"> Why am I suggesting this switch? (Hint: what is the support of a Uniform(0,100) distribution vs. an Exponential(1/29) distribution?)</p>
+</blockquote>
+
+<blockquote>
+  <p><img class="emoji" title=":thinking:" alt=":thinking:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f914.png" height="20" width="20"> Why choose 29? (Hint: the variance of a Uniform(0,100) distribution equals 100^2/12 and the variance of an Exponential(1/29) distribution equals 29^2)</p>
+</blockquote>
+
+<p>Also type the following to ask BayesTraits to perform a stepping-stone analysis:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>stones 100 10000
+</code></pre></div></div>
+
+<p>Now run the analysis. This will estimate 100 ratios to brook the gap between posterior and prior, using a sample size of 10000 for each “stone”.</p>
+
+<p>Here is an example of the output stored in the file <em>pelly.txt.Log.txt</em> after you type <code class="language-plaintext highlighter-rouge">run</code> to start the analysis:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Iteration	Lh	Tree No	q12	q13	q21	q24	q31	q34	q42	q43	Root - P(0,0)	Root - P(0,1)	Root - P(1,0)	Root - P(1,1)
+11000	-155.195365	78	14.423234	34.800270	8.845985	45.927148	12.622435	50.476188	52.844895	32.149168	0.250068	0.249969	0.249994	0.249968
+12000	-154.161705	82	64.601017	12.382781	9.259134	51.796365	12.002095	23.744903	30.316089	21.865930	0.249936	0.249957	0.250095	0.250012 .
+.
+.
+1009000	-154.343996	30	33.555198	50.086092	11.294490	38.518607	24.461032	47.295157	43.477964	21.726938	0.250057	0.249939	0.250045	0.249959
+1010000	-154.195259	87	29.584898	35.410909	2.003582	61.981073	16.976124	14.895266	49.111354	14.419644	0.251115	0.247854	0.252551	0.248480
+</code></pre></div></div>
+
+<p><strong>Before doing anything else,  rename the file</strong> <em>pelly.txt.Log.txt</em> to <em>mcmc-dependent.txt</em>, and <em>pelly.txt.Stones.txt</em> to <em>mcmc-dependent.Stones.txt</em> so that they will not be overwritten the next time you run BayesTraits.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mv pelly.txt.Log.txt mcmc-dependent.txt
+mv pelly.txt.Stones.txt mcmc-dependent.Stones.txt 
+</code></pre></div></div>
+
+<p>The <em>Tree No</em> column shows which of the 99 trees in the supplied <em>pelly.tre</em> treefile was chosen at random to be used for that particular sample point. BayesTraits is sampling trees from the posterior distribution here; it cannot <em>actually</em> sample trees from the posterior because we have given it only data for two morphological characters, which would not provide nearly enough information to estimate the phylogeny for 154 taxa. It is as if we had given BayesTraits sequence data as well as our 2 morphological characters and it was using only the sequence data to estimate the posterior distribution of trees and edge lengths and only the morphological data to estimate rates for the morphological characters.</p>
+
+<p>Try to answer these questions using the output you have generated:</p>
+
+<blockquote>
+  <p><img class="emoji" title=":thinking:" alt=":thinking:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f914.png" height="20" width="20"> What is the log marginal likelihood estimated using the stepping-stone method? This value is listed on the last line of the file <em>mcmc-dependent.Stones.txt</em></p>
+</blockquote>
+
+<h2 id="bayesian-mcmc-independence-model">Bayesian MCMC: Independence model</h2>
+
+<p>Run BayesTraits again, this time specifying the Independent model, and again using MCMC, <code class="language-plaintext highlighter-rouge">pa exp 29</code>, and <code class="language-plaintext highlighter-rouge">stones 100 10000</code>. Rename the output file from <em>pelly.txt.log.txt</em> to <em>mcmc-independent.txt</em>. Also rename <em>pelly.txt.Stones.txt</em> to <em>mcmc-independent.Stones.txt</em>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mv pelly.txt.Log.txt mcmc-independent.txt
+mv pelly.txt.Stones.txt mcmc-independent.Stones.txt
+</code></pre></div></div>
+
+<blockquote>
+  <p><img class="emoji" title=":thinking:" alt=":thinking:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f914.png" height="20" width="20"> What is the estimated log marginal likelihood for this analysis using the stepping-stone method?</p>
+</blockquote>
+
+<blockquote>
+  <p><img class="emoji" title=":thinking:" alt=":thinking:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f914.png" height="20" width="20"> Which is the better model (dependent or independent) according to these estimates of marginal likelihood?</p>
+</blockquote>
+
+<h2 id="bayesian-reversible-jump-mcmc">Bayesian Reversible-jump MCMC</h2>
+
+<p>Run BayesTraits again, specifying Dependent model, MCMC and, this time, specify the reversible-jump approach using the command</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rj exp 29
+</code></pre></div></div>
+
+<p>The previous command also sets the prior. Type <code class="language-plaintext highlighter-rouge">run</code> to start, then when it finishes rename the output file <em>rjmcmc-dependent.txt</em>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mv pelly.txt.Log.txt rjmcmc-dependent.txt
+</code></pre></div></div>
+
+<p>The reversible-jump approach carries out an MCMC analysis in which the number of model parameters (the dimension of the model) potentially changes from one iteration to the next. The full model allows each of the 8 rate parameters to be estimated separately, while other models restrict the values of some rate parameters to equal the values of other rate parameters. The output contains a column titled <strong>Model string</strong> that summarizes the model in a string of 8 symbols corresponding to the 8 rate parameters q12, q13, q21, q24, q31, q34, q42, and q43. For example, the model string “‘1 0 Z 0 1 1 0 2” sets q21 to zero (Z),  q13=q24=q42 (parameter group 0), q12=q31=q34 (parameter group 1), and q43 has its own non-zero value distinct from parameter groups 0 and 1.</p>
+
+<p>You could copy the “spreadsheet” part of the output file into Excel and sort by the model string column, but let’s instead use Python to summarize the output file. Download (e.g. using curl) the file <em>btsummary.py</em> and run it as follows:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl -O https://plewis.github.io/assets/scripts/btsummary.py
+python3 btsummary.py
+</code></pre></div></div>
+
+<p>This should produce counts of model strings. (If it doesn’t, check to make sure your output file is named <em>rjmcmc-dependent.txt</em> because <em>btsummary.py</em> tries to open a file by that name.)   Answer the following questions using the counts provided by <em>btsummary.py</em>:</p>
+
+<blockquote>
+  <p><img class="emoji" title=":thinking:" alt=":thinking:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f914.png" height="20" width="20"> Which model string is most common?</p>
+</blockquote>
+
+<blockquote>
+  <p><img class="emoji" title=":thinking:" alt=":thinking:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f914.png" height="20" width="20"> What does this model imply?</p>
+</blockquote>
+
+<p>Notice that many (but not all) model strings have Z for q21. One way to estimate the marginal posterior probability of the hypothesis that q21=0 is to sum the counts for all model strings that have Z in that third position corresponding to q21. 
+</p>
+<h3>Opional script modification part</h3>
+While it is pretty easy to add these numbers in your head, let’s modify <em>btsummary.py</em> to do this for us (this might come in useful if you ever encounter results that are more complex): open <em>btsummary.py</em> in nano and locate the line containing the <a href="https://en.wikipedia.org/wiki/Regular_expression">regular expression</a> search that pulls out all the model strings from the BayesTrait output file:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>model_list = re.findall("'[Z0-9] [Z0-9] [Z0-9] [Z0-9] [Z0-9] [Z0-9] [Z0-9] [Z0-9]", stuff, re.M | re.S)
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">re.findall</code> function performs a regular expression search of the text stored in the variable stuff looking for strings that have a series of 8 space-separated characters, each of which is <em>either</em> the character Z <em>or</em> a digit between 0 and 9 (inclusive). Copy this line (in nano, you can do this with Ctrl-K (cut), Ctrl-U (uncut), Ctrl-U (uncut)), then comment out one copy by starting the line with the hash (#) character:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#model_list = re.findall("'[Z0-9] [Z0-9] [Z0-9] [Z0-9] [Z0-9] [Z0-9] [Z0-9] [Z0-9]", stuff, re.M | re.S)
+model_list = re.findall("'[Z0-9] [Z0-9] [Z0-9] [Z0-9] [Z0-9] [Z0-9] [Z0-9] [Z0-9]", stuff, re.M | re.S)
+</code></pre></div></div>
+
+<p>Now modify the uncommented copy such that it counts only models with Z in the third position of the model string.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>model_list = re.findall("'[Z0-9] [Z0-9] Z [Z0-9] [Z0-9] [Z0-9] [Z0-9] [Z0-9]", stuff, re.M | re.S)
+</code></pre></div></div>
+
+<p>Rerun <em>btsummary.py</em>, and now the total matches should equal the number of model strings sampled in which q21=0.</p>
+
+<blockquote>
+  <p><img class="emoji" title=":thinking:" alt=":thinking:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f914.png" height="20" width="20"> So what is the estimated marginal posterior probability that q21=0?</p>
+</blockquote>
+
+<blockquote>
+  <p><img class="emoji" title=":thinking:" alt=":thinking:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f914.png" height="20" width="20"> Why is the term marginal appropriate here (as in marginal posterior probability)?</p>
+</blockquote>
+<h3>End of optional script modification part</h3>
+<h2 id="estimating-ancestral-states">Estimating ancestral states</h2>
+
+<div class="image-right noborder"><figure>
+
+    <img class="image-right noborder" src="Xerophytevenation.png" alt="Xerophyte venation" width="400px">
+
+<figcaption>Xerophyte venation</figcaption>
+</figure></div>
+
+<p>The Jones et al. 2009 study estimated ancestral states using SIMMAP. In particular, they found that the most recent common ancestor (MRCA) of the xerophytic (dry-adapted) clade of pelargoniums almost certainly had pinnate venation (see red circle in figure on right). Let’s see what BayesTraits says.</p>
+
+<p>Start BayesTraits in the usual way, specifying 1 (Multistate) on the first screen and 2 (MCMC) on the second. After the options are output, type the following commands in, one line at a time, finishing with the run command:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pa exp 29
+addtag xerotag alternans104 rapaceum130
+addmrca xero xerotag
+run
+</code></pre></div></div>
+
+<p>The <strong>addmrca</strong> command tells BayesTraits to add columns of numbers to the output that display the probabilities of each state for each character in the most recent common ancestor of the taxa listed in the <strong>addtag</strong> command (2 taxa are sufficient to define the MRCA, but more taxa may be included). The column headers for the last four columns of output should be (I’ve added the comments starting with <code class="language-plaintext highlighter-rouge">&lt;--</code>)</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>xero - S(0) - P(0) &lt;-- character 0 (dissection), probability of state 0 (entire)
+xero - S(0) - P(1) &lt;-- character 0 (dissection), probability of state 1 (dissected)
+xero - S(1) - P(0) &lt;-- character 1 (venation), probability of state 0 (pinnate)
+xero - S(1) - P(1) &lt;-- character 1 (venation), probability of state 1 (palmate)
+</code></pre></div></div>
+
+<p>You can download the output file (<em>pelly.txt.Log.txt</em>) and view it in Tracer. That way you can use Tracer to tell you the means of the four columns above. Note that you will need to remove the initial text from the file (but keep the column headers) before Tracer will recognize it.</p>
+
+<blockquote>
+  <p><img class="emoji" title=":thinking:" alt=":thinking:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f914.png" height="20" width="20"> Which state is most common at the xerophyte MRCA node for leaf venation?</p>
+</blockquote>
+
+<blockquote>
+  <p><img class="emoji" title=":thinking:" alt=":thinking:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f914.png" height="20" width="20"> Which state is most common at the xerophyte MRCA node for leaf dissection?</p>
+</blockquote>
+
+<p>That concludes the introduction to BayesTraits. A glance through the manual will convince you that there is much more to this program than we have time to cover in a single lab period, but you should know enough now to explore the rest on your own if you need these features.</p>
+
+<h2 id="what-to-turn-in">What to turn in</h2>
+
+<p>Send your answers to Mark via Canvas or email.</p>
+
+
+  </div>
+
+</article>
+
+      </div>
+    </main>
+<footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-3">
+        <p>This is based on a page from the web site of Paul O. Lewis, Department of Ecology and Evolutionary Biology, University of Connecticut, Storrs, CT. USA.</p>
+      </div>
+    </div>
+  </div>
+</footer>
+</body>
+
+</html>

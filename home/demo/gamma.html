@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+  <title>
+   Gamma shape viz
+  </title>
+  <link href="css/jquery.aristo.css" media="screen" rel="stylesheet" type="text/css"/>
+  <script src="js/jquery-1.4.4.min.js" type="text/javascript">
+  </script>
+  <script src="js/jquery-ui-1.8.9.min.js" type="text/javascript">
+  </script>
+  <script src="js/jquery.flot.min.js" type="text/javascript">
+  </script>
+  <script src="js/jstat-1.0.0.js" type="text/javascript">
+  </script>
+  <script type="text/javascript">
+   $(document).ready(function() {
+    var plot;
+    var dist;
+    var numPoints = 1000;
+
+    var paramValues =[1.0,1.0];
+    function gShapeChange(value) {
+        paramValues[0] = value;
+        paramValues[1] = 1/value;
+        dist = new GammaDistribution(paramValues[0], paramValues[1]);
+        $('#param1-value').text(value);
+        plot.setDistribution(dist, new Range(0, 10, numPoints), 6.5);
+    }
+
+    $('#param1').slider({
+        slide: function(event, ui) {
+            gShapeChange(ui.value);
+        },
+        step: 0.1,
+        min: 0.1,
+        max: 300,
+        value: paramValues[0]
+    });
+    var distribution = new GammaDistribution(1, 1);
+    var plot = new DistributionPlot('plot', distribution);
+    gShapeChange(1.0);
+});
+  </script>
+ </head>
+ <body>
+  <p>
+   Gamma distribution with mean of 1:
+  </p>
+ </body>
+</html>
+<div id="plot" style="width:600px; height: 600px;">
+</div>
+<h3 class="small" id="param1-label">
+ <span id="param1-name">
+  Shape:
+ </span>
+ <span id="param1-value">
+  1.0
+ </span>
+</h3>
+<div id="param1">
+</div>
+<p>
+ Built with
+ <a href="http://www.jstat.org/">
+  http://www.jstat.org/
+ </a>
+</p>

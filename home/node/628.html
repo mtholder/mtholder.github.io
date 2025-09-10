@@ -1,0 +1,227 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html dir="ltr" lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+  <link href="../misc/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+  <title>
+   python autocompletion to replay file interactively | mtholder.github.io/home/   </title>
+  <link href="../modules/book/book.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../modules/node/node.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../modules/system/defaults.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../modules/system/system.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../modules/system/system-menus.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../modules/user/user.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/cck/theme/content-module.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/date/date.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/date/date_popup/themes/datepicker.1.7.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/date/date_popup/themes/jquery.timeentry.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/geshifilter/geshifilter.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/biblio/biblio.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/cck/modules/fieldgroup/fieldgroup.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/views/css/views.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../themes/garland/style.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../themes/garland/print.css?F" media="print" rel="stylesheet" type="text/css"/>
+  <!--[if lt IE 7]>
+      <link type="text/css" rel="stylesheet" media="all" href="/themes/garland/fix-ie.css" />    <![endif]-->
+ </head>
+ <body class="sidebar-left">
+  <!-- Layout -->
+  <div class="clear-block" id="header-region">
+  </div>
+  <div id="wrapper">
+   <div class="clear-block" id="container">
+    <div id="header">
+     <div id="logo-floater">
+      <h1>
+       <a href="../" title="mtholder.github.io/home/">
+        <img alt="mtholder.github.io/home/" id="logo" src="../sites/default/files/garland_logo.png"/>
+        <span>
+         mtholder.github.io/home/         </span>
+       </a>
+      </h1>
+     </div>
+     <ul class="links primary-links">
+      <li class="menu-440 first">
+       <a href="../home" title="Holder Lab Web page">
+        Home
+       </a>
+      </li>
+      <li class="menu-449">
+       <a href="../courses" title="Courses">
+        Courses
+       </a>
+      </li>
+      <li class="menu-628 last">
+       <a href="../content/borice" title="Software">
+        Software
+       </a>
+      </li>
+     </ul>
+    </div>
+    <!-- /header -->
+    <div id="center">
+     <div id="squeeze">
+      <div class="right-corner">
+       <div class="left-corner">
+        <div class="breadcrumb">
+         <a href="../">
+          Home
+         </a>
+         ›
+         <a href="../blog">
+          Blogs
+         </a>
+         ›
+         <a href="../blog/mholder">
+          mholder's blog
+         </a>
+        </div>
+        <h2>
+         python autocompletion to replay file interactively
+        </h2>
+        <div class="clear-block">
+         <div class="node" id="node-628">
+          <span class="submitted">
+           Tue, 01/26/2010 - 05:43 — mholder
+          </span>
+          <div class="content clear-block">
+           <p>
+            When teaching python it is helpful to be able to replay a script.  The .pythonstartuprc below checks for whether or not PYTHON_REPLAY_FILE is in your env and points to a valid file.  If it does, then it creates a readline completer that fills in the next line of the file when you hit &lt;TAB%gt; from a blank line.  The object will be in your locals as _completer and you can use _completer.list() to see the sections, and _completer.seek(10) or _completer.seek(section_name) to jump around in your tutorial (skipped code will NOT be executed).
+           </p>
+           <p>
+           </p>
+           <p>
+           </p>
+           <p>
+            <div class="geshifilter">
+             <pre class="python geshifilter-python" style="font-family:monospace;"><span style="color: #808080; font-style: italic;"># Store the file in ~/.pystartup, and set an environment variable to point</span>
+<span style="color: #808080; font-style: italic;"># to it:  "export PYTHONSTARTUP=/max/home/itamar/.pystartup" in bash.</span>
+<span style="color: #808080; font-style: italic;">#</span>
+<span style="color: #808080; font-style: italic;"># Note that PYTHONSTARTUP does *not* expand "~", so you have to put in the</span>
+<span style="color: #808080; font-style: italic;"># full path to your home directory.</span>
+ 
+<span style="color: #ff7700;font-weight:bold;">import</span> <span style="color: #dc143c;">os</span>
+<span style="color: #ff7700;font-weight:bold;">import</span> <span style="color: #dc143c;">readline</span>
+<span style="color: #ff7700;font-weight:bold;">try</span>:
+ 
+    replay_filepath = <span style="color: #dc143c;">os</span>.<span style="color: black;">environ</span>.<span style="color: black;">get</span><span style="color: black;">(</span><span style="color: #483d8b;">'PYTHON_REPLAY_FILE'</span><span style="color: black;">)</span>
+    <span style="color: #ff7700;font-weight:bold;">if</span> replay_filepath <span style="color: #ff7700;font-weight:bold;">and</span> <span style="color: #dc143c;">os</span>.<span style="color: black;">path</span>.<span style="color: black;">exists</span><span style="color: black;">(</span>replay_filepath<span style="color: black;">)</span>:
+        <span style="color: #dc143c;">readline</span>.<span style="color: black;">parse_and_bind</span><span style="color: black;">(</span><span style="color: #483d8b;">"tab: complete"</span><span style="color: black;">)</span>
+        <span style="color: #ff7700;font-weight:bold;">class</span> InteractiveReplayCompleter<span style="color: black;">(</span><span style="color: #008000;">object</span><span style="color: black;">)</span>:
+            <span style="color: #ff7700;font-weight:bold;">def</span> <span style="color: #0000cd;">__init__</span><span style="color: black;">(</span><span style="color: #008000;">self</span>, fo<span style="color: black;">)</span>:
+                <span style="color: #008000;">self</span>.<span style="color: black;">buffer</span> = <span style="color: black;">[</span>i<span style="color: black;">[</span>:-<span style="color: #ff4500;">1</span><span style="color: black;">]</span> <span style="color: #ff7700;font-weight:bold;">for</span> i <span style="color: #ff7700;font-weight:bold;">in</span> fo.<span style="color: black;">readlines</span><span style="color: black;">(</span><span style="color: black;">)</span><span style="color: black;">]</span>
+                <span style="color: #008000;">self</span>.<span style="color: black;">curr_line</span> = <span style="color: #ff4500;">0</span>
+                <span style="color: #008000;">self</span>.<span style="color: black;">prev_completer</span> = <span style="color: #dc143c;">readline</span>.<span style="color: black;">get_completer</span><span style="color: black;">(</span><span style="color: black;">)</span>
+                <span style="color: #dc143c;">readline</span>.<span style="color: black;">set_completer</span><span style="color: black;">(</span><span style="color: #008000;">self</span>.<span style="color: black;">complete</span><span style="color: black;">)</span>
+ 
+            <span style="color: #ff7700;font-weight:bold;">def</span> complete<span style="color: black;">(</span><span style="color: #008000;">self</span>, text, state<span style="color: black;">)</span>:
+                <span style="color: #ff7700;font-weight:bold;">if</span> text:
+                    <span style="color: #ff7700;font-weight:bold;">if</span> <span style="color: #008000;">self</span>.<span style="color: black;">prev_completer</span> <span style="color: #ff7700;font-weight:bold;">is</span> <span style="color: #008000;">None</span>:
+                        <span style="color: #ff7700;font-weight:bold;">return</span> <span style="color: #008000;">None</span>
+                    <span style="color: #ff7700;font-weight:bold;">return</span> <span style="color: #008000;">self</span>.<span style="color: black;">prev_completer</span><span style="color: black;">(</span>text, state<span style="color: black;">)</span>
+                <span style="color: #ff7700;font-weight:bold;">if</span> state <span style="color: #66cc66;">&gt;</span> <span style="color: #ff4500;">0</span>:
+                    <span style="color: #ff7700;font-weight:bold;">return</span> <span style="color: #008000;">None</span>
+                <span style="color: #ff7700;font-weight:bold;">try</span>:
+                    next_line = <span style="color: #483d8b;">'#'</span>
+                    <span style="color: #ff7700;font-weight:bold;">while</span> next_line.<span style="color: black;">startswith</span><span style="color: black;">(</span><span style="color: #483d8b;">'#'</span><span style="color: black;">)</span>:
+                        next_line = <span style="color: #008000;">self</span>.<span style="color: black;">buffer</span><span style="color: black;">[</span><span style="color: #008000;">self</span>.<span style="color: black;">curr_line</span><span style="color: black;">]</span>
+                        <span style="color: #008000;">self</span>.<span style="color: black;">curr_line</span> += <span style="color: #ff4500;">1</span>
+                    <span style="color: #ff7700;font-weight:bold;">return</span> next_line
+                <span style="color: #ff7700;font-weight:bold;">except</span>:
+                    <span style="color: #ff7700;font-weight:bold;">return</span> <span style="color: #008000;">None</span>
+            <span style="color: #ff7700;font-weight:bold;">def</span> dump<span style="color: black;">(</span><span style="color: #008000;">self</span><span style="color: black;">)</span>:
+                <span style="color: #ff7700;font-weight:bold;">for</span> ind, line <span style="color: #ff7700;font-weight:bold;">in</span> <span style="color: #008000;">enumerate</span><span style="color: black;">(</span><span style="color: #008000;">self</span>.<span style="color: black;">buffer</span><span style="color: black;">)</span>:
+                    <span style="color: #ff7700;font-weight:bold;">print</span> <span style="color: #483d8b;">"%d: %s"</span> <span style="color: #66cc66;">%</span> <span style="color: black;">(</span>ind, line<span style="color: black;">)</span>
+                <span style="color: #ff7700;font-weight:bold;">print</span> <span style="color: #483d8b;">"self.curr_line = %d"</span> <span style="color: #66cc66;">%</span> <span style="color: #008000;">self</span>.<span style="color: black;">curr_line</span>
+            <span style="color: #ff7700;font-weight:bold;">def</span> _get_sections<span style="color: black;">(</span><span style="color: #008000;">self</span><span style="color: black;">)</span>:
+                s_list = <span style="color: black;">[</span><span style="color: black;">]</span>
+                s_dict = <span style="color: black;">{</span><span style="color: black;">}</span>
+                <span style="color: #ff7700;font-weight:bold;">for</span> ind, line <span style="color: #ff7700;font-weight:bold;">in</span> <span style="color: #008000;">enumerate</span><span style="color: black;">(</span><span style="color: #008000;">self</span>.<span style="color: black;">buffer</span><span style="color: black;">)</span>:
+                    <span style="color: #ff7700;font-weight:bold;">if</span> line.<span style="color: black;">startswith</span><span style="color: black;">(</span><span style="color: #483d8b;">'#'</span><span style="color: black;">)</span>:
+                        section_name = line<span style="color: black;">[</span><span style="color: #ff4500;">1</span>:<span style="color: black;">]</span>.<span style="color: black;">strip</span><span style="color: black;">(</span><span style="color: black;">)</span>.<span style="color: black;">lower</span><span style="color: black;">(</span><span style="color: black;">)</span>
+                        s_dict<span style="color: black;">[</span>section_name<span style="color: black;">]</span> = ind
+                        s_list.<span style="color: black;">append</span><span style="color: black;">(</span><span style="color: black;">(</span>ind, section_name<span style="color: black;">)</span><span style="color: black;">)</span>
+                <span style="color: #ff7700;font-weight:bold;">return</span> s_list, s_dict
+            <span style="color: #ff7700;font-weight:bold;">def</span> list_sections<span style="color: black;">(</span><span style="color: #008000;">self</span><span style="color: black;">)</span>:
+                s_list, s_dict = <span style="color: #008000;">self</span>._get_sections<span style="color: black;">(</span><span style="color: black;">)</span>
+                <span style="color: #ff7700;font-weight:bold;">import</span> <span style="color: #dc143c;">sys</span>
+                <span style="color: #dc143c;">sys</span>.<span style="color: black;">stderr</span>.<span style="color: black;">write</span><span style="color: black;">(</span><span style="color: #483d8b;">"%s<span style="color: #000099; font-weight: bold;">\n</span>"</span> <span style="color: #66cc66;">%</span> <span style="color: black;">(</span><span style="color: #483d8b;">"<span style="color: #000099; font-weight: bold;">\n</span>"</span>.<span style="color: black;">join</span><span style="color: black;">(</span><span style="color: #483d8b;">"%d: %s"</span> <span style="color: #66cc66;">%</span> i <span style="color: #ff7700;font-weight:bold;">for</span> i <span style="color: #ff7700;font-weight:bold;">in</span> s_list<span style="color: black;">)</span><span style="color: black;">)</span><span style="color: black;">)</span>
+            <span style="color: #ff7700;font-weight:bold;">def</span> seek<span style="color: black;">(</span><span style="color: #008000;">self</span>, arg<span style="color: black;">)</span>:
+                <span style="color: #ff7700;font-weight:bold;">if</span> <span style="color: #008000;">isinstance</span><span style="color: black;">(</span>arg, <span style="color: #008000;">int</span><span style="color: black;">)</span>:
+                    <span style="color: #008000;">self</span>.<span style="color: black;">curr_line</span> = arg
+                <span style="color: #ff7700;font-weight:bold;">else</span>:
+                    s_list, s_dict = <span style="color: #008000;">self</span>._get_sections<span style="color: black;">(</span><span style="color: black;">)</span>
+                    <span style="color: #008000;">self</span>.<span style="color: black;">curr_line</span> = s_dict<span style="color: black;">[</span>arg.<span style="color: black;">lower</span><span style="color: black;">(</span><span style="color: black;">)</span><span style="color: black;">]</span>
+        _c = InteractiveReplayCompleter<span style="color: black;">(</span><span style="color: #008000;">open</span><span style="color: black;">(</span>replay_filepath, <span style="color: #483d8b;">'rU'</span><span style="color: black;">)</span><span style="color: black;">)</span>
+        <span style="color: #ff7700;font-weight:bold;">del</span> InteractiveReplayCompleter
+    <span style="color: #808080; font-style: italic;"># the following code was taken from http://www.python.org/doc/tut/node15.html#interacting</span>
+    <span style="color: #ff7700;font-weight:bold;">import</span> <span style="color: #dc143c;">atexit</span>
+ 
+    historyPath = <span style="color: #dc143c;">os</span>.<span style="color: black;">path</span>.<span style="color: black;">expanduser</span><span style="color: black;">(</span><span style="color: #483d8b;">"~/.pyhistory"</span><span style="color: black;">)</span>
+ 
+    <span style="color: #ff7700;font-weight:bold;">def</span> save_history<span style="color: black;">(</span>historyPath=historyPath<span style="color: black;">)</span>:
+        <span style="color: #ff7700;font-weight:bold;">import</span> <span style="color: #dc143c;">readline</span>
+        <span style="color: #dc143c;">readline</span>.<span style="color: black;">write_history_file</span><span style="color: black;">(</span>historyPath<span style="color: black;">)</span>
+ 
+    <span style="color: #ff7700;font-weight:bold;">if</span> <span style="color: #dc143c;">os</span>.<span style="color: black;">path</span>.<span style="color: black;">exists</span><span style="color: black;">(</span>historyPath<span style="color: black;">)</span>:
+        <span style="color: #dc143c;">readline</span>.<span style="color: black;">read_history_file</span><span style="color: black;">(</span>historyPath<span style="color: black;">)</span>
+ 
+    <span style="color: #dc143c;">atexit</span>.<span style="color: black;">register</span><span style="color: black;">(</span>save_history<span style="color: black;">)</span>
+ 
+    <span style="color: #ff7700;font-weight:bold;">del</span> <span style="color: #dc143c;">atexit</span>, historyPath, save_history
+ 
+    <span style="color: #ff7700;font-weight:bold;">del</span> replay_filepath
+<span style="color: #ff7700;font-weight:bold;">finally</span>:
+    <span style="color: #ff7700;font-weight:bold;">del</span> <span style="color: #dc143c;">os</span>
+    <span style="color: #ff7700;font-weight:bold;">del</span> <span style="color: #dc143c;">readline</span></pre>
+            </div>
+           </p>
+           <p>
+           </p>
+           <p>
+           </p>
+          </div>
+          <div class="clear-block">
+           <div class="meta">
+           </div>
+           <div class="links">
+            <ul class="links inline">
+             <li class="blog_usernames_blog first last">
+              <a href="../blog/mholder" title="Read mholder's latest blog entries.">
+               mholder's blog
+              </a>
+             </li>
+            </ul>
+           </div>
+          </div>
+         </div>
+        </div>
+        <div id="footer">
+         <p>
+          The
+          <a href="https://mtholder.github.io/home/">
+           Holder Lab
+          </a>
+          is part of the
+          <a href="https://eeb.ku.edu/">
+           Department of Ecology and Evolutionary Biology
+          </a>
+          at
+          <a href="https://www.ku.edu">
+           KU
+          </a>
+         </p>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+    <!-- /.left-corner, /.right-corner, /#squeeze, /#center -->
+   </div>
+   <!-- /container -->
+  </div>
+  <!-- /layout -->
+ </body>
+</html>

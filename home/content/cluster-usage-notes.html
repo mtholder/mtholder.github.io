@@ -1,0 +1,238 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html dir="ltr" lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+  <link href="../misc/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+  <title>
+   Cluster Usage Notes | mtholder.github.io/home/   </title>
+  <link href="../modules/book/book.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../modules/node/node.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../modules/system/defaults.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../modules/system/system.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../modules/system/system-menus.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../modules/user/user.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/cck/theme/content-module.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/date/date.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/date/date_popup/themes/datepicker.1.7.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/date/date_popup/themes/jquery.timeentry.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/geshifilter/geshifilter.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/biblio/biblio.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/cck/modules/fieldgroup/fieldgroup.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/views/css/views.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../themes/garland/style.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../themes/garland/print.css?F" media="print" rel="stylesheet" type="text/css"/>
+  <!--[if lt IE 7]>
+      <link type="text/css" rel="stylesheet" media="all" href="/themes/garland/fix-ie.css" />    <![endif]-->
+ </head>
+ <body class="sidebar-left">
+  <!-- Layout -->
+  <div class="clear-block" id="header-region">
+  </div>
+  <div id="wrapper">
+   <div class="clear-block" id="container">
+    <div id="header">
+     <div id="logo-floater">
+      <h1>
+       <a href="../" title="mtholder.github.io/home/">
+        <img alt="mtholder.github.io/home/" id="logo" src="../sites/default/files/garland_logo.png"/>
+        <span>
+         mtholder.github.io/home/         </span>
+       </a>
+      </h1>
+     </div>
+     <ul class="links primary-links">
+      <li class="menu-440 first">
+       <a href="../home" title="Holder Lab Web page">
+        Home
+       </a>
+      </li>
+      <li class="menu-449">
+       <a href="../courses" title="Courses">
+        Courses
+       </a>
+      </li>
+      <li class="menu-628 last">
+       <a href="../content/borice" title="Software">
+        Software
+       </a>
+      </li>
+     </ul>
+    </div>
+    <!-- /header -->
+    <div id="center">
+     <div id="squeeze">
+      <div class="right-corner">
+       <div class="left-corner">
+        <div class="breadcrumb">
+         <a href="../">
+          Home
+         </a>
+        </div>
+        <h2>
+         Cluster Usage Notes
+        </h2>
+        <div class="clear-block">
+         <div class="node" id="node-641">
+          <div class="content clear-block">
+           <h3>
+            Software
+           </h3>
+           <ul>
+            <li>
+             Various development tools and utilities (git, svn, gdb, python2.6 etc.) have been installed on "
+             <span class="geshifilter">
+              <code class="python geshifilter-python">
+               /share/apps/
+              </code>
+             </span>
+             ". Adding "
+             <span class="geshifilter">
+              <code class="python geshifilter-python">
+               /share/apps/bin/
+              </code>
+             </span>
+             " to your path should give you access to these.
+            </li>
+            <li>
+             The full gcc suite, except gcc java, has been built and installed under "
+             <span class="geshifilter">
+              <code class="python geshifilter-python">
+               /share/apps/opt/gcc
+              </code>
+             </span>
+             ". If you add "
+             <span class="geshifilter">
+              <code class="python geshifilter-python">
+               /share/apps/opt/gcc/bin
+              </code>
+             </span>
+             " to your path, then you will have the entire suite available to you on both the head node and the compute nodes.
+            </li>
+            <li>
+             We try to keep the core system clean of actual domain-specific programs and libraries. This means that particular programs or supporting libraries that you need for your work should be built, installed, and run from a subdirectory off your home directories.
+            </li>
+           </ul>
+           <h3>
+            Running Jobs
+           </h3>
+           <ul>
+            <li>
+             We use the Sun Grid Engine for all job scheduling.
+            </li>
+            <li>
+             Every job should be annotated with the maximum amount of memory it is expected to consume using the "
+             <span class="geshifilter">
+              <code class="python geshifilter-python">
+               -l h_vmem
+              </code>
+             </span>
+             " flag (which defaults to a value of 1G).
+            </li>
+            <li>
+             In most cases, you will be submitting jobs to the "
+             <span class="geshifilter">
+              <code class="python geshifilter-python">
+               general.
+               <span style="color: black;">
+                q
+               </span>
+              </code>
+             </span>
+             " queue.
+            </li>
+            <li>
+             A simple job submission script would look like:
+             <div class="geshifilter">
+              <pre class="python geshifilter-python" style="font-family:monospace;"><span style="color: #808080; font-style: italic;">#! /bin/sh</span>
+<span style="color: #808080; font-style: italic;">#$ -cwd</span>
+<span style="color: #808080; font-style: italic;">#$ -V</span>
+<span style="color: #808080; font-style: italic;">#$ -q "general.q"</span>
+<span style="color: #808080; font-style: italic;">#$ -l h_vmem=2G</span>
+~/path/to/program <span style="color: #008000;">file</span>.<span style="color: black;">dat</span></pre>
+             </div>
+            </li>
+            <li>
+             A parallel job submission script:
+             <div class="geshifilter">
+              <pre class="python geshifilter-python" style="font-family:monospace;"><span style="color: #808080; font-style: italic;">#! /bin/sh</span>
+<span style="color: #808080; font-style: italic;">#$ -cwd</span>
+<span style="color: #808080; font-style: italic;">#$ -V</span>
+<span style="color: #808080; font-style: italic;">#$ -q "general.q"</span>
+<span style="color: #808080; font-style: italic;">#$ -l h_vmem=2G</span>
+<span style="color: #808080; font-style: italic;">#$ -pe mpi_general 4</span>
+/opt/openmpi/bin/mpirun -np <span style="color: #ff4500;">4</span> ~/path/to/program <span style="color: #008000;">file</span>.<span style="color: black;">dat</span></pre>
+             </div>
+            </li>
+            <li>
+             Jobs are submitted using the "
+             <span class="geshifilter">
+              <code class="python geshifilter-python">
+               qsub
+              </code>
+             </span>
+             " command.
+            </li>
+           </ul>
+           <h3>
+            Useful Aliases and Shortcuts
+           </h3>
+           <ul>
+            <li>
+             Firewall rules on kywjibo currently only permit access from machines in Haworth or Dyche. If you are trying to access from outside these buildings, you will need to first log in to a gateway machine in either one of these buildings, and from there login to kwyjibo. This entire process can be wrapped up a simple alias:
+             <div class="geshifilter">
+              <pre class="python geshifilter-python" style="font-family:monospace;">alias kwyjibo=<span style="color: #483d8b;">'ssh -t REMOTE.GATEWAY.IP ssh 129.237.24.139'</span></pre>
+             </div>
+            </li>
+            <li>
+             Similarly, you can mount your kwyjibo home directory as a subdirectory of your home directory on your gateway machine, thus simplifying file transfers. On OS X machines, you will need to install sshfs for OS from
+             <a href="http://www.pqrs.org/tekezo/macosx/sshfs/">
+              here
+             </a>
+             , after which you would:
+             <div class="geshifilter">
+              <pre class="python geshifilter-python" style="font-family:monospace;">$ mkdir ~/kwyjibo
+$ /Applications/sshfs/bin/mount_sshfs 129.237.24.139  ~/kwyjibo</pre>
+             </div>
+             While on Linux/UNIX machines, assuming you have sshfs installed::
+             <div class="geshifilter">
+              <pre class="python geshifilter-python" style="font-family:monospace;">$ mkdir ~/kwyjibo
+$ sshfs 129.237.24.139 ~/kwyjibo</pre>
+             </div>
+            </li>
+           </ul>
+          </div>
+          <div class="clear-block">
+           <div class="meta">
+           </div>
+          </div>
+         </div>
+        </div>
+        <div id="footer">
+         <p>
+          The
+          <a href="https://mtholder.github.io/home/">
+           Holder Lab
+          </a>
+          is part of the
+          <a href="https://eeb.ku.edu/">
+           Department of Ecology and Evolutionary Biology
+          </a>
+          at
+          <a href="https://www.ku.edu">
+           KU
+          </a>
+         </p>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+    <!-- /.left-corner, /.right-corner, /#squeeze, /#center -->
+   </div>
+   <!-- /container -->
+  </div>
+  <!-- /layout -->
+ </body>
+</html>

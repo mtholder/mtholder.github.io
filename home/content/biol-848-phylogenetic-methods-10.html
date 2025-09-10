@@ -1,0 +1,672 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html dir="ltr" lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+  <link href="../misc/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+  <title>
+   BIOL 848 Phylogenetic Methods | mtholder.github.io/home/   </title>
+  <link href="../modules/book/book.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../modules/node/node.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../modules/system/defaults.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../modules/system/system.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../modules/system/system-menus.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../modules/user/user.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/cck/theme/content-module.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/date/date.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/date/date_popup/themes/datepicker.1.7.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/date/date_popup/themes/jquery.timeentry.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/geshifilter/geshifilter.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/biblio/biblio.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/cck/modules/fieldgroup/fieldgroup.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/views/css/views.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../themes/garland/style.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../themes/garland/print.css?F" media="print" rel="stylesheet" type="text/css"/>
+  <!--[if lt IE 7]>
+      <link type="text/css" rel="stylesheet" media="all" href="/themes/garland/fix-ie.css" />    <![endif]-->
+ </head>
+ <body class="sidebar-left">
+  <!-- Layout -->
+  <div class="clear-block" id="header-region">
+  </div>
+  <div id="wrapper">
+   <div class="clear-block" id="container">
+    <div id="header">
+     <div id="logo-floater">
+      <h1>
+       <a href="../" title="mtholder.github.io/home/">
+        <img alt="mtholder.github.io/home/" id="logo" src="../sites/default/files/garland_logo.png"/>
+        <span>
+         mtholder.github.io/home/         </span>
+       </a>
+      </h1>
+     </div>
+     <ul class="links primary-links">
+      <li class="menu-440 first">
+       <a href="../home" title="Holder Lab Web page">
+        Home
+       </a>
+      </li>
+      <li class="menu-449">
+       <a href="../courses" title="Courses">
+        Courses
+       </a>
+      </li>
+      <li class="menu-628 last">
+       <a href="../content/borice" title="Software">
+        Software
+       </a>
+      </li>
+     </ul>
+    </div>
+    <!-- /header -->
+    <div id="center">
+     <div id="squeeze">
+      <div class="right-corner">
+       <div class="left-corner">
+        <div class="breadcrumb">
+         <a href="../">
+          Home
+         </a>
+        </div>
+        <h2>
+         BIOL 848 Phylogenetic Methods
+        </h2>
+        <div class="clear-block">
+         <div class="node" id="node-679">
+          <div class="content clear-block">
+           <p>
+            This course covers state-of-the-art methods for reconstructing phylogenies. We will cover the theoretical basis for different phylogenetic analyses and learn how to use some of the software packages available for conducting these analyses. Inferences that rely heavily on phylogenetic trees (
+            <em>
+             eg.
+            </em>
+            analyses of character evolution, divergence time estimation, and studies of diversification rates) will also be covered.
+           </p>
+           <p>
+            The syllabus is available as a
+            <a href="https://mtholder.github.io/home/sites/default/files/Syllabus.pdf">
+             pdf from this link
+            </a>
+            .
+           </p>
+           <p>
+            I will post pdfs here throughout the semester. I will post the source code for my own notes and some slides to a
+            <a href="http://github.com/mtholder/PhylogeneticMethodsCourse">
+             GitHub repository
+            </a>
+            , but much of the lecture is presented on the board. Bear in mind, that a great deal of the content will be given on the board, and my typed notes may be minimal for those sections of the lectures - make sure that you take good notes!
+           </p>
+           <h2>
+            Some links
+           </h2>
+           <p>
+            Felsenstein's
+            <a href="http://www.sinauer.com/detail.php?id=1775">
+             Inferring Phylogenies
+            </a>
+            book is highly recommended for the course.
+           </p>
+           <p>
+            His
+            <a href="http://evolution.gs.washington.edu/phylip/software.html">
+             list of phylogeny programs
+            </a>
+            is also very helpful.
+           </p>
+           <p>
+            The website for the
+            <a href="http://www.molecularevolution.org">
+             Workshops on Molecular Evolution
+            </a>
+            is a good source of lecture slides, software tutorials, and general information.
+           </p>
+           <h2>
+            Slides
+           </h2>
+           <table border="1">
+            <tr>
+             <th>
+              Date
+             </th>
+             <th>
+              Link
+             </th>
+            </tr>
+            <tr>
+             <td>
+              Aug-20
+             </td>
+             <td>
+              Slides:
+              <a href="https://phylo.bio.ku.edu/slides/BIOL848-lec1-IntroStats.pdf">
+               BIOL848-lec1-IntroStats.pdf
+              </a>
+             </td>
+            </tr>
+            <tr>
+             <td>
+              Aug-23
+             </td>
+             <td>
+              Slides:
+              <a href="https://phylo.bio.ku.edu/slides/BIOL848-lec2-IntroInference.pdf">
+               BIOL848-lec2-IntroInference.pdf
+              </a>
+             </td>
+            </tr>
+            <tr>
+             <td>
+             </td>
+             <td>
+              Homework:
+              <a href="https://phylo.bio.ku.edu/slides/BIOL848-homework1-splits.pdf">
+               BIOL848-homework1-splits.pdf
+              </a>
+             </td>
+            </tr>
+            <tr>
+             <td>
+              Aug-25
+             </td>
+             <td>
+              Slides:
+              <a href="https://phylo.bio.ku.edu/slides/BIOL848-lec3-Inference.pdf">
+               BIOL848-lec3-Inference.pdf
+              </a>
+             </td>
+            </tr>
+            <tr>
+             <td>
+              Aug-27
+             </td>
+             <td>
+              Notes:
+              <a href="https://phylo.bio.ku.edu/slides/BIOL848-lec4-SplitCompatibility-notes.pdf">
+               BIOL848-lec4-SplitCompatibility-notes.pdf
+              </a>
+             </td>
+            </tr>
+            <tr>
+             <td>
+             </td>
+             <td>
+              Homework:
+              <a href="https://phylo.bio.ku.edu/slides/BIOL848-homework2-newick.pdf">
+               BIOL848-homework2-newick.pdf
+              </a>
+             </td>
+            </tr>
+            <tr>
+             <td>
+              Aug 29
+             </td>
+             <td>
+              Notes:
+              <a href="https://phylo.bio.ku.edu/slides/BIOL848-lec5-StatInference-Notes.pdf">
+               BIOL848-lec5-StatInference-Notes.pdf
+              </a>
+             </td>
+            </tr>
+            <tr>
+             <td>
+              Aug 31
+             </td>
+             <td>
+              Notes:
+              <a href="https://phylo.bio.ku.edu/slides/BIOL848-lec6-ML-CompatModel-Notes.pdf">
+               BIOL848-lec6-ML-CompatModel-Notes.pdf
+              </a>
+             </td>
+            </tr>
+            <tr>
+             <td>
+             </td>
+             <td>
+              Homework:
+              <a href="https://phylo.bio.ku.edu/slides/BIOL848-homework3-charcompat.pdf">
+               BIOL848-homework3-charcompat.pdf
+              </a>
+             </td>
+            </tr>
+            <tr>
+             <td>
+              Sep. 7
+             </td>
+             <td>
+              Lab:
+              <a href="https://phylo.bio.ku.edu/slides/BIOL848-lab1-UnixIntro.html">
+               BIOL848-lab1-UnixIntro.html
+              </a>
+             </td>
+            </tr>
+            <tr>
+             <td>
+              Sep 8.
+             </td>
+             <td>
+              Notes:
+              <a href="https://phylo.bio.ku.edu/slides/BIOL848-lec7-ML-MPModel.pdf">
+               BIOL848-lec7-ML-MPModel.pdf
+              </a>
+             </td>
+            </tr>
+            <tr>
+             <td>
+              Sep. 15
+             </td>
+             <td>
+              Lab:
+              <a href="https://phylo.bio.ku.edu/slides/lab2-PaupMesquiteNEXUS/lab2-paupNEXUSMesquite.html">
+               BIOL848-lab2-paupNEXUSMesquite.html
+              </a>
+             </td>
+            </tr>
+            <tr>
+             <td>
+              Sep 17.
+             </td>
+             <td>
+              Notes:
+              <a href="https://phylo.bio.ku.edu/slides/BIOL848-lec7-ML-MPModelAlgorithms.pdf">
+               BIOL848-lec7-ML-MPModelAlgorithms.pdf
+              </a>
+             </td>
+            </tr>
+            <tr>
+             <td>
+             </td>
+             <td>
+              Homework:
+              <a href="https://phylo.bio.ku.edu/slides/BIOL848-homework4-parsimony.pdf">
+               BIOL848-homework4-parsimony.pdf
+              </a>
+             </td>
+            </tr>
+            <tr>
+             <td>
+              Sept. 20
+             </td>
+             <td>
+              Slides:
+              <a href="https://phylo.bio.ku.edu/slides/BIOL848-lec8-Searching.pdf">
+               BIOL848-lec8-Searching.pdf
+              </a>
+             </td>
+            </tr>
+            <tr>
+             <td>
+              Sep. 22
+             </td>
+             <td>
+              <a href="https://phylo.bio.ku.edu/slides/lab3-PaupSearching/index.html">
+               Lab: BIOL848 lab3  Tree Searching
+              </a>
+             </td>
+            </tr>
+            <tr>
+             <td>
+              Sept. 24
+             </td>
+             <td>
+              Slides:
+              <a href="https://phylo.bio.ku.edu/slides/BIOL848-lec9-Distances.pdf">
+               BIOL848-lec9-Distances.pdf
+              </a>
+             </td>
+            </tr>
+            <tr>
+             <td>
+              Sept. 29
+             </td>
+             <td>
+              Lab:
+              <a href="https://phylo.bio.ku.edu/slides/lab4-Distances/lab4Distances.html">
+               lab4-Distances
+              </a>
+             </td>
+            </tr>
+            <tr>
+             <td>
+             </td>
+             <td>
+              Homework:
+              <a href="https://phylo.bio.ku.edu/slides/BIOL848-homework5-distances.pdf">
+               BIOL848-homework5-distances.pdf
+              </a>
+             </td>
+            </tr>
+            <tr>
+             <td>
+              Oct. 4
+             </td>
+             <td>
+              Slides:
+              <a href="https://phylo.bio.ku.edu/slides/BIOL848-lec10Models.pdf">
+               BIOL848-lec10Models.pdf
+              </a>
+             </td>
+            </tr>
+            <tr>
+             <td>
+              Oct. 6
+             </td>
+             <td>
+              Slides:
+              <a href="https://phylo.bio.ku.edu/slides/BIOL848-lec11ML.pdf">
+               BIOL848-lec11ML.pdf
+              </a>
+             </td>
+            </tr>
+            <tr>
+             <td>
+              Oct. 6
+             </td>
+             <td>
+              Lab:
+              <a href="https://phylo.bio.ku.edu/slides/lab5ML/lab5ML.html">
+               lab5-Models
+              </a>
+             </td>
+            </tr>
+            <tr>
+             <td>
+             </td>
+             <td>
+              Homework:
+              <a href="https://phylo.bio.ku.edu/slides/BIOL848-homework6-ML.pdf">
+               BIOL848-homework6-ML.pdf
+              </a>
+             </td>
+            </tr>
+            <tr>
+             <td>
+              Oct. 7
+             </td>
+             <td>
+              Slides:
+              <a href="https://phylo.bio.ku.edu/slides/BIOL848-lec12RateHet.pdf">
+               BIOL848-lec12RateHet.pdf
+              </a>
+             </td>
+            </tr>
+            <tr>
+             <td>
+              Oct. 13
+             </td>
+             <td>
+              Slides:
+              <a href="https://phylo.bio.ku.edu/slides/lab6-Simulation/lab6Sim.html">
+               lab6Sim.html
+              </a>
+             </td>
+            </tr>
+            <tr>
+             <td>
+              Oct. 20
+             </td>
+             <td>
+              Lab:
+              <a href="https://phylo.bio.ku.edu/slides/GarliDemo/garliExercise.html">
+               garliExercise.html
+              </a>
+             </td>
+            </tr>
+            <tr>
+             <td>
+              Oct. 25
+             </td>
+             <td>
+              Slides:
+              <a href="https://phylo.bio.ku.edu/slides/BIOL848-lec14-Testing.pdf">
+               lecture 14 slides (pdf)
+              </a>
+             </td>
+            </tr>
+            <tr>
+             <td>
+              Oct. 27
+             </td>
+             <td>
+              Slides:
+              <a href="https://phylo.bio.ku.edu/slides/BIOL848-lec16Bootstrapping.pdf">
+               lec16Bootstrapping.pdf
+              </a>
+             </td>
+            </tr>
+            <tr>
+             <td>
+              Oct. 27
+             </td>
+             <td>
+              Lab:
+              <a href="https://phylo.bio.ku.edu/slides/lab7-Testing/lab7Testing.html">
+               lab7 Testing
+              </a>
+             </td>
+            </tr>
+            <tr>
+             <td>
+              Oct. 29
+             </td>
+             <td>
+              Slides:
+              <a href="https://phylo.bio.ku.edu/slides/BIOL848-BayesIntro.pdf">
+               BIOL848-BayesIntro.pdf
+              </a>
+             </td>
+            </tr>
+            <tr>
+             <td>
+              Nov. 1
+             </td>
+             <td>
+              Slides:
+              <a href="https://phylo.bio.ku.edu/slides/BIOL848-BayesSecond.pdf">
+               BIOL848-BayesSecond.pdf
+              </a>
+             </td>
+            </tr>
+            <tr>
+             <td>
+              Nov. 3
+             </td>
+             <td>
+              Lab:
+              <a href="https://phylo.bio.ku.edu/slides/lab8-Bayesian/mblab.pdf">
+               MrBayes Lab
+              </a>
+              . The algaemb datafile is
+              <a href="https://phylo.bio.ku.edu/slides/lab8-Bayesian/algaemb.nex">
+               here
+              </a>
+              .
+              <br/>
+              The jc.nex datafile is
+              <a href="https://phylo.bio.ku.edu/slides/lab8-Bayesian/jc.nex">
+               here
+              </a>
+              .
+              <br/>
+              The mac executable  is
+              <a href="https://phylo.bio.ku.edu/slides/lab8-Bayesian/mb-3.1.2-mac.zip">
+               here
+              </a>
+              . An old version is
+              <a href="https://phylo.bio.ku.edu/slides/lab8-Bayesian/mbdir.zip">
+               here
+              </a>
+             </td>
+            </tr>
+            <tr>
+             <td>
+              Nov. 8
+             </td>
+             <td>
+              Slides:
+              <a href="https://phylo.bio.ku.edu/slides/BIOL848-lec18-BayesFactors.pdf">
+               BIOL848-lec18-BayesFactors.pdf
+              </a>
+             </td>
+            </tr>
+            <tr>
+             <td>
+              Nov. 10
+             </td>
+             <td>
+              Slides:
+              <a href="https://phylo.bio.ku.edu/slides/BIOL848-lec19-AncStates.pdf">
+               BIOL848-lec19-AncStates.pdf
+              </a>
+             </td>
+            </tr>
+            <tr>
+             <td>
+              Nov. 10
+             </td>
+             <td>
+              Lab:
+              <a href="https://phylo.bio.ku.edu/slides/lab9-MesquiteAncStatesBisse/09-Mesquite.html">
+               09-Mesquite.html
+              </a>
+             </td>
+            </tr>
+            <tr>
+             <td>
+              Nov. 12
+             </td>
+             <td>
+              Slides:
+              <a href="https://phylo.bio.ku.edu/slides/BIOL848-lec20-CharEvol.pdf">
+               BIOL848-lec20-CharEvol.pdf
+              </a>
+             </td>
+            </tr>
+            <tr>
+             <td>
+              Nov. 17
+             </td>
+             <td>
+              Tracy Heath's Slides:
+              <a href="https://phylo.bio.ku.edu/slides/BIOL848-HeathDivTime.pdf">
+               "https://phylo.bio.ku.edu/slides/BIOL848-HeathDivTime.pdf
+              </a>
+             </td>
+            </tr>
+            <tr>
+             <td>
+              Nov. 16
+             </td>
+             <td>
+              Lab: this week we are going to work through the
+              <a href="http://beast.bio.ed.ac.uk/Tutorials">
+               BEAST tutorials
+              </a>
+             </td>
+            </tr>
+            <tr>
+             <td>
+              Nov. 22
+             </td>
+             <td>
+              Slides:
+              <a href="https://phylo.bio.ku.edu/slides/BIOL848-lec22-MorphologicalCharacters.pdf">
+               BIOL848-lec22-MorphologicalCharacters.pdf
+              </a>
+             </td>
+            </tr>
+            <tr>
+             <td>
+              Dec 1:
+             </td>
+             <td>
+              Lab links:
+              <a href="https://github.com/zwickl/garli/wiki/Garli_Mkv_morphology_model">
+               Garli Mkv implementation
+              </a>
+              <p>
+               See the tutorial in the Manual (PDF) for
+               <a href="http://www.evolution.reading.ac.uk/BayesTraits.html">
+                BayesTraits
+               </a>
+              </p>
+             </td>
+            </tr>
+            <tr>
+             <td>
+              Dec. 6
+             </td>
+             <td>
+              Slides:
+              <a href="https://phylo.bio.ku.edu/slides/BIOL848-lec23-Coalescent.pdf">
+               BIOL848-lec23-Coalescent.pdf
+              </a>
+             </td>
+            </tr>
+            <tr>
+             <td>
+              Dec 8:
+             </td>
+             <td>
+              This week we are going to be working through the *BEAST tutorial (
+              <a href="http://beast-mcmc.googlecode.com/files/STAR-BEAST.zip">
+               STAR-BEAST.zip
+              </a>
+              ) available from
+              <a href="http://beast.bio.ed.ac.uk/Tutorials">
+               http://beast.bio.ed.ac.uk/Tutorials
+              </a>
+              <br/>
+              If you want to run beauti on the cluster, you'll need to use the
+              <tt>
+               ssh -X
+              </tt>
+              option when you login in.
+             </td>
+            </tr>
+            <tr>
+             <td>
+              Dec. 6
+             </td>
+             <td>
+              Slides:
+              <a href="https://phylo.bio.ku.edu/slides/BIOL848-lec24-MSA.pdf">
+               BIOL848-lec24-MSA.pdf
+              </a>
+             </td>
+            </tr>
+           </table>
+          </div>
+          <div class="clear-block">
+           <div class="meta">
+           </div>
+          </div>
+         </div>
+        </div>
+        <div id="footer">
+         <p>
+          The
+          <a href="https://mtholder.github.io/home/">
+           Holder Lab
+          </a>
+          is part of the
+          <a href="https://eeb.ku.edu/">
+           Department of Ecology and Evolutionary Biology
+          </a>
+          at
+          <a href="https://www.ku.edu">
+           KU
+          </a>
+         </p>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+    <!-- /.left-corner, /.right-corner, /#squeeze, /#center -->
+   </div>
+   <!-- /container -->
+  </div>
+  <!-- /layout -->
+ </body>
+</html>

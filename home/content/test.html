@@ -1,0 +1,36 @@
+<!-- saved from url=(0060)file:///home/mtholder/Documents/db/phylo-web-site/x.html?x=2 -->
+<html>
+ <head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+   <title>
+    test
+   </title>
+  </meta>
+ </head>
+ <body>
+  <p>
+   <script type="text/javascript">
+    function getURLwithEscapedParams(url) {
+    var qmInd = url.indexOf('?');
+    if (qmInd < 0) {
+        return url;
+    }
+    var paramSepInd = url.indexOf('&');
+    if (paramSepInd > -1) {
+        return getURLwithEscapedParams(url.substring(0, paramSepInd));
+    }
+    return url.substring(1 + qmInd);
+}
+
+var doc_url = window.location.href;
+var esc_url = getURLwithEscapedParams(doc_url);
+if (esc_url == doc_url) {
+    document.write("NO REDIRECT");
+} else {
+    document.write(esc_url);
+}
+   </script>
+   x=2
+  </p>
+ </body>
+</html>

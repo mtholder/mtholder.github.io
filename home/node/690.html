@@ -1,0 +1,250 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html dir="ltr" lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+  <link href="../misc/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+  <title>
+   matplotlib and scipy for i386/x86_64 version of python 2.7 | mtholder.github.io/home/   </title>
+  <link href="../modules/book/book.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../modules/node/node.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../modules/system/defaults.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../modules/system/system.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../modules/system/system-menus.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../modules/user/user.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/cck/theme/content-module.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/date/date.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/date/date_popup/themes/datepicker.1.7.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/date/date_popup/themes/jquery.timeentry.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/geshifilter/geshifilter.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/biblio/biblio.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/cck/modules/fieldgroup/fieldgroup.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/views/css/views.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../themes/garland/style.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../themes/garland/print.css?F" media="print" rel="stylesheet" type="text/css"/>
+  <!--[if lt IE 7]>
+      <link type="text/css" rel="stylesheet" media="all" href="/themes/garland/fix-ie.css" />    <![endif]-->
+ </head>
+ <body class="sidebar-left">
+  <!-- Layout -->
+  <div class="clear-block" id="header-region">
+  </div>
+  <div id="wrapper">
+   <div class="clear-block" id="container">
+    <div id="header">
+     <div id="logo-floater">
+      <h1>
+       <a href="../" title="mtholder.github.io/home/">
+        <img alt="mtholder.github.io/home/" id="logo" src="../sites/default/files/garland_logo.png"/>
+        <span>
+         mtholder.github.io/home/         </span>
+       </a>
+      </h1>
+     </div>
+     <ul class="links primary-links">
+      <li class="menu-440 first">
+       <a href="../home" title="Holder Lab Web page">
+        Home
+       </a>
+      </li>
+      <li class="menu-449">
+       <a href="../courses" title="Courses">
+        Courses
+       </a>
+      </li>
+      <li class="menu-628 last">
+       <a href="../content/borice" title="Software">
+        Software
+       </a>
+      </li>
+     </ul>
+    </div>
+    <!-- /header -->
+    <div id="center">
+     <div id="squeeze">
+      <div class="right-corner">
+       <div class="left-corner">
+        <div class="breadcrumb">
+         <a href="../">
+          Home
+         </a>
+         ›
+         <a href="../blog">
+          Blogs
+         </a>
+         ›
+         <a href="../blog/mholder">
+          mholder's blog
+         </a>
+        </div>
+        <h2>
+         matplotlib and scipy for i386/x86_64 version of python 2.7
+        </h2>
+        <div class="clear-block">
+         <div class="node" id="node-690">
+          <span class="submitted">
+           Sat, 03/05/2011 - 20:28 — mholder
+          </span>
+          <div class="content clear-block">
+           In a fit of masochism I installed the i386/x86_64 binary of Python 2.7 for Mac, which is available from: 
+http://www.python.org/ftp/python/2.7.1/python-2.7.1-macosx10.6.dmg
+on my laptop.
+
+Note that
+           <tt>
+            $ file $(which python)
+           </tt>
+           reports Mach-O executable i386 and Mach-O 64-bit executable x86_64 for this installation of python.
+
+I wanted to use scipy and matplotlib, which is where the trouble began because there are not binaries of those for python 2.7 for this architecture.  Here is what I had to do:
+           <div class="geshifilter">
+            <pre class="python geshifilter-python" style="font-family:monospace;">$ wget http://pypi.<span style="color: black;">python</span>.<span style="color: black;">org</span>/packages/<span style="color: #ff4500;">2.7</span>/s/setuptools/setuptools-0.6c11-py2.7.<span style="color: black;">egg</span><span style="color: #808080; font-style: italic;">#md5=fe1f997bc722265116870bc7919059ea </span>
+$ sh setuptools-0.6c11-py2.7.<span style="color: black;">egg</span>
+ 
+$ wget http://pypi.<span style="color: black;">python</span>.<span style="color: black;">org</span>/packages/source/p/pip/pip-0.8.2.<span style="color: black;">tar</span>.<span style="color: black;">gz</span><span style="color: #808080; font-style: italic;">#md5=df1eca0abe7643d92b5222240bed15f6</span>
+$ tar xfvz pip-0.8.2.<span style="color: black;">tar</span>.<span style="color: black;">gz</span>
+$ <span style="color: #dc143c;">cd</span> pip-0.8.2
+$ python setup.<span style="color: black;">py</span> install
+$ git clone git://github.<span style="color: black;">com</span>/numpy/numpy.<span style="color: black;">git</span> numpy
+$ <span style="color: #dc143c;">cd</span> numpy/
+$ python setup.<span style="color: black;">py</span> install</pre>
+           </div>
+           Note that you have to have gnu fortran (gfortran) installed to build scipy
+           <div class="geshifilter">
+            <pre class="python geshifilter-python" style="font-family:monospace;">$ svn co http://svn.<span style="color: black;">scipy</span>.<span style="color: black;">org</span>/svn/scipy/trunk scipy
+$ <span style="color: #dc143c;">cd</span> scipy
+$ python setup.<span style="color: black;">py</span> build --fcompiler=gnu95
+$ python setup.<span style="color: black;">py</span> install</pre>
+           </div>
+           <div class="geshifilter">
+            <pre class="python geshifilter-python" style="font-family:monospace;">$ wget http://cdnetworks-us-<span style="color: #ff4500;">1</span>.<span style="color: #dc143c;">dl</span>.<span style="color: black;">sourceforge</span>.<span style="color: black;">net</span>/project/matplotlib/matplotlib/matplotlib-1.0.1/matplotlib-1.0.1.<span style="color: black;">tar</span>.<span style="color: black;">gz</span>
+$ tar xfvz matplotlib-1.0.1.<span style="color: black;">tar</span>.<span style="color: black;">gz</span>
+$ <span style="color: #dc143c;">cd</span> matplotlib-1.0.1</pre>
+           </div>
+           In make.osx, I made the following changes:
+           <ul>
+            <li>
+             from:
+             <tt>
+              PYVERSION=2.6
+             </tt>
+             <br/>
+             to:
+             <tt>
+              PYVERSION=2.7
+             </tt>
+            </li>
+            <li>
+             from:
+             <tt>
+              ARCH_FLAGS=-arch i386-arch x86_64
+             </tt>
+             <br/>
+             to:
+             <tt>
+              ARCH_FLAGS=-arch i386 -arch x86_64
+             </tt>
+            </li>
+            <li>
+             replaced
+             <tt>
+              -arch i386 -arch x86_64
+             </tt>
+             <br/>
+             with "
+             <tt>
+              $(ARCH_FLAGS)
+             </tt>
+             <br/>
+             in the other FLAGS variables
+            </li>
+            <li>
+             commented out the fetching of
+             <tt>
+              libpng
+             </tt>
+             from the
+             <tt>
+              fetch
+             </tt>
+             target.
+            </li>
+            <li>
+             removed  the line continuation characters and newlines (I don't think this was necessary, but it helped me debug the problems I was having).
+            </li>
+            <li>
+             from:
+             <tt>
+              cp .libs/libpng.a .
+             </tt>
+             <br/>
+             to:
+             <tt>
+              cp .libs/libpng14.a ..
+             </tt>
+             <br/>
+             in the png target.
+            </li>
+           </ul>
+           In Makefile I made the changed "
+           <tt>
+            ppc
+           </tt>
+           " to "
+           <tt>
+            x86_64
+           </tt>
+           "
+
+Then I could:
+           <div class="geshifilter">
+            <pre class="python geshifilter-python" style="font-family:monospace;">$ git clone git://libpng.<span style="color: black;">git</span>.<span style="color: black;">sourceforge</span>.<span style="color: black;">net</span>/gitroot/libpng/libpng
+$ export PREFIX=/full/path/to/my/prefix/<span style="color: #008000;">dir</span>
+$ make -f make.<span style="color: black;">osx</span> fetch deps mpl_build mpl_install
+$ <span style="color: #dc143c;">cd</span> ..</pre>
+           </div>
+           Add $PREFIX to my PYTHONPATH variable (in my bash_profile and source it).
+          </div>
+          <div class="clear-block">
+           <div class="meta">
+           </div>
+           <div class="links">
+            <ul class="links inline">
+             <li class="blog_usernames_blog first last">
+              <a href="../blog/mholder" title="Read mholder's latest blog entries.">
+               mholder's blog
+              </a>
+             </li>
+            </ul>
+           </div>
+          </div>
+         </div>
+        </div>
+        <div id="footer">
+         <p>
+          The
+          <a href="https://mtholder.github.io/home/">
+           Holder Lab
+          </a>
+          is part of the
+          <a href="https://eeb.ku.edu/">
+           Department of Ecology and Evolutionary Biology
+          </a>
+          at
+          <a href="https://www.ku.edu">
+           KU
+          </a>
+         </p>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+    <!-- /.left-corner, /.right-corner, /#squeeze, /#center -->
+   </div>
+   <!-- /container -->
+  </div>
+  <!-- /layout -->
+ </body>
+</html>

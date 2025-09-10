@@ -1,0 +1,544 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html dir="ltr" lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+  <link href="./misc/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+  <title>
+   Computer Programming for EEB | mtholder.github.io/home/   </title>
+  <link href="./modules/book/book.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="./modules/node/node.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="./modules/system/defaults.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="./modules/system/system.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="./modules/system/system-menus.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="./modules/user/user.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="./sites/all/modules/cck/theme/content-module.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="./sites/all/modules/date/date.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="./sites/all/modules/date/date_popup/themes/datepicker.1.7.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="./sites/all/modules/date/date_popup/themes/jquery.timeentry.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="./sites/all/modules/geshifilter/geshifilter.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="./sites/all/modules/biblio/biblio.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="./sites/all/modules/cck/modules/fieldgroup/fieldgroup.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="./sites/all/modules/views/css/views.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="./themes/garland/style.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="./themes/garland/print.css?F" media="print" rel="stylesheet" type="text/css"/>
+  <!--[if lt IE 7]>
+      <link type="text/css" rel="stylesheet" media="all" href="/themes/garland/fix-ie.css" />    <![endif]-->
+ </head>
+ <body class="sidebar-left">
+  <!-- Layout -->
+  <div class="clear-block" id="header-region">
+  </div>
+  <div id="wrapper">
+   <div class="clear-block" id="container">
+    <div id="header">
+     <div id="logo-floater">
+      <h1>
+       <a href="https://mtholder.github.io/home/" title="mtholder.github.io/home/">
+        <img alt="mtholder.github.io/home/" id="logo" src="./sites/default/files/garland_logo.png"/>
+        <span>
+         mtholder.github.io/home/         </span>
+       </a>
+      </h1>
+     </div>
+     <ul class="links primary-links">
+      <li class="menu-440 first">
+       <a href="./home" title="Holder Lab Web page">
+        Home
+       </a>
+      </li>
+      <li class="menu-449">
+       <a href="./courses" title="Courses">
+        Courses
+       </a>
+      </li>
+      <li class="menu-628 last">
+       <a href="./content/borice" title="Software">
+        Software
+       </a>
+      </li>
+     </ul>
+    </div>
+    <!-- /header -->
+    <div id="center">
+     <div id="squeeze">
+      <div class="right-corner">
+       <div class="left-corner">
+        <div class="breadcrumb">
+         <a href="../">
+          Home
+         </a>
+        </div>
+        <h2>
+         Computer Programming for EEB
+        </h2>
+        <div class="clear-block">
+         <div class="node" id="node-4">
+          <div class="content clear-block">
+           <hr/>
+           <h1>
+            Syllabus for BIOL 701: Topics in Programming for EEB
+           </h1>
+           <p>
+            Mark Holder. Spring 2010
+           </p>
+           <hr/>
+           <h2>
+            Time and Location
+           </h2>
+           <p>
+            Time:
+            <b>
+             Fridays at 11:00-noon
+            </b>
+            <br/>
+            New Location:
+            <b>
+             3012 Haworth
+            </b>
+           </p>
+           <p>
+            Office hours: Monday 11:00-noon in 6031 (or by appt).
+           </p>
+           <hr/>
+           <h2>
+            Course Goals
+           </h2>
+           <p>
+            The goals of this seminar are to improve your programming skills. Because several students have not programmed before, the initial lectures will cover the basics.
+           </p>
+           <p>
+            Later in the course we'll cover some libraries, algorithms, and data structures used in phylogenetics and population genetics.
+           </p>
+           <p>
+            We could easily fill several semesters with programming lectures, but I want this to be relevant to the students. To that end, I am counting on the course projects to be a substantive part of the course, so I hope that you will each choose a project that is
+           </p>
+           <ul>
+            <li>
+             Relevant to your work,
+            </li>
+            <li>
+             Challenging enough to be worthy of a semester-long project (it could be a multipart project if you have several small ideas).
+            </li>
+           </ul>
+           <p>
+            As the semester progresses we will discuss problems that you are each facing, and use lecture time to address them.
+           </p>
+           <p>
+            Checkout the course git repo (lecture notes and inclass examples at)
+            <br/>
+            <span class="geshifilter">
+             <code class="python geshifilter-python">
+              git clone git://github.
+              <span style="color: black;">
+               com
+              </span>
+              /mtholder/eebprogramming.
+              <span style="color: black;">
+               git
+              </span>
+             </code>
+            </span>
+            <br/>
+            You can look at these
+            <a href="https://mtholder.github.io/home/content/git-notes/">
+             notes on git
+            </a>
+            to master the basics.
+           </p>
+           <p>
+            Or, you can browse the repo at
+            <a href="http://github.com/mtholder/eebprogramming">
+             http://github.com/mtholder/eebprogramming.git
+            </a>
+           </p>
+           <h3>
+            Programming tools
+           </h3>
+           <p>
+            Find a good text editor (
+            <a href="http://www.barebones.com/products/TextWrangler">
+             TextWrangler
+            </a>
+            on Mac
+            <a href="http://www.jedit.org/">
+             jEdit
+            </a>
+            anywhere).
+            <br/>
+            You may want to use
+            <a href="http://www.activestate.com/komodo_edit">
+             Komodo Edit
+            </a>
+            (or Komodo IDE which is not free).
+            <br/>
+            Wikipedia lists a lot of other python integrated development environments
+            <a href="http://en.wikipedia.org/wiki/List_of_integrated_development_environments_for_Python#Python">
+             here
+            </a>
+            . Some people prefer working in such an environment to using a text editor and shell.
+           </p>
+           <hr/>
+           <table border="1">
+            <tbody>
+             <tr>
+              <th>
+               Date
+              </th>
+              <th>
+               Topics
+              </th>
+              <th>
+               Homework
+              </th>
+              <th>
+               Reading/References
+              </th>
+             </tr>
+             <tr>
+              <td>
+               22 Jan
+              </td>
+              <td>
+               Intro to Computer Architecture
+               <br/>
+               Shells
+              </td>
+              <td>
+               <p>
+                Formulate project idea.
+                <br/>
+                Install git.
+                <br/>
+                Install ssh (It should already be on non-Windows Systems)
+                <br/>
+                Create account on
+                <a href="http://github.com">
+                 GitHub
+                </a>
+                .
+                <br/>
+                Generate SSH public
+                <a href="http://www.puddingonline.com/~dave/publications/SSH-with-Keys-HOWTO/document/html/SSH-with-Keys-HOWTO-4.html">
+                 key
+                </a>
+                ; you'll need this to commit changes to GitHub.
+               </p>
+               <p>
+                Here is the
+                <a href="https://mtholder.github.io/home/content/programming-practice-assignment-1">
+                 practice assignment
+                </a>
+                to test basic UNIX skills.
+               </p>
+              </td>
+              <td>
+               <p>
+                Read the summary of common
+                <a href="http://www.math.utah.edu/lab/unix/unix-commands.html">
+                 UNIX commands
+                </a>
+                .
+                <br/>
+                Check out the
+                <a href="http://docs.python.org/tutorial/">
+                 Python tutorial
+                </a>
+                and
+                <a href="http://diveintopython.net">
+                 Dive into Python
+                </a>
+                .
+                <br/>
+                Slides from the first OS/Bash lecture are
+                <a href="https://mtholder.github.io/home/sites/default/files/arch_basics.pdf">
+                 here
+                </a>
+               </p>
+               <p>
+                Here is
+                <a href="http:// "https://phylo.bio.ku.edu/sites/default/files/echo.py.txt">
+                 echo.py
+                </a>
+                (though it will download is echo.py.txt so you may want to rename it).
+               </p>
+              </td>
+             </tr>
+             <tr>
+              <td>
+               29 Jan
+              </td>
+              <td>
+               Python Intro: primitives
+               <br/>
+               flow control
+               <br/>
+               functions
+               <br/>
+               IO
+              </td>
+              <td>
+               <p>
+                Checkout the course git repo (see above)
+               </p>
+              </td>
+              <td>
+              </td>
+             </tr>
+             <tr>
+              <td>
+               05 Feb.
+              </td>
+              <td>
+               Dicts and Lists
+              </td>
+              <td>
+               <a href="https://mtholder.github.io/home/content/programming-basic-assignment">
+                first real assignment
+               </a>
+              </td>
+              <td>
+               Notes and examples
+               <a href="http://github.com/mtholder/eebprogramming/tree/master/lec2pythonbasics/">
+                here (lec2pythonbasics)
+               </a>
+              </td>
+             </tr>
+             <tr>
+              <td>
+               12 Feb.
+              </td>
+              <td>
+               Pseudocode
+               <br/>
+               importing other packages
+               <br/>
+               Regular Expressions
+              </td>
+              <td>
+               <a href="https://mtholder.github.io/home/content/programming-assignment-2">
+                assignment 2
+               </a>
+              </td>
+              <td>
+               Notes and examples
+               <a href="http://github.com/mtholder/eebprogramming/tree/master/lec3packages">
+                here (lec3packages)
+               </a>
+              </td>
+             </tr>
+             <tr>
+              <td>
+               19 Feb.
+              </td>
+              <td>
+               Classes and OOP
+               <br/>
+               Exceptions and Robustness
+              </td>
+              <td>
+               No assignment
+              </td>
+              <td>
+               Notes and examples
+               <a href="http://github.com/mtholder/eebprogramming/tree/master/lect4classes/">
+                here (lect4classes)
+               </a>
+              </td>
+             </tr>
+             <tr>
+              <td>
+               26 Feb.
+              </td>
+              <td>
+               More on classes
+              </td>
+              <td>
+              </td>
+              <td>
+              </td>
+             </tr>
+             <tr>
+              <td>
+               05 Mar.
+              </td>
+              <td>
+               Usefule Python libraries
+               <br/>
+               <br/>
+               Pop. gen simulation and Controlling other processes
+              </td>
+             </tr>
+            </tbody>
+           </table>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+ </body>
+</html>
+<td>
+ Project RoadMap
+ <br/>
+ Pseudocode project idea
+</td>
+<td>
+ Notes and examples
+ <a href="http://github.com/mtholder/eebprogramming/tree/master/lect4random/">
+  here (lect4random)
+ </a>
+</td>
+<tr>
+ <td>
+  12 Mar.
+ </td>
+ <td>
+  Recursion
+  <br/>
+  SQLAlchemy for DB interacations
+  <br/>
+  Some GUI stuff
+ </td>
+</tr>
+<td>
+</td>
+<td>
+ Notes and examples
+ <a href="http://github.com/mtholder/eebprogramming/tree/master/lect6extras/">
+  here (lect6extras)
+ </a>
+</td>
+<tr>
+ <td>
+  19 Mar.
+ </td>
+ <td>
+  <b>
+   Spring Break
+  </b>
+ </td>
+ <td>
+ </td>
+ <td>
+ </td>
+</tr>
+<tr>
+ <td>
+  26 Mar.
+ </td>
+ <td>
+  Review and testing
+ </td>
+ <td>
+  begin coding on projects
+ </td>
+ <td>
+ </td>
+</tr>
+<tr>
+ <td>
+  02 Apr.
+ </td>
+ <td>
+  Phylogenetic tree structures
+  <br/>
+  Tree traversals
+ </td>
+ <td>
+  code reviews
+ </td>
+ <td>
+ </td>
+</tr>
+<tr>
+ <td>
+  09 Apr.
+ </td>
+ <td>
+  Manipulating character data
+  <br/>
+  Biopython and Dendropy libraries
+ </td>
+ <td>
+ </td>
+ <td>
+ </td>
+</tr>
+<tr>
+ <td>
+  16 Apr.
+ </td>
+ <td>
+  Calculating likelihoods of trees (cPhyProb) library
+ </td>
+ <td>
+ </td>
+ <td>
+ </td>
+</tr>
+<tr>
+ <td>
+  23 Apr.
+ </td>
+ <td>
+  Simulations of population processes
+ </td>
+ <td>
+ </td>
+ <td>
+ </td>
+</tr>
+<tr>
+ <td>
+  30 Apr.
+ </td>
+ <td>
+  Topics from projects and code reviews
+ </td>
+ <td>
+ </td>
+ <td>
+ </td>
+</tr>
+<tr>
+ <td>
+  07 May.
+ </td>
+ <td>
+  Topics from projects and code reviews
+ </td>
+ <td>
+ </td>
+ <td>
+ </td>
+</tr>
+<hr/>
+<div class="clear-block">
+ <div class="meta">
+ </div>
+</div>
+<div id="footer">
+ <p>
+  The
+  <a href="https://mtholder.github.io/home/">
+   Holder Lab
+  </a>
+  is part of the
+  <a href="https://eeb.ku.edu/">
+   Department of Ecology and Evolutionary Biology
+  </a>
+  at
+  <a href="https://www.ku.edu">
+   KU
+  </a>
+ </p>
+</div>
+<!-- /.left-corner, /.right-corner, /#squeeze, /#center -->
+<!-- /container -->
+<!-- /layout -->

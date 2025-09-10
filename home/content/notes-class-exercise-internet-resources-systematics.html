@@ -1,0 +1,661 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html dir="ltr" lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+  <link href="../misc/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+  <title>
+   notes on class exercise on internet resources for systematics | mtholder.github.io/home/   </title>
+  <link href="../modules/book/book.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../modules/node/node.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../modules/system/defaults.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../modules/system/system.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../modules/system/system-menus.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../modules/user/user.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/cck/theme/content-module.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/date/date.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/date/date_popup/themes/datepicker.1.7.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/date/date_popup/themes/jquery.timeentry.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/geshifilter/geshifilter.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/biblio/biblio.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/cck/modules/fieldgroup/fieldgroup.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/views/css/views.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../themes/garland/style.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../themes/garland/print.css?F" media="print" rel="stylesheet" type="text/css"/>
+  <!--[if lt IE 7]>
+      <link type="text/css" rel="stylesheet" media="all" href="/themes/garland/fix-ie.css" />    <![endif]-->
+ </head>
+ <body class="sidebar-left">
+  <!-- Layout -->
+  <div class="clear-block" id="header-region">
+  </div>
+  <div id="wrapper">
+   <div class="clear-block" id="container">
+    <div id="header">
+     <div id="logo-floater">
+      <h1>
+       <a href="../" title="mtholder.github.io/home/">
+        <img alt="mtholder.github.io/home/" id="logo" src="../sites/default/files/garland_logo.png"/>
+        <span>
+         mtholder.github.io/home/         </span>
+       </a>
+      </h1>
+     </div>
+     <ul class="links primary-links">
+      <li class="menu-440 first">
+       <a href="../home" title="Holder Lab Web page">
+        Home
+       </a>
+      </li>
+      <li class="menu-449">
+       <a href="../courses" title="Courses">
+        Courses
+       </a>
+      </li>
+      <li class="menu-628 last">
+       <a href="../content/borice" title="Software">
+        Software
+       </a>
+      </li>
+     </ul>
+    </div>
+    <!-- /header -->
+    <div id="center">
+     <div id="squeeze">
+      <div class="right-corner">
+       <div class="left-corner">
+        <div class="breadcrumb">
+         <a href="../">
+          Home
+         </a>
+         ›
+         <a href="../blog">
+          Blogs
+         </a>
+         ›
+         <a href="../blog/mholder">
+          mholder's blog
+         </a>
+        </div>
+        <h2>
+         notes on class exercise on internet resources for systematics
+        </h2>
+        <div class="clear-block">
+         <div class="node" id="node-669">
+          <span class="submitted">
+           Fri, 05/14/2010 - 14:54 — mholder
+          </span>
+          <div class="content clear-block">
+           <p>
+            Below is an excessively long summary of our "Introduction to Systematics" class' experience using BioStor as a starting point for exploring the primary literature in biodiversity and the issues associated with internet resources for systematics. Rod Page very kindly helped out by providing feedback on the assignment and adding links for the students on the front page of the wiki associated with biostor - thanks!
+           </p>
+           <p>
+            The exercise is posted as a
+            <a href="https://mtholder.github.io/home/sites/default/files/assignment.pdf">
+             pdf
+            </a>
+            and a
+            <a href="https://mtholder.github.io/home/sites/default/files/assignment.tex">
+             tex
+            </a>
+            source in case someone else would like to adapt it.  It was used in our Biology 550 "Introduction to Systematics" course here at KU; this course is an upper-level undergraduate course. The exercise was assigned after we had covered the basics of nomenclature and collections-based research. I chose the articles to assign to students so that they would all be fairly short, and assigned 3-4 students to each article. The students did not work together, so that I could compare the information that different students gleaned from the same exercise.
+           </p>
+           <p>
+            Overall I think that the exercise was a success; it certainly helped students realize how messy the literature is and the problems associated with synonymy.
+           </p>
+           <p>
+            What is sobering (but not surprising) is number of times different aggregating web sites gave conflicting answers about the current name and classification for an organism. I was also somewhat disappointed by the relatively poor agreement between the taxonomic names that are harvested by software and the manually-generated list of taxonomic names. We've got a long way to go with respect to getting our literature online and linked-up.
+           </p>
+           <p>
+            It is also clear that it won't be easy to do this in an automated fashion.  For many of the errors, I tried to track down the source of the errors (I really focused on the taxonomic name extraction aspect, but I intend to go back and look at some of the other errors when I get a chance).
+            <br/>
+            There is not a glaring "weak-link" in the chain that would be easy to correct.
+           </p>
+           <h2>
+            Biostor
+           </h2>
+           <p>
+            As far as I could tell, none of the taxonomic name extraction errors were caused by the Biostor software itself. The errors appeared propagated from the taxonomic extraction in the biodiversity heritage library.
+           </p>
+           <p>
+            <em>
+             Suggestion for Biostor's Wiki
+            </em>
+            : One counterintuitive aspect of the Wiki is the disagreement between the numbering of pages on the reference's Wiki page and the page number in the journal. I suspect that this is a difficult-to-avoid side effect of the number of pages scanned in the journal (including frontmatter) disagreeing with the printed page number. For example,
+            <a href="http://biostor.org/wiki/Reference:4504" title="http://biostor.org/wiki/Reference:4504">
+             http://biostor.org/wiki/Reference:4504
+            </a>
+            covers the journal pages 1-4, but the links to individual pages are to the wiki pages 19-22 (eg.
+            <a href="http://biostor.org/wiki/Page:Breviora0166harv.djvu/21" title="http://biostor.org/wiki/Page:Breviora0166harv.djvu/21">
+             http://biostor.org/wiki/Page:Breviora0166harv.djvu/21
+            </a>
+            ).  The correct content is shown, but the students were confused that the link names were not what they were expecting. Adding another set of links that use the article number might help wiki users.
+           </p>
+           <p>
+            <em>
+             Suggestion to me
+            </em>
+            : I should have done a better job of explaining this (the wiki page numbering) in the assignment.
+           </p>
+           <p>
+            I only followed through and added metadata such as "&lt;section begin=types/&gt;" to one page.  It was a bit tedious, but you can definitely see this as a promising error for really "adding value" to the OCR text and making this as great resource.
+           </p>
+           <p>
+            <em>
+             Suggestion on the Wiki
+            </em>
+            : It seems like the per-page markup is going to be a problem here just because any section can span multiple pages. I don't know how hard it would be to refactor that.
+           </p>
+           <p>
+            <em>
+             Question on the Wiki
+            </em>
+            : I wasn't sure how to flag things like page numbers, headers, and footnotes in the wiki (I must admit that I didn't dig around much for guidance).  Is there a set of tags that I should use for those things?
+           </p>
+           <p>
+            <em>
+             Suggestion to me
+            </em>
+            :  In the excercise, I should have had the students add a topic page for the organism and the type specimen (and then require them to fill in the appropriate info).
+           </p>
+           <p>
+            <em>
+             Minor one-off types of things
+            </em>
+            :
+            <br/>
+            1.
+            <a href="http://biostor.org/reference/14337" title="http://biostor.org/reference/14337">
+             http://biostor.org/reference/14337
+            </a>
+            is on the Wiki at
+            <a href="http://biostor.org/wiki/Reference:14437" title="http://biostor.org/wiki/Reference:14437">
+             http://biostor.org/wiki/Reference:14437
+            </a>
+            instead of at
+            <a href="http://biostor.org/wiki/Reference:14337" title="http://biostor.org/wiki/Reference:14337">
+             http://biostor.org/wiki/Reference:14337
+            </a>
+           </p>
+           <p>
+            2.
+            <a href="http://biostor.org/reference/1205" title="http://biostor.org/reference/1205">
+             http://biostor.org/reference/1205
+            </a>
+            <br/>
+            pdf link just has two pages, while the Wiki has the full paper.
+           </p>
+           <h2>
+            OCR errors:
+           </h2>
+           <p>
+            there were a lot of these. Correction of this type of error is one of the motivations behind Rod Page's advocacy of Wikis.
+           </p>
+           <p>
+            It certainly doesn't look like it going to be easy to do a better job with the OCR using an automated system.  I tried some open-source tools such as tesseract, but got much worse accuracy (but I did not train tesseract for the journals' fonts -- that could have a big effect. In fact I did not train terreract
+            <em>
+             at all
+            </em>
+            ).  Adobe Acrobat Professional's OCR was better in some spots and worse in others -- not obviously better.
+           </p>
+           <p>
+            Bianca Lipscomb of BHL helpfully referred me to the pages of Internet Archive (which is the source of most of BHL's digitized content). See:
+            <a href="http://www.archive.org/about/faqs.php#291" title="http://www.archive.org/about/faqs.php#291">
+             http://www.archive.org/about/faqs.php#291
+            </a>
+            and the software they use
+            <a href="http://sourceforge.net/projects/scribesw" title="http://sourceforge.net/projects/scribesw">
+             http://sourceforge.net/projects/scribesw
+            </a>
+           </p>
+           <p>
+            Unfortunately, while much of scribesw is in Java, several pieces are compiled windows executables (I haven't run it yet).  The SF svn repo has not been updated in several years.
+           </p>
+           <p>
+            Just looking at the scans, it is unsurprising that an OCR system would have a hard time.  Some of them are tough for a human to read.
+           </p>
+           <p>
+            <em>
+             Suggestion to someone
+            </em>
+            : It does seem like it better results might be obtained if the OCR was trained on a certain journal.  Just learning the fonts might help a lot.  It is appealing to imagine a system in which OCR was done jointly with textual analysis.  Some of that clearly is a part of OCR systems (eg. tesseract wants to know the language used in the document, not just the character set). But the formatting of particular journals is so standardized, that you'd think that OCR would do better if it were smart enough to expect a certain font for titles.
+           </p>
+           <p>
+            If the OCR engine smart enough to use a set of typesetting conventions, fonts, and common words that had been inferred from reading scans from the same journal then you'd think that it might do considerably better.
+           </p>
+           <p>
+            For example, titles in "Proceedings of the United States National Museum" were in a funky font and all caps -- they were particularly hard for the OCR. The title for
+            <a href="http://biostor.org/wiki/Page:Proceedingsofuni31880unit.djvu/317" title="http://biostor.org/wiki/Page:Proceedingsofuni31880unit.djvu/317">
+             http://biostor.org/wiki/Page:Proceedingsofuni31880unit.djvu/317
+            </a>
+           </p>
+           <p>
+            "DESCRIPTION OF A NEW FLOUNDER (PLATYSOMATICHTHYS STOMIAS), FROM THE COAST OF CALIFORNIA."
+           </p>
+           <p>
+            was OCR'd as:
+           </p>
+           <p>
+            "I&gt;ESC'RI5»TIO:V OF A IVEW FI^Ol'.'VDER (PI^ATV .SOMATICHTHVS STO.TIIAS), FKOm THE COAST OF €AEIFOIlI\IA."
+           </p>
+           <p>
+            <em>
+             In the not-at-all-surprising category
+            </em>
+            : tabular formatting is really tough on OCR.
+            <br/>
+            <a href="http://biostor.org/wiki/Page:Greatbasinnatura34brig.djvu/255" title="http://biostor.org/wiki/Page:Greatbasinnatura34brig.djvu/255">
+             http://biostor.org/wiki/Page:Greatbasinnatura34brig.djvu/255
+            </a>
+            is a good example of a table that was not dealt with well by the OCR
+           </p>
+           <h2>
+            Taxonomic name recognition from text
+           </h2>
+           <p>
+            (cases when the name is in the OCR'd text, but the name is not extracted by uBio's software as a taxonomic name).  There seem to be plenty of errors here too, but I need to do more thorough diagnosis. A couple of common problems:
+           </p>
+           <p>
+            - Page-level extraction of names is not article-level extraction. Several articles were flagged with taxa that appeared in the preceding or following article.
+           </p>
+           <p>
+            - Place names showed up as taxonomic names. Seems hard to avoid. Presumably checking with some webservice for the common names of places might allow a web-service to flag an extracted name as potentially an geographical name.
+           </p>
+           <p>
+            - Specific epithets were often missed if they occurred by themselves or after the abbreviation of the genus name.
+           </p>
+           <p>
+            - hyphenation can inhibit taxonomic name recognition (in
+            <a href="http://biostor.org/reference/14131" title="http://biostor.org/reference/14131">
+             http://biostor.org/reference/14131
+            </a>
+            this kept the uBio tools from recognizing
+            <em>
+             Salvelinus fontinalis
+            </em>
+            . This seems like it could be dealt with pretty easily.
+           </p>
+           <p>
+            <em>
+             Suggestion to someone
+            </em>
+            : It seems like it would really help if the OCR software also spit out font-face info. Obviously, one can't rely solely on italics, but it knowing that the word was italicize would be a good clue that it may be a scientific name.  Surely some software does this.  I'm afraid that I don't keep up with this field...
+           </p>
+           <h2>
+            <em>
+             Very
+            </em>
+            rough notes
+           </h2>
+           <p>
+            Below are some notes that I made as I read through the assignments.  I'll try to return to this and make them more useful for others, but I thought that I'd post them now in case they were of use to anyone in the raw form.
+           </p>
+           <p>
+            The convention is the url of the biostor article then the taxonomic names * means that it was missing from the names associated with the article in BHL. + means that the name was included, but should not have been.
+           </p>
+           <hr/>
+           <a href="http://biostor.org/reference/1038" title="http://biostor.org/reference/1038">
+            http://biostor.org/reference/1038
+           </a>
+           Description of "Sceloporus spinosus caeruleopunctatus"
+           <br/>
+           2:
+           <br/>
+           Sceloporus spinosus,
+           <br/>
+           Lacertilia,
+           <br/>
+           Sceloporus,
+           <br/>
+           Sceloporus spinosus caeruleopunctatus,
+           <br/>
+           -	Spinosus (epithet)
+           <br/>
+           *	Sceloporus spinosus spinosus (only occurs in text as "spinosus spinosus" and "s. spinosus"
+           <p>
+            3. taxonomy ok but ncbi's differs on phrysomatinae vs phrynosomatidae
+           </p>
+           <p>
+            4. Author name confuses EOL:
+            <br/>
+            <a href="http://www.eol.org/pages/1250765" title="http://www.eol.org/pages/1250765">
+             http://www.eol.org/pages/1250765
+            </a>
+            (with author)
+            <br/>
+            <a href="http://www.eol.org/pages/11013922" title="http://www.eol.org/pages/11013922">
+             http://www.eol.org/pages/11013922
+            </a>
+            (without author, NCBI, but few other links)
+           </p>
+           <hr/>
+           <a href="http://biostor.org/reference/1049:" title="http://biostor.org/reference/1049:">
+            http://biostor.org/reference/1049:
+           </a>
+           Description of "Eumeces gaigei Taylor, 1935" now "Plestiodon multivirgatus HALLOWELL 1857"
+           <p>
+            Eumeces gaigei
+            <br/>
+            Eumeces multivirgatus
+            <br/>
+            Eumeces humilis
+            <br/>
+            *	"epipleurotus" could refer to "Eumeces epipleurotus" or "Eumeces multivirgatus epipleurotus"
+           </p>
+           <p>
+            Plestiodon multivirgatus HALLOWELL 1857
+           </p>
+           <p>
+            <a href="http://eol.org/pages/8830550" title="http://eol.org/pages/8830550">
+             http://eol.org/pages/8830550
+            </a>
+            <br/>
+            <a href="http://eol.org/pages/794679" title="http://eol.org/pages/794679">
+             http://eol.org/pages/794679
+            </a>
+           </p>
+           <hr/>
+           <a href="http://biostor.org/reference/1068" title="http://biostor.org/reference/1068">
+            http://biostor.org/reference/1068
+           </a>
+           :
+           <br/>
+           Leiolopisma caudaequinae
+           <br/>
+           Leiolopisma forbesorum
+           <br/>
+           Leiolopisma gemmingeri
+           <br/>
+           Leiolopisma silvicolum
+           <br/>
+           Leiolopisma gemmingeri gemmingeri
+           <br/>
+           *	Leiolopisma gemmingeri forbesorum
+           <br/>
+           Leiolopisma
+           <br/>
+           Oligosoma ("Oligosoma" group of Taylor)
+           <br/>
+           +	Placita (placename)
+           <br/>
+           Reptilia
+           <br/>
+           Sauria
+           <br/>
+           *	Mocoa  ("Mocoa" group of Taylor)
+           <p>
+            Difficult to tell the current status:
+            <br/>
+            <a href="http://www.iucnredlist.org/apps/redlist/details/64246/0" title="http://www.iucnredlist.org/apps/redlist/details/64246/0">
+             http://www.iucnredlist.org/apps/redlist/details/64246/0
+            </a>
+            <br/>
+            list Leiolopisma caudaequinae as a synonym of Scincella silvicola
+           </p>
+           <p>
+            not sure how to deal with footnotes in the Wiki (
+            <br/>
+            <a href="http://biostor.org/wiki/Page:Universityofkans3401univ.djvu/207" title="http://biostor.org/wiki/Page:Universityofkans3401univ.djvu/207">
+             http://biostor.org/wiki/Page:Universityofkans3401univ.djvu/207
+            </a>
+            )
+           </p>
+           <hr/>
+           <a href="http://biostor.org/reference/1087" title="http://biostor.org/reference/1087">
+            http://biostor.org/reference/1087
+           </a>
+           :
+           <p>
+            *	Hyla euthysanota Kellogg
+            <br/>
+            *	Centrolenella viridissima
+            <br/>
+            Centrolenella
+            <br/>
+            Hyla
+            <br/>
+            Hyla erythromma
+            <br/>
+            Hyla pinorum
+            <br/>
+            Ptychohyla
+            <br/>
+            Ptychohyla adipoventris
+           </p>
+           <hr/>
+           <a href="http://biostor.org/reference/1097" title="http://biostor.org/reference/1097">
+            http://biostor.org/reference/1097
+           </a>
+           :
+           <br/>
+           Bolitoglossa veracrucis
+           <br/>
+           *	Bolitoglossa platydacyla (" Bolitoghssa phtydactyla " in OCR)
+           <br/>
+           Bolitoglossa rufescens
+           <br/>
+           Bolitoglossa yucatana
+           <br/>
+           *	Bolitoglossa odonelli
+           <br/>
+           Bolitoglossa mulleri
+           <br/>
+           *	Bolitoglossa punctatatus (listed as only punctatus).
+           <br/>
+           +	Punctatus (epithet used to start a sentence).
+           <hr/>
+           <a href="http://biostor.org/reference/1205" title="http://biostor.org/reference/1205">
+            http://biostor.org/reference/1205
+           </a>
+           <br/>
+           Sceloporus megalepidurus
+           <br/>
+           Sceloporus megalepidurus halli
+           <br/>
+           Sceloporus pictus
+           <br/>
+           Sceloporus
+           <br/>
+           Sceloporus cryptus
+           <br/>
+           Phrynosoma
+           <br/>
+           Barisia
+           <br/>
+           +	Mota (place name)
+           <hr/>
+           <a href="http://biostor.org/reference/4504" title="http://biostor.org/reference/4504">
+            http://biostor.org/reference/4504
+           </a>
+           <br/>
+           *	Hyla shrevei
+           <br/>
+           Hyla zeteki
+           <p>
+            <br/>
+           </p>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+ </body>
+</html>
+<hr/>
+<a href="http://biostor.org/reference/14131" title="http://biostor.org/reference/14131">
+ http://biostor.org/reference/14131
+</a>
+<br/>
+*	Salmo mykiss agua-bonita
+<br/>
+Salmo mykiss
+<br/>
+Salmo
+<br/>
+*	Salmo spilurus (in OCR as "8. spilurus and pleuriticus" rather than "S. spilurus and pleuriticus"
+<br/>
+Salmo pleuriticus
+<br/>
+*	Salvelinus fontinalis (hyphenated in ocr. "Sal- velinus fontinalis" because of line break
+<br/>
+Salmo irideus.
+<p>
+ Some significant typos (length measurments 1 =&gt; 4) in OCR
+ <br/>
+ <a href="http://biostor.org/wiki/Page:Proceedingsofuni151892unit.djvu/655" title="http://biostor.org/wiki/Page:Proceedingsofuni151892unit.djvu/655">
+  http://biostor.org/wiki/Page:Proceedingsofuni151892unit.djvu/655
+ </a>
+</p>
+<hr/>
+<a href="http://biostor.org/reference/14337:" title="http://biostor.org/reference/14337:">
+ http://biostor.org/reference/14337:
+</a>
+<br/>
+Hymenocephalus tenuis
+<br/>
+Coryphaenoides
+<br/>
+Lionurus
+<br/>
+*	Hymenocephalus striatulus (synonomized "Hyinenocephalus striatulus Gilbert" in OCR)
+<hr/>
+<a href="http://biostor.org/reference/14445" title="http://biostor.org/reference/14445">
+ http://biostor.org/reference/14445
+</a>
+:
+<br/>
+Ulva
+<br/>
+Abeona minima
+<br/>
+*	Abeona aurora (species being described)
+<br/>
+Brachyistius
+<br/>
+*	Brachyistius frenatus
+<br/>
+Cymatogaster
+<br/>
+Cymatogaster aggregatus
+<br/>
+*	Dimetra brevipinne Günther (authors claim that this is the same species as Brachyistius frenatus -- in footnote)
+<p>
+ OCR error "Brachyistius" -&gt; "Bracliyistius" but Bracliyistius does not occur in taxon tags.
+</p>
+<hr/>
+<a href="http://biostor.org/reference/14435" title="http://biostor.org/reference/14435">
+ http://biostor.org/reference/14435
+</a>
+:
+<br/>
+Catostomus (n-2 article)
+<br/>
+Catostomus occidentalis (n-2 article)
+<br/>
+Cymatogaster aggregatus  (n-1 article)
+<br/>
+Dacentrus  (n-1 article)
+<br/>
+Ptychochilus  (n-2 article)
+<br/>
+Sema signifer  (n-1 article)
+<p>
+ *	Sebastichthys
+ <br/>
+ *	Sebastichthys proriger
+ <br/>
+ *	Sebastichthys ovalis
+ <br/>
+ *	Sebastichthys elongatus
+ <br/>
+ *	Sebastichthys atrovirens
+ <br/>
+ *	Sebastichthys pinniger
+ <br/>
+ *	Sebastichthys rosaceus
+ <br/>
+ *	Sebastichthys constellatus
+ <br/>
+ *	Sebastichthys chlorostictus
+</p>
+<hr/>
+<a href="http://biostor.org/reference/14477" title="http://biostor.org/reference/14477">
+ http://biostor.org/reference/14477
+</a>
+<br/>
+Agonus
+<br/>
+Agonus rostratus
+<br/>
+Brachyopsis
+<br/>
+Brachyopsis verrucosus
+<br/>
+Brachyopsis xyosternus
+<br/>
++	Hippoglossoides (next article)
+<br/>
++	Hippoglossoides exilis (next article)
+<hr/>
+<a href="http://biostor.org/reference/14494" title="http://biostor.org/reference/14494">
+ http://biostor.org/reference/14494
+</a>
+:
+<br/>
+*	Platysomatichthys stomias
+<br/>
+*	Platysomatichthys hippoglossoides
+<br/>
+*	Platysomatichthys
+<br/>
+*	Reinhardtius (JS)
+<br/>
+*	Atheresthes (written later, but published earlier)
+<br/>
++	Abeona (next article)
+<br/>
++	Cymatogaster (next article)
+<p>
+ See :
+ <br/>
+ <a href="http://www.biodiversitylibrary.org/page/14917147#63" title="http://www.biodiversitylibrary.org/page/14917147#63">
+  http://www.biodiversitylibrary.org/page/14917147#63
+ </a>
+</p>
+<div class="clear-block">
+ <div class="meta">
+ </div>
+ <div class="links">
+  <ul class="links inline">
+   <li class="blog_usernames_blog first last">
+    <a href="../blog/mholder" title="Read mholder's latest blog entries.">
+     mholder's blog
+    </a>
+   </li>
+  </ul>
+ </div>
+</div>
+<div id="footer">
+ <p>
+  The
+  <a href="https://mtholder.github.io/home/">
+   Holder Lab
+  </a>
+  is part of the
+  <a href="https://eeb.ku.edu/">
+   Department of Ecology and Evolutionary Biology
+  </a>
+  at
+  <a href="https://www.ku.edu">
+   KU
+  </a>
+ </p>
+</div>
+<!-- /.left-corner, /.right-corner, /#squeeze, /#center -->
+<!-- /container -->
+<!-- /layout -->

@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html dir="ltr" lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+  <link href="../misc/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+  <title>
+   Partitioned GARLI | mtholder.github.io/home/   </title>
+  <link href="../modules/book/book.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../modules/node/node.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../modules/system/defaults.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../modules/system/system.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../modules/system/system-menus.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../modules/user/user.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/cck/theme/content-module.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/date/date.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/date/date_popup/themes/datepicker.1.7.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/date/date_popup/themes/jquery.timeentry.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/geshifilter/geshifilter.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/biblio/biblio.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/cck/modules/fieldgroup/fieldgroup.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/views/css/views.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../themes/garland/style.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../themes/garland/print.css?F" media="print" rel="stylesheet" type="text/css"/>
+  <!--[if lt IE 7]>
+      <link type="text/css" rel="stylesheet" media="all" href="/themes/garland/fix-ie.css" />    <![endif]-->
+ </head>
+ <body class="sidebar-left">
+  <!-- Layout -->
+  <div class="clear-block" id="header-region">
+  </div>
+  <div id="wrapper">
+   <div class="clear-block" id="container">
+    <div id="header">
+     <div id="logo-floater">
+      <h1>
+       <a href="../" title="mtholder.github.io/home/">
+        <img alt="mtholder.github.io/home/" id="logo" src="../sites/default/files/garland_logo.png"/>
+        <span>
+         mtholder.github.io/home/         </span>
+       </a>
+      </h1>
+     </div>
+     <ul class="links primary-links">
+      <li class="menu-440 first">
+       <a href="../home" title="Holder Lab Web page">
+        Home
+       </a>
+      </li>
+      <li class="menu-449">
+       <a href="../courses" title="Courses">
+        Courses
+       </a>
+      </li>
+      <li class="menu-628 last">
+       <a href="../content/borice" title="Software">
+        Software
+       </a>
+      </li>
+     </ul>
+    </div>
+    <!-- /header -->
+    <div id="center">
+     <div id="squeeze">
+      <div class="right-corner">
+       <div class="left-corner">
+        <div class="breadcrumb">
+         <a href="../">
+          Home
+         </a>
+        </div>
+        <h2>
+         Partitioned GARLI
+        </h2>
+        <div class="clear-block">
+         <div class="node" id="node-668">
+          <div class="content clear-block">
+           <p>
+            An experimental version of GARLI that allows the use of partitioned likelihood models is available
+            <a href="https://github.com/zwickl/garli/wiki/Partitioned_DNA_and_morphology">
+             here
+            </a>
+            .
+           </p>
+           <p>
+            <big>
+             Gap encoding
+            </big>
+           </p>
+           <p>
+            This version also allows simultaneous use of molecular sequence data and character data with an arbitrary number of states, for example morphological characters.  One use of this functionality is to incorporate information about the location of gaps (indel events) in phylogenetic inference.  Gaps are typically treated as equivalent to missing data, despite the fact that their locations convey some information about shared ancestry and phylogenetic relationships.
+           </p>
+           <p>
+            Such an analysis can easily be run on any existing sequence matrix by first uploading it to this
+            <a href="https://mtholder.github.io/home:5000/gapcode/index">
+             Holder lab web service
+            </a>
+            , which will automatically create a NEXUS formatted file containing characters blocks for both the input matrix and a corresponding "gap-encoded" binary character matrix.  The binary characters represent either the presence of a gap (state 0) or the presence of a base (state 1) at a given cell in the sequence matrix.  Only variable columns (i.e., those with a gap) will be output.
+           </p>
+           <p>
+            Phylogenetic analyses can then be performed in GARLI.  Any nucleotide, amino acid or codon model may be applied to the sequence data, with the "Mkv" model (Lewis, 2001 "A Likelihood Approach to Estimating Phylogeny from Discrete Morphological Data") applied to the binary gap data.  An appropriate GARLI configuration file is here.
+           </p>
+           <p>
+            Note that the properties of this sort of analysis are not well studied, and we make no claims regarding phylogenetic accuracy.  A possible shortcoming of the method is that it treats all gaps as single character events.  Thus, a long insertion or deletion will be treated as many individual characters and will be given excessive weight.  This factor will become less important when indel events are of shorter length.
+           </p>
+          </div>
+          <div class="clear-block">
+           <div class="meta">
+           </div>
+          </div>
+         </div>
+        </div>
+        <div id="footer">
+         <p>
+          The
+          <a href="https://mtholder.github.io/home/">
+           Holder Lab
+          </a>
+          is part of the
+          <a href="https://eeb.ku.edu/">
+           Department of Ecology and Evolutionary Biology
+          </a>
+          at
+          <a href="https://www.ku.edu">
+           KU
+          </a>
+         </p>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+    <!-- /.left-corner, /.right-corner, /#squeeze, /#center -->
+   </div>
+   <!-- /container -->
+  </div>
+  <!-- /layout -->
+ </body>
+</html>

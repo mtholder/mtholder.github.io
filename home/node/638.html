@@ -1,0 +1,220 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html dir="ltr" lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+  <link href="../misc/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+  <title>
+   git notes | mtholder.github.io/home/   </title>
+  <link href="../modules/book/book.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../modules/node/node.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../modules/system/defaults.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../modules/system/system.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../modules/system/system-menus.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../modules/user/user.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/cck/theme/content-module.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/date/date.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/date/date_popup/themes/datepicker.1.7.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/date/date_popup/themes/jquery.timeentry.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/geshifilter/geshifilter.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/biblio/biblio.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/cck/modules/fieldgroup/fieldgroup.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../sites/all/modules/views/css/views.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../themes/garland/style.css?F" media="all" rel="stylesheet" type="text/css"/>
+  <link href="../themes/garland/print.css?F" media="print" rel="stylesheet" type="text/css"/>
+  <!--[if lt IE 7]>
+      <link type="text/css" rel="stylesheet" media="all" href="/themes/garland/fix-ie.css" />    <![endif]-->
+ </head>
+ <body class="sidebar-left">
+  <!-- Layout -->
+  <div class="clear-block" id="header-region">
+  </div>
+  <div id="wrapper">
+   <div class="clear-block" id="container">
+    <div id="header">
+     <div id="logo-floater">
+      <h1>
+       <a href="../" title="mtholder.github.io/home/">
+        <img alt="mtholder.github.io/home/" id="logo" src="../sites/default/files/garland_logo.png"/>
+        <span>
+         mtholder.github.io/home/         </span>
+       </a>
+      </h1>
+     </div>
+     <ul class="links primary-links">
+      <li class="menu-440 first">
+       <a href="../home" title="Holder Lab Web page">
+        Home
+       </a>
+      </li>
+      <li class="menu-449">
+       <a href="../courses" title="Courses">
+        Courses
+       </a>
+      </li>
+      <li class="menu-628 last">
+       <a href="../content/borice" title="Software">
+        Software
+       </a>
+      </li>
+     </ul>
+    </div>
+    <!-- /header -->
+    <div id="center">
+     <div id="squeeze">
+      <div class="right-corner">
+       <div class="left-corner">
+        <div class="breadcrumb">
+         <a href="../">
+          Home
+         </a>
+        </div>
+        <h2>
+         git notes
+        </h2>
+        <div class="clear-block">
+         <div class="node" id="node-638">
+          <div class="content clear-block">
+           <p>
+            You may want to checkout this
+            <a href="http://www.teachmetocode.com/screencasts/5">
+             video
+            </a>
+            before next week.
+           </p>
+           <p>
+            You do not have to do any of the git configuration before our Feb. 10th Meeting.  I'll cover it in class then.
+           </p>
+           <p>
+            Jeet pointed me to this
+            <a href="http://progit.org/book">
+             nice online book on git
+            </a>
+            .
+            <br/>
+            It is a complicated but powerful tool.  Don't worry we are only going to cover the basics
+           </p>
+           <h2>
+            Download a repository
+           </h2>
+           <p>
+            To get a local copy of remote repository, you "clone" it.
+           </p>
+           <p>
+            <div class="geshifilter">
+             <pre class="python geshifilter-python" style="font-family:monospace;">git clone git@github.<span style="color: black;">com</span>:mtholder/eebprogramming.<span style="color: black;">git</span></pre>
+            </div>
+           </p>
+           <p>
+            This will created a subdirectory on your maching called eebprogramming that has the repository.
+           </p>
+           <h2>
+            Get the latest version of a repository
+           </h2>
+           <p>
+            To update a repository that you have downloaded, cd into it and pull the changes:
+           </p>
+           <p>
+            <div class="geshifilter">
+             <pre class="python geshifilter-python" style="font-family:monospace;"><span style="color: #dc143c;">cd</span> eebprogramming.<span style="color: black;">git</span>
+git pull origin</pre>
+            </div>
+           </p>
+           <h2>
+            To create your own repository
+           </h2>
+           <p>
+            If you want to start a new repository (not just add files to an existing repo), then use
+            <br/>
+            <div class="geshifilter">
+             <pre class="python geshifilter-python" style="font-family:monospace;">git init</pre>
+            </div>
+            <br/>
+            Then to associate your local repository with a remote location you'll use a
+            <br/>
+            <div class="geshifilter">
+             <pre class="python geshifilter-python" style="font-family:monospace;">git remote add origin <span style="color: #66cc66;">&lt;</span>github repository location here<span style="color: #66cc66;">&gt;</span></pre>
+            </div>
+            <br/>
+            where the github repository location is provided to you when you create a new repository on GitHub.
+           </p>
+           <h2>
+            To publish your changes so that other people can see them
+           </h2>
+           <p>
+            Whenever you finish a logical chunk of coding you should commit the changes.
+           </p>
+           <p>
+            If you have added a new file that git did not manage before, then you have to add it before committing.
+           </p>
+           <p>
+            Let's say that you have just created a new file called "assignment1.py" in your repository which is called "myrepo":
+            <br/>
+            <div class="geshifilter">
+             <pre class="python geshifilter-python" style="font-family:monospace;"><span style="color: #dc143c;">cd</span> myrepo
+git add assignment1.<span style="color: black;">py</span>
+git commit -m <span style="color: #483d8b;">"Added a script for the first assignment"</span> -a</pre>
+            </div>
+           </p>
+           <p>
+            If you forget the commit message (the -m argument followed by a quoted string), then git will send you into a text editor.
+            <br/>
+            On most UNIX-like machines (including Mac) this will be
+            <tt>
+             vi
+            </tt>
+            .
+            <br/>
+            To exit vi, you execute the following cryptic command with a return at the end
+            <br/>
+            <tt>
+             <br/>
+             :q!
+             <br/>
+            </tt>
+           </p>
+           <p>
+            Now the git repository on your machine will save the version as a commit.
+            <br/>
+            When you "push" your changes, then git will transfer your commits to the public server so that other people can pull them down.
+            <br/>
+            <div class="geshifilter">
+             <pre class="python geshifilter-python" style="font-family:monospace;"><span style="color: #dc143c;">cd</span> myrepo
+git push origin master</pre>
+            </div>
+           </p>
+          </div>
+          <div class="clear-block">
+           <div class="meta">
+           </div>
+          </div>
+         </div>
+        </div>
+        <div id="footer">
+         <p>
+          The
+          <a href="https://mtholder.github.io/home/">
+           Holder Lab
+          </a>
+          is part of the
+          <a href="https://eeb.ku.edu/">
+           Department of Ecology and Evolutionary Biology
+          </a>
+          at
+          <a href="https://www.ku.edu">
+           KU
+          </a>
+         </p>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+    <!-- /.left-corner, /.right-corner, /#squeeze, /#center -->
+   </div>
+   <!-- /container -->
+  </div>
+  <!-- /layout -->
+ </body>
+</html>

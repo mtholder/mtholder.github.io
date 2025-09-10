@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<!-- saved from url=(0035)https://plewis.github.io/searching/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script type="text/x-mathjax-config;executed=true">
+        MathJax.Hub.Config({
+          tex2jax: {
+            inlineMath: [['$','$'], ['\\(','\\)']],
+            processEscapes: true
+          }
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Searching through treespace</title>
+<meta name="generator" content="Jekyll v3.10.0">
+<meta property="og:title" content="Searching through treespace">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="This is based on the the web site of Paul O. Lewis, Department of Ecology and Evolutionary Biology, University of Connecticut, Storrs, CT. USA.">
+<meta property="og:description" content="This is based on the  the web site of Paul O. Lewis, Department of Ecology and Evolutionary Biology, University of Connecticut, Storrs, CT. USA.">
+<link rel="canonical" href="https://plewis.github.io/searching/">
+<meta property="og:url" content="/searching/">
+<meta property="og:site_name" content="Mark T. Holder Lab">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Searching through treespace">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"This is the web site of Paul O. Lewis, Department of Ecology and Evolutionary Biology, University of Connecticut, Storrs, CT. USA.","headline":"Searching through treespace","url":"/searching/"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="https://plewis.github.io/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://plewis.github.io/feed.xml" title="Paul O. Lewis Lab Home"><style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 5px 0px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; -khtml-border-radius: 5px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 1px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: .7em}
+.MathJax_MenuRadioCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuLabel {padding: 1px 2em 3px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #DDDDDD; margin: 4px 3px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: #606872; color: white}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1em; bottom: 1.5em; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style></head>
+<body><div id="MathJax_Message" style="display: none;"></div><header class="site-header" role="banner">
+
+  <div class="wrapper">
+<a class="site-title" rel="author" href="https://plewis.github.io/">Paul O. Lewis Lab Home</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger">
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+<a class="page-link" href="https://plewis.github.io/publications/">Publications</a><a class="page-link" href="https://plewis.github.io/software/">Software</a><a class="page-link" href="https://plewis.github.io/people/">People</a><a class="page-link" href="https://plewis.github.io/teaching/">Teaching</a>
+</div>
+      </nav>
+</div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Searching through treespace</h1>
+  </header>
+
+  <div class="post-content">
+    <p>This lab was written by Paul Lewis - see <a href="https://plewis.github.io/phylogenetics2024/"> his Phylogenetics main page</a>; with some tweaks by MTH</p>
+
+<p>This lab explores different search strategies under the parsimony criterion.</p>
+
+<h2 id="what-to-turn-in">What to turn in</h2>
+
+<p>Please copy the questions in the template below into a plain text file (i.e., use Notepad++ on Windows or BBEdit on Mac). The questions below correspond to the sections in the lab tutorial starting with the “thinking” emoji. As you work through the lab, replace the underscores with your answers to these questions. After the lab, submit the answers via Canvas.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>____ How many separate tree topologies did PAUP* examine? 
+____ What is the parsimony treelength of the best tree? 
+____ The worst tree? 
+____ How many steps separate the best tree from the next best?
+____ Which tree was the original tree? 
+____ Which trees correspond to NNI rearrangments of which internal edges on the original tree?
+____ How many tree islands were found? 
+____ What are the scores of the trees on the islands with the best parsimony score? 
+____ How long did the search take? 
+____ How many rearrangements were tried?
+____ How many tree islands were found? 
+____ What are the scores of the trees in each island? 
+____ How long did the search take this time? 
+____ How many rearrangements were tried?
+____ How many tree islands were found? 
+____ What are the scores of the trees in each island? 
+____ How long did the search take this time? 
+____ How many rearrangements were tried? 
+____ How many trees are currently in memory? 
+____ Has PAUP saved trees from all islands discovered during this search?
+____ Explain why PAUP saved the number of trees it did.
+____ Of the three types of branch swapping (NNI, SPR, TBR), which is most thorough? 
+____ Least thorough? 
+____ What is the minimum evolution score for the NJ tree?
+____ What is the minimum evolution score for the tree found by heuristic search starting with the NJ tree?
+____ What is wrong with this picture? 
+____ Why is the minimum evolution score of the heuristic search worse than that of the starting tree? 
+</code></pre></div></div>
+
+<h2 id="getting-started">Getting started</h2>
+
+<p>You can work on this lab on your own laptop or via the cluster</p>
+
+<p>If you are working on the cluster use< login to the cluster (<code class="language-plaintext highlighter-rouge">ssh username@hpc.crc.ku.edu</code>) and type the following command:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>srun --time=02:00:00 --ntasks=1 --nodes=1 --partition=bi --pty /bin/bash -l</code></pre></div></div>
+<p>if you have access to the BI computation queues, <b>OR</b></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>srun --time=02:00:00 --ntasks=1 --nodes=1 --partition=eeb --pty /bin/bash -l</code></pre></div></div>
+<p>if you want to use the EEB partition.</p>
+
+
+<p>This will find a node that is not currently fully loaded with jobs and allow you to play with programs without bogging down the head node (the node everyone uses to access the cluster). You should always use <code class="language-plaintext highlighter-rouge">srun</code> if you are planning to do any computation interactively, as we will do today.</p>
+
+
+<p>If you have not already downloaded the datafile for lab 1, then you can get a NEXUS version of it as <a href="https://hydrodictyon.eeb.uconn.edu/people/plewis/courses/phylogenetics/data/angio35.nex">angio35.nex</a> using</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl -Ok https://gnetum.eeb.uconn.edu/courses/phylogenetics/lab/angio35.nex
+</code></pre></div></div>
+<p> or </p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget https://gnetum.eeb.uconn.edu/courses/phylogenetics/lab/angio35.nex
+</code></pre></div></div>
+<p><a href="https://www.gnu.org/software/wget/" target="_blank">wget</a> and <a href="https://curl.se/" target="_blank">curl</a> are two freely available command-line tools for downloading files from URLs.
+</p>
+
+<h2 id="create-a-command-file">Create a command file</h2>
+
+<p>Now start the nano editor (do not specify a file name because you will be creating a new file).
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nano</code></pre></div></div>
+
+<p>Enter the following text, saving the file as <code class="language-plaintext highlighter-rouge">run.nex</code>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#nexus
+
+begin paup;
+    log file=output.txt start replace;
+    execute angio35.nex;
+    delete 6-.;
+    alltrees fd=barchart;
+    quit;
+end;
+</code></pre></div></div>
+
+<p>While it is possible to put a paup block directly into a data file such as <em>angio35.nex</em>, there are at least a couple of advantages to creating a separate NEXUS file like <code class="language-plaintext highlighter-rouge">run.nex</code> that contains the paup block. First, executing <code class="language-plaintext highlighter-rouge">run.nex</code> automatically starts a log file so that you will have a record of what you did. Second, it is not a great idea to put commands inside of the data file (<em>angio35.nex</em>) itself. Doing so may seem convenient at the time, but you will later forget that executing <em>angio35.nex</em> involves starting a possibly long-running analysis that also may immediately overwrite output files that took a long time to create (if the analysis is indeed long-running).</p>
+
+<p>Note that because we used the <code class="language-plaintext highlighter-rouge">replace</code> keyword in the <code class="language-plaintext highlighter-rouge">log</code> command, the file <code class="language-plaintext highlighter-rouge">output.txt</code> will be overwritten without warning if it exists. Yes, this is called <em>living dangerously</em> but saves some frustration if a run must be restarted.</p>
+
+<p>The delete command</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>delete 6-.
+</code></pre></div></div>
+
+<p>causes PAUP* to ignore all taxa except Ephedrasinica, Gnetum_gnemJS, WelwitschiaJS, Ginkgo_biloba, and Pinus_ellCH.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">alltrees</code> command conducts an exhaustive search under the parsimony criterion (parsimony is the default optimality criterion).</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">quit</code> command causes PAUP* to quit.</p>
+
+<p>Start PAUP*, specifying <code class="language-plaintext highlighter-rouge">run.nex</code> as the file to execute:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>paup run.nex
+</code></pre></div></div>
+
+<p>If you are running on the cluster, you may have to use:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./paup4a168_centos64 run.nex</code></pre></div></div>
+
+
+<p>You will find that you need to type <code class="language-plaintext highlighter-rouge">y</code> in order to answer the question <em>Warning: there are unsaved trees. Do you want to quit anyway?</em>. You can avoid having to answer that question each time you execute <em>run.nex</em> by placing the following just above the line containing the <code class="language-plaintext highlighter-rouge">quit</code> command:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>set nowarntsave;
+</code></pre></div></div>
+
+<p>This analysis should finish very quickly because you now have only 5 taxa. The <code class="language-plaintext highlighter-rouge">fd=barchart</code> setting tells PAUP to output a bar chart showing the distribution parsimony scores.</p>
+
+<blockquote>
+  <p><img class="emoji" title=":thinking:" alt=":thinking:" src="./searching/1f914.png" height="20" width="20"> How many separate tree topologies did PAUP* examine? What is the parsimony treelength of the best tree? The worst tree? How many steps separate the best tree from the next best? (consult the bar chart to determine the answer)</p>
+</blockquote>
+
+<h2 id="determine-nni-rearrangements">Determine NNI rearrangements</h2>
+
+<p>Because we performed an exhaustive enumeration, we now know which tree is the globally most parsimonious tree. We are thus guaranteed to never find a better tree were we to start an heuristic search with this tree.</p>
+
+<p>Let’s do an experiment: perform an NNI heuristic search, starting with the best tree, and have PAUP* save all the trees it encounters in this search. In the end, PAUP* will have 5 trees in memory: the starting tree and the 4 trees corresponding to all possible NNI rearrangements of that starting tree.</p>
+
+<h3 id="exercise-to-turn-in-before-the-end-of-lab">Exercise to turn in before the end of lab</h3>
+
+<p><em>Before you start the NNI search</em>, use the <code class="language-plaintext highlighter-rouge">showtrees</code> command to show you the tree obtained from the exhaustive enumeration. (Note that the <code class="language-plaintext highlighter-rouge">quit</code> command in your <code class="language-plaintext highlighter-rouge">run.nex</code> file caused PAUP* to quit, so you will need to modify the <code class="language-plaintext highlighter-rouge">run.nex</code> file, adding the <code class="language-plaintext highlighter-rouge">showtrees</code> command just before the <code class="language-plaintext highlighter-rouge">quit</code> command, and run PAUP* again.)</p>
+
+<p>Draw this tree as an <strong>unrooted</strong> tree on a piece of paper, abbreviating the taxa as <strong>E</strong> for <em>Ephedra</em>, <strong><em>P</em></strong> for <em>Pinus</em>, <strong><em>W</em></strong> for <em>Welwitschia</em>, <strong><em>Gg</em></strong> for <em>Gnetum</em> gnemon, and <strong><em>Gb</em></strong> for <em>Ginkgo biloba</em>.</p>
+
+<p>Draw the 4 possible NNI rearrangements (refer to the <a href="https://gnetum.eeb.uconn.edu/courses/phylogenetics/02-searching-annotated.pdf">description of NNI in your lecture notes (slide 13)</a> if you’ve forgotten) and label them with the tree number from the PAUP* output (which you shall obtain shortly).</p>
+
+<h2 id="perform-an-nni-search">Perform an NNI search</h2>
+
+<p>Add an <code class="language-plaintext highlighter-rouge">hsearch</code> and <code class="language-plaintext highlighter-rouge">describe</code> command to your <code class="language-plaintext highlighter-rouge">run.nex</code> file, which should afterwards look like this:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#nexus
+
+begin paup;
+    log file=output.txt start replace;
+    execute angio35.nex;
+    delete 6-.;
+    
+    [! *** Conduct an exhaustive search]
+    alltrees fd=barchart;
+
+    [! *** Here is the best tree from the exhaustive search]
+    showtree;
+    
+    [! *** Conduct NNI heuristic search starting with best tree]
+    hsearch start=1 swap=nni nbest=15;
+    
+    [! *** Describe all trees]
+    describe all;
+    
+    [! *** Quit]
+    set nowarntsave;
+    quit;
+end;
+</code></pre></div></div>
+
+<p>As you can see, I’ve added some</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[!comments that begin with an exclamation point]
+</code></pre></div></div>
+
+<p>NEXUS comments that begin with ! are <em>printable</em> comments: they will appear in the <em>output.txt</em> log file, which provides a nice way to document what you did both in the command file as well as the output. The *** at the beginning of each comment is not necessary, but I find it helps to locate my annotations in the output file later.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">hsearch</code> command is broken down as follows:</p>
+<ul>
+  <li>
+<code class="language-plaintext highlighter-rouge">start=1</code> starts the search from the tree currently in memory (i.e., the best tree resulting from your exhaustive search using the parsimony criterion)</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">swap=nni</code> causes the Nearest-Neighbor Interchange (NNI) method to be used for branch swapping</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">nbest=15</code> saves the 15 best trees found during the search. Thus, were PAUP to examine every possible tree, we would end up saving all of them in memory. The reason this command is needed is that PAUP ordinarily does not save trees that are worse than the best one it has seen thus far. Here, we are interested in seeing the trees that are examined during the course of the search, even if they are not as good as the starting tree.</li>
+</ul>
+
+<p>The <code class="language-plaintext highlighter-rouge">describe all</code> command plots the 5 trees currently in memory. The reason we are using the <code class="language-plaintext highlighter-rouge">describe</code> command rather than the <code class="language-plaintext highlighter-rouge">showtrees</code> command is because we want PAUP to show us the numbers it has assigned to the internal nodes, something that <code class="language-plaintext highlighter-rouge">showtrees</code> doesn’t do.</p>
+
+<blockquote>
+  <p><img class="emoji" title=":thinking:" alt=":thinking:" src="./searching/1f914.png" height="20" width="20"> Which tree was the original tree? Which trees correspond to NNI rearrangments of which internal edges on the original tree? (Specify edges on the original tree using pairs of node numbers: e.g. 36-38)</p>
+</blockquote>
+
+<h2 id="find-the-most-parsimonious-tree-for-all-35-taxa">Find the most parsimonious tree for all 35 taxa</h2>
+
+<p>Modify your <em>run.nex</em> file to conduct a heuristic search on <em>all 35 taxa</em> having the following characteristics:</p>
+<ul>
+  <li>The starting trees are each generated by the stepwise addition method, using random addition of sequences (you will employ the <code class="language-plaintext highlighter-rouge">addseq</code> and <code class="language-plaintext highlighter-rouge">start</code> keywords for this)</li>
+  <li>Swap using NNI branch swapping (you will employ the <code class="language-plaintext highlighter-rouge">swap</code> keyword for this)</li>
+  <li>Set the <code class="language-plaintext highlighter-rouge">nbest</code> option to <code class="language-plaintext highlighter-rouge">all</code> because we want to be saving just the best trees, not suboptimal trees (yes, this option is a little confusing).</li>
+  <li>Set the random number seed to 5555 using the <code class="language-plaintext highlighter-rouge">rseed</code> option (this determines the sequence of pseudorandom numbers used for the random additions; ordinarily you would not need to set the random number seed, but we will do this here to ensure that we all get the same results)</li>
+  <li>Do 500 replicate searches; each replicate represents an independent search starting from a different random-addition tree (you will use the <code class="language-plaintext highlighter-rouge">nreps</code> keyword for this).</li>
+</ul>
+
+<p>Use the following command to get PAUP to list the options for hsearch:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>hsearch ?
+</code></pre></div></div>
+
+<p>Remember you can comment out portions of your Nexus file if you don’t want to lose them: e.g.,</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#nexus
+
+begin paup;
+    log file=output.txt start replace;
+    execute angio35.nex;
+    [delete 6-.;]
+    [alltrees fd=barchart;]
+    [showtree;]
+
+    [! *** Conduct NNI heuristic search starting with random stepwise addition]
+    hsearch [put your new options here];
+
+    [describe all;]
+
+    [! *** Quit]
+    set nowarntsave;
+    quit;
+end;
+</code></pre></div></div>
+
+<blockquote>
+  <p><img class="emoji" title=":thinking:" alt=":thinking:" src="./searching/1f914.png" height="20" width="20"> How many tree islands were found? What are the scores of the trees on the islands with the best parsimony score? How long did the search take? How many rearrangements were tried?</p>
+</blockquote>
+
+<h2 id="conduct-a-second-search-with-spr-swapping">Conduct a second search with SPR swapping</h2>
+
+<p>Construct another heuristic search using SPR branch swapping. Be sure to set the random number seed to 5555.</p>
+
+<blockquote>
+  <p><img class="emoji" title=":thinking:" alt=":thinking:" src="./searching/1f914.png" height="20" width="20"> How many tree islands were found? What are the scores of the trees in each island? How long did the search take this time? How many rearrangements were tried?</p>
+</blockquote>
+
+<h2 id="now-conduct-a-third-search-with-tbr-swapping">Now conduct a third search with TBR swapping</h2>
+
+<blockquote>
+  <p><img class="emoji" title=":thinking:" alt=":thinking:" src="./searching/1f914.png" height="20" width="20"> How many tree islands were found? What are the scores of the trees in each island? How long did the search take this time? How many rearrangements were tried? How many trees are currently in memory (look for “Number of trees retained” in the output)? Has PAUP saved trees from all islands discovered during this search? (Hint: compare “Number of trees retained” to the sum of the “Size” column in the Tree-island profile.) Explain why PAUP saved the number of trees it did.</p>
+</blockquote>
+
+<p>Wondering about this warning?</p>
+
+<p><em>Multiple hits on islands of unsaved trees may in fact represent different islands.</em></p>
+
+<p>When PAUP encounters a new island, it will find all trees composing that particular island in the process of branch swapping. If, in a new search (remember, you are performing 500 searches in each of these runs), it encounters any trees already stored in memory, it knows that it has hit an island that it found previously. Note that it would be pointless to continue on this tack, because it will only find all the trees on that island again. For trees retained in memory, PAUP can keep track of which island they belong to (remember that it is possible for trees with the same parsimony score to be in different tree islands!). But for trees that are not retained in memory, PAUP only knows that it has encountered an island of trees having score X; it has no way of finding out how many islands are actually represented amongst the trees having score X.</p>
+
+<blockquote>
+  <p><img class="emoji" title=":thinking:" alt=":thinking:" src="./searching/1f914.png" height="20" width="20"> Of the three types of branch swapping (NNI, SPR, TBR), which is most thorough (i.e. examines the largest number of tree topologies)? Least thorough?</p>
+</blockquote>
+
+<h2 id="compare-nj-with-a-comparable-heuristic-search">Compare NJ with a comparable heuristic search</h2>
+
+<p>In this exercise, you will conduct a Neighbor-joining (NJ) analysis using HKY distances and compare this with an heuristic search using the minimum evolution criterion. The goal of this section is to demonstrate that it is possible for heuristic searching to find a better tree than NJ, even using the same optimality criterion.</p>
+
+<p>Create a new file using nano containing the following lines. Note that we are again using the <em>angio35.nex</em> file:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#nexus
+
+begin paup; 
+    execute angio35.nex;
+    dset distance=hky objective=me;
+    nj;
+    dscores 1; [!*** NJ score above ***]
+    hsearch start=1;
+    dscores 1; [!*** Heuristic search score above ***]
+end;
+</code></pre></div></div>
+
+<p>(Reminder: the text surrounded by square brackets is a comment, and the initial exclamation point ! tells PAUP that you would like this comment to appear in the output.) Run this file in paup by typing the following at the linux prompt:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>paup &lt;filename&gt;
+</code></pre></div></div>
+
+<p>(Of course, replace <code class="language-plaintext highlighter-rouge">&lt;filename&gt;</code> with the actual name of the file you just created.)</p>
+
+<blockquote>
+  <p><img class="emoji" title=":thinking:" alt=":thinking:" src="./searching/1f914.png" height="20" width="20"> What is the minimum evolution score for the NJ tree? (scroll down from the beginning of the PAUP* output looking for the phrase “ME-score” right above the point where the comment <code class="language-plaintext highlighter-rouge">*** NJ score above ***</code> was printed)</p>
+</blockquote>
+
+<blockquote>
+  <p><img class="emoji" title=":thinking:" alt=":thinking:" src="./searching/1f914.png" height="20" width="20"> What is the minimum evolution score for the tree found by heuristic search starting with the NJ tree? (Look just above the comment <code class="language-plaintext highlighter-rouge">*** Heuristic search score above ***</code>)</p>
+</blockquote>
+
+<blockquote>
+  <p><img class="emoji" title=":thinking:" alt=":thinking:" src="./searching/1f914.png" height="20" width="20"> What is wrong with this picture? Why is the minimum evolution score of the heuristic search worse than that of the starting tree? (Hint: take a look at the “Heuristic search settings” section of the output and, in particular, the “Optimality criterion” line.)</p>
+</blockquote>
+
+<p>Once you have figured out what is going on (ask us for help if you are stumped), fix your paup block and re-execute the file. You may need to get PAUP to help you with the criterion setting; type the following to get PAUP to spit out the current settings, then look for criterion near the top of the list:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>set ?
+</code></pre></div></div>
+
+<p>In your reanalysis, you should find that the heuristic search starting with the NJ tree found a better tree using the same optimality criterion (minimum evolution) being used by NJ. That is not to say that NJ does not find a good tree, and it might even find the true tree, but it usually will not find the best tree. NJ is an excellent way to obtain a starting tree for an heuristic search, however.</p>
+
+
+  </div>
+
+</article>
+
+      </div>
+    </main>
+<footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-3">
+        <p>This is based on a page from the web site of Paul O. Lewis, Department of Ecology and Evolutionary Biology, University of Connecticut, Storrs, CT. USA.</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>
