@@ -1,0 +1,46 @@
+#!/bin/sh
+py_version="2.7"
+set -x
+if ! script_dir=`dirname $0`
+then
+    echo "Phycas: Getting the directory containing the script using dirname failed"
+    exit 1
+fi
+if ! test -d $script_dir
+then
+    echo "Phycas: The directory returned by dirname does not exist"
+    exit 1
+fi
+abs_script_dir=$(python -c "import os; print os.path.abspath('$script_dir')")
+if ! test -d "${abs_script_dir}"
+then
+    echo "Phycas: The directory returned by our little python trick ($abs_script_dir) did not work"
+    exit 1
+fi
+script_install_prefix=$(dirname "${abs_script_dir}")
+if ! test -d "${script_install_prefix}"
+then
+    echo "Phycas: The grandparent directory returned by our little python trick ($script_install_prefix) did not work"
+    exit 1
+fi
+phycas_parent="${script_install_prefix}/lib/python${py_version}/site-packages"
+phycas_dir="${phycas_parent}"
+if ! test -d "${phycas_dir}"
+then
+    echo "Phycas: phycas subdirectory with the python module was expected at ${phycas_dir} but it was not found."
+    exit 1
+fi
+conversions_dir="${phycas_dir}/Conversions"
+if ! test -d "${conversions_dir}"
+then
+    echo "Phycas: phycas/Conversions subdirectory with the python module was expected at ${conversions_dir} but it was not found."
+    exit 1
+fi
+export LD_LIBRARY_PATH="${conversions_dir}:${script_install_prefix}/lib}:${script_install_prefix}/lib/ncl}:${LD_LIBRARY_PATH}"
+export PYTHONPATH="${phycas_parent}:${PYTHONPATH}"
+if test -x "${abs_script_dir}/ipython"
+then
+    ipython -i -c 'from phycas import *'
+else
+    "python${py_version}" -i -c
+fi

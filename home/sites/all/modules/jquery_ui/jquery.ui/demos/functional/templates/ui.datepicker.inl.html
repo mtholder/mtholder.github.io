@@ -1,0 +1,17 @@
+<input id="altInline" size="10" type="text"/>
+<div id="inline">
+</div>
+<p style="clear: both;">
+ <!-- See day-by-day example for highlighting days code -->
+</p>
+<script type="text/javascript">
+ function setInlineDate() {
+	try {
+		var date = $.datepicker.parseDate("mm/dd/yy", $("#altInline").val());
+		$("#inline").datepicker("setDate", date);
+	}
+	catch (e) {
+		// Ignore
+	}
+}
+</script>

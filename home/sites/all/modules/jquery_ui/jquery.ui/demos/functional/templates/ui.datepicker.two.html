@@ -1,0 +1,9 @@
+<input id="startDate" size="10" type="text" value=""/>
+to
+<input id="endDate" size="10" type="text" value=""/>
+<script type="text/javascript">
+ function customRange(input) {
+	return {minDate: (input.id == "endDate" ? $("#startDate").datepicker("getDate") : null),
+		maxDate: (input.id == "startDate" ? $("#endDate").datepicker("getDate") : null)};
+}
+</script>

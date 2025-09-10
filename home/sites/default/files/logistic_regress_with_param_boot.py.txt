@@ -1,0 +1,161 @@
+#!/usr/bin/env python
+from __future__ import print_function
+from scipy import optimize
+from math import log, exp
+from time import time
+from random import Random
+import sys
+
+WORST_LN_L = float('-inf')
+
+def calc_p_success(parameters, explanatory_vars):
+    # Use the model to calculate a z response for every explanatory variable
+    z_list = []
+    if len(parameters) == 2:
+        # linear model
+        a, b = parameters
+        for x in explanatory_vars:
+            z = a + b*x
+            z_list.append(z)
+    else:
+        try:
+            a, b, c = parameters
+        except:
+            sys.exit('Expecting a 2 parameter or 3 parameter model. Found {} parameters\n'.format(len(parameters)))
+        # parabolic model
+        for x in explanatory_vars:
+            z = a + b*x + c*x*x
+            z_list.append(z)
+    # logistic link function maps z -> probability of success
+    p_list = []
+    for z in z_list:
+        try:
+            p = 1.0 / (1.0 + exp(-z))
+        except:
+            if -z < -300:
+                p = 1.0
+            else:
+                assert -z > 300
+                p = 0.0
+        p_list.append(p)
+    return p_list
+    
+def ln_likelihood(parameters):
+    ln_l = 0.0    
+    p_list = calc_p_success(parameters, X)
+    for i, y in enumerate(Y):
+        p = p_list[i]
+        if y:
+            # the datum was a success, so we use log(p_success)
+            ln_l += log(p)
+        else:
+            # the datum was a failure, so we use log(p_success)
+            ln_l += log(1.0 - p)
+    return ln_l
+
+def estimate_global_MLE(params0):  
+    param_opt = optimize.fmin(scipy_ln_likelihood, list(params0), xtol=1e-8, disp=False)
+    return param_opt, -scipy_ln_likelihood(param_opt)
+
+def scipy_ln_likelihood(parameters):
+    negLnL = -ln_likelihood(parameters)
+    return negLnL
+
+# Simulate data to derive a null distribution for the LRT test stat
+def simulate_data(params, explanatory_vars, rng):
+    p_list = calc_p_success(params, explanatory_vars)
+    sim_y = []
+    for p in p_list:
+        if rng.random() < p:
+            sim_y.append(True)
+        else:
+            sim_y.append(False)
+    return sim_y
+
+def do_param_boot_rep(null_param_values, rng):
+    global Y, X
+    sim_y = simulate_data(null_param_values, X, rng)
+    # because we use globals. We hold onto the real data, and swap it in later.
+    real_data_Y = Y
+    Y = sim_y
+    est_simple_mle, simple_lnL = estimate_global_MLE(null_param_values)
+    full_model_params = [0.0]*(1 + len(null_param_values))
+    est_rich_mle, rich_lnL = estimate_global_MLE(full_model_params)
+    sim_lrt = 2*(rich_lnL - simple_lnL)
+    Y = real_data_Y
+    return sim_lrt
+
+def main():
+    # Calculate the MLEs and LRT
+    linear_mles, linear_lnL = estimate_global_MLE([0.0, 0.0])
+    print('Linear model with logistic link function (two free parameters):')
+    print('   The max lnL =  ', linear_lnL)
+    print('   MLEs =  ', linear_mles)
+           
+    parabolic_mles, parabolic_lnL = estimate_global_MLE([0.0, 0.0, 0.0])
+    print('Parabolic model with logistic link function (three free parameters):')
+    print('   The max lnL =  ', parabolic_lnL)
+    print('   MLEs =  ', parabolic_mles)
+
+    # lrt
+    lrt = 2*(parabolic_lnL - linear_lnL)
+    print('\nThe LRT test statistic =', lrt)
+    if lrt < 3.84:
+        word = 'NOT'
+    else:
+        word = ''
+    print('   This is', word ,'significant using the chi-square with 1 degree of freedom to assess significance.')
+
+    #print('First draw from the rng would be', rng.random())
+    if num_sims > 0:
+        sim_lrts = []
+        for i in range(num_sims):
+            if i % 50 == 0:
+                sys.stderr.write('  sim replicate {}\n'.format(i))
+            null_true_lrt = do_param_boot_rep(linear_mles, rng)
+            sim_lrts.append(null_true_lrt)
+
+        sim_lrts.sort()
+        five_percent_count = num_sims / 20
+        p = 0.95
+        print('Based on a simulated null distribution of for LRT:')
+        index_cutoff = five_percent_count
+        fmt = ' for P of about {:3.2f} the critical value is {:6.3f} (based on the {} out of {} values)'
+        while p > 0.0:
+            cutoff = sim_lrts[index_cutoff]
+            print(fmt.format(p, cutoff, index_cutoff, num_sims))
+            index_cutoff += five_percent_count
+            p -= 0.05
+        p_value = len([i for i in sim_lrts if i > lrt])/float(len(sim_lrts))
+        print('The approximation of the P-value is', p_value)
+
+if __name__ == '__main__':
+    # User interface
+    try:
+        data_filename = sys.argv[1]
+        num_sims = int(sys.argv[2])
+        assert num_sims >= 0
+    except:
+        sys.exit('Expecting 2 arguments: a path to a data file and the # of parameteric bootstrap reps to run')
+    if len(sys.argv) > 3:
+        rn_seed = int(sys.argv[3])
+    else:
+        rn_seed = int(time())
+    if num_sims > 0:
+        sys.stderr.write('The random number seed is {}\n'.format(rn_seed))
+        rng = Random()
+        rng.seed(rn_seed)
+        if (num_sims % 20) != 0:
+            sys.exit('Please choose a number of simulations that is a multiple of 20, so I do not have to think too hard about the summary of critical values.\n''') 
+
+    # read in the data filling the globals X and Y
+    with open(data_filename, 'rU') as data_file:
+        X = [] # data stored as global lists
+        Y = []
+        for idx, row in enumerate(data_file):
+            cols = row.replace('\n', '').split('\t')
+            X.append(float(cols[0]))
+            r = int(cols[1])
+            assert r in (0, 1)
+            Y.append(r == 1)
+    main()

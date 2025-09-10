@@ -1,0 +1,34 @@
+
+
+data_file = open("hw3.birds.1.txt", 'rU')
+out1 = open("hw3.birds.2.txt", 'w')
+
+for idx, row in enumerate(data_file):
+	cols = row.replace('\n', '').split('\t')
+
+#Time	Height	Unique ID
+#13:39	L	1
+	if idx>0:
+		time=cols[0]
+		state=cols[1]
+		bird=cols[2]
+
+		if idx==1:
+			current_bird=cols[2]
+			current_state=cols[1]
+			start_time= 60*int(time.split(":")[0]) + int(time.split(":")[1])
+			start_hour=int(time.split(":")[0])
+
+		if bird != current_bird or state != current_state: # Report change
+			present_time = 60*int(time.split(":")[0]) + int(time.split(":")[1])
+			present_hour = int(time.split(":")[0]) # must account for circularity of time
+			if bird == current_bird:
+				if present_hour>=start_hour:
+					out1.write(current_bird+"\t"+current_state+"\t"+str(present_time-start_time)+"\n")
+				else: # clock struct midnight or high noon
+					interval = (60*24-start_time)+present_time
+					out1.write(current_bird+"\t"+current_state+"\t"+str(interval)+"\n")	 
+			current_bird=bird
+			current_state=state
+			start_time=present_time
+			start_hour=present_hour

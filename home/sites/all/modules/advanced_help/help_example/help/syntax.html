@@ -1,0 +1,683 @@
+<h2>
+ <span class="mw-headline">
+  Syntax
+ </span>
+</h2>
+<div class="help-right">
+ <div class="thumbinner" style="width:182px;">
+  <a class="image" href="http://en.wikipedia.org/wiki/Image:PHP_Hello_World_screenshot.png" target="_blank" title="Syntax-highlighted PHP code">
+   <img alt="Syntax-highlighted PHP code" border="0" class="thumbimage" height="87" src="path:180px-PHP_Hello_World_screenshot.png" width="180"/>
+  </a>
+  <div class="thumbcaption">
+   <div class="magnify">
+    <a class="internal" href="http://en.wikipedia.org/wiki/Image:PHP_Hello_World_screenshot.png" target="_blank" title="Enlarge">
+     <img alt="" height="11" src="../../../../../../skins-1.5/common/images/magnify-clip.png" width="15"/>
+    </a>
+   </div>
+   <a class="mw-redirect" href="http://en.wikipedia.org/wiki/Syntax-highlighted" target="_blank" title="Syntax-highlighted">
+    Syntax-highlighted
+   </a>
+   PHP code
+  </div>
+ </div>
+</div>
+<p>
+ PHP only parses code within its
+ <a href="http://en.wikipedia.org/wiki/Delimiter" target="_blank" title="Delimiter">
+  delimiters
+ </a>
+ . Anything outside its delimiters is sent directly to the output and is not parsed by PHP. The most common delimiters are
+ <span s="">
+  &lt;?php
+ </span>
+ and
+ <span>
+  ?&gt;
+ </span>
+ , which are open and close delimiters respectively.
+ <span>
+  &lt;script language="php"&gt;
+ </span>
+ and
+ <span>
+  &lt;/script&gt;
+ </span>
+ delimiters are also available. Short tags (
+ <span>
+  &lt;?
+ </span>
+ or
+ <span>
+  &lt;?=
+ </span>
+ and
+ <span>
+  ?&gt;
+ </span>
+ ) are also commonly used, but like ASP-style tags (
+ <span>
+  &lt;%
+ </span>
+ or
+ <span>
+  &lt;%=
+ </span>
+ and
+ <span>
+  %&gt;
+ </span>
+ ), they are less portable as they can be disabled in the PHP configuration. For this reason, the use of short tags and ASP-style tags is discouraged.
+ <sup class="reference" id="cite_ref-basic_syntax_28-0">
+  <a href="#cite_note-basic_syntax-28" title="">
+   [29]
+  </a>
+ </sup>
+ The purpose of these delimiters is to separate PHP code from non-PHP code, including HTML. Everything outside the delimiters is ignored by the parser and is passed through as output.
+ <sup class="reference" id="cite_ref-29">
+  <a href="#cite_note-29" title="">
+   [30]
+  </a>
+ </sup>
+</p>
+<p>
+ Variables are prefixed with a
+ <a href="http://en.wikipedia.org/wiki/Dollar_sign" target="_blank" title="Dollar sign">
+  dollar symbol
+ </a>
+ and a
+ <a href="http://en.wikipedia.org/wiki/Primitive_type" target="_blank" title="Primitive type">
+  type
+ </a>
+ does not need to be specified in advance. Unlike function and class names, variable names are case sensitive. Both double-quoted (
+ <span>
+  ""
+ </span>
+ ) and
+ <a class="mw-redirect" href="http://en.wikipedia.org/wiki/Heredoc" target="_blank" title="Heredoc">
+  heredoc
+ </a>
+ strings allow the ability to embed the variable's value into the string.
+ <sup class="reference" id="cite_ref-30">
+  <a href="#cite_note-30" title="">
+   [31]
+  </a>
+ </sup>
+ PHP treats
+ <a href="http://en.wikipedia.org/wiki/Newline" target="_blank" title="Newline">
+  newlines
+ </a>
+ as
+ <a href="http://en.wikipedia.org/wiki/Whitespace_%28computer_science%29" target="_blank" title="Whitespace (computer science)">
+  whitespace
+ </a>
+ in the manner of a
+ <a href="http://en.wikipedia.org/wiki/Free-form_language" target="_blank" title="Free-form language">
+  free-form language
+ </a>
+ (except when inside string quotes), and statements are terminated by a semicolon.
+ <sup class="reference" id="cite_ref-31">
+  <a href="#cite_note-31" title="">
+   [32]
+  </a>
+ </sup>
+ PHP has three types of
+ <a href="http://en.wikipedia.org/wiki/Comparison_of_programming_languages_%28syntax%29#Comments" target="_blank" title="Comparison of programming languages (syntax)">
+  comment syntax
+ </a>
+ :
+ <span>
+  /* */
+ </span>
+ serves as block comments, and
+ <span>
+  //
+ </span>
+ as well as
+ <span>
+  #
+ </span>
+ are used for inline comments.
+ <sup class="reference" id="cite_ref-32">
+  <a href="#cite_note-32" title="">
+   [33]
+  </a>
+ </sup>
+ To output text to the browser, either the
+ <tt>
+  print
+ </tt>
+ function or the
+ <tt>
+  echo
+ </tt>
+ function is used. Both functions are nearly identical; the major difference is that
+ <tt>
+  print
+ </tt>
+ is slower than
+ <tt>
+  echo
+ </tt>
+ because the former will return a status indicating if it was successful or not, whereas the latter does not return a status and only returns the text for output.
+ <sup class="reference" id="cite_ref-33">
+  <a href="#cite_note-33" title="">
+   [34]
+  </a>
+ </sup>
+</p>
+<p>
+ <a id="Data_types" name="Data_types">
+ </a>
+</p>
+<h3>
+ <span class="mw-headline">
+  Data types
+ </span>
+</h3>
+<p>
+ PHP stores whole numbers in a platform-dependent range. This range is typically that of 32-bit
+ <a href="http://en.wikipedia.org/wiki/Signed_number_representations" target="_blank" title="Signed number representations">
+  signed
+ </a>
+ <a href="http://en.wikipedia.org/wiki/Integer_%28computer_science%29" target="_blank" title="Integer (computer science)">
+  integers
+ </a>
+ . Unsigned integers are converted to signed values in certain situations; this behavior is different from other programming languages.
+ <sup class="reference" id="cite_ref-34">
+  <a href="#cite_note-34" title="">
+   [35]
+  </a>
+ </sup>
+ Integer variables can be assigned using decimal (positive and negative),
+ <a href="http://en.wikipedia.org/wiki/Octal" target="_blank" title="Octal">
+  octal
+ </a>
+ , and
+ <a href="http://en.wikipedia.org/wiki/Hexadecimal" target="_blank" title="Hexadecimal">
+  hexadecimal
+ </a>
+ notations.
+ <a class="mw-redirect" href="http://en.wikipedia.org/wiki/Real_numbers" target="_blank" title="Real numbers">
+  Real numbers
+ </a>
+ are also stored in a platform-specific range. They can be specified using
+ <a href="http://en.wikipedia.org/wiki/Floating_point" target="_blank" title="Floating point">
+  floating point
+ </a>
+ notation, or two forms of
+ <a href="http://en.wikipedia.org/wiki/Scientific_notation" target="_blank" title="Scientific notation">
+  scientific notation
+ </a>
+ .
+ <sup class="reference" id="cite_ref-types_35-0">
+  <a href="#cite_note-types-35" title="">
+   [36]
+  </a>
+ </sup>
+ PHP has a native
+ <a href="http://en.wikipedia.org/wiki/Boolean_datatype" target="_blank" title="Boolean datatype">
+  Boolean
+ </a>
+ type that is similar to the native Boolean types in
+ <a href="http://en.wikipedia.org/wiki/Java_%28programming_language%29" target="_blank" title="Java (programming language)">
+  Java
+ </a>
+ and
+ <a href="http://en.wikipedia.org/wiki/C%2B%2B" target="_blank" title="C++">
+  C++
+ </a>
+ . Using the Boolean type conversion rules, non-zero values are interpreted as true and zero as false, as in Perl and C++.
+ <sup class="reference" id="cite_ref-types_35-1">
+  <a href="#cite_note-types-35" title="">
+   [36]
+  </a>
+ </sup>
+ The null data type represents a variable that has no value. The only value in the null data type is
+ <i>
+  NULL
+ </i>
+ .
+ <sup class="reference" id="cite_ref-types_35-2">
+  <a href="#cite_note-types-35" title="">
+   [36]
+  </a>
+ </sup>
+ Variables of the "resource" type represent references to resources from external sources. These are typically created by functions from a particular extension, and can only be processed by functions from the same extension; examples include file, image, and database resources.
+ <sup class="reference" id="cite_ref-types_35-3">
+  <a href="#cite_note-types-35" title="">
+   [36]
+  </a>
+ </sup>
+ Arrays can contain elements of any type that PHP can handle, including resources, objects, and even other arrays. Order is preserved in lists of values and in
+ <a href="http://en.wikipedia.org/wiki/Hash_table" target="_blank" title="Hash table">
+  hashes
+ </a>
+ with both keys and values, and the two can be intermingled.
+ <sup class="reference" id="cite_ref-types_35-4">
+  <a href="#cite_note-types-35" title="">
+   [36]
+  </a>
+ </sup>
+ PHP also supports
+ <a class="mw-redirect" href="http://en.wikipedia.org/wiki/String_%28computing%29" target="_blank" title="String (computing)">
+  strings
+ </a>
+ , which can be used with single quotes, double quotes, or
+ <a class="mw-redirect" href="http://en.wikipedia.org/wiki/Heredoc" target="_blank" title="Heredoc">
+  heredoc syntax
+ </a>
+ .
+ <sup class="reference" id="cite_ref-36">
+  <a href="#cite_note-36" title="">
+   [37]
+  </a>
+ </sup>
+</p>
+<p>
+ <a id="Functions" name="Functions">
+ </a>
+</p>
+<h3>
+ <span class="mw-headline">
+  Functions
+ </span>
+</h3>
+<p>
+ PHP has hundreds of base functions and thousands more from extensions. Functions are not
+ <a href="http://en.wikipedia.org/wiki/First-class_function" target="_blank" title="First-class function">
+  first-class functions
+ </a>
+ and can only be referenced by their name.
+ <sup class="reference" id="cite_ref-functions_37-0">
+  <a href="#cite_note-functions-37" title="">
+   [38]
+  </a>
+ </sup>
+ User-defined functions can be created at any time without being prototyped.
+ <sup class="reference" id="cite_ref-functions_37-1">
+  <a href="#cite_note-functions-37" title="">
+   [38]
+  </a>
+ </sup>
+ Functions can be defined inside code blocks, permitting a
+ <a href="http://en.wikipedia.org/wiki/Dynamic_dispatch" target="_blank" title="Dynamic dispatch">
+  run-time decision
+ </a>
+ as to whether or not a function should be defined. Function calls must use parentheses, with the exception of zero argument class
+ <a href="http://en.wikipedia.org/wiki/Constructor_%28computer_science%29" target="_blank" title="Constructor (computer science)">
+  constructor
+ </a>
+ functions called with the PHP
+ <span>
+  new
+ </span>
+ operator, where parentheses are optional. PHP supports quasi-
+ <a href="http://en.wikipedia.org/wiki/Anonymous_function" target="_blank" title="Anonymous function">
+  anonymous functions
+ </a>
+ through the
+ <span>
+  create_function()
+ </span>
+ function, although they are not true anonymous functions because anonymous functions are nameless, but functions can only be referenced by name, or indirectly through a variable
+ <span>
+  $function_name();
+ </span>
+ , in PHP.
+ <sup class="reference" id="cite_ref-functions_37-2">
+  <a href="#cite_note-functions-37" title="">
+   [38]
+  </a>
+ </sup>
+</p>
+<p>
+ <a id="Objects" name="Objects">
+ </a>
+</p>
+<h3>
+ <span class="mw-headline">
+  Objects
+ </span>
+</h3>
+<p>
+ Basic
+ <a href="http://en.wikipedia.org/wiki/Object-oriented_programming" target="_blank" title="Object-oriented programming">
+  object-oriented programming
+ </a>
+ functionality was added in PHP 3.
+ <sup class="reference" id="cite_ref-history_2-10">
+  <a href="#cite_note-history-2" title="">
+   [3]
+  </a>
+ </sup>
+ Object handling was completely rewritten for PHP 5, expanding the feature set and enhancing performance.
+ <sup class="reference" id="cite_ref-php_5_objects_38-0">
+  <a href="#cite_note-php_5_objects-38" title="">
+   [39]
+  </a>
+ </sup>
+ In previous versions of PHP, objects were handled like
+ <a href="http://en.wikipedia.org/wiki/Primitive_type" target="_blank" title="Primitive type">
+  primitive types
+ </a>
+ .
+ <sup class="reference" id="cite_ref-php_5_objects_38-1">
+  <a href="#cite_note-php_5_objects-38" title="">
+   [39]
+  </a>
+ </sup>
+ The drawback of this method was that the whole object was copied when a variable was assigned or passed as a parameter to a method. In the new approach, objects are referenced by
+ <a href="http://en.wikipedia.org/wiki/Smart_pointer#Handles" target="_blank" title="Smart pointer">
+  handle
+ </a>
+ , and not by value. PHP 5 introduced private and protected
+ <a class="mw-redirect" href="http://en.wikipedia.org/wiki/Member_variable" target="_blank" title="Member variable">
+  member variables
+ </a>
+ and methods, along with
+ <a href="http://en.wikipedia.org/wiki/Abstract_type" target="_blank" title="Abstract type">
+  abstract classes
+ </a>
+ and
+ <a class="mw-redirect" href="http://en.wikipedia.org/wiki/Final_type" target="_blank" title="Final type">
+  final classes
+ </a>
+ as well as
+ <a class="mw-redirect" href="http://en.wikipedia.org/wiki/Abstract_method" target="_blank" title="Abstract method">
+  abstract methods
+ </a>
+ and
+ <a class="mw-redirect" href="http://en.wikipedia.org/wiki/Final_method" target="_blank" title="Final method">
+  final methods
+ </a>
+ . It also introduced a standard way of declaring
+ <a href="http://en.wikipedia.org/wiki/Constructor_%28computer_science%29" target="_blank" title="Constructor (computer science)">
+  constructors
+ </a>
+ and
+ <a href="http://en.wikipedia.org/wiki/Destructor_%28computer_science%29" target="_blank" title="Destructor (computer science)">
+  destructors
+ </a>
+ , similar to that of other object-oriented languages such as
+ <a href="http://en.wikipedia.org/wiki/C%2B%2B" target="_blank" title="C++">
+  C++
+ </a>
+ , and a standard
+ <a href="http://en.wikipedia.org/wiki/Exception_handling" target="_blank" title="Exception handling">
+  exception handling
+ </a>
+ model. Furthermore, PHP 5 added
+ <a class="mw-redirect" href="http://en.wikipedia.org/wiki/Interfaces" target="_blank" title="Interfaces">
+  interfaces
+ </a>
+ and allowed for multiple interfaces to be implemented. There are special interfaces that allow objects to interact with the runtime system.
+ <a href="http://en.wikipedia.org/wiki/Object" target="_blank" title="Object">
+  Objects
+ </a>
+ implementing
+ <a class="mw-redirect" href="http://en.wikipedia.org/wiki/ArrayAccess" target="_blank" title="ArrayAccess">
+  ArrayAccess
+ </a>
+ can be used with array syntax and
+ <a href="http://en.wikipedia.org/wiki/Object" target="_blank" title="Object">
+  objects
+ </a>
+ implementing
+ <a href="http://en.wikipedia.org/wiki/Iterator" target="_blank" title="Iterator">
+  Iterator
+ </a>
+ or
+ <a class="mw-redirect" href="http://en.wikipedia.org/wiki/IteratorAggregate" target="_blank" title="IteratorAggregate">
+  IteratorAggregate
+ </a>
+ can be used with the
+ <span>
+  foreach
+ </span>
+ language construct. There is no
+ <a class="mw-redirect" href="http://en.wikipedia.org/wiki/Virtual_table" target="_blank" title="Virtual table">
+  virtual table
+ </a>
+ feature in the engine, so
+ <a href="http://en.wikipedia.org/wiki/Static_variable" target="_blank" title="Static variable">
+  static variables
+ </a>
+ are bound with a name instead of a reference at compile time.
+ <sup class="reference" id="cite_ref-zend_engine_2_39-0">
+  <a href="#cite_note-zend_engine_2-39" title="">
+   [40]
+  </a>
+ </sup>
+</p>
+<p>
+ If the developer creates a copy of an object using the reserved word
+ <i>
+  clone
+ </i>
+ , the Zend engine will check if a
+ <tt>
+  __clone()
+ </tt>
+ method has been defined or not. If not, it will call a default
+ <tt>
+  __clone()
+ </tt>
+ which will copy the object's properties. If a
+ <tt>
+  __clone()
+ </tt>
+ method is defined, then it will be responsible for setting the necessary properties in the created object. For convenience, the engine will supply a function that imports the properties of the source object, so that the programmer can start with a by-value
+ <a class="extiw" href="http://en.wiktionary.org/wiki/replica" title="wikt:replica">
+  replica
+ </a>
+ of the source object and only override properties that need to be changed.
+ <sup class="reference" id="cite_ref-40">
+  <a href="#cite_note-40" title="">
+   [41]
+  </a>
+ </sup>
+</p>
+<p>
+ <a id="Resources" name="Resources">
+ </a>
+</p>
+<h2>
+ <span class="mw-headline">
+  Resources
+ </span>
+</h2>
+<p>
+ PHP includes
+ <a href="http://en.wikipedia.org/wiki/List_of_PHP_libraries" target="_blank" title="List of PHP libraries">
+  free and open source libraries
+ </a>
+ with the core build. PHP is a fundamentally
+ <a href="http://en.wikipedia.org/wiki/Internet" target="_blank" title="Internet">
+  Internet
+ </a>
+ -aware system with modules built in for accessing
+ <a class="mw-redirect" href="http://en.wikipedia.org/wiki/File_transfer_protocol" target="_blank" title="File transfer protocol">
+  FTP
+ </a>
+ servers, many database servers, embedded SQL libraries such as embedded
+ <a href="http://en.wikipedia.org/wiki/MySQL" target="_blank" title="MySQL">
+  MySQL
+ </a>
+ and
+ <a href="http://en.wikipedia.org/wiki/SQLite" target="_blank" title="SQLite">
+  SQLite
+ </a>
+ ,
+ <a href="http://en.wikipedia.org/wiki/Lightweight_Directory_Access_Protocol" target="_blank" title="Lightweight Directory Access Protocol">
+  LDAP
+ </a>
+ servers, and others. Many functions familiar to C programmers such as those in the
+ <tt>
+  <a href="http://en.wikipedia.org/wiki/Stdio.h" target="_blank" title="Stdio.h">
+   stdio
+  </a>
+ </tt>
+ family are available in the standard PHP build.
+ <sup class="reference" id="cite_ref-41">
+  <a href="#cite_note-41" title="">
+   [42]
+  </a>
+ </sup>
+ PHP has traditionally used features such as "
+ <a href="http://en.wikipedia.org/wiki/Magic_quotes" target="_blank" title="Magic quotes">
+  magic_quotes_gpc
+ </a>
+ " and "magic_quotes_runtime" which attempt to escape apostrophes (') and quotes (") in strings in the assumption that they will be used in databases, to prevent
+ <a href="http://en.wikipedia.org/wiki/SQL_injection" target="_blank" title="SQL injection">
+  SQL injection
+ </a>
+ attacks. This leads to confusion over which data is escaped and which is not, and to problems when data is not in fact used as input to a database and when the escaping used is not completely correct.
+ <sup class="reference" id="cite_ref-42">
+  <a href="#cite_note-42" title="">
+   [43]
+  </a>
+ </sup>
+ To make code portable between servers which do and do not use magic quotes, developers can preface their code with a script to reverse the effect of magic quotes when it is applied.
+ <sup class="reference" id="cite_ref-43">
+  <a href="#cite_note-43" title="">
+   [44]
+  </a>
+ </sup>
+</p>
+<p>
+ PHP allows developers to write
+ <a class="mw-redirect" href="http://en.wikipedia.org/wiki/Extension_%28computing%29" target="_blank" title="Extension (computing)">
+  extensions
+ </a>
+ in
+ <a href="http://en.wikipedia.org/wiki/C_%28programming_language%29" target="_blank" title="C (programming language)">
+  C
+ </a>
+ to add functionality to the PHP language. These can then be compiled into PHP or loaded dynamically at runtime. Extensions have been written to add support for the
+ <a href="http://en.wikipedia.org/wiki/Windows_API" target="_blank" title="Windows API">
+  Windows API
+ </a>
+ , process management on
+ <a href="http://en.wikipedia.org/wiki/Unix-like" target="_blank" title="Unix-like">
+  Unix-like
+ </a>
+ <a href="http://en.wikipedia.org/wiki/Operating_system" target="_blank" title="Operating system">
+  operating systems
+ </a>
+ , multibyte strings (
+ <a href="http://en.wikipedia.org/wiki/Unispan" target="_blank" title="Unispan">
+  Unispan
+ </a>
+ ),
+ <a href="http://en.wikipedia.org/wiki/CURL" target="_blank" title="CURL">
+  cURL
+ </a>
+ , and several popular
+ <a class="mw-redirect" href="http://en.wikipedia.org/wiki/Compression_formats" target="_blank" title="Compression formats">
+  compression formats
+ </a>
+ . Some more unusual features include integration with
+ <a class="mw-redirect" href="http://en.wikipedia.org/wiki/Internet_relay_chat" target="_blank" title="Internet relay chat">
+  Internet relay chat
+ </a>
+ , dynamic generation of images and
+ <a href="http://en.wikipedia.org/wiki/Adobe_Flash" target="_blank" title="Adobe Flash">
+  Adobe Flash
+ </a>
+ content, and even
+ <a href="http://en.wikipedia.org/wiki/Speech_synthesis" target="_blank" title="Speech synthesis">
+  speech synthesis
+ </a>
+ . The
+ <a class="mw-redirect" href="http://en.wikipedia.org/wiki/PHP_Extension_Community_Library" target="_blank" title="PHP Extension Community Library">
+  PHP Extension Community Library
+ </a>
+ (PECL) project is a repository for extensions to the PHP language.
+ <sup class="reference" id="cite_ref-44">
+  <a href="#cite_note-44" title="">
+   [45]
+  </a>
+ </sup>
+</p>
+<p>
+ As with many scripting languages, PHP scripts are normally kept as human-readable source code, even on production web servers.
+ <sup class="reference" id="cite_ref-45">
+  <a href="#cite_note-45" title="">
+   [46]
+  </a>
+ </sup>
+ While this allows flexibility, releasing scripts in source form is undesirable for commercial software developers, and can raise issues with security of web servers; as an example, if a hacker acquires control of a server, database passwords may be quickly discovered, and undesirable changes to scripts may be made that remain undiscovered indefinitely. Various encoding tools are available for PHP to offer code protection.
+ <sup class="noprint Template-Fact">
+  <span style="white-space: nowrap;" title="This claim needs references to reliable sourcesÂ since March 2008">
+   [
+   <i>
+    <a href="http://en.wikipedia.org/wiki/Wikipedia:Citation_needed" target="_blank" title="Wikipedia:Citation needed">
+     citation needed
+    </a>
+   </i>
+   ]
+  </span>
+ </sup>
+</p>
+<p>
+ span optimizers improve the quality of the compiled code by reducing its size and making changes that can reduce the execution time and improve performance. The nature of the PHP
+ <a href="http://en.wikipedia.org/wiki/Compiler" target="_blank" title="Compiler">
+  compiler
+ </a>
+ is such that there are often opportunities for
+ <a href="http://en.wikipedia.org/wiki/Optimization_%28computer_science%29" target="_blank" title="Optimization (computer science)">
+  span optimization
+ </a>
+ <sup class="reference" id="cite_ref-46">
+  <a href="#cite_note-46" title="">
+   [47]
+  </a>
+ </sup>
+ , and an example of a code optimizer is the
+ <a href="http://en.wikipedia.org/wiki/PHP_accelerator#Zend_Optimizer" target="_blank" title="PHP accelerator">
+  Zend Optimizer
+ </a>
+ PHP extension.
+ <sup class="reference" id="cite_ref-47">
+  <a href="#cite_note-47" title="">
+   [48]
+  </a>
+ </sup>
+</p>
+<p>
+ <a href="http://en.wikipedia.org/wiki/PHP_accelerator" target="_blank" title="PHP accelerator">
+  PHP accelerators
+ </a>
+ can offer significant performance gains by
+ <a class="mw-redirect" href="http://en.wikipedia.org/wiki/Caching" target="_blank" title="Caching">
+  caching
+ </a>
+ the compiled form of a PHP script in
+ <a href="http://en.wikipedia.org/wiki/Shared_memory" target="_blank" title="Shared memory">
+  shared memory
+ </a>
+ to avoid the overhead of
+ <a href="http://en.wikipedia.org/wiki/Parsing" target="_blank" title="Parsing">
+  parsing
+ </a>
+ and
+ <a class="mw-redirect" href="http://en.wikipedia.org/wiki/Compiling" target="_blank" title="Compiling">
+  compiling
+ </a>
+ the code every time the script runs. They may also perform
+ <a class="mw-redirect" href="http://en.wikipedia.org/wiki/span_optimization" target="_blank" title="span optimization">
+  span optimization
+ </a>
+ to provide increased execution performance.
+ <sup class="noprint Template-Fact">
+  <span style="white-space: nowrap;" title="This claim needs references to reliable sourcesÂ since March 2008">
+   [
+   <i>
+    <a href="http://en.wikipedia.org/wiki/Wikipedia:Citation_needed" target="_blank" title="Wikipedia:Citation needed">
+     citation needed
+    </a>
+   </i>
+   ]
+  </span>
+ </sup>
+</p>

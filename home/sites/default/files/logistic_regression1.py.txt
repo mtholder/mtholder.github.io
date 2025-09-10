@@ -1,0 +1,53 @@
+#!/usr/bin/env python
+
+from scipy import optimize
+from math import log, exp
+import sys
+
+
+
+WORST_LN_L = float('-inf')
+
+def ln_likelihood(parameters):
+	ln_l=0.0    
+	n = len(X)
+	a, b = parameters
+	for j in range(n):
+		p = 1.0/(1.0 + exp(-a-b*X[j])) # prob y = 1
+		if Y[j]==1:
+			ln_l+=log(p)
+		else:
+			ln_l+=log(1.0-p)
+
+	return ln_l
+
+def estimate_global_MLE():
+		    
+	params0 = [0.0,0.0] # initial guess for a,b
+	param_opt = optimize.fmin(scipy_ln_likelihood, params0, xtol=1e-8, disp=False)
+
+	return param_opt, -scipy_ln_likelihood(param_opt)
+
+def scipy_ln_likelihood(parameters):
+	negLnL = -ln_likelihood(parameters)
+	return negLnL
+
+
+# Main program here
+
+data_file = open("logistic_data.txt", 'rU')
+X=[] # data stored as global lists
+Y=[]
+for idx, row in enumerate(data_file):
+	cols = row.replace('\n', '').split('\t')
+	X.append(float(cols[0]))
+	Y.append(int(cols[1])) # each x,y
+
+
+mles, lnL = estimate_global_MLE()
+print 'The max lnL =  ',lnL
+print 'MLE a,b =  ',mles
+       
+
+
+

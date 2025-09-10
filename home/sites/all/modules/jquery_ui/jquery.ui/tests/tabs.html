@@ -1,0 +1,72 @@
+<!DOCTYPE doctype html>
+<html lang="en">
+ <head>
+  <title>
+   jQuery UI Tabs Test Suite
+  </title>
+  <script src="../jquery-1.2.6.js" type="text/javascript">
+  </script>
+  <script src="../ui/ui.core.js" type="text/javascript">
+  </script>
+  <script src="../ui/ui.tabs.js" type="text/javascript">
+  </script>
+  <link href="testsuite.css" rel="stylesheet" type="text/css"/>
+  <script src="testsuite.js" type="text/javascript">
+  </script>
+  <script src="qunit/testrunner.js" type="text/javascript">
+  </script>
+  <script src="simulate/jquery.simulate.js" type="text/javascript">
+  </script>
+  <script src="plugins/cookie/jquery.cookie.js" type="text/javascript">
+  </script>
+  <script src="tabs.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <div id="main">
+   <div id="tabs1">
+    <ul>
+     <li>
+      <a href="#fragment-1">
+       1
+      </a>
+     </li>
+     <li>
+      <a href="#fragment-2">
+       2
+      </a>
+     </li>
+     <li>
+      <a href="#fragment-3">
+       3
+      </a>
+     </li>
+    </ul>
+    <div id="fragment-1">
+    </div>
+    <div id="fragment-2">
+    </div>
+    <div id="fragment-3">
+    </div>
+   </div>
+   <div id="tabs2">
+    <ul>
+     <li>
+      <a href="#colon:test">
+       1
+      </a>
+     </li>
+     <li>
+      <a href="#inline-style">
+       2
+      </a>
+     </li>
+    </ul>
+    <div id="colon:test">
+    </div>
+    <div id="inline-style" style="height: 300px;">
+    </div>
+   </div>
+  </div>
+ </body>
+</html>

@@ -1,0 +1,53 @@
+#!/bin/sh
+# script to install gcc 
+
+set -x
+export NEW_GCC_PREFIX=/share/apps/opt/gcc-4.5
+export LD_LIBRARY_PATH=$NEW_GCC_PREFIX/lib
+
+if ! test -f gmp-5.0.1.tar.bz2 
+then
+    wget ftp://ftp.gmplib.org/pub/gmp-5.0.1/gmp-5.0.1.tar.bz2  || exit
+fi
+tar xfvj gmp-5.0.1.tar.bz2  || exit
+cd gmp-5.0.1  || exit
+make || exit
+sudo make install  || exit
+cd ..  || exit
+
+
+if ! test -f mpfr-3.0.0.tar.bz2 
+then
+    wget http://www.mpfr.org/mpfr-current/mpfr-3.0.0.tar.bz2  || exit
+fi
+tar xfvj mpfr-3.0.0.tar.bz2  || exit
+cd mpfr-3.0.X  || exit
+./configure --with-gmp=$NEW_GCC_PREFIX --prefix=$NEW_GCC_PREFIX  || exit
+make  || exit
+make check  || exit
+sudo make install  || exit
+cd ..  || exit
+
+
+if ! test -f mpc-0.8.2.tar.gz 
+then
+    wget http://www.multiprecision.org/mpc/download/mpc-0.8.2.tar.gz  || exit
+fi
+tar fxvz mpc-0.8.2.tar.gz  || exit
+cd mpc-0.8.2  || exit
+./configure --with-gmp=$NEW_GCC_PREFIX --with-mpfr=$NEW_GCC_PREFIX --prefix=$NEW_GCC_PREFIX  || exit
+make  || exit
+make check  || exit
+sudo make install  || exit
+cd ..  || exit
+
+
+if ! test -f gmp-5.0.1.tar.bz2 
+then
+    wget http://mirror.anl.gov/pub/gnu/gcc/gcc-4.5.0/gcc-4.5.0.tar.bz2  || exit
+fi
+tar xfvj gcc-4.5.0.tar.bz2 || exit 
+cd gcc-4.5.0  || exit
+./configure --with-gmp=$NEW_GCC_PREFIX --with-mpfr=$NEW_GCC_PREFIX --with-mpc=$NEW_GCC_PREFIX --prefix=$NEW_GCC_PREFIX || exit
+make -j6 || exit
+sudo make install
