@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+          tex2jax: {
+            inlineMath: [['$','$'], ['\\(','\\)']],
+            processEscapes: true
+          }
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Models and ML</title>
+<meta name="generator" content="Jekyll v3.10.0">
+<meta property="og:title" content="Searching through treespace">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="This is based on the the web site of Paul O. Lewis, Department of Ecology and Evolutionary Biology, University of Connecticut, Storrs, CT. USA.">
+<meta property="og:description" content="This is based on the  the web site of Paul O. Lewis, Department of Ecology and Evolutionary Biology, University of Connecticut, Storrs, CT. USA.">
+<link rel="canonical" href="https://plewis.github.io/likelihood/">
+<meta property="og:url" content="/models/">
+<meta property="og:site_name" content="Mark T. Holder Lab">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Searching through treespace">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"This is based on th the web site of Paul O. Lewis, Department of Ecology and Evolutionary Biology, University of Connecticut, Storrs, CT. USA.","headline":"Models and ML","url":"/models/"}</script>
+<!-- End Jekyll SEO tag -->
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="https://plewis.github.io/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Paul O. Lewis Lab Home" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper">
+<a class="site-title" rel="author" href="https://plewis.github.io/">Paul O. Lewis Lab Home</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger">
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewbox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+            </svg>
+          </span>
+        </label>
+      </nav>
+</div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Likelihood Lab</h1>
+  </header>
+
+   <div class="post-content">
+    <p>This lab was written by Paul Lewis - see <a href="https://plewis.github.io/phylogenetics2024/"> his Phylogenetics main page</a>; with some tweaks by MTH</p>
+
+<h2 id="goals">Goals</h2>
+
+<p>The goal of this lab exercise is to show you how to conduct maximum likelihood analyses in PAUP* and use PAUP* to see how we can use LRT to choose an appropriate model.</p>
+
+<h2 id="getting-started">Getting started</h2>
+
+<p>You can work on this lab on your own laptop or via the cluster</p>
+
+<p>If you are working on the cluster use< login to the cluster (<code class="language-plaintext highlighter-rouge">ssh username@hpc.crc.ku.edu</code>) and type the following command:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>srun --time=02:00:00 --ntasks=1 --nodes=1 --partition=bi --pty /bin/bash -l</code></pre></div></div>
+<p>if you have access to the BI computation queues, <b>OR</b></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>srun --time=02:00:00 --ntasks=1 --nodes=1 --partition=eeb --pty /bin/bash -l</code></pre></div></div>
+<p>if you want to use the EEB partition.</p>
+
+
+
+<h2>What to turn in</h2>
+<p>Use a text editor to answer the following questions as you work</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Are chlorophyll-b taxa together in the F81 tree?
+answer:
+
+What are the empirical base frequencies for this data set? 
+answer:
+
+What is the log likelihood of this tree under this "empirical base frequencies" version of the F81 model?
+answer:
+
+What proportion of sites are constant? 
+answer:
+
+What are the maximum likelihood estimates (MLEs) of the base frequencies? 
+answer:
+
+What is the log likelihood of this tree under the "estimated base frequencies" version of the F81 model? 
+answer:
+
+What parameters are being estimated using the F81 model?
+answer:
+
+Does this model fit the data better than the "empirical base frequencies" version of the F81 model? 
+answer:
+
+What is the MLE of the transition/transversion ratio under the HKY85 model? 
+answer:
+
+What is the MLE of the transition/transversion _rate_ ratio under the HKY85 model? 
+answer:
+
+What is the log likelihood of this tree under the HKY85 model? 
+answer:
+
+What parameters are being estimated using the HKY85 model? 
+answer:
+
+Does the HKY model fit the data better than the F81 model? 
+answer:
+
+The transition/transversion rate ratio (kappa) is the ___ divided by the ___.
+answer:
+
+The transition/transversion ratio (tratio) is the ___ divided by the ___.
+answer:
+
+What is the MLE of pinvar under the HKY85+I model? 
+answer:
+
+Is the MLE of pinvar larger or smaller than the proportion of constant sites? 
+answer:
+
+Why are these two proportions different? That is, how can a site be constant but not invariable?
+answer:
+
+What is the log likelihood of this tree under the HKY85+I model? 
+answer:
+
+What parameters are being estimated using the HKY85+I model? 
+answer:
+
+What is the MLE of the gamma shape parameter under the HKY85+G model? 
+answer:
+
+What is the log likelihood of this tree under the HKY85+G model? 
+answer:
+
+What parameters are being estimated using the HKY85+G model? 
+answer:
+
+What is the MLE of the gamma shape parameter under the HKY85+I+G model? 
+answer:
+
+What is the MLE of the pinvar parameter under the HKY85+I+G model? 
+answer:
+
+Is the MLE of the shape parameter higher or lower under the HKY85+I+G model compared to the HKY85+G model? Explain why this is so. 
+answer:
+
+What is the log likelihood of this tree under the HKY85+I+G model? 
+answer:
+
+What parameters are being estimated using the HKY85+I+G model? 
+answer:
+
+What is the likelihood ratio test statistic for F81 vs. HKY85? 
+answer:
+
+How many degrees of freedom for this test? 
+answer:
+
+What is the significance (P-value) for this test? 
+answer:
+
+Does allowing for a transition/transversion bias make a significant difference? 
+answer:
+
+What is the likelihood ratio test statistic for a comparison of HKY+I to HKY?
+answer:
+
+What is the critical value for this likelihood ratio test (of HKY vs HKY+I)? That is, what is the smallest likelihood ratio test statistic that would be significant at the 0.05 level?
+answer:
+
+Does the HKY85+I model explain the data significantly better than an equal rates HKY85 model?
+answer:
+
+Does the HKY85+G model explain the data significantly better than an equal rates HKY85 model? 
+answer:
+
+Does the HKY85+G model explain the data better than HKY85+I? Why can't you use a likelihood ratio test to compare these two models?
+answer:
+
+Does the HKY85+I+G model explain the data significantly better than either HKY85+I or HKY85+G alone? 
+answer:
+
+Does the model you have selected place all the chlorophyll-b organisms together?
+answer:
+</code></pre></div></div>
+
+
+
+
+<h2 id="download-the-data-file-algaenex">Download the data file algae.nex</h2>
+
+<p>Download the data file <a href="https://gnetum.eeb.uconn.edu/courses/phylogenetics/lab/algae.nex">algae.nex</a> using the following curl command on the cluster:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl -Ok https://gnetum.eeb.uconn.edu/courses/phylogenetics/lab/algae.nex
+</code></pre></div></div>
+
+<p>Our goal for this lab will be to see if we can determine which aspects of sequence evolution are most important for getting the tree correct. <strong>The accepted phylogeny</strong> (based on much evidence besides these data) <strong>places all the chlorophyll-b-containing plastids together</strong> (Lockhart, Steel, Hendy, and Penny, 1994).</p>
+
+<p>Thus, there <strong>should be a branch</strong> in the tree separating all taxa from the <strong>two that lack chlorophyll b</strong>.
+The 2 taxa that lack chlorophyll b are: the cyanobacterium <strong><em>Anacystis</em></strong> (which has chlorophyll a and phycobilin accessory pigments) and the chromophyte <strong><em>Olithodiscus</em></strong> (which has chlorophylls a and c).</p>
+
+<h2 id="obtain-the-maximum-likelihood-tree-under-the-f81-model">Obtain the maximum likelihood tree under the F81 model</h2>
+
+<p>The first goal is to learn how to obtain maximum likelihood estimates of the parameters in several different substitution models. Use PAUP* to answer the following questions. Start by obtaining the maximum likelihood tree under the F81 model.</p>
+
+<p>Launch paup in the same directory as the algae.nex file using: </p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./paup4a168_centos64</code> </pre></div></div>
+<p>or</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./paup</code> </pre></div></div>
+<p> if you renamed paup</p>
+
+<p>Start a log file and execute the data file:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>log start file=lab3log.txt ;
+execute algae.nex ;</code> </pre></div></div>
+
+<p>Tell PAUP to use likelihood and the F81 model for a heuristic search:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>paup> set criterion=likelihood;
+lset nst=1 basefreq=empirical;
+hsearch;
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">nst=1</code> tells PAUP* that we want a model having just one substitution rate parameter (the JC69 and F81 models both fall in this category). The <code class="language-plaintext highlighter-rouge">basefreq=empirical</code> tells PAUP* that we want to use simple estimates of the base frequencies. The empirical frequency of the base G, for example, is the value you would get if you simply counted up all the Gs in your entire data matrix and divided by the total number of nucleotides. The empirical frequencies are not usually the same as the maximum likelihood estimates (MLEs) of the base frequencies, but they are quick to calculate and often very close to the corresponding MLEs.</p>
+
+<p> Issue the following command to show the tree:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>showtrees;
+</code></pre></div></div>
+
+<p>One problem is that the tree is drawn in such a way that it appears to be rooted within the flowering plants (tobacco and rice). Specifying the cyanobacterium <em>Anacystis</em> as the outgroup makes more sense biologically:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>outgroup Anacystis_nidulans;
+showtrees;
+</code></pre></div></div>
+
+<p>If you want to see the edge lengths drawn proportionally to the estimate of their length  (in the expected number of substitutions per site) use:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>describe 1 / plot=phylogram;
+</code></pre></div></div>
+
+<blockquote>
+  <p><img class="emoji" title=":thinking:" alt=":thinking:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f914.png" height="20" width="20"> Are chlorophyll-b taxa together in the F81 tree?</p>
+</blockquote>
+
+<p>Save this tree to a file named <code class="language-plaintext highlighter-rouge">f81.tre</code> using the <code class="language-plaintext highlighter-rouge"> savetrees</code> command:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>savetrees file=f81.tre brlens;
+</code></pre></div></div>
+
+<p>If you ever need to read this tree back in, use the <code class="language-plaintext highlighter-rouge">gettrees</code> command:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gettrees file=f81.tre;
+</code></pre></div></div>
+
+<p>Now get PAUP* to show you the maximum likelihood estimates for the parameters of the F81 model used in this analysis (the 1 here refers to tree 1 in memory):</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>lscores 1;
+</code></pre></div></div>
+
+<blockquote>
+  <p><img class="emoji" title=":thinking:" alt=":thinking:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f914.png" height="20" width="20"> What are the empirical base frequencies for this data set?</p>
+</blockquote>
+
+<blockquote>
+  <p><img class="emoji" title=":thinking:" alt=":thinking:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f914.png" height="20" width="20"> What is the log likelihood of this tree under this “empirical base frequencies” version of the F81 model? (be sure to report the log likelihood, not the negative of the log likelihood.)</p>
+</blockquote>
+
+<blockquote>
+  <p><img class="emoji" title=":thinking:" alt=":thinking:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f914.png" height="20" width="20"> What proportion of sites are constant? (The <code class="language-plaintext highlighter-rouge">cstatus</code> command will give you this information)</p>
+</blockquote>
+
+
+<h2 id="estimate-base-frequencies">Estimate base frequencies</h2>
+
+<p>Now estimate the base frequencies on this tree with maximum likelihood by adding the following 3 lines to your paup block just above the quit command (you can replace the <code class="language-plaintext highlighter-rouge">[add new commands here]</code> comment). Note how the <code class="language-plaintext highlighter-rouge">lscores</code> command is used to force PAUP* to recompute the likelihood (under the revised model) and spit out the parameter estimates.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>lset basefreq=estimate;
+lscores 1;
+</code></pre></div></div>
+
+<p>Note: the new <code class="language-plaintext highlighter-rouge">lset</code> command will reset the previous one (which specified <code class="language-plaintext highlighter-rouge">basefreq=empirical</code>). This will allow you to see the difference in likelihood when using empirical vs estimated base frequencies. The first <code class="language-plaintext highlighter-rouge">lscores 1</code> command will use empirical frequencies and the second <code class="language-plaintext highlighter-rouge">lscores 1</code> command will use estimated frequencies.</p>
+
+<blockquote>
+  <p><img class="emoji" title=":thinking:" alt=":thinking:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f914.png" height="20" width="20"> What are the maximum likelihood estimates (MLEs) of the base frequencies?</p>
+</blockquote>
+
+<blockquote>
+  <p><img class="emoji" title=":thinking:" alt=":thinking:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f914.png" height="20" width="20"> What is the log likelihood of this tree under the “estimated base frequencies” version of the F81 model?</p>
+</blockquote>
+
+<blockquote>
+  <p><img class="emoji" title=":thinking:" alt=":thinking:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f914.png" height="20" width="20"> What parameters are being estimated using the F81 model? (Don’t forget to include edge length parameters!)</p>
+</blockquote>
+
+<blockquote>
+  <p><img class="emoji" title=":thinking:" alt=":thinking:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f914.png" height="20" width="20"> Does this model fit the data better than the “empirical base frequencies” version of the F81 model?</p>
+</blockquote>
+
+<h2 id="estimate-transitiontransversion-bias">Estimate transition/transversion bias</h2>
+
+<p>Switch to the HKY85 model now and estimate the transition/transversion ratio along with the base frequencies. The way you specify the HKY model in PAUP* is to tell it you want a model with 2 substitution rate parameters (<code class="language-plaintext highlighter-rouge">nst=2</code>), and that you want to estimate the base frequencies (<code class="language-plaintext highlighter-rouge">basefreq=estimate</code>) and the transition/transversion ratio (<code class="language-plaintext highlighter-rouge">tratio=estimated</code>).</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>lset nst=2 basefreq=estimate tratio=estimate;
+lscores 1;
+</code></pre></div></div>
+
+<blockquote>
+  <p><img class="emoji" title=":thinking:" alt=":thinking:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f914.png" height="20" width="20"> What is the MLE of the transition/transversion ratio under the HKY85 model?</p>
+</blockquote>
+
+<blockquote>
+  <p><img class="emoji" title=":thinking:" alt=":thinking:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f914.png" height="20" width="20"> What is the MLE of the transition/transversion <em>rate</em> ratio under the HKY85 model?</p>
+</blockquote>
+
+<blockquote>
+  <p><img class="emoji" title=":thinking:" alt=":thinking:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f914.png" height="20" width="20"> What is the log likelihood of this tree under the HKY85 model?</p>
+</blockquote>
+
+<blockquote>
+  <p><img class="emoji" title=":thinking:" alt=":thinking:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f914.png" height="20" width="20"> What parameters are being estimated using the HKY85 model?</p>
+</blockquote>
+
+<blockquote>
+  <p><img class="emoji" title=":thinking:" alt=":thinking:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f914.png" height="20" width="20"> Does the HKY model fit the data better than the F81 model?</p>
+</blockquote>
+
+<blockquote>
+  <p><img class="emoji" title=":thinking:" alt=":thinking:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f914.png" height="20" width="20"> The transition/transversion rate ratio (kappa) is the <code class="language-plaintext highlighter-rouge">_______</code> divided by the <code class="language-plaintext highlighter-rouge">_______</code>.</p>
+</blockquote>
+
+<blockquote>
+  <p><img class="emoji" title=":thinking:" alt=":thinking:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f914.png" height="20" width="20"> The transition/transversion ratio (tratio) is the <code class="language-plaintext highlighter-rouge">_______</code> divided by the <code class="language-plaintext highlighter-rouge">_______</code>.</p>
+</blockquote>
+
+<h2 id="estimate-the-proportion-of-invariable-sites">Estimate the proportion of invariable sites</h2>
+
+<p>Now ask PAUP* to estimate pinvar, the proportion of invariable sites, using the command <code class="language-plaintext highlighter-rouge">lset pinvar=estimate</code> followed by an <code class="language-plaintext highlighter-rouge">lscore</code> command. The HKY85 model with among-site rate heterogeneity modeled using the two-category invariable sites approach is called the HKY85+I model.</p>
+
+<blockquote>
+  <p><img class="emoji" title=":thinking:" alt=":thinking:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f914.png" height="20" width="20"> What is the MLE of pinvar under the HKY85+I model?</p>
+</blockquote>
+
+<blockquote>
+  <p><img class="emoji" title=":thinking:" alt=":thinking:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f914.png" height="20" width="20"> Is the MLE of pinvar larger or smaller than the proportion of constant sites?</p>
+</blockquote>
+
+<blockquote>
+  <p><img class="emoji" title=":thinking:" alt=":thinking:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f914.png" height="20" width="20"> Why are these two proportions different? That is, how can a site be constant but not invariable?</p>
+</blockquote>
+
+<blockquote>
+  <p><img class="emoji" title=":thinking:" alt=":thinking:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f914.png" height="20" width="20"> What is the log likelihood of this tree under the HKY85+I model?</p>
+</blockquote>
+
+<blockquote>
+  <p><img class="emoji" title=":thinking:" alt=":thinking:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f914.png" height="20" width="20"> What parameters are being estimated using the HKY85+I model?</p>
+</blockquote>
+
+<h2 id="estimate-the-heterogeneity-in-rates-among-sites">Estimate the heterogeneity in rates among sites</h2>
+
+<p>Now set <code class="language-plaintext highlighter-rouge">pinvar=0</code> and tell PAUP* to use the discrete gamma distribution with 5 rate categories. Here are the commands for doing this all in one step:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>lset pinvar=0 rates=gamma ncat=5 shape=estimate;
+lscores 1;
+</code></pre></div></div>
+
+<p>The HKY85 model with among-site rate heterogeneity modeled using the discrete gamma approach is called the HKY85+G model.</p>
+
+<blockquote>
+  <p><img class="emoji" title=":thinking:" alt=":thinking:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f914.png" height="20" width="20"> What is the MLE of the gamma shape parameter under the HKY85+G model?</p>
+</blockquote>
+
+<blockquote>
+  <p><img class="emoji" title=":thinking:" alt=":thinking:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f914.png" height="20" width="20"> What is the log likelihood of this tree under the HKY85+G model?</p>
+</blockquote>
+
+<blockquote>
+  <p><img class="emoji" title=":thinking:" alt=":thinking:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f914.png" height="20" width="20"> What parameters are being estimated using the HKY85+G model?</p>
+</blockquote>
+
+<h2 id="estimate-both-pinvar-and-the-gamma-shape-parameter">Estimate both pinvar and the gamma shape parameter</h2>
+
+<p>Now ask PAUP* to estimate both pinvar and the gamma shape parameter simultaneously (the HKY85+I+G model).</p>
+
+<blockquote>
+  <p><img class="emoji" title=":thinking:" alt=":thinking:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f914.png" height="20" width="20"> What is the MLE of the gamma shape parameter under the HKY85+I+G model?</p>
+</blockquote>
+
+<blockquote>
+  <p><img class="emoji" title=":thinking:" alt=":thinking:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f914.png" height="20" width="20"> What is the MLE of the pinvar parameter under the HKY85+I+G model?</p>
+</blockquote>
+
+<blockquote>
+  <p><img class="emoji" title=":thinking:" alt=":thinking:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f914.png" height="20" width="20"> Is the MLE of the shape parameter higher or lower under the HKY85+I+G model compared to the HKY85+G model? Explain why this is so.</p>
+</blockquote>
+
+<blockquote>
+  <p><img class="emoji" title=":thinking:" alt=":thinking:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f914.png" height="20" width="20"> What is the log likelihood of this tree under the HKY85+I+G model?</p>
+</blockquote>
+
+<blockquote>
+  <p><img class="emoji" title=":thinking:" alt=":thinking:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f914.png" height="20" width="20"> What parameters are being estimated using the HKY85+I+G model?</p>
+</blockquote>
+
+<h2 id="likelihood-ratio-tests">Likelihood ratio tests</h2>
+
+<p>In this section, you will perform some simple likelihood ratio tests to decide which of the models used in the previous section does the best job of explaining the data while keeping the number of parameters used to a minimum.</p>
+
+<h3 id="determining-significance">Determining significance</h3>
+
+<p>A model having k parameters can always attain a higher likelihood than any model having fewer than k parameters that is nested within it (you should be able to explain why this is true).
+The question we need to  ask is: Does the more complex (i.e. more parameter-rich) models fit <em>significantly</em> better than simpler nested models?</p>
+<div class="image-right noborder"><figure>
+
+    <img class="image-right noborder" src="https://plewis.github.io/assets/img/chisq.png" alt="Chi-squared plot (df=3) showing 5% tail region" width="400px">
+
+<figcaption>Chi-squared plot (df=3) showing 5% tail region</figcaption>
+</figure></div>
+
+<p>To do this we will assume that the likelihood ratio test statistic LR (equal to twice the difference in log-likelihoods) has the same distribution as a chi-squared random variable with degrees of freedom (d.f.) equal to the difference in the number of estimated parameters in the two models. (A parameter whose value is fixed or which can be determined from the values of other parameters doesn’t count as an estimated parameter.)</p>
+
+
+<p>To be specific, we would like to know whether LR falls inside the 5% right tail of the chi-squared distribution (see figure to the right for an example). If it does, then it should be considered an unusually large value of LR; i.e. not a LR value that would normally arise (i.e. falls within the interval that accounts for 95% of the probability distribution) if the models were equivalent explanations of the data.</p>
+
+<p><strong>In R</strong>, you can use a command like <code>pchisq(6.91, df=1, lower.tail=FALSE)</code> to find that the P-value associated with a chi-squared test statistic of 6.91 is 0.008571499. Alternatively, you can look up a chi-squared table of critical values using the internet.</p>
+
+
+<h3 id="what-parameters-make-the-fit-of-the-model-significantly-better">What parameters make the fit of the model significantly better?</h3>
+
+<p>The model with which we will begin is the F81 model with estimated base frequencies. Compare this F81 model to the HKY85 model, which differs from the F81 model only in the fact that it allows transitions and transversions to occur at different rates.</p>
+
+<p><strong>To calculate the likelihood ratio test statistic LR, subtract the log-likelihood of the less complex model from that of the more complex model and multiply by 2</strong>. This will give you a positive number. If you ever get a negative LR statistic, it means you have the models in the wrong order.</p>
+
+<p>You should have all the numbers you need to perform these likelihood ratio tests. If, however, you have not written some of them down, and thus need to redo some of these analyses, you might need to know how to turn off rate heterogeneity using the following command:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>lset rates=equal pinvar=0;
+</code></pre></div></div>
+
+<blockquote>
+  <p><img class="emoji" title=":thinking:" alt=":thinking:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f914.png" height="20" width="20"> What is the likelihood ratio test statistic for F81 vs. HKY85?</p>
+</blockquote>
+
+<blockquote>
+  <p><img class="emoji" title=":thinking:" alt=":thinking:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f914.png" height="20" width="20"> How many degrees of freedom for this test?</p>
+</blockquote>
+
+<blockquote>
+  <p><img class="emoji" title=":thinking:" alt=":thinking:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f914.png" height="20" width="20"> What is the significance (P-value) for this test?</p>
+</blockquote>
+
+<blockquote>
+  <p><img class="emoji" title=":thinking:" alt=":thinking:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f914.png" height="20" width="20"> Does allowing for a transition/transversion bias make a significant difference?</p>
+</blockquote>
+
+<blockquote>
+  <p><img class="emoji" title=":thinking:" alt=":thinking:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f914.png" height="20" width="20"> What is the likelihood ratio test statistic for a comparison of HKY+I to HKY?</p>
+</blockquote>
+
+<blockquote>
+  <p><img class="emoji" title=":thinking:" alt=":thinking:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f914.png" height="20" width="20"> What is the critical value for this likelihood ratio test (of HKY vs HKY+I)? That is, what is the smallest likelihood ratio test statistic that would be significant at the 0.05 level?</p>
+</blockquote>
+
+<blockquote>
+  <p><img class="emoji" title=":thinking:" alt=":thinking:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f914.png" height="20" width="20"> Does the HKY85+I model explain the data significantly better than an equal rates HKY85 model?</p>
+</blockquote>
+
+<blockquote>
+  <p><img class="emoji" title=":thinking:" alt=":thinking:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f914.png" height="20" width="20"> Does the HKY85+G model explain the data significantly better than an equal rates HKY85 model?</p>
+</blockquote>
+
+<blockquote>
+  <p><img class="emoji" title=":thinking:" alt=":thinking:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f914.png" height="20" width="20"> Does the HKY85+G model explain the data better than HKY85+I? Why can’t you use a likelihood ratio test to compare these two models?</p>
+</blockquote>
+
+<blockquote>
+  <p><img class="emoji" title=":thinking:" alt=":thinking:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f914.png" height="20" width="20"> Does the HKY85+I+G model explain the data significantly better than either HKY85+I or HKY85+G alone?</p>
+</blockquote>
+
+<h2 id="repeat-search-under-a-better-model">Repeat search under a better model</h2>
+
+<p>Earlier in the lab, you found that the F81 model with empirical base frequencies did not produce the expected tree separating chlorophyll-b organisms from the two (<em>Anacystis</em> and <em>Olithodiscus</em>) that lack chlorophyll-b. Would a new search under a better model have the same result?</p>
+
+<p>Using the simplest model that you can defend (of the five we have examined: F81, HKY85, HKY85+I, HKY85+G, HKY85+I+G), perform a heuristic search under the maximum likelihood criterion. Use the template below, but make changes necessary to match the model you have chosen to use.</p>
+
+<p>The next two paragraphs provide some explanation of the commands used in the template.</p>
+
+<p>To make the analysis go faster, we will ask PAUP* to <strong>not</strong> re-estimate all the model parameters for every tree it examines during the search. To do this, first use the <code class="language-plaintext highlighter-rouge">lset</code> command to set up the model you are planning to use (be sure to specify <code class="language-plaintext highlighter-rouge">estimate</code> for all relevant parameters: base frequencies, shape, tratio, etc.). Use the <code class="language-plaintext highlighter-rouge">lscores</code> command to force PAUP* to re-estimate all of the parameters of your selected model on some tree (the tree just needs to be something reasonable, such as a NJ tree or the F81 tree you have been using).</p>
+
+<p>Now, re-issue the <code class="language-plaintext highlighter-rouge">lset</code> command but, for every parameter that you estimated, change the word <code class="language-plaintext highlighter-rouge">estimate</code> to <code class="language-plaintext highlighter-rouge">previous</code>. After executing this new <code class="language-plaintext highlighter-rouge">lset</code> command, start a search using just <code class="language-plaintext highlighter-rouge">hsearch</code>. PAUP* will fix the parameters at the previous values (i.e. the estimates you just forced it to calculate) and use these same values for every tree examined during the search.</p>
+
+<p><strong>Template</strong> Supposing you decided that HKY85+I+G was the best model, here are the paup commands:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>lset nst=2 basefreq=estimate tratio=estimate rates=gamma shape=estimate pinvar=estimate;
+nj;
+lscores 1;
+    
+lset nst=2 basefreq=previous tratio=previous rates=gamma shape=previous pinvar=previous;
+    
+hsearch;
+    
+showtrees;
+describe 1 / plot=phylogram;
+savetrees file=hky85ig.tre brlens replace;
+</code></pre></div></div>
+
+<blockquote>
+  <p><img class="emoji" title=":thinking:" alt=":thinking:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f914.png" height="20" width="20"> Does the model you have selected place all the chlorophyll-b organisms together?</p>
+</blockquote>
+
+<p>This lab is already a bit long, so we will not take time to do it now, but I hope you realize that you could figure out exactly what parameter(s) are needed in the model to get this tree right. JC69 doesn’t do it, nor does F81 (as you may have noticed), but it actually doesn’t take much beyond JC69 to do the trick.</p>
+
+<h2 id="literature-cited">Literature Cited</h2>
+
+<p>Lockhart, P. J., Steel, M. A., Hendy, M. D., &amp; Penny, D. 1994. <a href="https://doi.org/10.1093/oxfordjournals.molbev.a040136">Recovering evolutionary trees under a more realistic model of sequence evolution.</a> Molecular Biology and Evolution 11(4):605–612.</p>
+
+  </div>
+
+</article>
+
+      </div>
+    </main>
+<footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-3">
+        <p>This is based on a page from the web site of Paul O. Lewis, Department of Ecology and Evolutionary Biology, University of Connecticut, Storrs, CT. USA.</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+
+</html>

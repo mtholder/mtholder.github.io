@@ -1,0 +1,661 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html dir="ltr" lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+  <link href="./misc/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+  <title>
+    Likelihood methods in biology - Spring 2016 | mtholder.github.io/home/   </title>
+  <link href="./modules/book/book.css?F" media="all" rel="stylesheet" type="text/css" />
+  <link href="./modules/node/node.css?F" media="all" rel="stylesheet" type="text/css" />
+  <link href="./modules/system/defaults.css?F" media="all" rel="stylesheet" type="text/css" />
+  <link href="./modules/system/system.css?F" media="all" rel="stylesheet" type="text/css" />
+  <link href="./modules/system/system-menus.css?F" media="all" rel="stylesheet" type="text/css" />
+  <link href="./modules/user/user.css?F" media="all" rel="stylesheet" type="text/css" />
+  <link href="./sites/all/modules/cck/theme/content-module.css?F" media="all" rel="stylesheet" type="text/css" />
+  <link href="./sites/all/modules/date/date.css?F" media="all" rel="stylesheet" type="text/css" />
+  <link href="./sites/all/modules/date/date_popup/themes/datepicker.1.7.css?F" media="all" rel="stylesheet" type="text/css" />
+  <link href="./sites/all/modules/date/date_popup/themes/jquery.timeentry.css?F" media="all" rel="stylesheet" type="text/css" />
+  <link href="./sites/all/modules/geshifilter/geshifilter.css?F" media="all" rel="stylesheet" type="text/css" />
+  <link href="./sites/all/modules/biblio/biblio.css?F" media="all" rel="stylesheet" type="text/css" />
+  <link href="./sites/all/modules/cck/modules/fieldgroup/fieldgroup.css?F" media="all" rel="stylesheet" type="text/css" />
+  <link href="./sites/all/modules/views/css/views.css?F" media="all" rel="stylesheet" type="text/css" />
+  <link href="./themes/garland/style.css?F" media="all" rel="stylesheet" type="text/css" />
+  <link href="./themes/garland/print.css?F" media="print" rel="stylesheet" type="text/css" />
+  <!--[if lt IE 7]>
+      <link type="text/css" rel="stylesheet" media="all" href="/themes/garland/fix-ie.css" />    <![endif]-->
+</head>
+
+<body class="sidebar-left">
+  <!-- Layout -->
+  <div class="clear-block" id="header-region">
+  </div>
+  <div id="wrapper">
+    <div class="clear-block" id="container">
+      <div id="header">
+        <div id="logo-floater">
+          <h1>
+            <a href="https://mtholder.github.io/home/" title="mtholder.github.io/home/">
+              <img alt="mtholder.github.io/home/" id="logo" src="./sites/default/files/garland_logo.png" />
+              <span>
+                mtholder.github.io/home/               </span>
+            </a>
+          </h1>
+        </div>
+        <ul class="links primary-links">
+          <li class="menu-440 first">
+            <a href="./home" title="Holder Lab Web page">
+              Home
+            </a>
+          </li>
+          <li class="menu-449">
+            <a href="./courses" title="Courses">
+              Courses
+            </a>
+          </li>
+          <li class="menu-628 last">
+            <a href="./content/borice" title="Software">
+              Software
+            </a>
+          </li>
+        </ul>
+      </div>
+      <!-- /header -->
+      <div id="center">
+        <div id="squeeze">
+          <div class="right-corner">
+            <div class="left-corner">
+              <div class="breadcrumb">
+                <a href="https://mtholder.github.io/home/">
+                  Home
+                </a>
+              </div>
+              <h2>
+                Likelihood methods in biology - Spring 2016
+              </h2>
+              <div class="clear-block">
+                <div class="node" id="node-730">
+                  <div class="content clear-block">
+                    <p>
+                      The course provides an introduction to likelihood-based inference in Biology. We will cover both theoretical and practical aspects of maximum likelihood and Bayesian inference.
+                    </p>
+                    <p>
+                      <br />
+                      <br />
+                      Meeting: Monday and Wednesday 10:00-10:50AM in 2025 Haworth
+                    </p>
+                    <p>
+                      <br />
+                      The
+                      <a href="https://mtholder.github.io/home/sites/default/files/2016_BIOL701_likelihood_syllabus.pdf">
+                        syllabus is available as a pdf by clicking here
+                      </a>
+                      .
+                    </p>
+                    <p>
+                      <br />
+                      Instructors (office hours by appointment):
+                    </p>
+                    <table width="50%">
+                      <tr>
+                        <td>
+                          <a href="https://eeb.ku.edu/faculty/kelly_research/index.shtml">
+                            John Kelly
+                          </a>
+                        </td>
+                        <td>
+                          <a href="mailto:jkk@ku.edu">
+                            jkk@ku.edu
+                          </a>
+                        </td>
+                        <td>
+                          864-3706
+                        </td>
+                        <td>
+                          5005 Haworth
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <a href="https://mtholder.github.io/home/">
+                            Mark Holder
+                          </a>
+                        </td>
+                        <td>
+                          <a href="mailto:mtholder@ku.edu">
+                            mtholder@ku.edu
+                          </a>
+                        </td>
+                        <td>
+                          864-5789
+                        </td>
+                        <td>
+                          6031 Haworth
+                        </td>
+                      </tr>
+                    </table>
+                    <p>
+                      Grades will be based on class participation and homework assignments. We will have approximately one homework assignment per week.
+                    </p>
+                    <h2>
+                      Informatics tool
+                    </h2>
+                    <p>
+                      Text editor.
+                      <a href="http://www.barebones.com/products/TextWrangler">
+                        TextWrangler
+                      </a>
+                      <br />
+                      on Mac
+                      <br />
+                      <a href="https://notepad-plus-plus.org/">
+                        Notepad++
+                      </a>
+                      on Windows
+                      <br />
+                      <a href="http://www.jedit.org/">
+                        jEdit
+                      </a>
+                      any platform with Java.
+                    </p>
+                    <p>
+                      A free-of-charge installation of python with the packages that we will use are available from
+                      <br />
+                      <a href="https://www.continuum.io/downloads">
+                        Anaconda from Continuum Analytics
+                      </a>
+                      .
+                    </p>
+                    <p>
+                      <a href="https://www.rstudio.com/">
+                        RStudio
+                      </a>
+                      is useful if you prefer to use R.
+                    </p>
+                    <h2>
+                      Working from a shell
+                    </h2>
+                    <p>
+                      There are some difference between a DOS prompt and UNIX. For the simple stuff, the main difference is
+                      <span class="geshifilter">
+                        <code class="python geshifilter-python">
+                          <span style="color: #008000;">
+                            dir
+                          </span>
+                        </code>
+                      </span>
+                      on Windows instead of
+                      <span class="geshifilter">
+                        <code class="python geshifilter-python">
+                          ls
+                        </code>
+                      </span>
+                      on Unix.
+                      <br />
+                      You probably should check out the "Intro-to-Unix" section of the Woods Hole Workshop on Molecular Evolution's
+                      <a href="https://molevol.mbl.edu/index.php/Computer_lab_introduction#Intro-to-Unix_tutorial">
+                        Computer lab introduction
+                      </a>
+                      <br />
+                      if you have never worked from a shell before.
+                    </p>
+                    <h2>
+                      Slides
+                    </h2>
+                    <table border="1">
+                      <tr>
+                        <th>
+                          Date
+                        </th>
+                        <th>
+                          Topic and Links
+                        </th>
+                        <th>
+                          Assignments
+                        </th>
+                      </tr>
+                      <tr>
+                        <td>
+                          <b>
+                            Week 1
+                          </b>
+                          Jan 20
+                        </td>
+                        <td>
+                          Probability, random variables, distributions
+                          <br />
+                          <a href="https://phylo.bio.ku.edu/slides/probsurv.pdf">
+                            Notes on probability by Bálint Tóth
+                          </a>
+                          . Some of MTH's
+                          <a href="https://mtholder.github.io/home/sites/default/files/lec1_0.pdf">
+                            notes
+                          </a>
+                          on JKK's lecture
+                        </td>
+                        <td>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <b>
+                            Week 2
+                          </b>
+                          Jan 25, Jan 27
+                        </td>
+                        <td>
+                          Random samples, sample distributions, likelihood. Some of MTH's
+                          <a href="https://mtholder.github.io/home/sites/default/files/lec2.pdf">
+                            lec2.pdf
+                          </a>
+                          and
+                          <a href="https://mtholder.github.io/home/sites/default/files/lec3.pdf">
+                            lec3.pdf
+                          </a>
+                          on JKK's lectures
+                        </td>
+                        <td>
+                          <a href="https://mtholder.github.io/home/sites/default/files/HW1_2016.doc">
+                            HW 1
+                          </a>
+                          (due Wed., Feb 3). A (corrected) spreadsheet with the data for the birds is available as a zip archive:
+                          <a href="https://mtholder.github.io/home/sites/default/files/Jack.ods.zip">
+                            Jack.ods
+                          </a>
+                          (or
+                          <a href="https://mtholder.github.io/home/sites/default/files/Jack.xls.zip">
+                            Jack.xls
+                          </a>
+                          ). You will also need
+                          <a href="https://mtholder.github.io/home/sites/default/files/PoissonCounts.xls">
+                            PoissonCounts.xls
+                          </a>
+                          <br />
+                          Laura's as a
+                          <a href="https://mtholder.github.io/home/sites/default/files/HW1_Laura.pdf">
+                            HW1_Laura.pdf
+                          </a>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <b>
+                            Week 3
+                          </b>
+                          Feb 01, Feb 03
+                        </td>
+                        <td>
+                          Explicitly specifying variability: likelihood examples. MTH's
+                          <a href="https://mtholder.github.io/home/sites/default/files/lec4.pdf">
+                            lec4.pdf
+                          </a>
+                          and
+                          <a href="https://mtholder.github.io/home/sites/default/files/lec5_0.pdf">
+                            lec5.pdf
+                          </a>
+                          notes.
+                          <a href="https://mtholder.github.io/home/sites/default/files/saxony.ppt">
+                            JKK's saxony.ppt
+                          </a>
+                        </td>
+                        <td>
+                          <a href="https://mtholder.github.io/home/sites/default/files/SimpleLobsters.xls">
+                            SimpleLobsters.xls
+                          </a>
+                          <br />
+                          <a href="https://mtholder.github.io/home/sites/default/files/HW2_2016_0.doc">
+                            HW2_2016.doc revised
+                          </a>
+                          (due Wed. Feb. 17)
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <b>
+                            Week 4
+                          </b>
+                          Feb 08, Feb 10
+                        </td>
+                        <td>
+                          Maximum likelihood estimation and Markov chains. MTH's
+                          <a href="https://mtholder.github.io/home/sites/default/files/lec6.pdf">
+                            lecture 6 notes
+                          </a>
+                          and
+                          <a href="https://mtholder.github.io/home/sites/default/files/lec7.pdf">
+                            lecture 7 notes
+                          </a>
+                        </td>
+                        <td>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <b>
+                            Week 5
+                          </b>
+                          Feb 15, Feb 17.
+                        </td>
+                        <td>
+                          Likelihood ratio test statistic and Model Selection
+                          <a href="https://mtholder.github.io/home/sites/default/files/lec8.pdf">
+                            lec8.pdf
+                          </a>
+                          <a href="https://mtholder.github.io/home/sites/default/files/twoParamNormal.pdf">
+                            twoParamNormal.pdf
+                          </a>
+                        </td>
+                        <td>
+                          <a href="https://mtholder.github.io/home/sites/default/files/HW3_2016.doc">
+                            HW3_2016.doc
+                          </a>
+                          <br />
+                          <br />
+                          <a href="https://phylo.bio.ku.edu/slides//hw3.birds.1.txt">
+                            hw3.birds.1.txt
+                          </a>
+                          <br />
+                          <br />
+                          <a href="https://mtholder.github.io/home/sites/default/files/bird_cruncher.py.txt">
+                            bird_cruncher.py.txt
+                          </a>
+                          <br />
+                          <br />
+                          <a href="https://mtholder.github.io/home/sites/default/files/mth_bird_cruncher.py_0.txt">
+                            mth_bird_cruncher.py.txt
+                          </a>
+                          <br />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <b>
+                            Week 6
+                          </b>
+                          Feb 22, Feb 24
+                        </td>
+                        <td>
+                          Generalized Linear Models (continued)
+                        </td>
+                        <td>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <b>
+                            Week 7
+                          </b>
+                          Feb 29, Mar 04
+                        </td>
+                        <td>
+                          Likelihood ratio test statistic and Model Selection
+                        </td>
+                        <td>
+                          <a href="https://phylo.bio.ku.edu/slides/numerical_opt.pdf">
+                            numerical optimization notes
+                          </a>
+                          <br />
+                          1 param optimizer:
+                          <a href="https://mtholder.github.io/home/sites/default/files/one-param-k2p-py.txt">
+                            one-param-k2p-py.txt
+                          </a>
+                          <br />
+                          2 param optimizer:
+                          <a href="https://mtholder.github.io/home/sites/default/files/k2p-py.txt">
+                            k2p-py.txt
+                          </a>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <b>
+                            Week 8
+                          </b>
+                          Mar 07, Mar 09
+                        </td>
+                        <td>
+                          Logistic regression
+                        </td>
+                        <td>
+                          <a href="https://mtholder.github.io/home/sites/default/files/logistic_regression1.py.txt">
+                            JKK's code for logistic regression
+                          </a>
+                          <br />
+                          <br />
+                          <a href="https://mtholder.github.io/home/sites/default/files/logistic_data.txt">
+                            data for JKK's code
+                          </a>
+                          <br />
+                          <br />
+                          <a href="https://mtholder.github.io/home/sites/default/files/logistic_regress_with_param_boot.py.txt">
+                            MTH version with parametric bootstrapping
+                          </a>
+                          .
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <b>
+                            Week 9
+                          </b>
+                          Mar 21, Mar 23
+                        </td>
+                        <td>
+                          Bayesian methods
+                        </td>
+                        <td>
+                          <a href="https://phylo.bio.ku.edu/slides/hw4.pdf">
+                            hw4.pdf
+                          </a>
+                          <br />
+                          <a href="https://phylo.bio.ku.edu/slides/BayesianMCMC-2013.pdf">
+                            Notes on MCMC for Bayesian inference
+                          </a>
+                          and
+                          <a href="https://github.com/mtholder/likelihood-course-notes/blob/master/notes/mthlecture/bayesian_mcmc/coin_contamination.py">
+                            the coin_contamination.py
+                          </a>
+                          script
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <b>
+                            Week 10
+                          </b>
+                          Mar 28, Mar 30
+                        </td>
+                        <td>
+                          Computational stuff
+                        </td>
+                        <td>
+                          <a href="https://phylo.bio.ku.edu/slides/high-level.py">
+                            high-level.py
+                          </a>
+                          - the start point for class on Monday
+                          <br />
+                          <a href="https://phylo.bio.ku.edu/slides/notworking.py">
+                            work-in-progress.py
+                          </a>
+                          script that I worked on in class.
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <b>
+                            Week 11
+                          </b>
+                          Apr 04, Apr 06
+                        </td>
+                        <td>
+                          Computational aspects: Markov chain Monte Carlo (MCMC)
+                          <a href="https://phylo.bio.ku.edu/slides/hastingsRatio.pdf">
+                            hastingsRatio.pdf
+                          </a>
+                        </td>
+                        <td>
+                          <a href="https://phylo.bio.ku.edu/slides/hw5.pdf">
+                            hw5.pdf
+                          </a>
+                          ,
+                          <a href="https://phylo.bio.ku.edu/slides/hw5template.py">
+                            hw5template.py
+                          </a>
+                          and
+                          <a href="https://phylo.bio.ku.edu/slides/hw5-data.fas.txt">
+                            hw5-data.fas.txt
+                          </a>
+                          <br />
+                          <a href="https://phylo.bio.ku.edu/slides/mcmc-continuous/continuous-mcmc.py">
+                            continuous-mcmc.py
+                          </a>
+                          and
+                          <a href="https://phylo.bio.ku.edu/slides/mcmc-continuous/diagnostics.R">
+                            diagnostics.R
+                          </a>
+                          and
+                          <a href="https://phylo.bio.ku.edu/slides/mcmc-continuous/summarize.R">
+                            summarize.R
+                          </a>
+                          . See Patrick Lam's
+                          <a href="http://www.people.fas.harvard.edu/~plam/teaching/methods/convergence/convergence_print.pdf">
+                            very nice slides
+                          </a>
+                        </td>
+                        on convergence diagnostics.
+                      </tr>
+                      <tr>
+                        <td>
+                          <b>
+                            Week 12
+                          </b>
+                          Apr 11, Apr 13
+                        </td>
+                        <td>
+                          Multiparameter MCMC
+                        </td>
+                        <td>
+                          <a href="https://phylo.bio.ku.edu/slides/mcmc-continuous/continuous-mcmcmc.py">
+                            MCMCMC version of the continuous MCMC example
+                          </a>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <b>
+                            Week 13
+                          </b>
+                          Apr 18, Apr 20
+                        </td>
+                        <td>
+                          Hastings ratio and model jumping
+                        </td>
+                        <td>
+                          <a href="https://phylo.bio.ku.edu/slides/hw6/hw6.pdf">
+                            hw6.pdf
+                          </a>
+                          (with links in that doc) and
+                          <a href="https://phylo.bio.ku.edu/slides/lec18-BayesFactors.pdf">
+                            Bayes Factor slides
+                          </a>
+                          <a href="https://phylo.bio.ku.edu/slides/hastingsRatio.pdf">
+                            Green's hastings ratio recipe
+                          </a>
+                          . Wed:
+                          <a href="https://phylo.bio.ku.edu/slides/model-jumping-mcmc.py">
+                            model-jumping-mcmc.py
+                          </a>
+                          . and
+                          <a href="https://phylo.bio.ku.edu/slides/hw5-answer.py">
+                            hw5-answer.py
+                          </a>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <b>
+                            Week 14
+                          </b>
+                          Apr 25, Apr 27
+                        </td>
+                        <td>
+                          HMM
+                        </td>
+                        <td>
+                          JKK's
+                          <a href="https://phylo.bio.ku.edu/slides/hmm1.py">
+                            hmm1.py
+                          </a>
+                          and
+                          <a href="https://phylo.bio.ku.edu/slides/hmm2.py">
+                            hmm2.py
+                          </a>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <b>
+                            Week 15
+                          </b>
+                          May 02, May 04
+                        </td>
+                        <td>
+                          Finishing model jumping. Ascertainment bias (maybe)
+                        </td>
+                        <td>
+                          <a href="https://phylo.bio.ku.edu/slides/likelihood-hw6-mth-answer.py">
+                            likelihood-hw6-mth-answer.py
+                          </a>
+                          (not tuned at all, and only doing a sliding window proposal). And
+                          <a href="https://phylo.bio.ku.edu/slides/likelihood-hw6-mth-answer-opt-1.py">
+                            likelihood-hw6-mth-answer-opt-1.py
+                          </a>
+                          (an optimized version that runs about 350 times faster on my machine.
+                          <br />
+                          <a href="https://phylo.bio.ku.edu/slides/mth-answer-opt-2.py">
+                            mth-answer-opt-2.py
+                          </a>
+                          <br />
+                          <a href="https://phylo.bio.ku.edu/slides/likelihood-hw7.pdf">
+                            likelihood-hw7.pdf
+                          </a>
+                          <br />
+                          <a href="https://phylo.bio.ku.edu/slides/model-jump-hastings-ratio.pdf">
+                            model-jump-hastings-ratio.pdf
+                          </a> notes on the HR of the model jumping move.
+                        </td>
+                      </tr>
+                    </table>
+                    <div class="clear-block">
+                      <div class="meta">
+                      </div>
+                    </div>
+                    <div id="footer">
+                      <p>
+                        The
+                        <a href="https://mtholder.github.io/home/">
+                          Holder Lab
+                        </a>
+                        is part of the
+                        <a href="https://eeb.ku.edu/">
+                          Department of Ecology and Evolutionary Biology
+                        </a>
+                        at
+                        <a href="https://www.ku.edu">
+                          KU
+                        </a>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

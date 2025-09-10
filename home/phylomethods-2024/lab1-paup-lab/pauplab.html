@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<!-- saved from url=(0030)https://plewis.github.io/paup/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script type="text/x-mathjax-config;executed=true">
+        MathJax.Hub.Config({
+          tex2jax: {
+            inlineMath: [['$','$'], ['\\(','\\)']],
+            processEscapes: true
+          }
+        });
+    </script>
+    <script src="./pauplab_files/MathJax.js" type="text/javascript"></script>
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Introduction to PAUP*</title>
+<meta name="generator" content="Jekyll v3.10.0">
+<meta property="og:title" content="Introduction to PAUP*">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="This is based on the web site of Paul O. Lewis, Department of Ecology and Evolutionary Biology, University of Connecticut, Storrs, CT. USA.">
+<meta property="og:description" content="This is based on the the web site of Paul O. Lewis, Department of Ecology and Evolutionary Biology, University of Connecticut, Storrs, CT. USA.">
+<link rel="canonical" href="https://plewis.github.io/paup/">
+<meta property="og:url" content="/paup/">
+<meta property="og:site_name" content="Mark T. Holder Lab">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Introduction to PAUP*">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"This is the web site of Paul O. Lewis, Department of Ecology and Evolutionary Biology, University of Connecticut, Storrs, CT. USA.","headline":"Introduction to PAUP*","url":"/paup/"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="https://plewis.github.io/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://plewis.github.io/feed.xml" title="Paul O. Lewis Lab Home"><style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 5px 0px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; -khtml-border-radius: 5px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 1px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: .7em}
+.MathJax_MenuRadioCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuLabel {padding: 1px 2em 3px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #DDDDDD; margin: 4px 3px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: #606872; color: white}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1em; bottom: 1.5em; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style></head>
+<body><div id="MathJax_Message" style="display: none;"></div><header class="site-header" role="banner">
+
+  <div class="wrapper">
+<a class="site-title" rel="author" href="https://plewis.github.io/">Paul O. Lewis Lab Home</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger">
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+<a class="page-link" href="https://plewis.github.io/publications/">Publications</a><a class="page-link" href="https://plewis.github.io/software/">Software</a><a class="page-link" href="https://plewis.github.io/people/">People</a><a class="page-link" href="https://plewis.github.io/teaching/">Teaching</a>
+</div>
+      </nav>
+</div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Introduction to PAUP*</h1>
+  </header>
+
+  <div class="post-content">
+    <p>This lab was written by Paul Lewis - see <a href="https://plewis.github.io/phylogenetics2024/"> his Phylogenetics main page</a>; with some tweaks by MTH</p>
+
+<p>PAUP* is software for conducting phylogenetic analyses under a variety of optimality criteria and providing a diversity of search methods. PAUP* (the acronym PAUP originally stood for “Phylogenetic Analysis Using Parsimony”; the asterisk was added to indicate that it is no longer restricted to parsimony analyses). PAUP* was originally written (by <a href="https://scholar.google.com/citations?user=H1jbCPkAAAAJ&amp;hl=en">David L. Swofford</a>) in the 1980s, it gained a graphical user interface (GUI) in 1993 with version 3, and now is available either with or without a Windows or Mac GUI at the <a href="https://paup.phylosolutions.com/">Phylosolutions</a> web site.</p>
+
+<p>We will use a version of PAUP* installed on the cluster, but you can download and install it on your laptop as well if you like. Don’t be put off by the “alpha test version” status: many papers have cited an alpha test version of the program.</p>
+
+<h2 id="record-your-answers">Record your answers</h2>
+
+<p>Each week in lab I ask you to turn in something for your lab participation points. This is just a heads-up that, as you work through this lab, you should copy the questions that begin with the “thinking” emoji (<img class="emoji" title=":thinking:" alt=":thinking:" src="./pauplab_files/1f914.png" height="20" width="20">) into a text file, separating multiple questions so that there is only one question per line, and provide your answers in the same file after each question. Attach this file to an email to us. (Please create a text file, <strong>not</strong> a Word file or Pages document. You can use <a href="https://notepad-plus-plus.org/downloads/">Notepad++</a> on Windows to create such a file, or <a href="https://www.barebones.com/products/bbedit/">BBEdit</a> on a Mac).</p>
+
+<h2 id="using-paup-to-create-a-nexus-data-file">Using PAUP* to create a NEXUS data file</h2>
+
+<p>First, download the file <a href="http://hydrodictyon.eeb.uconn.edu/people/plewis/courses/phylogenetics/data/angio35.txt">angio35.txt</a>.</p>
+
+<p>If you will be working on the cluster, login to the cluster (<code class="language-plaintext highlighter-rouge">ssh username@hpc.crc.ku.edu</code>) and type the following command:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>srun --time=02:00:00 --ntasks=1 --nodes=1 --partition=bi --pty /bin/bash -l</code></pre></div></div>
+
+<p>This will find a node that is not currently fully loaded with jobs and allow you to play with programs without bogging down the head node (the node everyone uses to access the cluster). You should always use <code class="language-plaintext highlighter-rouge">srun</code> if you are planning to do any computation interactively, as we will do today.</p>
+
+<p>Once the system has moved you to a compute node, type the following commands to start the PAUP* program:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cat /etc/os-release
+</code></pre></div></div>
+<p>to see what OS the cluster uses. Now you can open a browser to <a href="https://phylosolutions.com/paup-test/" target="_blank">https://phylosolutions.com/paup-test/</a> to find the appropriate version of PAUP to download.</p>
+
+
+<p>Right-click on the link to the version of PAUP you want and "Copy link address" to get the URL. Then you can run the command:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget https://phylosolutions.com/paup-test/paup4a168_centos64.gz </code></pre></div></div>
+<p>to download paup to the cluster;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gunzip paup4a168_centos64.gz </code></pre></div></div>
+<p>to "unzip" the gzipped executable;</p>
+
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ls </code></pre></div></div>
+<p>to see the name of the unpacked version;</p>
+
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>chmod +x paup4a168_centos64</code></pre></div></div>
+<p>to make PAUP "executable; and </p>
+
+
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./paup4a168_centos64</code></pre></div></div>
+<p>to run PAUP. </p>
+
+
+
+
+
+<p>Now type in the following (PAUP*) command:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tonexus from=angio35.txt to=angio35.nex datatype=nucleotide format=text;
+</code></pre></div></div>
+
+<p>After the conversion, the file <code class="language-plaintext highlighter-rouge">angio35.nex</code> should be present. Type <code class="language-plaintext highlighter-rouge">quit</code> to quit PAUP<em>, then open this Nexus file in the nano editor to see what PAUP</em> did to convert the original file to Nexus format. (The most important thing PAUP* did was to count the number of nucleotides and set nchar for you.)</p>
+
+<h2 id="automatically-excluding-sites-using-a-default-exset">Automatically excluding sites using a default exset</h2>
+
+<p>Create an assumptions block containing a default exclusion set that excludes the following sites automatically whenever the data file is executed. This should be added to the bottom of the newly-created Nexus file (i.e., after the data). You can use the nano editor for this.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>begin assumptions;
+    exset * unused = 1-41 234-241 246 506-511 555 681-689 1393-1399 1797-1855 1856-1884 4754-4811;
+end;
+</code></pre></div></div>
+
+<p>These numbers represent nucleotide sites that are either missing a lot of data or are difficult to align. The name I gave to this exclusion set is <code class="language-plaintext highlighter-rouge">unused</code>, but you could name it anything you like. The asterisk tells PAUP* that you want this exset to be applied automatically every time the file is executed.</p>
+
+<h2 id="defining-sets-of-sites">Defining sets of sites</h2>
+
+<p>Create a <strong>sets</strong> block comprising the following three charset commands:</p>
+<ul>
+  <li>The first charset should be named 18S and include sites 1 through 1855</li>
+  <li>The second charset should be named rbcL and include sites 1856 through 3283</li>
+  <li>The third charset should be named atpB and include sites 3284 through 4811</li>
+</ul>
+
+<p>This block should be placed after the assumptions block. Look at the <a href="https://plewis.github.io/nexus/#sets-block">description of the sets block</a> and try to do this part on your own.</p>
+
+<p>After saving the file in nano, start PAUP*, specifying the data file name on the command line:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>paup angio35.nex
+</code></pre></div></div>
+
+<p>If your assumptions block is correct, the output should include a statement saying that 219 characters have been excluded. If you set up your sets block correctly you should now be able to enter this command:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>exclude all;
+include rbcL;
+</code></pre></div></div>
+
+<p>and get no errors. In addition, PAUP* should tell you that 4592 characters were excluded (as a result of the exclude all command) and 1428 were re-included (as a result of the include rbcL command). For the rest of the exercise, we will be working with the data from all 3 genes, so re-include the 18S and atpB data:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>include 18S atpB;
+</code></pre></div></div>
+
+<p>PAUP* should now say that there are a total of 4811 included characters.</p>
+
+<h2 id="setting-up-a-log-file">Setting up a log file</h2>
+
+<p>The first item of business in starting an analysis in PAUP* is to begin logging the output to a file. The following command will begin saving all output to the file <code class="language-plaintext highlighter-rouge">output.txt</code>. Note that we have chosen to automatically replace the file if it already exists. If you are nervous about this (and would rather have PAUP* ask before overwriting an existing file), either leave off the replace keyword or substitute <code class="language-plaintext highlighter-rouge">append</code>, which tells PAUP* to simply add new output to the end of the file if it already exists.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>log file=output.txt start replace;
+</code></pre></div></div>
+
+<h2 id="getting-help">Getting help</h2>
+
+<p>Type <code class="language-plaintext highlighter-rouge">set ?</code> to get a listing of the general settings. PAUP* has four “settings” commands: <code class="language-plaintext highlighter-rouge">set</code> for general settings; <code class="language-plaintext highlighter-rouge">pset</code> for settings specifically related to parsimony; <code class="language-plaintext highlighter-rouge">lset</code> for settings specifically related to likelihood; and <code class="language-plaintext highlighter-rouge">dset</code> for settings specifically related to distance methods.</p>
+
+<blockquote>
+  <p><img class="emoji" title=":thinking:" alt=":thinking:" src="./pauplab_files/1f914.png" height="20" width="20"> From the output of the set command, can you determine which optimality criterion PAUP* would use if we were to do a search at this point?</p>
+</blockquote>
+
+<h2 id="performing-a-parsimony-search">Performing a parsimony search</h2>
+
+<p>To perform a parsimony search, first try the <code class="language-plaintext highlighter-rouge">alltrees</code> command. This command asks PAUP* to calculate the optimality criterion for every possible tree:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>alltrees;
+</code></pre></div></div>
+
+<blockquote>
+  <p><img class="emoji" title=":thinking:" alt=":thinking:" src="./pauplab_files/1f914.png" height="20" width="20"> What was PAUP*’s response to this request?</p>
+</blockquote>
+
+<p>Now try heuristic searching. This approach does not attempt to look at all possible trees, but instead only examines trees that are in the realm of possibility (which can still be a lot of trees!):</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>hsearch;
+</code></pre></div></div>
+
+<blockquote>
+  <p><img class="emoji" title=":thinking:" alt=":thinking:" src="./pauplab_files/1f914.png" height="20" width="20"> What is the parsimony score of the best tree found during the search? (Write down this score somewhere for later reference.) How many trees were examined (look at “Total number of rearrangements tried”)?</p>
+</blockquote>
+
+<h2 id="showing-and-saving-trees">Showing and saving trees</h2>
+
+<p>Now you probably want to take a look at the tree that PAUP* found and is now holding in memory. First, however, choose an outgroup taxon so that the (unrooted) tree will be drawn in a way that looks like it is rooted in a reasonable place, say between the gymnosperms (first 7 taxa) and angiosperms (remaining taxa):</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>outgroup 1-7;
+showtree;
+</code></pre></div></div>
+
+<p>To make the tree appear to flow downward, which is more pleasing to the eye, tell PAUP* that you would like to use the tree order “right” (this is also commonly known as “ladderizing right”):</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>set torder=right;
+showtree;
+</code></pre></div></div>
+
+<p>Before doing anything else, we should save this tree in a file so that it will be available later, perhaps for viewing or printing in FigTree. Let’s call the treefile <code class="language-plaintext highlighter-rouge">pars.tre</code>. The <code class="language-plaintext highlighter-rouge">brlens</code> keyword in the command below tells PAUP* that you want to save the branch lengths as well as just the tree topology (almost always a good option to include):</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>savetrees file=pars.tre brlens;
+</code></pre></div></div>
+
+<h2 id="scoring-trees-using-the-likelihood-criterion">Scoring trees using the likelihood criterion</h2>
+
+<p>You may have noticed that PAUP* found 5 most-parsimonious trees. These 5 trees are all indistinguishable using the parsimony criterion. Let’s now use the likelihood criterion to evaluate these 5 trees:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>set criterion=likelihood;
+lscores all;
+</code></pre></div></div>
+
+<p>These commands ask PAUP* to simply evaluate the likelihood score of the trees in memory. Note that because we arrived at these trees using parsimony, it is quite possible that none of these trees represents the maximum likelihood tree. That is, we may be able to find better trees under the likelihood criterion if we performed a search using the likelihood criterion.</p>
+
+<blockquote>
+  <p><img class="emoji" title=":thinking:" alt=":thinking:" src="./pauplab_files/1f914.png" height="20" width="20"> What is the likelihood score of the best tree? (As for parsimony, write this number down for later comparison.) Is the likelihood score the same for all 5 trees? Which tree is best?</p>
+</blockquote>
+
+<p><strong>Important:</strong> PAUP* reports the <em>negative</em> of the natural logarithm of the likelihood score. This means that <strong>smaller numbers are better</strong>, as smaller numbers represent higher likelihoods. Why does PAUP* do this? For the sake of consistency: in PAUP*, the minimum score is always the best score. You should always report log-likelihoods as negative numbers, however.</p>
+
+<h2 id="comparing-nj-to-parsimony-and-likelihood">Comparing NJ to parsimony and likelihood</h2>
+
+<p>Next, we will obtain a neighbor-joining tree. Neighbor-joining (NJ for short) is one of the algorithmic methods: that is, it uses an optimality criterion (the minimum evolution criterion) at each step of the algorithm, but in the end produces an estimate of the phylogeny without actually examining many trees:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nj;
+</code></pre></div></div>
+
+<p>Let’s see how the NJ tree compares to the tree found by parsimony. First, use the <code class="language-plaintext highlighter-rouge">lscores</code> command to compute the log-likelihood of the NJ tree:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>lscores all;
+</code></pre></div></div>
+
+<p>Now compute the parsimony score of the NJ tree using the <code class="language-plaintext highlighter-rouge">pscores</code> command:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pscores all;
+</code></pre></div></div>
+
+<blockquote>
+  <p><img class="emoji" title=":thinking:" alt=":thinking:" src="./pauplab_files/1f914.png" height="20" width="20"> According to the parsimony criterion, is the NJ tree better than any of the trees found by parsimony? According to the likelihood criterion, is the NJ tree better than the best tree you have found thus far? Based on the work you have done, is it possible to say definitively whether the NJ tree is better or worse (according to the likelihood criterion) than the maximum likelihood tree?</p>
+</blockquote>
+
+<h2 id="closing-down">Closing down</h2>
+
+<p>That’s all for today. The only thing left to do is to close the log file you opened and quit PAUP*:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>log stop;
+quit;
+</code></pre></div></div>
+
+<p>You can use <code class="language-plaintext highlighter-rouge">Ctrl-d</code> (or type <code class="language-plaintext highlighter-rouge">exit</code>) to quit your session on the cluster. Don’t forget to send in your answers to the questions posed.</p>
+
+  </div>
+
+</article>
+
+      </div>
+    </main>
+<footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-3">
+        <p>This is based on a page from the web site of Paul O. Lewis, Department of Ecology and Evolutionary Biology, University of Connecticut, Storrs, CT. USA.</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>
