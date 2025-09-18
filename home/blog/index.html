@@ -175,11 +175,6 @@ cd ..
  </div>
  <div class="links">
   <ul class="links inline">
-   <li class="blog_usernames_blog first">
-    <a href="../blog/mholder" title="Read mholder's latest blog entries.">
-     mholder's blog
-    </a>
-   </li>
    <li class="node_read_more last">
     <a href="../content/ivy-mac" title="Read the rest of ivy on Mac.">
      Read more
@@ -194,48 +189,6 @@ cd ..
    Phylotastic TNRS client
   </a>
  </h2>
- <span class="submitted">
-  Thu, 06/21/2012 - 12:33 — mholder
- </span>
- <div class="content clear-block">
-  <p>
-   An example client of the demo implementation of the
-   <a href="http://www.evoio.org/wiki/Phylotastic/TNRS">
-    TNRS built at phylotastic
-   </a>
-   can be run using
-   <br/>
-   <code>
-    <br/>
-    python phylotastic_tnrs_client.py
-    <br/>
-   </code>
-   <br/>
-   then typing some names (one per line) and closing the standard input stream with Ctrl-D.
-  </p>
-  <p>
-   You can also put the names in a file and pass the filepaths as command line arguments to the script.
-  </p>
-  <p>
-   The code is available as a gist.
-   <br/>
-   <script src="http://gist.github.com/2967726.js">
-   </script>
-  </p>
- </div>
- <div class="clear-block">
-  <div class="meta">
-  </div>
-  <div class="links">
-   <ul class="links inline">
-    <li class="blog_usernames_blog first last">
-     <a href="../blog/mholder" title="Read mholder's latest blog entries.">
-      mholder's blog
-     </a>
-    </li>
-   </ul>
-  </div>
- </div>
 </div>
 <div class="node" id="node-709">
  <h2>
@@ -243,36 +196,6 @@ cd ..
    Compiling g++ 4.7
   </a>
  </h2>
- <span class="submitted">
-  Sun, 06/10/2012 - 15:50 — mholder
- </span>
- <div class="content clear-block">
-  <p>
-   I wanted to try out gcc witth c++11, so I had to compile gcc version 4.7, and posted the install directory that I used at:
-   <a href="https://mtholder.github.io/home/public/gcc4.7.tar.gz" title=""https://phylo.bio.ku.edu/public/gcc4.7.tar.gz">
-    "https://phylo.bio.ku.edu/public/gcc4.7.tar.gz
-   </a>
-  </p>
-  <p>
-   See
-   <br/>
-   <script src="http://gist.github.com/2906937.js">
-   </script>
-  </p>
- </div>
- <div class="clear-block">
-  <div class="meta">
-  </div>
-  <div class="links">
-   <ul class="links inline">
-    <li class="blog_usernames_blog first last">
-     <a href="../blog/mholder" title="Read mholder's latest blog entries.">
-      mholder's blog
-     </a>
-    </li>
-   </ul>
-  </div>
- </div>
 </div>
 <div class="node" id="node-695">
  <h2>
@@ -280,70 +203,6 @@ cd ..
    Odd bug in g++ on darwin - implicit conversion of NULL to pointer not working on all architectures
   </a>
  </h2>
- <span class="submitted">
-  Wed, 09/21/2011 - 20:48 — mholder
- </span>
- <div class="content clear-block">
-  <p>
-   <a href="http://jeetworks.org/about">
-    Jeet
-   </a>
-   and I tracked this down after I was having issues compiling
-   <a href="https://github.com/revbayes/revbayes">
-    RevBayes
-   </a>
-   , while it was working for him.  It turns out that
-   <a href="http://www.cmake.org/">
-    CMake
-   </a>
-   was including compiler flags for me that it was not including for him (fwiw: I compiled cmake, Jeet used a pre-built version).
-  </p>
-  <p>
-   Here is the very odd bit. The code
-  </p>
-  <div class="geshifilter">
-   <pre class="python geshifilter-python" style="font-family:monospace;"><span style="color: #808080; font-style: italic;">#include &lt;list&gt;</span>
-<span style="color: #008000;">int</span> main<span style="color: black;">(</span><span style="color: black;">)</span> <span style="color: black;">{</span>
-    std::list<span style="color: #66cc66;">&lt;</span>int<span style="color: #66cc66;">*&gt;</span> x<span style="color: black;">(</span><span style="color: #ff4500;">1</span>, NULL<span style="color: black;">)</span><span style="color: #66cc66;">;</span>
-<span style="color: black;">}</span></pre>
-  </div>
-  <p>
-   will compile with a simple
-   <tt>
-    g++ t.cpp -arch x86_64
-   </tt>
-   when using
-   <tt>
-    i686-apple-darwin10-g++-4.2.1 (GCC) 4.2.1 (Apple Inc. build 5666) (dot 3)
-   </tt>
-   on a MacBookPro running 10.6.8.
-  </p>
-  <p>
-   The same code will not compile if you use the using tho
-   <tt>
-    -arch i386
-   </tt>
-   flag.  The compiler (not linker!) error is:
-  </p>
- </div>
- <div class="clear-block">
-  <div class="meta">
-  </div>
-  <div class="links">
-   <ul class="links inline">
-    <li class="blog_usernames_blog first">
-     <a href="../blog/mholder" title="Read mholder's latest blog entries.">
-      mholder's blog
-     </a>
-    </li>
-    <li class="node_read_more last">
-     <a href="../content/odd-bug-g-darwin-implicit-conversion-null-pointer-not-working-all-architectures" title="Read the rest of Odd bug in g++ on darwin - implicit conversion of NULL to pointer not working on all architectures.">
-      Read more
-     </a>
-    </li>
-   </ul>
-  </div>
- </div>
 </div>
 <div class="node" id="node-690">
  <h2>
@@ -351,40 +210,6 @@ cd ..
    matplotlib and scipy for i386/x86_64 version of python 2.7
   </a>
  </h2>
- <span class="submitted">
-  Sat, 03/05/2011 - 20:28 — mholder
- </span>
- <div class="content clear-block">
-  In a fit of masochism I installed the i386/x86_64 binary of Python 2.7 for Mac, which is available from: 
-http://www.python.org/ftp/python/2.7.1/python-2.7.1-macosx10.6.dmg
-on my laptop.
-
-Note that
-  <tt>
-   $ file $(which python)
-  </tt>
-  reports Mach-O executable i386 and Mach-O 64-bit executable x86_64 for this installation of python.
-
-I wanted to use scipy and matplotlib, which is where the trouble began because there are not binaries of those for python 2.7 for this architecture.
- </div>
- <div class="clear-block">
-  <div class="meta">
-  </div>
-  <div class="links">
-   <ul class="links inline">
-    <li class="blog_usernames_blog first">
-     <a href="../blog/mholder" title="Read mholder's latest blog entries.">
-      mholder's blog
-     </a>
-    </li>
-    <li class="node_read_more last">
-     <a href="../content/matplotlib-and-scipy-i386x8664-version-python-27" title="Read the rest of matplotlib and scipy for i386/x86_64 version of python 2.7.">
-      Read more
-     </a>
-    </li>
-   </ul>
-  </div>
- </div>
 </div>
 <div class="node" id="node-686">
  <h2>
@@ -392,48 +217,6 @@ I wanted to use scipy and matplotlib, which is where the trouble began because t
    ecmascript for python programmers
   </a>
  </h2>
- <span class="submitted">
-  Sun, 01/02/2011 - 17:49 — mholder
- </span>
- <div class="content clear-block">
-  <p>
-   Disclaimer: I have written
-   <b>
-    very little
-   </b>
-   ECMAScript, I'm using this post as a place to store my notes. The odds that I have some of the details wrong is high. See
-   <a href="http://developer.yahoo.com/yui/theater/video.php?v=crockonjs-3">
-    http://developer.yahoo.com/yui/theater/video.php?v=crockonjs-3
-   </a>
-   (and related) videos for a nice description of different aspects of ECMAScript, and
-   <a href="https://developer.mozilla.org/en/JavaScript/Reference">
-    https://developer.mozilla.org/en/JavaScript/Reference
-   </a>
-   and
-   <a href="http://javascript-reference.info/">
-    http://javascript-reference.info/
-   </a>
-   for terse language references.
-  </p>
- </div>
- <div class="clear-block">
-  <div class="meta">
-  </div>
-  <div class="links">
-   <ul class="links inline">
-    <li class="blog_usernames_blog first">
-     <a href="../blog/mholder" title="Read mholder's latest blog entries.">
-      mholder's blog
-     </a>
-    </li>
-    <li class="node_read_more last">
-     <a href="../content/ecmascript-python-programmers" title="Read the rest of ecmascript for python programmers.">
-      Read more
-     </a>
-    </li>
-   </ul>
-  </div>
- </div>
 </div>
 <div class="node" id="node-677">
  <h2>
@@ -441,41 +224,6 @@ I wanted to use scipy and matplotlib, which is where the trouble began because t
    likelihood demo script
   </a>
  </h2>
- <span class="submitted">
-  Fri, 07/30/2010 - 20:14 — mholder
- </span>
- <div class="content clear-block">
-  <p>
-   Requires PyQt.
-  </p>
-  <p>
-   Your mileage may vary.
-  </p>
-  <p>
-   Instructions to come soon (hopefully)
-  </p>
-  <p>
-   Download
-   <a href="https://mtholder.github.io/home/sites/default/files/likelihood_demo.py.txt">
-    "https://phylo.bio.ku.edu/sites/default/files/likelihood_demo.py.txt
-   </a>
-   <br/>
-   and save it as likelihood_demo.py
-  </p>
- </div>
- <div class="clear-block">
-  <div class="meta">
-  </div>
-  <div class="links">
-   <ul class="links inline">
-    <li class="blog_usernames_blog first last">
-     <a href="../blog/mholder" title="Read mholder's latest blog entries.">
-      mholder's blog
-     </a>
-    </li>
-   </ul>
-  </div>
- </div>
 </div>
 <div class="node" id="node-676">
  <h2>
@@ -483,43 +231,6 @@ I wanted to use scipy and matplotlib, which is where the trouble began because t
    building self-contained phycas Debian package
   </a>
  </h2>
- <span class="submitted">
-  Thu, 07/29/2010 - 15:07 — mholder
- </span>
- <div class="content clear-block">
-  <p>
-   OK, so this goes against the grain of a good package management system (which Debian has), by bundling dependencies.  We've had some serious issues in the past with getting our versions of python in sync with boost libraries, ncl, and python.
-  </p>
-  <p>
-   So below are the instructions for creating a debian package that installs NCL, python2.7, ipython, and puts phycas into (lib/python2.6/site-packages )
-  </p>
-  <ol>
-   <li>
-    Save
-    <a href="https://mtholder.github.io/home/sites/default/files/Phycas_sh.txt">
-     Phycas_sh.txt
-    </a>
-    as
-    <tt>
-     Phycas
-    </tt>
-    with the executable bit set
-   </li>
-  </ol>
- </div>
- <div class="clear-block">
-  <div class="meta">
-  </div>
-  <div class="links">
-   <ul class="links inline">
-    <li class="blog_usernames_blog first last">
-     <a href="../blog/mholder" title="Read mholder's latest blog entries.">
-      mholder's blog
-     </a>
-    </li>
-   </ul>
-  </div>
- </div>
 </div>
 <div class="node" id="node-675">
  <h2>
@@ -527,73 +238,6 @@ I wanted to use scipy and matplotlib, which is where the trouble began because t
    building self-contained phycas bundles
   </a>
  </h2>
- <span class="submitted">
-  Thu, 07/29/2010 - 12:09 — mholder
- </span>
- <div class="content clear-block">
-  <p>
-   Below are instructions for creating (refilling is a more accurate term) our iTerm4Phycas .app bundle for Mac.
-   <br/>
-   The scripts below puts python 2.6.5 , ipython, ncl in the iTerm-based .app bundle.
-   <br/>
-   All phycas dependencies are built for i386.
-  </p>
-  <p>
-   Updated July, 31, 2010
-  </p>
-  <ol>
-   <li>
-    Download
-    <a href="https://mtholder.github.io/home/sites/default/files/build_phycas_standalone_bundle.sh_.txt">
-     build_phycas_standalone_bundle.sh_.txt
-     <br/>
-    </a>
-    to a fresh directory and rename it as
-    <tt>
-     build_phycas_standalone_bundle.sh
-    </tt>
-   </li>
-   <li>
-    Download
-    <a href="https://mtholder.github.io/home/sites/default/files/phycas_standalone_build_env.sh_.txt">
-     phycas_standalone_build_env.sh_.txt
-    </a>
-    to the same directory and rename it as
-    <tt>
-     phycas_standalone_build_env.sh
-    </tt>
-   </li>
-   <li>
-    Take a look at the scripts to note how hacky they are
-   </li>
-   <li>
-    Make sure you have wget and svn
-   </li>
-   <li>
-    <tt>
-     sh build_phycas_standalone_bundle.sh
-    </tt>
-   </li>
-  </ol>
- </div>
- <div class="clear-block">
-  <div class="meta">
-  </div>
-  <div class="links">
-   <ul class="links inline">
-    <li class="blog_usernames_blog first">
-     <a href="../blog/mholder" title="Read mholder's latest blog entries.">
-      mholder's blog
-     </a>
-    </li>
-    <li class="node_read_more last">
-     <a href="../content/building-self-contained-phycas-bundles" title="Read the rest of building self-contained phycas bundles.">
-      Read more
-     </a>
-    </li>
-   </ul>
-  </div>
- </div>
 </div>
 <div class="node" id="node-674">
  <h2>
@@ -601,68 +245,7 @@ I wanted to use scipy and matplotlib, which is where the trouble began because t
    script for building gcc on kwyjibo
   </a>
  </h2>
- <span class="submitted">
-  Thu, 07/22/2010 - 17:24 — mholder
- </span>
- <div class="content clear-block">
-  Not the actual steps that we used, but pretty much.
-  <div class="geshifilter">
-   <pre class="python geshifilter-python" style="font-family:monospace;"><span style="color: #808080; font-style: italic;">#!/bin/sh</span>
-<span style="color: #808080; font-style: italic;"># script to install gcc </span>
- 
-<span style="color: #008000;">set</span> -x
-export NEW_GCC_PREFIX=/share/apps/opt/gcc-<span style="color: #ff4500;">4.5</span>
-export LD_LIBRARY_PATH=$NEW_GCC_PREFIX/lib
- 
-<span style="color: #ff7700;font-weight:bold;">if</span> <span style="color: #66cc66;">!</span> <span style="color: #dc143c;">test</span> -f gmp-5.0.1.<span style="color: black;">tar</span>.<span style="color: #dc143c;">bz2</span> 
-then
-    wget ftp://ftp.<span style="color: black;">gmplib</span>.<span style="color: black;">org</span>/pub/gmp-5.0.1/gmp-5.0.1.<span style="color: black;">tar</span>.<span style="color: #dc143c;">bz2</span>  || exit
-fi
-tar xfvj gmp-5.0.1.<span style="color: black;">tar</span>.<span style="color: #dc143c;">bz2</span>  || exit
-<span style="color: #dc143c;">cd</span> gmp-5.0.1  || exit
-make || exit
-sudo make install  || exit
-<span style="color: #dc143c;">cd</span> ..  || exit
- 
- 
-<span style="color: #ff7700;font-weight:bold;">if</span> <span style="color: #66cc66;">!</span> <span style="color: #dc143c;">test</span> -f mpfr-3.0.0.<span style="color: black;">tar</span>.<span style="color: #dc143c;">bz2</span> 
-then
-    wget http://www.<span style="color: black;">mpfr</span>.<span style="color: black;">org</span>/mpfr-current/mpfr-3.0.0.<span style="color: black;">tar</span>.<span style="color: #dc143c;">bz2</span>  || exit
-fi
-tar xfvj mpfr-3.0.0.<span style="color: black;">tar</span>.<span style="color: #dc143c;">bz2</span>  || exit
-<span style="color: #dc143c;">cd</span> mpfr-<span style="color: #ff4500;">3.0</span>.<span style="color: black;">X</span>  || exit
-./configure --with-gmp=$NEW_GCC_PREFIX --prefix=$NEW_GCC_PREFIX  || exit
-make  || exit
-make check  || exit
-sudo make install  || exit
-<span style="color: #dc143c;">cd</span> ..  || exit
- 
- 
-<span style="color: #ff7700;font-weight:bold;">if</span> <span style="color: #66cc66;">!</span></pre>
-  </div>
- </div>
- <div class="clear-block">
-  <div class="meta">
-  </div>
-  <div class="links">
-   <ul class="links inline">
-    <li class="blog_usernames_blog first">
-     <a href="../blog/mholder" title="Read mholder's latest blog entries.">
-      mholder's blog
-     </a>
-    </li>
-    <li class="node_read_more last">
-     <a href="../content/script-building-gcc-kwyjibo" title="Read the rest of script for building gcc on kwyjibo.">
-      Read more
-     </a>
-    </li>
-   </ul>
-  </div>
- </div>
 </div>
-<a class="feed-icon" href="../blog/feed">
- <img alt="Syndicate content" height="16" src="../misc/feed.png" title="RSS - blogs" width="16"/>
-</a>
 <div id="footer">
  <p>
   The
