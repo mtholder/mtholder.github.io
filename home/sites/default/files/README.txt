@@ -2,7 +2,7 @@
 Overview
 ########
 
-"https://phylo.bio.ku.edu/software/sate/sate.html
+"https://mtholder.github.io/home/software/sate/sate.html
 
 SATe is a tool for producing trees from unaligned sequence data by iteratively
 creating alignments using a divide-and-conquer strategy of the ML tree.
