@@ -56,7 +56,7 @@ print("The approx. P-value = "); print(p.val) ;
 
 chisq.test(observed) ;
 
-data <- read.csv(url("http://phylo.bio.ku.edu/biostats/Lab8restraints.csv"))
+data <- read.csv(url("https://mtholder.github.io/home/biostats/Lab8restraints.csv"))
 dt = table(data$restraint, data$status) ;
 print("The observed counts are:") ; print(dt) ;
 chisq.test(dt) ;

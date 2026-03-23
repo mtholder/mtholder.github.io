@@ -1,4 +1,4 @@
-data <- read.csv(url("http://phylo.bio.ku.edu/biostats/Lab3.csv"))
+data <- read.csv(url("https://mtholder.github.io/home/biostats/Lab3.csv"))
 require(pastecs)
 stat.desc(d$s10)
 
