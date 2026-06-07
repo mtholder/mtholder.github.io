@@ -1,0 +1,4 @@
+Sitemap: https://mtholder.github.io/notes/sitemapindex.xml
+
+User-Agent: *
+Host: mtholder.github.io
