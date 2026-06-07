@@ -1,6 +1,6 @@
 <!--
 .. title: Projections of federal revenue and expenses without making Bush tax cuts permanent
-.. slug: gop-tax-cuts-perm/index.html
+.. slug: gop-tax-cuts-perm/index
 .. date: 2026-06-07 12:47:41 UTC-05:00
 .. tags: federalbudget
 .. category: 

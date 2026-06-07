@@ -1,6 +1,6 @@
 <!--
 .. title: US Federal deficits over time
-.. slug: us-federal-deficits-over-time/index.html
+.. slug: us-federal-deficits-over-time/index
 .. date: 2026-06-07 12:31:00 UTC-05:00
 .. tags: federalbudget
 .. category: 
