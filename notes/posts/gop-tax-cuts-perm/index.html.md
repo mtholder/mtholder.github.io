@@ -10,7 +10,8 @@
 -->
 
 <img src="/images/projections-sans-bush-trump-tax-cuts.jpg" />
-From via this [tweet by Bobby Kogan](https://xcancel.com/BBKogan/status/2049871190840254746) based on data cited in the image. Tweet text: "Your perennial reminder that, had the Bush and Trump tax cuts never been enacted, debt/GDP would be declining indefinitely instead of rising (dashed blue is above dashed orange).
+
+From this [tweet by Bobby Kogan](https://xcancel.com/BBKogan/status/2049871190840254746) based on data cited in the image. Tweet text: "Your perennial reminder that, had the Bush and Trump tax cuts never been enacted, debt/GDP would be declining indefinitely instead of rising (dashed blue is above dashed orange).
 
 Yes, this graph first assumes a patched AMT at Clinton tax code."
 
