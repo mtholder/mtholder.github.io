@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<!-- from http://bl.ocks.org/mbostock/4339083
+and http://bl.ocks.org/mbostock/4063550
+
+!-->
+<meta charset="utf-8">
+<style>
+
+.node circle {
+  fill: #fff;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+}
+
+.node {
+  font: 10px sans-serif;
+}
+
+.link {
+  fill: none;
+  stroke: #ccc;
+  stroke-width: 1.5px;
+}
+#tree1par {
+  vertical-align: top;
+  float: left;
+}
+#tree2par {
+  vertical-align: center;
+  float: left;
+}
+#tree3par {
+  vertical-align: bottom;
+  float: left;
+}
+#histpar {
+  vertical-align: top;
+  float: right;
+}
+</style>
+<body>
+<script src="d3/d3.v3.min.js"></script>
+<script src="jquery/jquery.v2.min.js"></script>
+<div>
+<h2><b>Figure 1</b> the relationship between the per-site LRT and the <it>P</it>-value in a hypothetical case.</h2>
+<p>Consider the case of a dataset which has <span class="nc">100</span> characters 
+(or sites in a sequence alignment) and the alternative tree has a
+log-likelihood that is 5.0 higher than the null hypothesized tree.
+If we do not use asymptotic assumptions to connect the 2*(the difference in log-likelihoods) to 
+the chi-square distribution, then try to infer a null distribution based on the per-site
+differences in log-likelihoods.</p>
+<p>
+If we construct the null distribution in this way, we find that the variability of the support
+across characters if very important to assessing the statistical significance of a log-likelihood difference.
+</p>
+<p>
+Typically we want to test a null hypothesis that the two trees are equally good explanations of the data.
+Thus under the null, the expected mean difference log-likelihoods per-site should be 0.
+So, if we have a method of producing a plausible amount of variability in the per-site log-likelihood
+differences, we can generate a null distribution at the per-site level.
+</p><p id="sampletext">
+Because the total difference in log-likelhoods is simply the sum of the differences for all sites, we can
+get the null distribution of the total log-likelihood difference from the per-site null distribution.
+</p>
+</div>
+<table>
+  <tr>
+    <td>
+      <label for="abCount" id="var">
+          <font id="idFont">Variability of log-likelihood differences across sites:</font>
+      </label>
+      <select name="varselect" id="varselect">
+          <option id="novar" value="novar" selected="selected">All site differences = 0.05</option>
+          <option id="onesite" value="onesite">One site differs by 5.00</option>
+          <option id="conflict" value="conflict">One site diff = 0; 500 sites = +5; 499 sites = -5.0</option>
+      </select>
+    </td>
+  </tr>
+  <tr><td>Distribution of per-site differences:</td></tr>
+  <tr><td><span id="per-site-diff-dist"></span></td></tr>
+  <tr>
+    <td>
+      <label for="centerLabel" id="centerLabel"> <font id="idFont">Method of centering to per-site difference to have expectation of 0:</font></label>
+      <select name="centerselect" id="centerselect">
+          <option id="subtract" value="subtract" selected="selected">subtract mean</option>
+          <option id="reflect" value="reflect">append "mirror image" dataset</option>
+      </select>
+    </td>
+  </tr>
+  <tr><td><span id="null-per-site-diff-dist"></span></td></tr>
+  <tr><td>
+          <input name="boot" type="button" value="generate null distributions" onclick="generate_null()" />
+  </td></tr>
+  <tr><td><span id="null-realization-dist"></span></td></tr>
+  <tr><td><span id="null-realization-sample-label">Simulated from null. Difference = </span>
+          <span id="null-realization-sample-value"></span></td></tr>
+  <tr><td><span id="null-dist"></span></td></tr>
+  <tr><td><span id="p-value-pref">Based on </span>
+          <span id="num-reps">0</span>
+          <span id="p-value-label">replicates, the approximate <it>P</it>-value = </span>
+          <span id="p-value">?</span></td></tr>
+</table>
+<br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <p> Thanks to <a href="http://bl.ocks.org/mbostock/3048450">http://bl.ocks.org/mbostock/3048450</a></p>.
+
+<!-- footer -->
+<h4></h4>
+<hr />
+<p>Further information on toplogical testing will be available in a forthcoming "Encyclopedia of Evolution" article by Emily Jane B. McTavish and Mark T. Holder.</p>
+<p>Back to the demo <a href="./index.html">table of contents...</a></p>
+<p> Source code at <a href="https://github.com/mtholder/mephytis">https://github.com/mtholder/mephytis</a></p>
+
+<p>Thanks to the <a href="http://www.nsf.gov">U.S. National Science Foundation</a> and the 
+<a href="http://www.h-its.org/english/">Heidelberg Institute for Theoretical Studies</a> for support.</p>
+<!-- end footer -->
+
+
+
+<script>
+var PER_SITE_WIDTH = 400;
+var PER_SITE_HEIGHT = 180;
+var margin = {top: 10, right: 10, bottom: 35, left: 15}
+var width = PER_SITE_WIDTH - margin.left - margin.right;
+var height = PER_SITE_HEIGHT - margin.top - margin.bottom;
+
+var total_diff = 5.0;
+var num_char = 100;
+var round_tol = 0.0001;
+
+var orig_mean_ps = total_diff / num_char;
+var half_num_char = num_char/2;
+$(".nc").text("" + num_char);
+$("#novar").text("All sites' differences = " + orig_mean_ps.toPrecision(3));
+$("#onesite").text("" + (num_char - 1) + " sites with diff.=0 and one with diff.=" + total_diff.toPrecision(1));
+$("#conflict").text("One site w/ diff.=0; " 
+                    + half_num_char +  " with diff.=" + (total_diff/num_char).toPrecision(1)
+                    + "; and " + (half_num_char - 1) + " with diff.=" + (-total_diff/num_char).toPrecision(1));
+var ps_groups_zero_to_five = 250;
+var ps_num_bins = 2*ps_groups_zero_to_five + 1;
+var no_var_values = [];
+var one_site_values = [];
+var conflict_values = [];
+var i = 0;
+var tol = orig_mean_ps;
+var zero_offset = total_diff + tol
+for (i = 0; i < num_char; ++i) {
+    no_var_values[i] = zero_offset + orig_mean_ps;
+}
+for (i = 0; i < num_char - 1; ++i) {
+    one_site_values[i] = zero_offset;
+}
+one_site_values[num_char - 1] = zero_offset + total_diff;
+for (i = 0; i < half_num_char; ++i) {
+    conflict_values[i] = zero_offset + total_diff;
+}
+for (i = half_num_char; i < num_char - 1; ++i) {
+    conflict_values[i] = zero_offset - total_diff;
+}
+conflict_values[num_char - 1] = zero_offset + 0.0;
+var ps_x = d3.scale.linear().domain([0, 2*total_diff + tol]).range([0, width]);
+var thresholds = [];
+var bin_w = (2*total_diff)/ps_num_bins;
+var min_x = 0;
+var curr_thres = min_x;
+for (i = 0; i < ps_num_bins + 1 ; ++i) {
+    thresholds[i] = curr_thres;
+    curr_thres += bin_w;
+}
+var os_null_thresh = [];
+var os_tf = 3;
+var os_null_zero_offset = os_tf*total_diff;
+var m = 10;
+bin_w = total_diff/m;
+curr_thresh = 0;
+i = 0;
+while (curr_thresh < 2*os_null_zero_offset) {
+    os_null_thresh[i] = curr_thresh;
+    curr_thresh += bin_w;
+    i += 1;
+}
+var os_null_x_axis = d3.scale.linear().domain([0, 2*os_null_zero_offset]).range([0, width]);
+var co_null_thresh = [];
+var co_tf = 16;
+var co_null_zero_offset = co_tf*total_diff;
+var m = 5;
+bin_w = total_diff/m;
+curr_thresh = 0;
+i = 0;
+while (curr_thresh < 2*co_null_zero_offset) {
+    co_null_thresh[i] = curr_thresh;
+    curr_thresh += bin_w;
+    i += 1;
+}
+var co_null_x_axis = d3.scale.linear().domain([0, 2*co_null_zero_offset]).range([0, width]);
+var num_sim_realizations = 1000;
+
+
+var os_histdata = d3.layout.histogram().bins(thresholds)(one_site_values);
+var nv_histdata = d3.layout.histogram().bins(thresholds)(no_var_values);
+var conf_histdata = d3.layout.histogram().bins(thresholds)(conflict_values);
+var ps_y = d3.scale.linear().domain([0, num_char]).range([height, 0]);
+var ps_x_axis = d3.svg.axis().scale(ps_x).orient("bottom");
+/* data for two ways of getting a null per-site for the no-variation data*/
+var subtract_nv_values = [];
+var reflect_nv_values = [];
+for (i = 0; i < num_char; ++i) {
+    subtract_nv_values[i] = zero_offset;
+}
+for (i = 0; i < num_char; ++i) {
+    reflect_nv_values[i] = zero_offset + orig_mean_ps;
+}
+for (i = num_char; i < 2*num_char; ++i) {
+    reflect_nv_values[i] = zero_offset - orig_mean_ps;
+}
+
+/* data for two ways of getting a null per-site for the one-site data */
+var subtract_os_values = [];
+var reflect_os_values = [];
+for (i = 0; i < num_char - 1; ++i) {
+    subtract_os_values[i] = zero_offset - orig_mean_ps;
+}
+subtract_os_values[num_char - 1] = zero_offset + total_diff - orig_mean_ps;
+for (i = 0; i < 2*num_char; ++i) {
+    reflect_os_values[i] = zero_offset;
+}
+reflect_os_values[0] = zero_offset + total_diff;
+reflect_os_values[1] = zero_offset - total_diff;
+
+/* data for two ways of getting a null per-site for the conflict data */
+var subtract_co_values = [];
+var reflect_co_values = [];
+for (i = 0; i < half_num_char - 1; ++i) {
+    subtract_co_values[i] = zero_offset - total_diff - orig_mean_ps;
+}
+subtract_co_values[half_num_char - 1] = zero_offset - orig_mean_ps;
+for (i = half_num_char; i < num_char; ++i) {
+    subtract_co_values[i] = zero_offset + total_diff - orig_mean_ps;
+}
+for (i = 0; i < num_char - 1; ++i) {
+    reflect_co_values[i] = zero_offset - total_diff;
+}
+reflect_co_values[num_char - 1] = zero_offset;
+reflect_co_values[num_char] = zero_offset;
+for (i = num_char + 1; i < 2*num_char; ++i) {
+    reflect_co_values[i] = zero_offset + total_diff;
+}
+/* reflect form of enforcing a mean of 0, creates twice as many chars */
+var ref_ps_y = d3.scale.linear().domain([0, 2*num_char]).range([height, 0]);
+var subtract_nv_histdata = d3.layout.histogram().bins(thresholds)(subtract_nv_values);
+var reflect_nv_histdata = d3.layout.histogram().bins(thresholds)(reflect_nv_values);
+var subtract_os_histdata = d3.layout.histogram().bins(thresholds)(subtract_os_values);
+var reflect_os_histdata = d3.layout.histogram().bins(thresholds)(reflect_os_values);
+var subtract_co_histdata = d3.layout.histogram().bins(thresholds)(subtract_co_values);
+var reflect_co_histdata = d3.layout.histogram().bins(thresholds)(reflect_co_values);
+
+var fill_per_site_hist = function(hist_data, x_axis, y_axis, zo) {
+    var par_el = d3.select('#per-site-diff-dist');
+    append_hist_svg(par_el, hist_data, x_axis, y_axis, zo);
+}
+var fill_per_site_null = function(null_data, x_axis, y_axis, zo) {
+    var par_el = d3.select('#null-per-site-diff-dist');
+    append_hist_svg(par_el, null_data, x_axis, y_axis, zo);
+}
+var sum = function(arr) {
+    var i;
+    var s = 0.0;
+    for (i = 0; i < arr.length; ++i) {
+        s += arr[i];
+    }
+    return s;
+};
+var sample_realization = function(inp, nc) {
+    var num_choices = inp.length;
+    var sample = []
+    var i;
+    for (i=0; i < nc; ++i) {
+        var ind = Math.floor(Math.random()*num_choices);
+        sample[i] = inp[ind];
+    }
+    return sample;
+}
+var clear_sim_dist = function() {
+    d3.select('#null-realization-dist').selectAll("*").remove();
+    d3.select('#null-dist').selectAll("*").remove();
+    d3.select('#null-realization-sample-value').text(" ");
+    d3.select('#num-reps').text(0);
+    d3.select('#p-value').text("?");
+}
+var do_simulation_of_null = function(per_site_values,
+                                     ps_x_axis,
+                                     ps_y_axis,
+                                     ps_zo,
+                                     null_x_axis,
+                                     null_y_axis,
+                                     null_thresholds,
+                                     null_zero,
+                                     num_realizations,
+                                     settings_num) {
+    var ps_par_el = d3.select('#null-realization-dist');
+    var null_dist_par_el = d3.select('#null-dist');
+    var realization_text_el = d3.select('#null-realization-sample-value');
+    var num_reps_el = d3.select('#num-reps');
+    var p_value_el = d3.select('#p-value');
+    var realization;
+    var realized_sc;
+    var realization_histdata;
+    var null_array = [];
+    var num_in_tail = 0;
+    var rep = 0;
+    var millisecond_sleep = 5;
+    var do_another_realization = function(rep) {
+        if (settings_num != global_setting_switch) {
+            return null;
+        }
+        realization = sample_realization(per_site_values, num_char);
+        var sr = sum(realization)
+        realized_sc = sr - zero_offset*num_char;
+        realization_histdata = d3.layout.histogram().bins(thresholds)(realization);
+        realization_text_el.text(" " + realized_sc.toPrecision(2));
+        append_hist_svg(ps_par_el, realization_histdata, ps_x_axis, ps_y_axis, ps_zo);
+        null_array[rep] = realized_sc + null_zero;
+        if (Math.abs(realized_sc) >= Math.abs(total_diff) - round_tol) {
+            num_in_tail = 1 + num_in_tail;
+        }
+        num_reps_el.text("" + (rep + 1));
+        p_value_el.text(" " + (num_in_tail/(rep +1)).toPrecision(3));
+        null_histdata = d3.layout.histogram().bins(null_thresholds)(null_array);
+        create_null_dist_svg(null_dist_par_el, null_histdata, null_x_axis, null_y_axis, null_zero);
+        rep += 1;
+        do_another(rep);
+    }
+    var do_another = function(rep) {
+        if (rep < num_realizations) {
+            setTimeout(function() {
+                do_another_realization(rep);
+            }, millisecond_sleep);
+        }
+    }
+    do_another(1);
+}
+var create_null_dist_svg = function(par_el, hist_data, x_axis, y_axis, zo) {
+    par_el.selectAll("*").remove();
+    hist_svg = par_el.append('svg')
+        .attr("width", PER_SITE_WIDTH)
+        .attr("height", PER_SITE_HEIGHT)
+      .append("g")
+        .attr('transform', "translate(" + margin.left + "," + margin.top + ")");
+    var color = d3.scale.threshold()
+        .domain([(zo - total_diff + round_tol), (zo + total_diff - round_tol)])
+        .range(['#FF0000', '#000000', '#FF0000'])
+    var bar = hist_svg.selectAll(".bar")
+        .data(hist_data)
+      .enter().append("g")
+        .attr("class", "bar")
+        .attr("transform", function(d) { return "translate(" + x_axis(d.x) + "," + y_axis(d.y) + ")"; })
+        .attr("fill", function(d) {return color(d.x);})
+    bar.append("rect")
+        .attr("x", 1)
+        .attr("width", x_axis(hist_data[0].dx))
+        .attr("height", function(d) { return height - y_axis(d.y); });
+    add_x_axis(hist_svg, x_axis, zo);
+    return bar;
+}
+var append_hist_svg = function(par_el, hist_data, x_axis, y_axis, zo) {
+    par_el.selectAll("*").remove();
+    hist_svg = par_el.append('svg')
+        .attr("width", PER_SITE_WIDTH)
+        .attr("height", PER_SITE_HEIGHT)
+      .append("g")
+        .attr('transform', "translate(" + margin.left + "," + margin.top + ")");
+    var bar = hist_svg.selectAll(".bar")
+        .data(hist_data)
+      .enter().append("g")
+        .attr("class", "bar")
+        .attr("transform", function(d) { return "translate(" + x_axis(d.x) + "," + y_axis(d.y) + ")"; });
+    bar.append("rect")
+        .attr("x", 1)
+        .attr("width", x_axis(hist_data[0].dx))
+        .attr("height", function(d) { return height - y_axis(d.y); });
+    add_x_axis(hist_svg, x_axis, zo);
+}
+var add_x_axis = function(hist_svg, x_axis, zo) {
+    var xz = x_axis(zo);
+    var xl = x_axis(zo - total_diff);
+    var xu = x_axis(zo + total_diff);
+    hist_svg.append("text")
+        .attr("x", xz)
+        .attr("y", height)
+        .attr("dy", "2.0em")
+        .attr("text-anchor", "middle")
+        .text("0.0");
+    hist_svg.append("text")
+        .attr("x", xl)
+        .attr("y", height)
+        .attr("dy", "1.0em")
+        .attr("text-anchor", "middle")
+        .text("-5.0");
+    hist_svg.append("text")
+        .attr("x", xu)
+        .attr("y", height)
+        .attr("dy", "1.0em")
+        .attr("text-anchor", "middle")
+        .text("5.0");
+}
+fill_per_site_hist(nv_histdata, ps_x, ps_y, zero_offset);
+fill_per_site_null(subtract_nv_histdata, ps_x, ps_y, zero_offset);
+var global_setting_switch = 0;
+var dist_change = function () {
+    var vchoice = $("#varselect option:selected").attr("value");
+    var cchoice = $("#centerselect option:selected").attr("value");
+    global_setting_switch += 1;
+    clear_sim_dist();
+    if (vchoice == "novar") {
+        fill_per_site_hist(nv_histdata, ps_x, ps_y, zero_offset);
+        if (cchoice == "subtract") {
+            fill_per_site_null(subtract_nv_histdata, ps_x, ps_y, zero_offset);
+        } else {
+            fill_per_site_null(reflect_nv_histdata, ps_x, ref_ps_y, zero_offset);
+        }
+    } else if (vchoice == "conflict") {
+        fill_per_site_hist(conf_histdata, ps_x, ps_y, zero_offset);
+        if (cchoice == "subtract") {
+            fill_per_site_null(subtract_co_histdata, ps_x, ps_y, zero_offset);
+        } else {
+            fill_per_site_null(reflect_co_histdata, ps_x, ref_ps_y, zero_offset);
+        }
+    } else {
+        fill_per_site_hist(os_histdata, ps_x, ps_y, zero_offset);
+        if (cchoice == "subtract") {
+            fill_per_site_null(subtract_os_histdata, ps_x, ps_y, zero_offset);
+        } else {
+            fill_per_site_null(reflect_os_histdata, ps_x, ref_ps_y, zero_offset);
+        }
+    }
+};
+$('#varselect').change(dist_change);
+$('#centerselect').change(dist_change);
+var generate_null = function () {
+    var vchoice = $("#varselect option:selected").attr("value");
+    var cchoice = $("#centerselect option:selected").attr("value");
+    var null_src_values = null;
+    var ps_y_axis = ref_ps_y;
+    if (cchoice == "subtract") {
+        ps_y_axis = ps_y;
+    }
+    var n_y = d3.scale.linear().domain([0, num_sim_realizations/4]).range([height, 0]);
+    var null_thresholds = os_null_thresh;
+    var n_x = os_null_x_axis;
+    var nz = os_null_zero_offset;
+    if (vchoice == "novar") {
+        n_x = ps_x;
+        null_thresholds = thresholds;
+        nz = zero_offset;
+        if (cchoice == "subtract") {
+            null_src_values = subtract_nv_values;
+            n_y = d3.scale.linear().domain([0, num_sim_realizations]).range([height, 0]);
+        } else {
+            null_src_values = reflect_nv_values;
+            n_y = d3.scale.linear().domain([0, num_sim_realizations/6]).range([height, 0]);
+        }
+    } else if (vchoice == "conflict") {
+        null_thresholds = co_null_thresh;
+        n_x = co_null_x_axis;
+        nz = co_null_zero_offset;
+        if (cchoice == "subtract") {
+            null_src_values = subtract_co_values;
+        } else {
+            null_src_values = reflect_co_values;
+        }
+    } else {
+        if (cchoice == "subtract") {
+            null_src_values = subtract_os_values;
+        } else {
+            null_src_values = reflect_os_values;
+        }
+    }
+    
+    do_simulation_of_null(null_src_values,
+                          ps_x,
+                          ps_y_axis,
+                          zero_offset,
+                          n_x,
+                          n_y,
+                          null_thresholds,
+                          nz,
+                          num_sim_realizations,
+                          global_setting_switch);
+}
+</script>
